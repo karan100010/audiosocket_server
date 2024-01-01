@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # Standard Python modules
 from time import sleep
-
 # Import everything from the audiosocket module
 from audiosocket import *
+from asterisk.agi import *
+\
+agi = AGI()
+
 
 # Create a new Audiosocket instance, passing it binding
 # information in a tuple just as you would a raw socket
@@ -15,7 +18,8 @@ conn = audiosocket.listen()
 
 
 print('Received connection from {0}'.format(conn.peer_addr))
-
+agi.answer()
+agi.verbose("python agi started")
 
 # While a connection exists, send all
 # received audio back to Asterisk (creates an echo)
