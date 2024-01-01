@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Standard Python modules
 from time import sleep
 
@@ -6,7 +7,7 @@ from audiosocket import *
 
 # Create a new Audiosocket instance, passing it binding
 # information in a tuple just as you would a raw socket
-audiosocket = Audiosocket(("10.0.0.18", 1121))
+audiosocket = Audiosocket(("localhost", 1121))
 
 # This will block until a connection is received, returning
 # a connection object when one occurs
