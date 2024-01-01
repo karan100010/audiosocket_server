@@ -20,6 +20,9 @@ print('Received connection from {0}'.format(conn.peer_addr))
 # received audio back to Asterisk (creates an echo)
 while conn.connected:
   audio_data = conn.read()
+  #in each 5 secondes read the audio and look for seclence of 0.5 secondes of silence
+  #if scilence more the 10 seconds then write to the stream
+
   conn.write(audio_data)
 
 
