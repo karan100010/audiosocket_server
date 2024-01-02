@@ -4,7 +4,9 @@ from time import sleep
 # Import everything from the audiosocket module
 from audiosocket import *
 from asterisk.agi import *
-\
+from pydub import AudioSegment
+from pydub.utils import make_chunks
+
 agi = AGI()
 
 
@@ -25,10 +27,22 @@ agi.verbose("python agi started")
 # received audio back to Asterisk (creates an echo)
 while conn.connected:
   audio_data = conn.read()
-  #in each 5 secondes read the audio and look for seclence of 0.5 secondes of silence
-  #if scilence more the 10 seconds then write to the stream
+  #read a wav file from the system and convert it to ulaw
+  audio_file="../output.wav"
+  #convert the wav file to ulaw
+  
 
-  conn.write(audio_data)
+  myaudio = AudioSegment.from_file(audio_file , "wav") 
+  chunk_length_ms = 1000 # pydub calculates in millisec
+  chunks = make_chunks(myaudio, chunk_length_ms) #Make chunks of one sec
+
+#Convert chunks to raw audio data which you can then feed to HTTP stream
+  for i, chunk in enumerate(chunks):
+    conn.write(chunk.raw_data)
+
+
+
+ 
 
 
 print('Connection with {0} over'.format(conn.peer_addr))
