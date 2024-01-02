@@ -34,12 +34,17 @@ audio_file="../output.wav"
 
 myaudio=read_wave_file(audio_file)
 #splitting the audio file into chunks of 16-bit, 8kHz, mono PCM
-
+w=0
+v=320
+for i in  range(int(len(myaudio)/320)):
+    conn.write(myaudio[w:v])
+    w+=320
+    v+=320
 
 
 #Convert chunks to raw audio data which you can then feed to HTTP stream
 
-conn.write(myaudio)
+
 while conn.connected:
   audio_data = conn.read()
   #read a wav file from the system and convert it to ulaw
