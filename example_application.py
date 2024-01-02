@@ -17,7 +17,7 @@ def read_wave_file(filename):
 
 # Create a new Audiosocket instance, passing it binding
 # information in a tuple just as you would a raw socket
-audiosocket = Audiosocket(("localhost", 1121))
+audiosocket = Audiosocket(("localhost", 1122))
 
 # This will block until a connection is received, returning
 # a connection object when one occurs
