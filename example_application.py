@@ -7,7 +7,12 @@ from asterisk.agi import *
 from pydub import AudioSegment
 from pydub.utils import make_chunks
 
-agi = AGI()
+import wave
+
+def read_wave_file(filename):
+    with wave.open(filename, 'rb') as wave_file:
+        audio = wave_file.readframes(wave_file.getnframes())
+    return audio
 
 
 # Create a new Audiosocket instance, passing it binding
@@ -20,8 +25,6 @@ conn = audiosocket.listen()
 
 
 print('Received connection from {0}'.format(conn.peer_addr))
-agi.answer()
-agi.verbose("python agi started")
 
 # While a connection exists, send all
 # received audio back to Asterisk (creates an echo)
@@ -29,13 +32,14 @@ audio_file="../output.wav"
   #convert the wav file to ulaw
   
 
-myaudio = AudioSegment.from_file(audio_file , "wav") 
-chunk_length_ms = 1000 # pydub calculates in millisec
-chunks = make_chunks(myaudio, chunk_length_ms) #Make chunks of one sec
+myaudio=read_wave_file(audio_file)
+#splitting the audio file into chunks of 16-bit, 8kHz, mono PCM
+
+
 
 #Convert chunks to raw audio data which you can then feed to HTTP stream
-for i, chunk in enumerate(chunks):
-    conn.write(chunk.raw_data)
+
+conn.write(myaudio)
 while conn.connected:
   audio_data = conn.read()
   #read a wav file from the system and convert it to ulaw
