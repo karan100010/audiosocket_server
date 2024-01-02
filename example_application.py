@@ -25,20 +25,21 @@ agi.verbose("python agi started")
 
 # While a connection exists, send all
 # received audio back to Asterisk (creates an echo)
-while conn.connected:
-  audio_data = conn.read()
-  #read a wav file from the system and convert it to ulaw
-  audio_file="../output.wav"
+audio_file="../output.wav"
   #convert the wav file to ulaw
   
 
-  myaudio = AudioSegment.from_file(audio_file , "wav") 
-  chunk_length_ms = 1000 # pydub calculates in millisec
-  chunks = make_chunks(myaudio, chunk_length_ms) #Make chunks of one sec
+myaudio = AudioSegment.from_file(audio_file , "wav") 
+chunk_length_ms = 1000 # pydub calculates in millisec
+chunks = make_chunks(myaudio, chunk_length_ms) #Make chunks of one sec
 
 #Convert chunks to raw audio data which you can then feed to HTTP stream
-  for i, chunk in enumerate(chunks):
+for i, chunk in enumerate(chunks):
     conn.write(chunk.raw_data)
+while conn.connected:
+  audio_data = conn.read()
+  #read a wav file from the system and convert it to ulaw
+  
 
 
 
