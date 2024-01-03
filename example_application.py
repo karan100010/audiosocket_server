@@ -64,15 +64,15 @@ myaudio=read_wave_file(audio_file)
 #splitting the audio file into chunks of 16-bit, 8kHz, mono PCM
 w=0
 v=320
-while True:
+
   
-  for i in  range(int(len(myaudio)/320)):
-      conn.write(myaudio[w:v])
-      w+=320
-      v+=320
-  if noise_frames_count>=20:
-    print("Noise detected ending stream")
-    break
+for i in  range(int(len(myaudio)/320)):
+    conn.write(myaudio[w:v])
+    w+=320
+    v+=320
+    if noise_frames_count>=20:
+      print("Noise detected ending stream")
+      break
 
 
 #Convert chunks to raw audio data which you can then feed to HTTP stream
