@@ -71,6 +71,7 @@ def send_audio(audio_file):
   global v
   global noise_frames_count
   for i in range(int(len(audio_file)/320)):
+      sleep(0.2)
       conn.write(audio_file[w:v])
       w+=320
       v+=320
