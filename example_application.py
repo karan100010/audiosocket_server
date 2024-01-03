@@ -72,12 +72,15 @@ def send_audio(audio_file):
       conn.write(audio_file[w:v])
       w+=320
       v+=320
-try:
-  send_audio(myaudio)
+# try:
+#   send_audio(myaudio)
   
   
-except Exception as e:
-  print(e)    
+# except Exception as e:
+#   print(e)    
+#call send_audio asychronously
+process=multiprocessing.Process(target=send_audio,args=(myaudio,))
+process.start()
 
 
 
