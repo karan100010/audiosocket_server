@@ -68,11 +68,14 @@ v=320
 def send_audio(audio_file):
   global w
   global v
+  global noise_frames_count
   for i in range(int(len(audio_file)/320)):
       conn.write(audio_file[w:v])
       w+=320
       v+=320
       print("Sending audio")
+      if noise_frames_count>20:
+        return 0
 # try:
 #   send_audio(myaudio)
   
@@ -93,9 +96,6 @@ while conn.connected:
   # Detect noise
   detect_noise(audio_data, 1, 8000)
   print(noise_frames_count)
-  if noise_frames_count>20:
-    #stop the process
-    process.join()
 
   
   #read a wav file from the system and convert it to ulaw
