@@ -65,7 +65,7 @@ myaudio=read_wave_file(audio_file)
 w=0
 v=320
 
-def send_audio():
+def send_audio(audio_file):
   global w
   global v
   for i in  range(int(len(myaudio)/320)):
@@ -75,7 +75,7 @@ def send_audio():
       if noise_frames_count>20:
         print("Noise detected ending stream")
         break
-process=multiprocessing.Process(target=send_audio)
+process=multiprocessing.Process(target=send_audio,args=(myaudio,))
 process.start()
       
 
