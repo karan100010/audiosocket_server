@@ -6,7 +6,6 @@ from audiosocket import *
 from pydub import AudioSegment
 from pydub.utils import make_chunks
 import numpy as np
-import sounddevice as sd
 import webrtcvad 
 import wave
 
