@@ -78,7 +78,7 @@ def send_audio(audio_file):
       print("Sending audio")
       #if i is devisable by 5 enter sleep for .1 seconds
       if i%5==0:
-        sleep(.1)
+        sleep(.001)
       
       if noise_frames_count>10:
         sys.exit()
