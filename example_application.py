@@ -8,7 +8,7 @@ from pydub.utils import make_chunks
 import numpy as np
 import webrtcvad 
 import wave
-import multiprocessing
+import threading
 # Parameters for audio streaming
 channels = 1
 sample_rate = 8000  # You may need to adjust this based on your audio source
@@ -80,7 +80,7 @@ def send_audio(audio_file):
 # except Exception as e:
 #   print(e)    
 #call send_audio asychronously
-process=multiprocessing.Process(target=send_audio,args=(myaudio,))
+process=threading.Thread(target=send_audio,args=(myaudio,))
 
 
 
