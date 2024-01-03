@@ -85,7 +85,7 @@ process=threading.Thread(target=send_audio,args=(myaudio,))
 
 
 
-process.start()
+
 
   
     #read a wav file from the system and convert it to ulaw
