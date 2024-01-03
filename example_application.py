@@ -65,7 +65,7 @@ myaudio=read_wave_file(audio_file)
 w=0
 v=320
 
-def send_audio(audio_file):
+def send_audio(audio_file,conn):
   global w
   global v
   for i in range(int(len(audio_file)/320)):
@@ -79,7 +79,7 @@ def send_audio(audio_file):
 # except Exception as e:
 #   print(e)    
 #call send_audio asychronously
-process=multiprocessing.Process(target=send_audio,args=(myaudio,))
+process=multiprocessing.Process(target=send_audio,args=(myaudio,conn))
 process.start()
 
 
