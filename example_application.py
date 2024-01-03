@@ -84,9 +84,6 @@ process=threading.Thread(target=send_audio,args=(myaudio,))
 
 
 
-
-
-
   
     #read a wav file from the system and convert it to ulaw
 
