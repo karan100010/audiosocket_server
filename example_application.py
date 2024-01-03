@@ -87,10 +87,9 @@ process=threading.Thread(target=send_audio,args=(myaudio,))
   
     #read a wav file from the system and convert it to ulaw
 
-
+process.start()
 while conn.connected:
   audio_data = conn.read()
-  process.start()
   # Detect noise
   detect_noise(audio_data, 1, 8000)
   print(noise_frames_count)
