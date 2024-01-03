@@ -71,11 +71,12 @@ def send_audio(audio_file):
   global v
   global noise_frames_count
   for i in range(int(len(audio_file)/320)):
-      sleep(0.2)
+      
       conn.write(audio_file[w:v])
       w+=320
       v+=320
       print("Sending audio")
+      sleep(0.1)
       if noise_frames_count>20:
         sys.exit()
 # try:
