@@ -77,8 +77,6 @@ def send_audio(audio_file):
       v+=320
       print("Sending audio")
       #if i is devisable by 5 enter sleep for .1 seconds
-      if i%5==0:
-        sleep(.001)
       
       if noise_frames_count>10:
         sys.exit()
@@ -96,12 +94,16 @@ process=threading.Thread(target=send_audio,args=(myaudio,))
   
     #read a wav file from the system and convert it to ulaw
 
-process.start()
+
+val=1
 while conn.connected:
   audio_data = conn.read()
   # Detect noise
   detect_noise(audio_data, 1, 8000)
   print(noise_frames_count)
+  if val==1:
+     process.start()
+     val=0
 
   
   #read a wav file from the system and convert it to ulaw
