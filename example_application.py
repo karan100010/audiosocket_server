@@ -65,13 +65,14 @@ myaudio=read_wave_file(audio_file)
 w=0
 v=320
 
-def send_audio(audio_file,conn):
+def send_audio(audio_file):
   global w
   global v
   for i in range(int(len(audio_file)/320)):
       conn.write(audio_file[w:v])
       w+=320
       v+=320
+      print("Sending audio")
 # try:
 #   send_audio(myaudio)
   
@@ -79,7 +80,7 @@ def send_audio(audio_file,conn):
 # except Exception as e:
 #   print(e)    
 #call send_audio asychronously
-process=multiprocessing.Process(target=send_audio,args=(myaudio,conn))
+process=multiprocessing.Process(target=send_audio,args=(myaudio,))
 process.start()
 
 
@@ -93,7 +94,7 @@ while conn.connected:
   detect_noise(audio_data, 1, 8000)
   print(noise_frames_count)
   if noise_frames_count>20:
-    process.terminate()
+    print("Noise detected")
 
   
   #read a wav file from the system and convert it to ulaw
