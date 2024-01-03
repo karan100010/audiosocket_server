@@ -9,6 +9,7 @@ import numpy as np
 import webrtcvad 
 import wave
 import threading
+import sys
 # Parameters for audio streaming
 channels = 1
 sample_rate = 8000  # You may need to adjust this based on your audio source
@@ -75,7 +76,7 @@ def send_audio(audio_file):
       v+=320
       print("Sending audio")
       if noise_frames_count>20:
-        return 0
+        sys.exit()
 # try:
 #   send_audio(myaudio)
   
