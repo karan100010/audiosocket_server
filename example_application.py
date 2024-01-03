@@ -91,15 +91,15 @@ process.start()
     #read a wav file from the system and convert it to ulaw
 
 
-# while conn.connected:
-#   audio_data = conn.read()
-#   process.start()
-#   # Detect noise
-#   detect_noise(audio_data, 1, 8000)
-#   print(noise_frames_count)
-#   if noise_frames_count>20:
-#     print("Noise detected")
-#     process.terminate()
+while conn.connected:
+  audio_data = conn.read()
+  process.start()
+  # Detect noise
+  detect_noise(audio_data, 1, 8000)
+  print(noise_frames_count)
+  if noise_frames_count>20:
+    #stop the process
+    process.join()
 
   
   #read a wav file from the system and convert it to ulaw
