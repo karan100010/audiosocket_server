@@ -80,7 +80,7 @@ def send_audio(audio_file):
       if i%5==0:
         sleep(.1)
       
-      if noise_frames_count>20:
+      if noise_frames_count>10:
         sys.exit()
 # try:
 #   send_audio(myaudio)
