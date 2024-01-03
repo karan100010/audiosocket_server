@@ -68,18 +68,17 @@ v=320
 def send_audio(audio_file):
   global w
   global v
-  for i in  range(int(len(myaudio)/320)):
-      conn.write(myaudio[w:v])
+  for i in  range(int(len(audio_file)/320)):
+      conn.write(audio_file[w:v])
       w+=320
       v+=320
-      if noise_frames_count>20:
-        print("Noise detected ending stream")
-        break
 try:
   process=multiprocessing.Process(target=send_audio,args=(myaudio,))
-  process.start()
+  
+  
 except Exception as e:
-  print(e)      
+  print(e)    
+process.start()   
 
 
 #Convert chunks to raw audio data which you can then feed to HTTP stream
