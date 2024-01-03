@@ -8,7 +8,7 @@ from pydub.utils import make_chunks
 import numpy as np
 import webrtcvad 
 import wave
-
+import multiprocessing
 # Parameters for audio streaming
 channels = 1
 sample_rate = 8000  # You may need to adjust this based on your audio source
@@ -65,14 +65,19 @@ myaudio=read_wave_file(audio_file)
 w=0
 v=320
 
-  
-for i in  range(int(len(myaudio)/320)):
-    conn.write(myaudio[w:v])
-    w+=320
-    v+=320
-    if noise_frames_count>=20:
-      print("Noise detected ending stream")
-      break
+def send_audio():
+  global w
+  global v
+  for i in  range(int(len(myaudio)/320)):
+      conn.write(myaudio[w:v])
+      w+=320
+      v+=320
+      if noise_frames_count>20:
+        print("Noise detected ending stream")
+        break
+process=multiprocessing.Process(target=send_audio)
+process.start()
+      
 
 
 #Convert chunks to raw audio data which you can then feed to HTTP stream
@@ -83,6 +88,9 @@ while conn.connected:
   # Detect noise
   detect_noise(audio_data, 1, 8000)
   print(noise_frames_count)
+  if noise_frames_count>20:
+    process.terminate()
+
   
   #read a wav file from the system and convert it to ulaw
   
