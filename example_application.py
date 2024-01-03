@@ -83,11 +83,7 @@ while conn.connected:
   # Detect noise
   detect_noise(audio_data, 1, 8000)
   print(noise_frames_count)
-  if noise_frames_count >= noise_frames_threshold:
-    print("Noise detected, hanging up")
-    conn.hangup()
-    break
-   
+  
   #read a wav file from the system and convert it to ulaw
   
 
