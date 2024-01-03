@@ -75,9 +75,11 @@ def send_audio(audio_file):
       if noise_frames_count>20:
         print("Noise detected ending stream")
         break
-process=multiprocessing.Process(target=send_audio,args=(myaudio,))
-process.start()
-      
+try:
+  process=multiprocessing.Process(target=send_audio,args=(myaudio,))
+  process.start()
+except Exception as e:
+  print(e)      
 
 
 #Convert chunks to raw audio data which you can then feed to HTTP stream
