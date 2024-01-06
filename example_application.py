@@ -24,7 +24,7 @@ noise_frames_count = 0
 # fuctions 
 
 
-def send_audio(audio_file):
+def send_audio(audio_file,logger):
   global w
   global v
   global noise_frames_count
@@ -34,7 +34,7 @@ def send_audio(audio_file):
       conn.write(audio_file[w:v])
       w+=320
       v+=320
-      print("Sending audio")
+      logger.DEBUG("Sending audio")
       sleep(.005)
       detect_noise(audio_data, 1, 8000)
       #if i is devisable by 5 enter sleep for .1 seconds
