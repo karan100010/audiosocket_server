@@ -75,10 +75,9 @@ conn = audiosocket.listen()
 
 print('Received connection from {0}'.format(conn.peer_addr))
 
-# While a connection exists, send all
-# received audio back to Asterisk (creates an echo)
+
 audio_file="../output.wav"
-  #convert the wav file to ulaw
+
   
 
 myaudio=read_wave_file(audio_file)
@@ -86,20 +85,12 @@ myaudio=read_wave_file(audio_file)
 w=0
 v=320
 
-
-# try:
-#   send_audio(myaudio)
-  
-  
-# except Exception as e:
-#   print(e)    
-#call send_audio asychronously
 process=threading.Thread(target=send_audio,args=(myaudio,))
 
 
 
   
-    #read a wav file from the system and convert it to ulaw
+   
 
 
 level=1
@@ -113,12 +104,8 @@ while conn.connected:
      val=0
 
   
-  #read a wav file from the system and convert it to ulaw
   
-
-
-
- 
+  
 
 
 print('Connection with {0} over'.format(conn.peer_addr))
