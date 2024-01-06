@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # Standard Python modules
 from time import sleep
-# Import everything from the audiosocket module
 from audiosocket import *
-from pydub import AudioSegment
-from pydub.utils import make_chunks
 import numpy as np
-import webrtcvad 
+import webrtcvad
+from mylogging import ColouredLogger
 import wave
 import threading
 import sys
 # Parameters for audio streaming
+logger=ColouredLogger("audio sharing")
 channels = 1
 sample_rate = 8000  # You may need to adjust this based on your audio source
 
@@ -21,6 +20,26 @@ vad.set_mode(3)  # Aggressiveness mode (0 to 3)
 # Variables for noise detection
 noise_frames_threshold = int(2 * sample_rate / 512)  # 2 seconds
 noise_frames_count = 0
+
+# fuctions 
+
+
+def send_audio(audio_file):
+  global w
+  global v
+  global noise_frames_count
+  for i in range(int(len(audio_file)/320)):
+      
+      
+      conn.write(audio_file[w:v])
+      w+=320
+      v+=320
+      print("Sending audio")
+      sleep(.005)
+      detect_noise(audio_data, 1, 8000)
+      #if i is devisable by 5 enter sleep for .1 seconds
+      if noise_frames_count>10:
+        sys.exit()
 
 #read a wav file 
 def read_wave_file(filename):
@@ -41,6 +60,7 @@ def detect_noise(indata, frames,rate):
     if is_noise:
         noise_frames_count += frames
 
+#end functions
 
 
 
@@ -66,23 +86,7 @@ myaudio=read_wave_file(audio_file)
 w=0
 v=320
 
-def send_audio(audio_file):
-  global w
-  global v
-  global noise_frames_count
-  for i in range(int(len(audio_file)/320)):
-      
-      
-      conn.write(audio_file[w:v])
-      w+=320
-      v+=320
-      print("Sending audio")
-      sleep(.005)
-      detect_noise(audio_data, 1, 8000)
-      #if i is devisable by 5 enter sleep for .1 seconds
-      
-      if noise_frames_count>10:
-        sys.exit()
+
 # try:
 #   send_audio(myaudio)
   
@@ -98,7 +102,7 @@ process=threading.Thread(target=send_audio,args=(myaudio,))
     #read a wav file from the system and convert it to ulaw
 
 
-val=1
+level=1
 while conn.connected:
   audio_data = conn.read()
   # Detect noise
