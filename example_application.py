@@ -56,8 +56,8 @@ class AudioStreamer:
         self.level=4
         self.noise_frames_count = 0
         sys.exit()
-      self.level+=1
-      sys.exit()
+    self.level+=1
+    sys.exit()
 
 
 
