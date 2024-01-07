@@ -49,7 +49,7 @@ class AudioStreamer:
       self.v += 320
       self.detect_noise(audio_data, 1, 8000)
       
-      sleep(.05)
+      sleep(.1)
       self.logger.info(self.noise_frames_count)
     
       if self.noise_frames_count > 10:
