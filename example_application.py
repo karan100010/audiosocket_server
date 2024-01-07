@@ -81,16 +81,16 @@ class AudioStreamer:
         x=self.read_wave_file(mapping[1])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
-      if self.level == 2:
-        x=self.read_wave_file(mapping[2])
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-        process.start()
-        val = 0
-      if self.level == 3:
-        x=self.read_wave_file(mapping[3])
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-        process.start()
-        val = 0
+      # if self.level == 2:
+      #   x=self.read_wave_file(mapping[2])
+      #   process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+      #   process.start()
+      #   val = 0
+      # if self.level == 3:
+      #   x=self.read_wave_file(mapping[3])
+      #   process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+      #   process.start()
+      #   val = 0
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
 streamer=AudioStreamer()
