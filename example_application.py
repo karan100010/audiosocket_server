@@ -68,9 +68,12 @@ class AudioStreamer:
   def start_streaming(self,mapping):
 
     while self.conn.connected:
-      audio_data = self.conn.read()
+      audio_data = self.conn.read() 
+      self.logger.log("Received audio data")
+
       if self.level == 1:
         x=self.read_wave_file(mapping[1])
+        
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
       if self.level == 2:
