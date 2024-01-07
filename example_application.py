@@ -52,7 +52,7 @@ class AudioStreamer:
       sleep(.1)
       self.logger.info(self.noise_frames_count)
     
-      if self.noise_frames_count > 10:
+      if self.noise_frames_count > 4:
         self.level=4
         self.noise_frames_count = 0
         sys.exit()
