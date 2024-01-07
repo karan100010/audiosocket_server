@@ -51,13 +51,13 @@ class AudioStreamer:
       sleep(.005)
       self.logger.info(self.noise_frames_count)
     
-      if self.noise_frames_count > 4:
+      if self.noise_frames_count > 10:
         break
         
       else:
         self.level += 1
         sys.exit()
-        
+
     self.noise_frames_count = 0
     self.logger.debug("Noise detected")
     file = self.read_wave_file(mapping[4])
@@ -79,16 +79,15 @@ class AudioStreamer:
 
       if self.level == 1:
         x=self.read_wave_file(mapping[1])
-        
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
       if self.level == 2:
-        x=self.read_wave_file(mapping[1])
+        x=self.read_wave_file(mapping[2])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
         val = 0
       if self.level == 3:
-        x=self.read_wave_file(mapping[1])
+        x=self.read_wave_file(mapping[3])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
         val = 0
