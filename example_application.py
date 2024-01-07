@@ -41,7 +41,7 @@ class AudioStreamer:
       self.logger.debug("Noise detected")
       self.noise_frames_count += frames
 
-  def send_audio(self, audio_file):
+  def send_audio(self, audio_file,audio_data):
     for i in range(int(len(audio_file) / 320)):
       self.conn.write(audio_file[self.w:self.v])
       self.w += 320
@@ -71,16 +71,16 @@ class AudioStreamer:
       audio_data = self.conn.read()
       if self.level == 1:
         x=self.read_wave_file(mapping[1])
-        process = threading.Thread(target=self.send_audio, args=(x,))
+        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
       if self.level == 2:
         x=self.read_wave_file(mapping[1])
-        process = threading.Thread(target=self.send_audio, args=(x,))
+        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
         val = 0
       if self.level == 3:
         x=self.read_wave_file(mapping[1])
-        process = threading.Thread(target=self.send_audio, args=(x,))
+        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
         val = 0
     print('Connection with {0} over'.format(self.conn.peer_addr))
