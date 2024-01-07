@@ -34,7 +34,7 @@ class AudioStreamer:
     return audio
 
   def detect_noise(self, indata, frames, rate):
-    self.logger.debug("Detecting noise")
+    
     samples = np.frombuffer(indata, dtype=np.int16)
     is_noise = self.vad.is_speech(samples.tobytes(), rate)
     if is_noise:
@@ -46,7 +46,7 @@ class AudioStreamer:
       self.conn.write(audio_file[self.w:self.v])
       self.w += 320
       self.v += 320
-      self.logger.debug("Sending audio")
+      
       sleep(.005)
       self.detect_noise(audio_data, 1, 8000)
       if self.noise_frames_count > 4:
@@ -56,9 +56,9 @@ class AudioStreamer:
         k=320
         for i in range(int(len(file) / 320)):
           self.conn.write(file[self.w:self.v])
-          self.j += 320
-          self.k += 320
-          self.logger.debug("Sending audio")
+          j += 320
+          k += 320
+          self.logger.debug("Sending audio for error message")
           sleep(.005)
         self.level = 4
         sys.exit()
