@@ -26,6 +26,7 @@ class AudioStreamer:
     self.v = 320
     self.level = 1
 
+
   def read_wave_file(self, filename):
     self.logger.debug("Reading wave file")
     with wave.open(filename, 'rb') as wave_file:
@@ -40,7 +41,7 @@ class AudioStreamer:
       self.logger.debug("Noise detected")
       self.noise_frames_count += frames
 
-  def send_audio(self, audio_file, url, port, service=""):
+  def send_audio(self, audio_file):
     for i in range(int(len(audio_file) / 320)):
       self.conn.write(audio_file[self.w:self.v])
       self.w += 320
