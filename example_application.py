@@ -83,7 +83,7 @@ class AudioStreamer:
           process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
           process.start()
         except Exception as e:
-          print(e)
+          self.logger.error(e)
           
       # if self.level == 2:
       #   x=self.read_wave_file(mapping[2])
