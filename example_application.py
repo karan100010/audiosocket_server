@@ -69,23 +69,24 @@ class AudioStreamer:
 
     while self.conn.connected:
       audio_data = self.conn.read() 
-      self.logger.error("Audio data received")
+      self.logger.info(self.noise_frames_count)
+      self.detect_noise(audio_data, 1, 8000)
 
-      if self.level == 1:
-        x=self.read_wave_file(mapping[1])
+      # if self.level == 1:
+      #   x=self.read_wave_file(mapping[1])
         
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-        process.start()
-      if self.level == 2:
-        x=self.read_wave_file(mapping[1])
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-        process.start()
-        val = 0
-      if self.level == 3:
-        x=self.read_wave_file(mapping[1])
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-        process.start()
-        val = 0
+      #   process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+      #   process.start()
+      # if self.level == 2:
+      #   x=self.read_wave_file(mapping[1])
+      #   process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+      #   process.start()
+      #   val = 0
+      # if self.level == 3:
+      #   x=self.read_wave_file(mapping[1])
+      #   process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+      #   process.start()
+      #   val = 0
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
 streamer=AudioStreamer()
