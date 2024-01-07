@@ -53,23 +53,14 @@ class AudioStreamer:
       self.logger.info(self.noise_frames_count)
     
       if self.noise_frames_count > 10:
-        break
+        self.level=4
+        self.noise_frames_count = 0
+        sys.exit()
+      self.level+=1
+      sys.exit()
 
-    if self.noise_frames_count > 10:
-      self.noise_frames_count = 0
-      self.logger.debug("Noise detected")
-      file = self.read_wave_file(mapping[4])
-      j = 0
-      k=320
-      for i in range(int(len(file) / 320)):
-        j += 320
-        k += 320
-        self.logger.debug("Sending audio for error message")
-        sleep(.005)
-      self.level = 4
-      sys.exit()
-    else:
-      sys.exit()
+
+
 
   def start_streaming(self,mapping):
 
@@ -85,16 +76,17 @@ class AudioStreamer:
         except Exception as e:
           self.logger.error(e)
           
-      # if self.level == 2:
-      #   x=self.read_wave_file(mapping[2])
-      #   process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-      #   process.start()
-      #   val = 0
-      # if self.level == 3:
-      #   x=self.read_wave_file(mapping[3])
-      #   process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-      #   process.start()
-      #   val = 0
+      if self.level == 2:
+        x=self.read_wave_file(mapping[2])
+        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+        process.start()
+        
+      if self.level == 3:
+        x=self.read_wave_file(mapping[3])
+        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+        process.start()
+        val = 0
+
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
 streamer=AudioStreamer()
