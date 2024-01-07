@@ -69,7 +69,7 @@ class AudioStreamer:
 
     while self.conn.connected:
       audio_data = self.conn.read() 
-      self.logger.log("Received audio data")
+      self.logger.error("Audio data received")
 
       if self.level == 1:
         x=self.read_wave_file(mapping[1])
