@@ -38,7 +38,7 @@ class AudioStreamer:
     samples = np.frombuffer(indata, dtype=np.int16)
     is_noise = self.vad.is_speech(samples.tobytes(), rate)
     if is_noise:
-      self.logger.debug("Noise detected")
+      self.logger.debug("Noise detected in frames {0}".format(frames))
       self.noise_frames_count += frames
 
   def send_audio(self, audio_file,audio_data):
