@@ -54,23 +54,22 @@ class AudioStreamer:
     
       if self.noise_frames_count > 10:
         break
-        
-      else:
-        self.level += 1
-        sys.exit()
 
-    self.noise_frames_count = 0
-    self.logger.debug("Noise detected")
-    file = self.read_wave_file(mapping[4])
-    j = 0
-    k=320
-    for i in range(int(len(file) / 320)):
-      j += 320
-      k += 320
-      self.logger.debug("Sending audio for error message")
-      sleep(.005)
-    self.level = 4
-    sys.exit()
+    if self.noise_frames_count > 10:
+      self.noise_frames_count = 0
+      self.logger.debug("Noise detected")
+      file = self.read_wave_file(mapping[4])
+      j = 0
+      k=320
+      for i in range(int(len(file) / 320)):
+        j += 320
+        k += 320
+        self.logger.debug("Sending audio for error message")
+        sleep(.005)
+      self.level = 4
+      sys.exit()
+    else:
+      sys.exit()
 
   def start_streaming(self,mapping):
 
