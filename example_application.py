@@ -21,7 +21,7 @@ class AudioStreamer:
     self.noise_frames_threshold = int(2 * self.sample_rate / 512)
     self.noise_frames_count = 0
     self.audiosocket = Audiosocket(("localhost", 1122))
-    self.conn = None
+    self.conn =  self.audiosocket.listen()
     self.w = 0
     self.v = 320
     self.level = 1
