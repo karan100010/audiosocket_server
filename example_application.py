@@ -65,24 +65,21 @@ class AudioStreamer:
         self.level += 1
 
   def start_streaming(self,mapping):
-    self.audiosocket = Audiosocket(("localhost", 1122))
-    self.conn = self.audiosocket.listen()
-    print('Received connection from {0}'.format(self.conn.peer_addr))
-    audio_file = "../output.wav"
-    myaudio = self.read_wave_file(audio_file)
-    process = threading.Thread(target=self.send_audio, args=(myaudio,))
-    process.start()
+
     while self.conn.connected:
       audio_data = self.conn.read()
       if self.level == 1:
-        process = threading.Thread(target=self.send_audio, args=(mapping[1],))
+        x=self.read_wave_file(mapping[1])
+        process = threading.Thread(target=self.send_audio, args=(x,))
         process.start()
       if self.level == 2:
-        process = threading.Thread(target=self.send_audio, args=(mapping[2],))
+        x=self.read_wave_file(mapping[1])
+        process = threading.Thread(target=self.send_audio, args=(x,))
         process.start()
         val = 0
       if self.level == 3:
-        process = threading.Thread(target=self.send_audio, args=(mapping[3],))
+        x=self.read_wave_file(mapping[1])
+        process = threading.Thread(target=self.send_audio, args=(x,))
         process.start()
         val = 0
     print('Connection with {0} over'.format(self.conn.peer_addr))
