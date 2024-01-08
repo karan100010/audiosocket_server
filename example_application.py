@@ -73,15 +73,18 @@ class AudioStreamer:
         x = self.read_wave_file(mapping[1])
         process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
         process.start()
+        self.level+=1
       elif self.level == 2:
         x = self.read_wave_file(mapping[2])
         self.logger.info("changed to level two")
         process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
+        self.level+=1
         process.start()
       elif self.level == 3:
         x = self.read_wave_file(mapping[3])
         self.logger.info("changed to level 3")
         process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
+        self.conn.hangup()
         process.start()
       elif self.level == 4:
         x = self.read_wave_file(mapping[4])
