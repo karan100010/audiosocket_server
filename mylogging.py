@@ -7,7 +7,7 @@ class ColouredLogger(logging.Logger):
         super(ColouredLogger, self).__init__(name)
         self.setLevel(logging.DEBUG)
         self.formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            '%(asctime)s - %(name)s - %(funcName)20s() - %(levelname)s - %(message)s')
         self.ch = logging.StreamHandler()
         self.ch.setLevel(logging.DEBUG)
         self.ch.setFormatter(self.formatter)

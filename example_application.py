@@ -54,9 +54,11 @@ class AudioStreamer:
     
       if self.noise_frames_count > 4:
         self.level=4
-        self.noise_frames_count = 0
         sys.exit()
+        
+    self.level+=1
     sys.exit()
+    
 
 
 
@@ -81,7 +83,7 @@ class AudioStreamer:
         x=self.read_wave_file(mapping[3])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
-        
+
       if self.level == 4:
         x=self.read_wave_file(mapping[4])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
