@@ -41,7 +41,7 @@ class AudioStreamer:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.noise_frames_count += frames
 
-  def send_audio(self, audio_file,audio_data):
+  def send_audio(self, audio_file, audio_data):
     self.logger.info(int(len(audio_file) / 320))
     for i in range(int(len(audio_file) / 320)):
       self.conn.write(audio_file[self.w:self.v])
@@ -53,46 +53,42 @@ class AudioStreamer:
       self.logger.info(self.noise_frames_count)
     
       if self.noise_frames_count > 4:
-        self.level=4
-        self.level.info("level has changed to {}".format(self.level))
+        self.level = 4
+        self.logger.info("Level has changed to {}".format(self.level))
         return
 
-        
-    self.level+=1
-    self.level.info("level has changed to {}".format(self.level))
+    self.level += 1
+    self.logger.info("Level has changed to {}".format(self.level))
     return 
     
 
 
 
 
-  def start_streaming(self,mapping):
-
+  def start_streaming(self, mapping):
     while self.conn.connected:
-      audio_data = self.conn.read() 
-      
+      audio_data = self.conn.read()
 
       if self.level == 1:
-        x=self.read_wave_file(mapping[1])
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+        x = self.read_wave_file(mapping[1])
+        process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
         process.start()
-      if self.level == 2:
-        x=self.read_wave_file(mapping[2])
+      elif self.level == 2:
+        x = self.read_wave_file(mapping[2])
         self.logger.info("changed to level two")
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+        process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
         process.start()
-        
-      if self.level == 3:
-        x=self.read_wave_file(mapping[3])
+      elif self.level == 3:
+        x = self.read_wave_file(mapping[3])
         self.logger.info("changed to level 3")
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+        process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
+        process.start()
+      elif self.level == 4:
+        x = self.read_wave_file(mapping[4])
+        self.logger.info("Changed to level 4")
+        process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
         process.start()
 
-      if self.level == 4:
-        x=self.read_wave_file(mapping[4])
-        self.logger.info("Changed to level 4")
-        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-        process.start()
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
 streamer=AudioStreamer()
