@@ -28,7 +28,7 @@ class AudioStreamer:
 
 
   def read_wave_file(self, filename):
-    self.logger.debug("Reading wave file")
+    #self.logger.debug("Reading wave file")
     with wave.open(filename, 'rb') as wave_file:
       audio = wave_file.readframes(wave_file.getnframes())
     return audio
@@ -38,7 +38,7 @@ class AudioStreamer:
     samples = np.frombuffer(indata, dtype=np.int16)
     is_noise = self.vad.is_speech(samples.tobytes(), rate)
     if is_noise:
-      self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
+      #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.noise_frames_count += frames
 
   def send_audio(self, audio_file,audio_data):
@@ -56,7 +56,6 @@ class AudioStreamer:
         self.level=4
         self.noise_frames_count = 0
         sys.exit()
-    self.level+=1
     sys.exit()
 
 
@@ -70,12 +69,9 @@ class AudioStreamer:
 
       if self.level == 1:
         x=self.read_wave_file(mapping[1])
-        try:
-          process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
-          process.start()
-        except Exception as e:
-          self.logger.error(e)
-          
+        process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
+        process.start()
+
       if self.level == 2:
         x=self.read_wave_file(mapping[2])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
@@ -85,6 +81,7 @@ class AudioStreamer:
         x=self.read_wave_file(mapping[3])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
         process.start()
+        
       if self.level == 4:
         x=self.read_wave_file(mapping[4])
         process = threading.Thread(target=self.send_audio, args=(x,audio_data,))
