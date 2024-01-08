@@ -54,10 +54,13 @@ class AudioStreamer:
     
       if self.noise_frames_count > 4:
         self.level=4
-        sys.exit()
+        self.level.info("level has changed to {}".format(self.level))
+        return
+
         
     self.level+=1
-    sys.exit()
+    self.level.info("level has changed to {}".format(self.level))
+    return 
     
 
 
