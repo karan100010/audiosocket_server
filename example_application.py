@@ -46,25 +46,21 @@ class AudioStreamer:
   def send_audio(self, audio_file):
 
     self.logger.info("Sending audio file of length {}".format(len(audio_file)/320))
-    self.playback=True
     count = 0
     for i in range(math.floor(int(len(audio_file) / 320))):
       self.conn.write(audio_file[self.w:self.v])
       self.w += 320
       self.v += 320
       #self.detect_noise(audio_data, 1, 8000)
-      count += 1
+      count+=1
       if count%25==0:
         sleep(.25)
 
-     
       if self.noise_frames_count > 4:
         self.level = 4
         self.logger.info("Level has changed to {}".format(self.level))
         return
-    sleep(7)
-    self.playback=False
-    self.level += 1
+
     self.logger.info("Level has changed to {}".format(self.level))
     return 
     
@@ -84,27 +80,26 @@ class AudioStreamer:
   def start_audio_playback(self,mapping):
     while self.conn.connected:
       if self.level == 1:
-        if not self.audioplayback:
+        
           x = self.read_wave_file(mapping[1])
           self.send_audio(x)
           self.logger.info("audio lenth is "+str(self.read_length(mapping[1])) + " seconds")
           sleep(2)
 
       if self.level == 2:
-        if not self.audioplayback:
+       
           x = self.read_wave_file(mapping[2])
           self.logger.info("changed to level two")
-      
           self.send_audio(x)
           sleep(2)
       if self.level == 3:
-        if not self.audioplayback:
+        
           x = self.read_wave_file(mapping[3])
           self.send_audio(x)
           sleep(2)
           
       if self.level == 4:
-        if not self.audioplayback:
+  
           x = self.read_wave_file(mapping[4])
           self.send_audio(x)
   
