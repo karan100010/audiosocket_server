@@ -62,7 +62,13 @@ class AudioStreamer:
     self.logger.info("Level has changed to {}".format(self.level))
     return 
     
+  #write a function that reads the lenth of a audiofile in seconds
 
+  def read_length(self, audio_file):
+    with wave.open(audio_file, 'rb') as wave_file:
+      audio = wave_file.getnframes()
+    return audio
+    
 
   def start_streaming(self, mapping):
     while self.conn.connected:
@@ -71,24 +77,18 @@ class AudioStreamer:
       if self.level == 1:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[1])
-          process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
-          process.start()
-          process.join()
+          self.send_audio(x, audio_data)
+
       if self.level == 2:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[2])
           self.logger.info("changed to level two")
-          process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
-          process.start()
-          process.join()
+          self.send_audio(x, audio_data)
       if self.level == 3:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[3])
-          self.logger.info("changed to level 3")
-          process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
-          process.start()
-          process.join()
-          self.conn.hangup()
+          self.send_audio(x, audio_data)
+       
           
       
       elif self.level == 4:
