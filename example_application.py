@@ -78,19 +78,20 @@ class AudioStreamer:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[1])
           self.send_audio(x, audio_data)
+          sleep(1)
 
       if self.level == 2:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[2])
           self.logger.info("changed to level two")
           self.send_audio(x, audio_data)
+          sleep(1)
       if self.level == 3:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[3])
           self.send_audio(x, audio_data)
-       
-          
-      
+          sleep(1)
+
       elif self.level == 4:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[4])
