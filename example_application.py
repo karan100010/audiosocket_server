@@ -87,7 +87,7 @@ class AudioStreamer:
           x = self.read_wave_file(mapping[1])
           self.send_audio(x)
           self.logger.info("audio lenth is "+str(self.read_length(mapping[1])) + " seconds")
-          
+          sleep(2)
 
       if self.level == 2:
         if not self.audioplayback:
@@ -95,18 +95,18 @@ class AudioStreamer:
           self.logger.info("changed to level two")
       
           self.send_audio(x)
-          
+          sleep(2)
       if self.level == 3:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[3])
           self.send_audio(x)
+          sleep(2)
           
       if self.level == 4:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[4])
-          self.logger.info("Changed to level 4")
-          process = threading.Thread(target=self.send_audio, args=(x,))
-          process.start()
+          self.send_audio(x)
+  
           
 
 
@@ -115,7 +115,6 @@ class AudioStreamer:
 streamer=AudioStreamer()
 noise_stream=threading.Thread(target=streamer.start_noise_detection)
 noise_stream.start()
-audio_stream=threading.Thread(target=streamer.stat_audio_playback,args=(mapping,))
-audio_stream.start()
-audio_stream.join()
+streamer.stat_audio_playback(mapping)
+
 
