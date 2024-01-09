@@ -61,6 +61,7 @@ class AudioStreamer:
         self.logger.info("Level has changed to {}".format(self.level))
         return
 
+    self.level+=1
     self.logger.info("Level has changed to {}".format(self.level))
     return 
     
