@@ -10,6 +10,7 @@ import threading
 import sys
 import requests
 from mapping import *
+import math
 
 class AudioStreamer:
   def __init__(self):
@@ -45,7 +46,7 @@ class AudioStreamer:
   def send_audio(self, audio_file, audio_data):
     self.logger.info("Sending audio file of length {}".format(len(audio_file)/320))
     self.playback=True
-    for i in range(int(len(audio_file) / 320)):
+    for i in range(math.floor(int(len(audio_file) / 320))):
       self.conn.write(audio_file[self.w:self.v])
       self.w += 320
       self.v += 320
