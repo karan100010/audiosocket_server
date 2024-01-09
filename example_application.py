@@ -71,7 +71,7 @@ class AudioStreamer:
     
     self.logger.info(sleep_seconds)
     self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-sleep_seconds))
-    if not self.noise_frames_count==4:
+    if not self.level==4:
         self.level+=1
         self.logger.info("Level has changed to {}".format(self.level))
         return 
@@ -87,6 +87,7 @@ class AudioStreamer:
   def start_noise_detection(self):
     while self.conn.connected:
       audio_data = self.conn.read()
+      self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
       self.detect_noise(audio_data, 1, 8000)
 
   def start_audio_playback(self,mapping):
