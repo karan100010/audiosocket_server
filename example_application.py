@@ -49,11 +49,12 @@ class AudioStreamer:
     count = 0
     w=0
     v=320
+    sleep_seconds=0
     for i in range(math.floor(int(len(audio_file) / (320)))):
       self.conn.write(audio_file[w:v])
       w += 320
       v += 320
-      sleep_seconds=0
+     
       #self.detect_noise(audio_data, 1, 8000)
       count+=1
       if count%25==0:
