@@ -80,15 +80,14 @@ class AudioStreamer:
           self.logger.info("changed to level two")
           process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
           process.start()
-     
-        
-        process.start()
+          process.join()
       if self.level == 3:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[3])
           self.logger.info("changed to level 3")
           process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
           process.start()
+          process.join()
           self.conn.hangup()
           
       
