@@ -43,7 +43,7 @@ class AudioStreamer:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.noise_frames_count += frames
 
-  def send_audio(self, audio_file, audio_data):
+  def send_audio(self, audio_file):
     self.logger.info("Sending audio file of length {}".format(len(audio_file)/320))
     self.playback=True
     for i in range(math.floor(int(len(audio_file) / 320))):
@@ -70,29 +70,32 @@ class AudioStreamer:
     return audio
     
 
-  def start_streaming(self, mapping):
+  def start_noise_detection(self):
     while self.conn.connected:
       audio_data = self.conn.read()
+      self.detect_noise(audio_data, 1, 8000)
 
+  def stat_audio_playback(self,mapping):
+    while self.conn.connected:
       if self.level == 1:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[1])
-          self.send_audio(x, audio_data)
+          self.send_audio(x)
           sleep(1)
 
       if self.level == 2:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[2])
           self.logger.info("changed to level two")
-          self.send_audio(x, audio_data)
+          self.send_audio(x)
           sleep(1)
       if self.level == 3:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[3])
-          self.send_audio(x, audio_data)
+          self.send_audio(x)
           sleep(1)
 
-      elif self.level == 4:
+      if self.level == 4:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[4])
           self.logger.info("Changed to level 4")
@@ -103,4 +106,9 @@ class AudioStreamer:
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
 streamer=AudioStreamer()
-streamer.start_streaming(mapping)
+noise_stream=threading.Thread(target=streamer.start_noise_detection)
+noise_stream.start()
+audio_stream=threading.Thread(target=streamer.stat_audio_playback,args=(mapping,))
+audio_stream.start()
+audio_stream.join()
+
