@@ -50,7 +50,7 @@ class AudioStreamer:
     w=0
     v=320
     for i in range(math.floor(int(len(audio_file) / 320))):
-      self.conn.write(audio_file[self.w:self.v])
+      self.conn.write(audio_file[w:v])
       w += 320
       v += 320
       #self.detect_noise(audio_data, 1, 8000)
