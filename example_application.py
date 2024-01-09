@@ -54,7 +54,7 @@ class AudioStreamer:
       self.v += 320
       #self.detect_noise(audio_data, 1, 8000)
       count += 1
-      if count%25:
+      if count%25==0:
         sleep(1)
 
      
