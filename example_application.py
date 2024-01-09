@@ -63,8 +63,10 @@ class AudioStreamer:
       if self.noise_frames_count > 4:
         self.level = 4
         self.logger.info("Level has changed to {}".format(self.level))
+        
         return
     sleep(len(audio_file)/8000-sleep_seconds)  
+    self.logger.info("Sleeping for {} seconds".format(len(audio_file)/8000-sleep_seconds))
     if not self.noise_frames_count==4:
         self.level+=1
         self.logger.info("Level has changed to {}".format(self.level))
