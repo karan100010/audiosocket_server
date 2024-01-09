@@ -43,7 +43,7 @@ class AudioStreamer:
       self.noise_frames_count += frames
 
   def send_audio(self, audio_file, audio_data):
-    self.logger.info("Sending audio file of length {}".format(len(audio_file)))
+    self.logger.info("Sending audio file of length {}".format(len(audio_file)/320))
     self.playback=True
     for i in range(int(len(audio_file) / 320)):
       self.conn.write(audio_file[self.w:self.v])
@@ -74,6 +74,7 @@ class AudioStreamer:
           x = self.read_wave_file(mapping[1])
           process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
           process.start()
+          process.join()
       if self.level == 2:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[2])
