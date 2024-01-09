@@ -47,10 +47,12 @@ class AudioStreamer:
 
     self.logger.info("Sending audio file of length {}".format(len(audio_file)/320))
     count = 0
+    w=0
+    v=320
     for i in range(math.floor(int(len(audio_file) / 320))):
       self.conn.write(audio_file[self.w:self.v])
-      self.w += 320
-      self.v += 320
+      w += 320
+      v += 320
       #self.detect_noise(audio_data, 1, 8000)
       count+=1
       if count%25==0:
