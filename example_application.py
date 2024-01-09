@@ -116,7 +116,7 @@ class AudioStreamer:
   
           x = self.read_wave_file(mapping[4])
           self.send_audio(x)
-          self.conn.hangup()
+
   
           
 
