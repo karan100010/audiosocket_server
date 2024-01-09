@@ -53,19 +53,22 @@ class AudioStreamer:
       self.conn.write(audio_file[w:v])
       w += 320
       v += 320
+      sleep_seconds=0
       #self.detect_noise(audio_data, 1, 8000)
       count+=1
       if count%25==0:
         sleep(.25)
+        sleep_seconds+=.25
 
       if self.noise_frames_count > 4:
         self.level = 4
         self.logger.info("Level has changed to {}".format(self.level))
         return
-
-    self.level+=1
-    self.logger.info("Level has changed to {}".format(self.level))
-    return 
+    sleep(self.read_length(audio_file)-sleep_seconds)  
+    if not self.noise_frames_count==4:
+        self.level+=1
+        self.logger.info("Level has changed to {}".format(self.level))
+        return 
     
   #write a function that reads the lenth of a audiofile in seconds
 
@@ -86,17 +89,17 @@ class AudioStreamer:
         
           x = self.read_wave_file(mapping[1])
           self.send_audio(x)
-          self.logger.info("audio lenth is "+str(self.read_length(mapping[1])) + " seconds")
+          self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
           sleep(2)
 
       if self.level == 2:
        
           x = self.read_wave_file(mapping[2])
-          self.logger.info("audio lenth is "+str(self.read_length(mapping[2])) + " seconds")
+          self.logger.info("audio length is "+str(self.read_length(mapping[2])) + " seconds")
           self.send_audio(x)
           sleep(2)
       if self.level == 3:
-          self.logger.info("audio lenth is "+str(self.read_length(mapping[2])) + " seconds")
+          self.logger.info("audio length is "+str(self.read_length(mapping[2])) + " seconds")
           x = self.read_wave_file(mapping[3])
           self.send_audio(x)
           sleep(2)
