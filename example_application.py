@@ -49,7 +49,7 @@ class AudioStreamer:
     count = 0
     w=0
     v=320
-    for i in range(math.floor(int(len(audio_file) / 320*25))):
+    for i in range(math.floor(int(len(audio_file) / (320*25)))):
       self.conn.write(audio_file[w:v])
       w += 320
       v += 320
