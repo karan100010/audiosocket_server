@@ -52,8 +52,6 @@ class AudioStreamer:
       #self.detect_noise(audio_data, 1, 8000)
       
       sleep(.01)
-      self.logger.info(self.noise_frames_count)
-    
       if self.noise_frames_count > 4:
         self.level = 4
         self.logger.info("Level has changed to {}".format(self.level))
