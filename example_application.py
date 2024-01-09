@@ -109,12 +109,14 @@ class AudioStreamer:
           self.logger.info("audio length is "+str(self.read_length(mapping[2])) + " seconds")
           x = self.read_wave_file(mapping[3])
           self.send_audio(x)
+      
           sleep(2)
           
       if self.level == 4:
   
           x = self.read_wave_file(mapping[4])
           self.send_audio(x)
+          self.conn.hangup()
   
           
 
