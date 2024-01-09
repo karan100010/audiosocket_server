@@ -43,13 +43,13 @@ class AudioStreamer:
       self.noise_frames_count += frames
 
   def send_audio(self, audio_file, audio_data):
-    self.logger.info(int(len(audio_file) / 320))
+    self.logger.info("Sending audio file of length {}".format(len(audio_file)))
     self.playback=True
     for i in range(int(len(audio_file) / 320)):
       self.conn.write(audio_file[self.w:self.v])
       self.w += 320
       self.v += 320
-      self.detect_noise(audio_data, 1, 8000)
+      #self.detect_noise(audio_data, 1, 8000)
       
       sleep(.01)
       self.logger.info(self.noise_frames_count)
