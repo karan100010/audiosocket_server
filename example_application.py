@@ -89,11 +89,11 @@ class AudioStreamer:
       if self.level == 2:
        
           x = self.read_wave_file(mapping[2])
-          self.logger.info("changed to level two")
+          self.logger.info("audio lenth is "+str(self.read_length(mapping[2])) + " seconds")
           self.send_audio(x)
           sleep(2)
       if self.level == 3:
-        
+          self.logger.info("audio lenth is "+str(self.read_length(mapping[2])) + " seconds")
           x = self.read_wave_file(mapping[3])
           self.send_audio(x)
           sleep(2)
