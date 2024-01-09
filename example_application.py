@@ -67,7 +67,7 @@ class AudioStreamer:
   def read_length(self, audio_file):
     with wave.open(audio_file, 'rb') as wave_file:
       audio = wave_file.getnframes()
-    return audio
+    return audio/8000
     
 
   def start_noise_detection(self):
@@ -81,26 +81,27 @@ class AudioStreamer:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[1])
           self.send_audio(x)
-          sleep(1)
+          sleep(self.read_length(mapping[1]))
 
       if self.level == 2:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[2])
           self.logger.info("changed to level two")
           self.send_audio(x)
-          sleep(1)
+          sleep(self.read_length(mapping[2]))
       if self.level == 3:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[3])
           self.send_audio(x)
-          sleep(1)
+          sleep(self.read_length(mapping[3]))
 
       if self.level == 4:
         if not self.audioplayback:
           x = self.read_wave_file(mapping[4])
           self.logger.info("Changed to level 4")
-          process = threading.Thread(target=self.send_audio, args=(x, audio_data,))
+          process = threading.Thread(target=self.send_audio, args=(x,))
           process.start()
+          sleep(self.read_length(mapping[4])) 
 
 
     print('Connection with {0} over'.format(self.conn.peer_addr))
