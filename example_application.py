@@ -62,6 +62,7 @@ class AudioStreamer:
         self.level = 4
         self.logger.info("Level has changed to {}".format(self.level))
         return
+    sleep(7)
     self.playback=False
     self.level += 1
     self.logger.info("Level has changed to {}".format(self.level))
@@ -80,7 +81,7 @@ class AudioStreamer:
       audio_data = self.conn.read()
       self.detect_noise(audio_data, 1, 8000)
 
-  def stat_audio_playback(self,mapping):
+  def start_audio_playback(self,mapping):
     while self.conn.connected:
       if self.level == 1:
         if not self.audioplayback:
@@ -115,6 +116,6 @@ class AudioStreamer:
 streamer=AudioStreamer()
 noise_stream=threading.Thread(target=streamer.start_noise_detection)
 noise_stream.start()
-streamer.stat_audio_playback(mapping)
+streamer.start_audio_playback(mapping)
 
 
