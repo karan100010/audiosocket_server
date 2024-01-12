@@ -11,6 +11,7 @@ import sys
 import requests
 from mapping import *
 import math
+from req import Requsts
 
 class AudioStreamer:
   def __init__(self):
@@ -50,6 +51,7 @@ class AudioStreamer:
     w=0
     v=320
     sleep_seconds=0
+    self.audioplayback=True
     for i in range(math.floor(int(len(audio_file) / (320)))):
       self.conn.write(audio_file[w:v])
       w += 320
@@ -71,13 +73,7 @@ class AudioStreamer:
     
     self.logger.info(sleep_seconds)
     self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-sleep_seconds))
-    if not self.level==4:
-        self.level+=1
-        self.logger.info("Level has changed to {}".format(self.level))
-        return
-    else:
-      
-      return
+    return
     
     
   #write a function that reads the lenth of a audiofile in seconds
@@ -86,6 +82,7 @@ class AudioStreamer:
     with wave.open(audio_file, 'rb') as wave_file:
       audio = wave_file.getnframes()
     return audio/8000
+  
     
 
   def start_noise_detection(self):
@@ -96,31 +93,18 @@ class AudioStreamer:
 
   def start_audio_playback(self,mapping):
     while self.conn.connected:
-      if self.level == 1:
+
+        if not self.audioplayback:
         
-          x = self.read_wave_file(mapping[1])
+          x = self.read_wave_file(mapping[self.level])
           self.send_audio(x)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
-          sleep(1)
+          if level != 4:
+            level+=1
+          else:
+            pass  
+          self.audioplayback=False
 
-      if self.level == 2:
-       
-          x = self.read_wave_file(mapping[2])
-          self.logger.info("audio length is "+str(self.read_length(mapping[2])) + " seconds")
-          self.send_audio(x)
-          sleep(1)
-      if self.level == 3:
-          self.logger.info("audio length is "+str(self.read_length(mapping[2])) + " seconds")
-          x = self.read_wave_file(mapping[3])
-          self.send_audio(x)
-      
-          sleep(1)
-          
-      if self.level == 4:
-
-          x = self.read_wave_file(mapping[4])
-          self.send_audio(x)
-          sleep(1)
 
   
           
