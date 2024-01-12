@@ -74,7 +74,11 @@ class AudioStreamer:
     if not self.level==4:
         self.level+=1
         self.logger.info("Level has changed to {}".format(self.level))
-        return 
+        return
+    else:
+      
+      return
+    
     
   #write a function that reads the lenth of a audiofile in seconds
 
@@ -97,25 +101,26 @@ class AudioStreamer:
           x = self.read_wave_file(mapping[1])
           self.send_audio(x)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
-          sleep(2)
+          sleep(1)
 
       if self.level == 2:
        
           x = self.read_wave_file(mapping[2])
           self.logger.info("audio length is "+str(self.read_length(mapping[2])) + " seconds")
           self.send_audio(x)
-          sleep(2)
+          sleep(1)
       if self.level == 3:
           self.logger.info("audio length is "+str(self.read_length(mapping[2])) + " seconds")
           x = self.read_wave_file(mapping[3])
           self.send_audio(x)
       
-          sleep(2)
+          sleep(1)
           
       if self.level == 4:
-  
+
           x = self.read_wave_file(mapping[4])
           self.send_audio(x)
+          sleep(1)
 
   
           
