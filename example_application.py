@@ -99,8 +99,8 @@ class AudioStreamer:
           x = self.read_wave_file(mapping[self.level])
           self.send_audio(x)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
-          if level != 4:
-            level+=1
+          if self.level != 4:
+            self.level+=1
           else:
             pass  
           self.audioplayback=False
