@@ -92,7 +92,7 @@ class AudioStreamer:
     is_noise = self.vad.is_speech(samples.tobytes(), rate)
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
-      self.noise_frames_count += frames
+      self.silent_frames_count += frames
 
 
 
