@@ -105,7 +105,7 @@ class AudioStreamer:
       else:
         self.data_array.append(audio_data)
         self.dedect_silence(audio_data,1,8000)
-        self.logger.info("silence detection started the value of silent fames is {}".format(self.noise_frames_count))  
+        self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
 
   def start_audio_playback(self,mapping):
     while self.conn.connected:
@@ -121,13 +121,13 @@ class AudioStreamer:
 
         while self.silent_frames_count<30:
           sleep(.01)
-          self.silent_frames_count=0
           self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
         #convert data to json
         response=requests.post("http://localhost:5003/transcribe_en",data=json.dumps({"audiofile":self.data_array}))
         self.logger.info(response.text)
         self.data_array=[]
+        self.silent_frames_count=0
         self.level+=1
 
 
