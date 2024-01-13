@@ -105,7 +105,7 @@ class AudioStreamer:
       else:
         self.data_array.append(audio_data)
         self.dedect_silence(audio_data,1,8000)
-        self.logger.info("silence detection started the value of noise fames is {}".format(self.noise_frames_count))  
+        self.logger.info("silence detection started the value of silent fames is {}".format(self.noise_frames_count))  
 
   def start_audio_playback(self,mapping):
     while self.conn.connected:
@@ -119,7 +119,7 @@ class AudioStreamer:
           self.audioplayback=False
           sleep(1)
 
-        while self.silent_frames_count>=8:
+        while self.silent_frames_count<30:
           sleep(.01)
           self.silent_frames_count=0
           self.logger.info("silent frames count is {}".format(self.silent_frames_count))
