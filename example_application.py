@@ -12,6 +12,7 @@ import requests
 from mapping import *
 import math
 from req import Requsts
+import json
 
 class AudioStreamer:
   def __init__(self):
@@ -27,7 +28,9 @@ class AudioStreamer:
     self.w = 0
     self.v = 320
     self.level = 1
-    self.audioplayback=False                            
+    self.audioplayback=False   
+    self.silent_frames_count=0   
+    self.data_array=[]                      
 
 
   def read_wave_file(self, filename):
@@ -66,13 +69,14 @@ class AudioStreamer:
       if self.noise_frames_count >= 4:
         self.level = 4
         self.logger.info("Level has changed to {}".format(self.level))
+        self.noise_frames_count = 0
         
         return
     self.logger.info("number of iterations are {}".format(count))
     sleep(len(audio_file)/16000-sleep_seconds)  
-    
     self.logger.info(sleep_seconds)
     self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-sleep_seconds))
+    self.audioplayback=False
     return
     
     
@@ -83,13 +87,25 @@ class AudioStreamer:
       audio = wave_file.getnframes()
     return audio/8000
   
-    
+  def dedect_silence(self,indata,frames,rate):
+    samples = np.frombuffer(indata, dtype=np.int16)
+    is_noise = self.vad.is_speech(samples.tobytes(), rate)
+    if not is_noise:
+      #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
+      self.noise_frames_count += frames
+
+
 
   def start_noise_detection(self):
     while self.conn.connected:
       audio_data = self.conn.read()
-      self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
-      self.detect_noise(audio_data, 1, 8000)
+      if self.audioplayback:
+        self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
+        self.detect_noise(audio_data, 1, 8000)
+      else:
+        self.data_array.append(audio_data)
+        self.dedect_silence(audio_data,1,8000)
+        self.logger.info("silence detection started the value of noise fames is {}".format(self.noise_frames_count))  
 
   def start_audio_playback(self,mapping):
     while self.conn.connected:
@@ -99,15 +115,20 @@ class AudioStreamer:
           x = self.read_wave_file(mapping[self.level])
           self.send_audio(x)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
-          if self.level != 4:
-            self.level+=1
-          else:
-            pass  
+
           self.audioplayback=False
+          sleep(1)
 
-
-  
-          
+        while not self.silent_frames_count>=8:
+          sleep(.01)
+          self.silent_frames_count=0
+          self.logger.info("silent frames count is {}".format(self.silent_frames_count))
+        
+        #convert data to json
+        response=requests.post("http://localhost:5003/transcribe_en",data=json.dumps({"audiofile":self.data_array}))
+        self.logger.info(response.text)
+        self.data_array=[]
+        self.level+=1
 
 
     print('Connection with {0} over'.format(self.conn.peer_addr))
