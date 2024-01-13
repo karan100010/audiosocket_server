@@ -13,6 +13,7 @@ from mapping import *
 import math
 from req import Requsts
 import json
+import base64
 
 class AudioStreamer:
   def __init__(self):
