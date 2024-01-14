@@ -122,7 +122,7 @@ class AudioStreamer:
         while self.silent_frames_count<30:
           sleep(.01)
           self.logger.info("silent frames count is {}".format(self.silent_frames_count))
-        data=json.dumps({"audiofile":base64.b64encode("".join(self.data_array)).decode('utf-8')})  
+        data=json.dumps({"audiofile":"".join(self.data_array)})  
         #convert data to json
         response=requests.post("http://localhost:5003/transcribe_en",data=data)
         self.logger.info(response.text)
