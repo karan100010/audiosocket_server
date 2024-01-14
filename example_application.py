@@ -104,7 +104,7 @@ class AudioStreamer:
         self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
       else:
-        self.data_array.append(base64.b64encode(audio_data))
+        self.data_array.append(audio_data.decode('utf-8'))
         self.dedect_silence(audio_data,1,8000)
         self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
 
@@ -112,7 +112,6 @@ class AudioStreamer:
     while self.conn.connected:
 
         if not self.audioplayback:
-        
           x = self.read_wave_file(mapping[self.level])
           self.send_audio(x)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
