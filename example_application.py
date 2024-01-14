@@ -119,7 +119,7 @@ class AudioStreamer:
           self.audioplayback=False
           sleep(1)
 
-        while self.silent_frames_count<30:
+        while self.silent_frames_count<50:
           sleep(.01)
           self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
