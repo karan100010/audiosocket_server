@@ -101,13 +101,13 @@ class AudioStreamer:
     while self.conn.connected:
       audio_data = self.conn.read()
       if self.audioplayback:
-        self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
+       # self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
       else:
         self.data_array.append(audio_data.decode('utf-8'))
         self.dedect_silence(audio_data,1,8000)
-        self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
-
+       # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
+      return
   def start_audio_playback(self,mapping):
     while self.conn.connected:
 
