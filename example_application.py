@@ -31,7 +31,7 @@ class AudioStreamer:
     self.level = 1
     self.audioplayback=False   
     self.silent_frames_count=0   
-    self.data_array=[]                      
+    self.combined_audio = b''                  
 
 
   def read_wave_file(self, filename):
@@ -104,7 +104,7 @@ class AudioStreamer:
        # self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
       else:
-        self.data_array.append(audio_data)
+        self.combined_audio+=audio_data
         self.dedect_silence(audio_data,1,8000)
        # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
@@ -122,11 +122,10 @@ class AudioStreamer:
         while self.silent_frames_count<30:
           sleep(.01)
           self.logger.info("silent frames count is {}".format(self.silent_frames_count))
-        data=json.dumps({"audiofile":"".join(self.data_array)}) 
-        self.logger.info(data) 
-        headers={'Content-Type':'application/json'}
+        
+
         #convert data to json
-        response=requests.post("http://localhost:5005/convert",data=data,headers=headers)
+        response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
         self.logger.info(response.text)
         self.data_array=[]
         self.silent_frames_count=0
