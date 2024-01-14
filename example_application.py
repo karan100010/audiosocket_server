@@ -124,8 +124,9 @@ class AudioStreamer:
           self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         data=json.dumps({"audiofile":"".join(self.data_array)}) 
         self.logger.info(data) 
+        headers={'Content-Type':'application/json'}
         #convert data to json
-        response=requests.post("http://localhost:5005/convert",data=data)
+        response=requests.post("http://localhost:5005/convert",data=data,headers=headers)
         self.logger.info(response.text)
         self.data_array=[]
         self.silent_frames_count=0
