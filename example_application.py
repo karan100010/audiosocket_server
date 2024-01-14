@@ -107,7 +107,7 @@ class AudioStreamer:
         self.data_array.append(audio_data.decode('utf-8'))
         self.dedect_silence(audio_data,1,8000)
        # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
-      return
+    return
   def start_audio_playback(self,mapping):
     while self.conn.connected:
 
