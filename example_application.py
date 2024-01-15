@@ -32,6 +32,7 @@ class AudioStreamer:
     self.audioplayback=False   
     self.silent_frames_count=0   
     self.combined_audio = b''  
+    self.channel="en"
 
 
 
@@ -118,7 +119,7 @@ class AudioStreamer:
     while self.conn.connected:
 
         if not self.audioplayback:
-          x = self.read_wave_file(mapping[self.level])
+          x = self.read_wave_file(mapping.self.channel[self.level])
           self.send_audio(x)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
 
