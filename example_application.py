@@ -146,7 +146,7 @@ def handel_call():
     noise_stream.start()
     playback_stream=threading.Thread(target=stream.start_audio_playback,args=(call,mapping,))
     playback_stream.start()
-    
-audiosocket=AudioStreamer()
+  
+  
 handel_call()
 
