@@ -8,7 +8,7 @@ from audiosocket import *
 class AudiosocketServer:
   def __init__(self):
     # Create a globally accessible audiosocket instance
-    self.audiosocket = Audiosocket(('0.0.0.0', 1121))
+    self.audiosocket = Audiosocket(('0.0.0.0', 1122))
     self.audiosocket.prepare_output(outrate=44000, channels=2)
     self.audiosocket.prepare_input(inrate=44000, channels=2)
     print('Listening for new connections from Asterisk on port {0}'.format(self.audiosocket.port))

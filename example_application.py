@@ -141,7 +141,7 @@ class AudioStreamer:
     #     self.level+=1
 
 
-    print('Connection with {0} over'.format(call.peer_addr))
+   # print('Connection with {0} over'.format(call.peer_addr))
 
   def handel_call(self):
     
