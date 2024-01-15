@@ -145,6 +145,7 @@ class AudioStreamer:
     noise_stream=threading.Thread(target=streamer.start_noise_detection)
     noise_stream.start()
     streamer.start_audio_playback(mapping)
+    return
 
 threading.Thread(target=AudioStreamer().handel_call).start()
 
