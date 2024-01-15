@@ -149,9 +149,9 @@ class AudioStreamer:
       call = self.audiosocket.listen()
       # noise_stream=threading.Thread(target=self.start_noise_detection,args=(call,))
       # noise_stream.start()
-      playback_stream=threading.Thread(target=self.start_audio_playback,args=(call,mapping))
+      playback_stream=threading.Thread(target=self.start_audio_playback,args=(call,mapping,))
       playback_stream.start()
-      return
+      
 audiosocket=AudioStreamer()
 audiosocket.handel_call()
 
