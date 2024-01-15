@@ -130,12 +130,12 @@ class AudioStreamer:
 
         while self.silent_frames_count<100:
           sleep(.01)
-          self.logger.info("silent frames count is {}".format(self.silent_frames_count))
+          #self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
 
         #convert data to json
         response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
-        self.logger.info(response.text)
+        #self.logger.info(response.text)
         self.data_array=[]
         self.silent_frames_count=0
         self.level+=1
@@ -151,7 +151,7 @@ class AudioStreamer:
       noise_stream.start()
       playback_stream=threading.Thread(target=self.start_audio_playback,args=(call,mapping,))
       playback_stream.start()
-      
+    
 audiosocket=AudioStreamer()
 audiosocket.handel_call()
 
