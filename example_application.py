@@ -117,38 +117,38 @@ class AudioStreamer:
     return
   def start_audio_playback(self,call,mapping):
     self.logger.info('Received connection from {0}'.format(call.peer_addr))
-    # while call.connected:
+    while call.connected:
 
-    #     if not self.audioplayback:
+        if not self.audioplayback:
           
-    #       x = self.read_wave_file(mapping[self.channel][self.level])
-    #       self.send_audio(call,x)
-    #       self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+          x = self.read_wave_file(mapping[self.channel][self.level])
+          self.send_audio(call,x)
+          self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
 
-    #       self.audioplayback=False
-    #       sleep(1)
+          self.audioplayback=False
+          sleep(1)
 
-    #     while self.silent_frames_count<100:
-    #       sleep(.01)
-    #       self.logger.info("silent frames count is {}".format(self.silent_frames_count))
+        while self.silent_frames_count<100:
+          sleep(.01)
+          self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
 
-    #     #convert data to json
-    #     response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
-    #     self.logger.info(response.text)
-    #     self.data_array=[]
-    #     self.silent_frames_count=0
-    #     self.level+=1
+        #convert data to json
+        response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
+        self.logger.info(response.text)
+        self.data_array=[]
+        self.silent_frames_count=0
+        self.level+=1
 
 
-   # print('Connection with {0} over'.format(call.peer_addr))
+    print('Connection with {0} over'.format(call.peer_addr))
 
   def handel_call(self):
     
     while True:
       call = self.audiosocket.listen()
-      # noise_stream=threading.Thread(target=self.start_noise_detection,args=(call,))
-      # noise_stream.start()
+      noise_stream=threading.Thread(target=self.start_noise_detection,args=(call,))
+      noise_stream.start()
       playback_stream=threading.Thread(target=self.start_audio_playback,args=(call,mapping,))
       playback_stream.start()
       
