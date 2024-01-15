@@ -59,7 +59,9 @@ class Audiosocket:
       ratecv_state = None,
     )
 
-
+  def get_uuid(self):
+    data_types=types_struct()
+    return data_types.uuid
 
   # Optionally prepares audio sent by audiosocket to
   # the specifications of the user

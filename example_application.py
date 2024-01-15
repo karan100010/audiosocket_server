@@ -31,7 +31,13 @@ class AudioStreamer:
     self.level = 1
     self.audioplayback=False   
     self.silent_frames_count=0   
-    self.combined_audio = b''                  
+    self.combined_audio = b''  
+
+
+
+
+  
+
 
 
   def read_wave_file(self, filename):
@@ -134,9 +140,11 @@ class AudioStreamer:
 
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
-streamer=AudioStreamer()
-noise_stream=threading.Thread(target=streamer.start_noise_detection)
-noise_stream.start()
-streamer.start_audio_playback(mapping)
+  def handel_call(self):
+    streamer=AudioStreamer()
+    noise_stream=threading.Thread(target=streamer.start_noise_detection)
+    noise_stream.start()
+    streamer.start_audio_playback(mapping)
 
+threading.Thread(target=AudioStreamer().handel_call).start()
 
