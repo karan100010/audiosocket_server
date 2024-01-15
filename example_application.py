@@ -117,6 +117,7 @@ class AudioStreamer:
        # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
   def start_audio_playback(self,call,mapping):
+    print('Received connection from {0}'.format(call.peer_addr))
     while call.connected:
 
         if not self.audioplayback:
@@ -143,7 +144,7 @@ class AudioStreamer:
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
   def handel_call(self):
-    print('Received connection from {0}'.format(call.peer_addr))
+    
     while True:
       call = self.audiosocket.listen()
       noise_stream=threading.Thread(target=self.start_noise_detection,args=(call,))
