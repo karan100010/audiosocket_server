@@ -24,8 +24,8 @@ class AudioStreamer:
     self.vad.set_mode(3)
     self.noise_frames_threshold = int(2 * self.sample_rate / 512)
     self.noise_frames_count = 0
-    if not Audiosocket.is_available():
-      self.audiosocket = Audiosocket(("localhost", 1122))
+    
+    self.audiosocket = Audiosocket(("localhost", 1122))
     self.conn =  self.audiosocket.listen()
     self.w = 0
     self.v = 320
@@ -142,12 +142,15 @@ class AudioStreamer:
 
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
-def handel_call():
-  streamer=AudioStreamer()
-  noise_stream=threading.Thread(target=streamer.start_noise_detection)
-  noise_stream.start()
-  streamer.start_audio_playback(mapping)
-  return
+  def handel_call(self):
+  #  streamer=self.audiosocket.listen()
 
-threading.Thread(target=handel_call).start()
+    while True:
+      call=self.audiosocket.listen()
+      noise_stream=threading.Thread(target=self.start_noise_detection)
+      noise_stream.start()
+      self.start_audio_playback(mapping)
+      return
+audiosocket=AudioStreamer()
+threading.Thread(target=audiosocket.handel_call).start()
 
