@@ -141,12 +141,12 @@ class AudioStreamer:
 
     print('Connection with {0} over'.format(self.conn.peer_addr))
 
-  def handel_call(self):
-    streamer=AudioStreamer()
-    noise_stream=threading.Thread(target=streamer.start_noise_detection)
-    noise_stream.start()
-    streamer.start_audio_playback(mapping)
-    return
+def handel_call():
+  streamer=AudioStreamer()
+  noise_stream=threading.Thread(target=streamer.start_noise_detection)
+  noise_stream.start()
+  streamer.start_audio_playback(mapping)
+  return
 
-threading.Thread(target=AudioStreamer().handel_call).start()
+threading.Thread(target=handel_call).start()
 
