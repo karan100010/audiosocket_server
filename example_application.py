@@ -120,7 +120,8 @@ class AudioStreamer:
     while call.connected:
 
         if not self.audioplayback:
-          x = self.read_wave_file(mapping.self.channel[self.level])
+          
+          x = self.read_wave_file(mapping[self.channel][self.level])
           self.send_audio(x,call)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
 
