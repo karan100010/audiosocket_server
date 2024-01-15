@@ -24,7 +24,8 @@ class AudioStreamer:
     self.vad.set_mode(3)
     self.noise_frames_threshold = int(2 * self.sample_rate / 512)
     self.noise_frames_count = 0
-    self.audiosocket = Audiosocket(("localhost", 1122))
+    if not Audiosocket.is_available():
+      self.audiosocket = Audiosocket(("localhost", 1122))
     self.conn =  self.audiosocket.listen()
     self.w = 0
     self.v = 320
