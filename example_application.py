@@ -26,7 +26,6 @@ class AudioStreamer:
     self.noise_frames_count = 0
     
     self.audiosocket = Audiosocket(("localhost", 1122))
-    self.conn =  self.audiosocket.listen()
     self.w = 0
     self.v = 320
     self.level = 1
@@ -56,7 +55,7 @@ class AudioStreamer:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.noise_frames_count += frames
 
-  def send_audio(self, audio_file):
+  def send_audio(self, call,audio_file):
 
     self.logger.info("Sending audio file of length {}".format(len(audio_file)/(320*25)))
     count = 0
@@ -65,7 +64,7 @@ class AudioStreamer:
     sleep_seconds=0
     self.audioplayback=True
     for i in range(math.floor(int(len(audio_file) / (320)))):
-      self.conn.write(audio_file[w:v])
+      call.write(audio_file[w:v])
       w += 320
       v += 320
      
@@ -107,7 +106,7 @@ class AudioStreamer:
 
   def start_noise_detection(self,call):
     while call.connected:
-      audio_data = self.conn.read()
+      audio_data = call.read()
       if self.audioplayback:
        # self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
@@ -122,7 +121,7 @@ class AudioStreamer:
 
         if not self.audioplayback:
           x = self.read_wave_file(mapping.self.channel[self.level])
-          self.send_audio(x)
+          self.send_audio(x,call)
           self.logger.info("audio length is "+str(self.read_length(mapping[1])) + " seconds")
 
           self.audioplayback=False
@@ -141,7 +140,7 @@ class AudioStreamer:
         self.level+=1
 
 
-    print('Connection with {0} over'.format(self.conn.peer_addr))
+    print('Connection with {0} over'.format(call.peer_addr))
 
   def handel_call(self):
     
