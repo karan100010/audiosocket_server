@@ -114,9 +114,9 @@ class AudioStreamer():
 
         if not self.audioplayback:
           
-          x = self.read_wave_file(mapping["en"][1])
+          x = self.read_wave_file(mapping[self.channel][self.level])
           self.send_audio(x)
-          #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+          self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
 
           self.audioplayback=False
           sleep(1)
