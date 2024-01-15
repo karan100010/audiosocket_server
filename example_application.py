@@ -35,12 +35,6 @@ class AudioStreamer:
     self.channel="en"
 
 
-
-
-  
-
-
-
   def read_wave_file(self, filename):
     #self.logger.debug("Reading wave file")
     with wave.open(filename, 'rb') as wave_file:
@@ -121,7 +115,7 @@ class AudioStreamer:
 
         if not self.audioplayback:
           
-          x = self.read_wave_file(mapping[self.channel][self.level])
+          x = self.read_wave_file(mapping["en"][1])
           self.send_audio(call,x)
           self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
 
