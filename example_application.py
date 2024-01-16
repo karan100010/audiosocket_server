@@ -67,10 +67,11 @@ class AudioStreamer():
         sleep(.25)
         sleep_seconds+=.25
 
-      if self.noise_frames_count >= 10:
-        self.level = 4
-        self.logger.info("Level has changed to {}".format(self.level))
-        self.noise_frames_count = 0
+      # if self.noise_frames_count >= 10:
+      #   previous_level = self.level
+      #   self.level = 4
+      #   self.logger.info("Level has changed to {}".format(self.level))
+      #   self.noise_frames_count = 0
         
         return
     self.logger.info("number of iterations are {}".format(count))
@@ -129,9 +130,15 @@ class AudioStreamer():
         #convert data to json
         response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
         #self.logger.info(response.text)
-        self.data_array=[]
-        self.silent_frames_count=0
-        self.level+=1
+        last_level=self.level
+        if self.level!=4:
+          self.data_array=[]
+          self.silent_frames_count=0
+          self.level=4
+          
+        else:
+          self.level=last_level+1
+          self.silent_frames_count=0
 
 
     print('Connection with {0} over'.format(self.call.peer_addr))
