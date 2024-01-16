@@ -137,6 +137,7 @@ class AudioStreamer():
           self.level=4
           
         else:
+          self.data_array=[]
           self.level=last_level+1
           self.silent_frames_count=0
 
