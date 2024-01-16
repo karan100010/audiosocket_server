@@ -131,7 +131,7 @@ class AudioStreamer():
         response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
         #self.logger.info(response.text)
         last_level=self.level
-        if self.level!=4:
+        if self.level!=8:
           self.data_array=[]
           self.silent_frames_count=0
           self.level=4
