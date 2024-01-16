@@ -114,17 +114,24 @@ class AudioStreamer():
     while self.call.connected:
 
         if not self.audioplayback:
+          if self.level!=9:
           
-          x = self.read_wave_file(mapping[self.channel][self.level])
-          self.send_audio(x)
-          self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            x = self.read_wave_file(mapping[self.channel][self.level])
+            self.send_audio(x)
+            self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
 
-          self.audioplayback=False
-          sleep(1)
+            self.audioplayback=False
+            sleep(1)
+            while self.silent_frames_count<100:
+              sleep(.01)
+            self.silent_frames_count=0
+          else:
+            x=self.read_wave_file(mapping[self.channel][self.level])
+            self.send_audio(x)
+            self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            self.silent_frames_count=0
 
-        while self.silent_frames_count<100:
-          sleep(.01)
-          #self.logger.info("silent frames count is {}".format(self.silent_frames_count))
+          self.logger("silent frames count is {}".format(self.silent_frames_count))
         
 
         #convert data to json
@@ -133,13 +140,10 @@ class AudioStreamer():
         last_level=self.level
         if self.level!=9:
           self.data_array=[]
-          self.silent_frames_count=0
           self.level=9
           
         else:
           self.data_array=[]
-          self.level=last_level+1
-          self.silent_frames_count=0
 
 
     print('Connection with {0} over'.format(self.call.peer_addr))
