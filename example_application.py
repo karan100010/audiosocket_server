@@ -136,7 +136,7 @@ class AudioStreamer():
             self.silent_frames_count=0
             self.level=last_level+1
 
-          self.logger("silent frames count is {}".format(self.silent_frames_count))
+          self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
 
         #convert data to json
