@@ -114,7 +114,7 @@ class AudioStreamer():
     while self.call.connected:
 
         if not self.audioplayback:
-          last_level=self.level
+          
           if self.level!=9:
           
             x = self.read_wave_file(mapping[self.channel][self.level])
@@ -128,6 +128,7 @@ class AudioStreamer():
               self.logger.info("waiting for silence")
             self.silent_frames_count=0
             self.data_array=[]
+            last_level=self.level
             self.level=9
           else:
             x=self.read_wave_file(mapping[self.channel][self.level])
