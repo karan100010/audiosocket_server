@@ -119,12 +119,13 @@ class AudioStreamer():
           
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
-            self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
 
             self.audioplayback=False
             sleep(1)
             while self.silent_frames_count<100:
               sleep(.01)
+              self.logger.info("waiting for silence")
             self.silent_frames_count=0
             self.data_array=[]
             self.level=9
