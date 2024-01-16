@@ -141,7 +141,7 @@ class AudioStreamer():
         
 
         #convert data to json
-        response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
+        #response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
         #self.logger.info(response.text)
         
 
