@@ -124,7 +124,7 @@ class AudioStreamer():
               self.call.hangup()
             self.audioplayback=False
             sleep(1)
-            while self.silent_frames_count<50:
+            while self.silent_frames_count<75:
               sleep(.01)
               self.logger.info("waiting for silence")
             self.silent_frames_count=0
