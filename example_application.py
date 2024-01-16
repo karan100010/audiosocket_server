@@ -107,7 +107,7 @@ class AudioStreamer():
       else:
         self.combined_audio+=audio_data
         self.dedect_silence(audio_data,1,8000)
-       # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
+        self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
