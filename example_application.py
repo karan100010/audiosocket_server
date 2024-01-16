@@ -144,6 +144,8 @@ class AudioStreamer():
           
         else:
           self.data_array=[]
+          self.level=last_level+1
+          
 
 
     print('Connection with {0} over'.format(self.call.peer_addr))
