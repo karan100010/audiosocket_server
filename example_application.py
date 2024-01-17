@@ -146,11 +146,23 @@ class AudioStreamer():
             self.data_array=[]
             last_level=self.level
             if self.level==11:
-              self.level=previous_level
+              self.level=self.noise_level
+              x=self.read_wave_file(mapping[self.channel][self.level])
+              self.send_audio(x)
             else:
               self.level+=1
             self.level=9
           elif self.level==10:
+            noise=self.noise_level
+            
+
+            while noise - self.noise_level < 2:
+              x=self.read_wave_file(mapping[self.channel][self.level])
+              self.send_audio(x)
+              self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+              self.silent_frames_count=0
+              self.level+=1
+              noise+=1
             x=self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
             self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
