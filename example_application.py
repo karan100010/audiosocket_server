@@ -32,6 +32,8 @@ class AudioStreamer():
     self.silent_frames_count=0   
     self.combined_audio = b''  
     self.channel="en"
+    self.long_silence=0
+    self.interuption_level=0
 
 
   def read_wave_file(self, filename):
@@ -67,11 +69,11 @@ class AudioStreamer():
         sleep(.25)
         sleep_seconds+=.25
 
-      # if self.noise_frames_count >= 10:
-      #   previous_level = self.level
-      #   self.level = 4
-      #   self.logger.info("Level has changed to {}".format(self.level))
-      #   self.noise_frames_count = 0
+      if self.noise_frames_count >= 10:
+        previous_level = self.level
+        self.level = 11
+        self.logger.info("Level has changed to {}".format(self.level))
+        self.noise_frames_count = 0
         
       #  return
     self.logger.info("number of iterations are {}".format(count))
@@ -95,7 +97,20 @@ class AudioStreamer():
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
+  def detect_long_silence(self,indata,frames,rate):
+      samples = np.frombuffer(indata, dtype=np.int16)
+      is_noise = self.vad.is_speech(samples.tobytes(), rate)
+      frames=0
+      if not is_noise:
+        #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
+        frames+=1
+        
+        if frames>200:
 
+          self.long_silence=+1
+          return
+        else:
+          return
 
 
   def start_noise_detection(self):
@@ -115,7 +130,7 @@ class AudioStreamer():
 
         if not self.audioplayback:
           
-          if self.level!=9:
+          if self.level!=9 or self.level!=10:
           
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
@@ -130,7 +145,17 @@ class AudioStreamer():
             self.silent_frames_count=0
             self.data_array=[]
             last_level=self.level
+            if self.level==11:
+              self.level=previous_level
+            else:
+              self.level+=1
             self.level=9
+          elif self.level==10:
+            x=self.read_wave_file(mapping[self.channel][self.level])
+            self.send_audio(x)
+            self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            self.silent_frames_count=0
+            self.level=1
           else:
             x=self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
