@@ -33,7 +33,7 @@ class AudioStreamer():
     self.combined_audio = b''  
     self.channel="en"
     self.long_silence=0
-    self.interuption_level=0
+    self.noise_level=0
 
 
   def read_wave_file(self, filename):
@@ -70,7 +70,7 @@ class AudioStreamer():
         sleep_seconds+=.25
 
       if self.noise_frames_count >= 10:
-        previous_level = self.level
+        self.noise_level = self.level
         self.level = 11
         self.logger.info("Level has changed to {}".format(self.level))
         self.noise_frames_count = 0
