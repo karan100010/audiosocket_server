@@ -149,10 +149,6 @@ class AudioStreamer():
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
             if self.level==8:
               self.call.hangup()
-            if self.level==11:
-              self.level=self.last_level
-              
-
               self.audioplayback=False
               sleep(1)
             if self.level!=9:
@@ -161,8 +157,11 @@ class AudioStreamer():
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.data_array=[]
-              self.last_level=self.level
-              self.level=9
+              if self.level!=11:
+                self.last_level=self.level
+                self.level=9
+              else:
+                self.level=self.last_level
             else:
               self.level=self.last_level+1
 
