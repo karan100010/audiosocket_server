@@ -154,7 +154,7 @@ class AudioStreamer():
             # else:
             #   self.level+=1
           
-            if self.level==10:
+            if self.level==11:
               x=self.read_wave_file(mapping[self.channel][self.level])
               self.logger.info("Call inturrupted due to noise")
               self.send_audio(x)
