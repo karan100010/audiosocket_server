@@ -134,42 +134,41 @@ class AudioStreamer():
         if not self.audioplayback:
          
           
-          if self.level!=9 :
+
             last_level=self.level
-            if self.level!=11:
+           
 
             
-              x = self.read_wave_file(mapping[self.channel][self.level])
-              self.send_audio(x)
-              #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
-              if self.level==8:
-                self.call.hangup()
+            x = self.read_wave_file(mapping[self.channel][self.level])
+            self.send_audio(x)
+            #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            if self.level==8:
+              self.call.hangup()
+            if self.level==11:
+              self.level=self.noise_level
+              
+
               self.audioplayback=False
               sleep(1)
-              while self.silent_frames_count<75:
-                sleep(.01)
+              if self.level!=9:
+                while self.silent_frames_count<75:
+                  sleep(.01)
                 self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.data_array=[]
-              
+            if self.level!=9:
               self.level=9
-
-            # if self.level==11:
-            #   self.level=self.noise_level
-            #   x=self.read_wave_file(mapping[self.channel][self.level])
-            #   self.send_audio(x)
-            # else:
-            #   self.level+=1
-          
             else:
-              x=self.read_wave_file(mapping[self.channel][self.level])
-              self.logger.info("Call inturrupted due to noise")
-              self.send_audio(x)
-              
-              
-              while self.silent_frames_count<75:
-                sleep(.01)
-              self.level=last_level
+              self.level+=1
+
+          # if self.level==11:
+          #   self.level=self.noise_level
+          #   x=self.read_wave_file(mapping[self.channel][self.level])
+          #   self.send_audio(x)
+          # else:
+          #   self.level+=1
+        
+            
 
 
 
@@ -183,30 +182,29 @@ class AudioStreamer():
           #   else:
           #     self.level=last_level
          
-          else:
-          
-             if self.level==11:
-              x=self.read_wave_file(mapping[self.channel][self.level])
-              self.logger.info("Call inturrupted due to noise")
-              self.send_audio(x)
+
+            #  if self.level==11:
+            #   x=self.read_wave_file(mapping[self.channel][self.level])
+            #   self.logger.info("Call inturrupted due to noise")
+            #   self.send_audio(x)
               
               
-              while self.silent_frames_count<75:
-                sleep(.01)
-              self.level=last_level
-             else:
-              x=self.read_wave_file(mapping[self.channel][self.level])
-              self.logger.info("Call inturrupted due to noise")
-              self.send_audio(x)
+            #   while self.silent_frames_count<75:
+            #     sleep(.01)
+            #   self.level=last_level
+            #  else:
+            #   x=self.read_wave_file(mapping[self.channel][self.level])
+            #   self.logger.info("Call inturrupted due to noise")
+            #   self.send_audio(x)
               
               
-              while self.silent_frames_count<75:
-                sleep(.01)
-              self.level=last_level
+            #   while self.silent_frames_count<75:
+            #     sleep(.01)
+            #   self.level=last_level
 
 
 
-          self.logger.info("silent frames count is {}".format(self.silent_frames_count))
+        self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
 
         #convert data to json
