@@ -169,6 +169,7 @@ class AudioStreamer():
               while self.silent_frames_count<75:
                 sleep(.01)
               self.level=last_level
+              
 
 
           #   while noise - self.noise_level < 10:
