@@ -130,7 +130,7 @@ class AudioStreamer():
 
         if not self.audioplayback:
           
-          if self.level!=9 or self.level!=10:
+          if self.level!=9:
           
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
@@ -145,12 +145,14 @@ class AudioStreamer():
             self.silent_frames_count=0
             self.data_array=[]
             last_level=self.level
-            if self.level==11:
-              self.level=self.noise_level
-              x=self.read_wave_file(mapping[self.channel][self.level])
-              self.send_audio(x)
-            else:
-              self.level+=1
+            self.level=9
+
+            # if self.level==11:
+            #   self.level=self.noise_level
+            #   x=self.read_wave_file(mapping[self.channel][self.level])
+            #   self.send_audio(x)
+            # else:
+            #   self.level+=1
           
           # elif self.level==10:
           #   noise=self.noise_level
