@@ -119,7 +119,7 @@ class AudioStreamer():
     while self.call.connected:
       audio_data = self.call.read()
       if self.audioplayback:
-       # self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
+        self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
       else:
         self.combined_audio+=audio_data
@@ -169,7 +169,7 @@ class AudioStreamer():
               while self.silent_frames_count<75:
                 sleep(.01)
               self.level=last_level
-              
+
 
 
           #   while noise - self.noise_level < 10:
