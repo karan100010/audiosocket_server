@@ -1,0 +1,12 @@
+#create a requrement.txt for the project
+
+time
+numpy
+webrtcvad
+wave
+threading
+sys
+requests
+math
+json
+base64
