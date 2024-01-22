@@ -69,15 +69,15 @@ class AudioStreamer():
       if count%25==0:
         sleep(.25)
         sleep_seconds+=.25
-
-      if self.noise_frames_count >= 4:
-        self.noise_level = self.level
-        self.level = 11
-        self.logger.info("Level has changed to {}".format(self.level))
-       
-        self.noise_frames_count=0
-        self.audioplayback=False
-        return
+      if self.level!=11:
+        if self.noise_frames_count >= 4:
+          self.noise_level = self.level
+          self.level = 11
+          self.logger.info("Level has changed to {}".format(self.level))
+        
+          self.noise_frames_count=0
+          self.audioplayback=False
+          return
     
     self.logger.info("number of iterations are {}".format(count))
     sleep(len(audio_file)/16000-sleep_seconds)  
@@ -94,6 +94,7 @@ class AudioStreamer():
       audio = wave_file.getnframes()
     return audio/8000
   
+  
   def dedect_silence(self,indata,frames,rate):
     samples = np.frombuffer(indata, dtype=np.int16)
     is_noise = self.vad.is_speech(samples.tobytes(), rate)
@@ -101,6 +102,8 @@ class AudioStreamer():
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
     return
+  
+
   def detect_long_silence(self,indata,frames,rate):
       samples = np.frombuffer(indata, dtype=np.int16)
       is_noise = self.vad.is_speech(samples.tobytes(), rate)
@@ -128,14 +131,14 @@ class AudioStreamer():
         self.dedect_silence(audio_data,1,8000)
         self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
+  
+
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
 
         if not self.audioplayback:
-           
-
-            
+                     
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
