@@ -27,7 +27,7 @@ class AudioStreamer():
     self.call=call
     self.w = 0
     self.v = 320
-    self.level = 1
+    self.level = 11
     self.audioplayback=False   
     self.silent_frames_count=0   
     self.combined_audio = b''  
