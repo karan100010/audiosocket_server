@@ -159,9 +159,9 @@ class AudioStreamer():
               self.data_array=[]
               if self.level!=11:
                 
-                self.last_level=self.level
+                self.last_level=9
               else:  
-                self.level=9
+                self.level=self.last_level
               
           
 
