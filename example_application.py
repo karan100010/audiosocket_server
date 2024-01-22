@@ -73,9 +73,10 @@ class AudioStreamer():
         self.noise_level = self.level
         self.level = 11
         self.logger.info("Level has changed to {}".format(self.level))
-        self.noise_frames_count = 0
+       
         
         break
+    
     self.logger.info("number of iterations are {}".format(count))
     sleep(len(audio_file)/16000-sleep_seconds)  
     self.logger.info(sleep_seconds)
@@ -163,6 +164,7 @@ class AudioStreamer():
               x=self.read_wave_file(mapping[self.channel][self.level])
               self.logger.info("Call inturrupted due to noise")
               self.send_audio(x)
+              self.noise_frames_count=0
               
               while self.silent_frames_count<75:
                 sleep(.01)
