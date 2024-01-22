@@ -153,7 +153,9 @@ class AudioStreamer():
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.data_array=[]
-              self.last_level=self.level
+              if self.level!=11:
+                
+                self.last_level=self.level
               self.level=9
               
           
