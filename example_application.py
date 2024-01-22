@@ -75,7 +75,7 @@ class AudioStreamer():
         self.logger.info("Level has changed to {}".format(self.level))
         self.noise_frames_count = 0
         
-      #  return
+        break
     self.logger.info("number of iterations are {}".format(count))
     sleep(len(audio_file)/16000-sleep_seconds)  
     self.logger.info(sleep_seconds)
