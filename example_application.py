@@ -160,7 +160,7 @@ class AudioStreamer():
           
 
             else:
-              self.level+=last_level+1
+              self.level=last_level+1
 
           # if self.level==11:
           #   self.level=self.noise_level
