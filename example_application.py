@@ -75,6 +75,7 @@ class AudioStreamer():
         self.logger.info("Level has changed to {}".format(self.level))
        
         self.noise_frames_count=0
+        self.audioplayback=False
         return
     
     self.logger.info("number of iterations are {}".format(count))
@@ -169,7 +170,7 @@ class AudioStreamer():
               while self.silent_frames_count<75:
                 sleep(.01)
               self.level=last_level
-              
+
 
 
 
