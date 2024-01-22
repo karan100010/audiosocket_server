@@ -63,13 +63,13 @@ class AudioStreamer():
       w += 320
       v += 320
      
-      #self.detect_noise(audio_data, 1, 8000)
+      #self.detect_noise(indata, 1, 8000)
       count+=1
       if count%25==0:
         sleep(.25)
         sleep_seconds+=.25
 
-      if self.noise_frames_count >= 10:
+      if self.noise_frames_count >= 4:
         self.noise_level = self.level
         self.level = 11
         self.logger.info("Level has changed to {}".format(self.level))
@@ -155,9 +155,8 @@ class AudioStreamer():
             #   self.level+=1
           
             if self.level==10:
-              noise=self.noise_level
-              last_level=self.level
               x=self.read_wave_file(mapping[self.channel][self.level])
+              self.logger.info("Call inturrupted due to noise")
               self.send_audio(x)
               self.level=last_level
 
