@@ -150,15 +150,15 @@ class AudioStreamer():
 
               self.audioplayback=False
               sleep(1)
-              if self.level!=9:
-                while self.silent_frames_count<75:
-                  sleep(.01)
-                self.logger.info("waiting for silence")
-                self.silent_frames_count=0
-                self.data_array=[]
-                self.level=9
-           
-  
+            if self.level!=9:
+              while self.silent_frames_count<75:
+                sleep(.01)
+              self.logger.info("waiting for silence")
+              self.silent_frames_count=0
+              self.data_array=[]
+              self.level=9
+          
+
             else:
               self.level+=last_level+1
 
