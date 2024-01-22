@@ -34,6 +34,7 @@ class AudioStreamer():
     self.channel="en"
     self.long_silence=0
     self.noise_level=0
+    self.last_level=0
 
 
   def read_wave_file(self, filename):
@@ -132,10 +133,6 @@ class AudioStreamer():
     while self.call.connected:
 
         if not self.audioplayback:
-         
-          
-
-            last_level=self.level
            
 
             
@@ -156,11 +153,13 @@ class AudioStreamer():
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.data_array=[]
+              self.last_level=self.level
               self.level=9
+              
           
 
             else:
-              self.level=last_level+1
+              self.level=self.last_level+1
 
           # if self.level==11:
           #   self.level=self.noise_level
