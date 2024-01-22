@@ -146,7 +146,7 @@ class AudioStreamer():
             if self.level==8:
               self.call.hangup()
             if self.level==11:
-              self.level=self.noise_level
+              self.level=self.last_level
               
 
               self.audioplayback=False
@@ -157,14 +157,12 @@ class AudioStreamer():
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.data_array=[]
+              self.last_level=self.level
               if self.level!=11:
                 
                 self.last_level=9
               else:  
                 self.level=self.last_level
-              
-          
-
             else:
               self.level=self.last_level+1
 
