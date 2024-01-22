@@ -97,6 +97,7 @@ class AudioStreamer():
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
+    return
   def detect_long_silence(self,indata,frames,rate):
       samples = np.frombuffer(indata, dtype=np.int16)
       is_noise = self.vad.is_speech(samples.tobytes(), rate)
