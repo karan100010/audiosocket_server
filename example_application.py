@@ -145,7 +145,8 @@ class AudioStreamer():
             if self.level==11:
               x=self.read_wave_file(mapping[self.channel][self.level])
               self.send_audio(x)
-              self.logger.info("playing interution message")
+              self.logger.info("playing interuption message")
+              
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
             if self.level==8:
               self.call.hangup()
