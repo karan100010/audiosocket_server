@@ -131,22 +131,24 @@ class AudioStreamer():
         if not self.audioplayback:
           last_level=self.level
           
-          if self.level!=9 or self.level!=11:
+          if self.level!=9 :
+            if self.level!=11:
+
             
-            x = self.read_wave_file(mapping[self.channel][self.level])
-            self.send_audio(x)
-            #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
-            if self.level==8:
-              self.call.hangup()
-            self.audioplayback=False
-            sleep(1)
-            while self.silent_frames_count<75:
-              sleep(.01)
-              self.logger.info("waiting for silence")
-            self.silent_frames_count=0
-            self.data_array=[]
-            
-            self.level=9
+              x = self.read_wave_file(mapping[self.channel][self.level])
+              self.send_audio(x)
+              #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+              if self.level==8:
+                self.call.hangup()
+              self.audioplayback=False
+              sleep(1)
+              while self.silent_frames_count<75:
+                sleep(.01)
+                self.logger.info("waiting for silence")
+              self.silent_frames_count=0
+              self.data_array=[]
+              
+              self.level=9
 
             # if self.level==11:
             #   self.level=self.noise_level
