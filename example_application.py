@@ -154,11 +154,12 @@ class AudioStreamer():
             # else:
             #   self.level+=1
           
-          if self.level==10:
-            noise=self.noise_level
-            last_level=self.level
-            self.read_wave_file(mapping[self.channel][self.level])
-            self.level=last_level
+            if self.level==10:
+              noise=self.noise_level
+              last_level=self.level
+              x=self.read_wave_file(mapping[self.channel][self.level])
+              self.send_audio(x)
+              self.level=last_level
 
 
           #   while noise - self.noise_level < 10:
