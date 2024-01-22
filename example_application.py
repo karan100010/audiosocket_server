@@ -164,11 +164,12 @@ class AudioStreamer():
               x=self.read_wave_file(mapping[self.channel][self.level])
               self.logger.info("Call inturrupted due to noise")
               self.send_audio(x)
-              self.noise_frames_count=0
+              self.audioplayback=False
               
               while self.silent_frames_count<75:
                 sleep(.01)
               self.level=last_level
+              
 
 
 
