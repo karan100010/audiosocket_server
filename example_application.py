@@ -151,7 +151,7 @@ class AudioStreamer():
               self.send_audio(x)
             else:
               self.level+=1
-            self.level=9
+          
           # elif self.level==10:
           #   noise=self.noise_level
           #   last_level=self.level
