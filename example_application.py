@@ -152,6 +152,24 @@ class AudioStreamer():
               x=self.read_wave_file(mapping[self.channel][self.level])
               self.send_audio(x)
               self.logger.info("playing interuption message")
+            if self.level==10:
+              self.long_silence_num=0
+              num=0
+              while self.silent_frames_count==self.total_frames:
+                if num==0:
+                  sleep(2)
+                
+                x=self.read_wave_file(mapping[self.channel][self.level])
+                self.send_audio(x)
+                self.logger.info("playing no audio message")
+                sleep(2)
+                num+=1
+                if num>3:
+                  self.level=9
+                  break
+              if self.level!=9:
+                self.level=self.last_level
+
 
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
             
@@ -178,24 +196,7 @@ class AudioStreamer():
 
               self.level=self.last_level+1
 
-            if self.level==10:
-              self.long_silence_num=0
-              num=0
-              while self.silent_frames_count==self.total_frames:
-                if num==0:
-                  sleep(2)
-                
-                x=self.read_wave_file(mapping[self.channel][self.level])
-                self.send_audio(x)
-                self.logger.info("playing no audio message")
-                sleep(2)
-                num+=1
-                if num>3:
-                  self.level=9
-                  break
-              if self.level!=9:
-                self.level=self.last_level
-
+            
               
               
 
