@@ -35,6 +35,7 @@ class AudioStreamer():
     self.long_silence=0
     self.noise_level=0
     self.last_level=0
+    self.long_silence=False
 
 
   def read_wave_file(self, filename):
