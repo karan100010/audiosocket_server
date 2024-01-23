@@ -34,9 +34,7 @@ class AudioStreamer():
     self.channel="en"
     self.noise_level=0
     self.last_level=0
-    self.long_silence_wait=False
-    self.total_frames=0
-    self.long_silence_num=0
+    self.cotinues_silence=0
 
 
   def read_wave_file(self, filename):
@@ -106,24 +104,11 @@ class AudioStreamer():
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
+      self.cotinues_silence+=1
+    else:
+      self.cotinues_silence=0  
     return
   
-  def long_silence(self):
-    sleep(.3)
-    num_silence=0
-    if self.long_silence_num==0:
-    
-      while self.silent_frames_count==self.total_frames:
-        self.long_silence_wait=True
-        sleep(.3)
-        self.logger.info("waiting to see if silence is long enough")
-        num_silence+=1
-        if num_silence>5:
-          self.level=10
-          self.long_silence_num+=1
-          break
-      self.long_silence_wait=False
-      return
 
   
 
@@ -138,7 +123,6 @@ class AudioStreamer():
         self.total_frames+=1
         self.combined_audio+=audio_data
         self.dedect_silence(audio_data,1,8000)
-        self.long_silence()
         self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
   #write a fuction that detects absolute silence for 5 seconds and then starts the audio playback and changes the level to 10
@@ -150,6 +134,8 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
+        if self.cotinues_silence>50:
+          self.level=10
 
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
