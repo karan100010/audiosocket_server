@@ -32,9 +32,10 @@ class AudioStreamer():
     self.silent_frames_count=0   
     self.combined_audio = b''  
     self.channel="en"
-    self.long_silence=0
+    self.long_silence=False
     self.noise_level=0
     self.last_level=0
+    self.total_frames=0
 
 
   def read_wave_file(self, filename):
@@ -50,6 +51,7 @@ class AudioStreamer():
     if is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.noise_frames_count += frames
+    return
 
   def send_audio(self,audio_file):
 
@@ -105,31 +107,29 @@ class AudioStreamer():
     return
   
 
-  def detect_long_silence(self,indata,frames,rate):
-      samples = np.frombuffer(indata, dtype=np.int16)
-      is_noise = self.vad.is_speech(samples.tobytes(), rate)
-      frames=0
-      if not is_noise:
-        #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
-        frames+=1
-        
-        if frames>200:
-
-          self.long_silence=+1
-          return
-        else:
-          return
+  def detect_long_silence(self):
+    sleep(2)
+    if self.silent_frames_count-self.total_frames<2:
+      self.long_silence=True
+      self.level=10
+      self.silent_frames_count=0
+    return
+      
 
 
   def start_noise_detection(self):
     while self.call.connected:
       audio_data = self.call.read()
       if self.audioplayback:
+        self.total_frames=0
         self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
+        
       else:
+        self.total_frames+=1
         self.combined_audio+=audio_data
         self.dedect_silence(audio_data,1,8000)
+        self.detect_long_silence()
         self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
   
@@ -147,6 +147,15 @@ class AudioStreamer():
               x=self.read_wave_file(mapping[self.channel][self.level])
               self.send_audio(x)
               self.logger.info("playing interuption message")
+            if self.level==10:
+              old_noise_level=self.noise_level
+              while old_noise_level<self.noise_level:
+                thread=threading.Thread(target=self.detect_noise,args=(self.call.read(),1,8000))
+                thread.start()
+                x=self.read_wave_file(mapping[self.channel][self.level])
+                self.send_audio(x)
+                self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            
 
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
             if self.level==8:
