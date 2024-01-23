@@ -178,28 +178,34 @@ class AudioStreamer():
               self.call.hangup()
               self.audioplayback=False
               sleep(1)
+              return
             if self.level!=9:
               while self.cotinues_silence_normal<150:
                 sleep(.01)
               if self.cotinues_silence_from_start>100:
                self.level=10
                self.cotinues_silence_from_start=0
-               return
+               self.cotinues_silence_normal=0
                
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.cotinues_silence_normal=0
               self.data_array=[]
-              if self.level!=11 or self.level!=10:
-                self.last_level=self.level
-                self.level=9
+              if self.level!=11:
+                if self.level!=10:
+                  self.last_level=self.level
+                  self.level=9
+                else:
+                  self.logger.info("level is 10")
+                  pass
               else:
                 self.level=self.last_level
             else:
               if self.level!=10:
                 self.level=self.last_level+1
               else:
-                self.level=self.last_level
+                pass
+               
 
 
             
