@@ -35,7 +35,8 @@ class AudioStreamer():
     self.noise_level=0
     self.last_level=0
     self.total_frames=0
-    self.cotinues_silence=0
+    self.cotinues_silence_from_start=0
+    self.cotinues_silence_normal=0
 
 
   def read_wave_file(self, filename):
@@ -106,7 +107,9 @@ class AudioStreamer():
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
       if self.silent_frames_count-self.total_frames<5:
-        self.cotinues_silence+=1
+        self.cotinues_silence_from_start+=1
+      else:
+        self.cotinues_silence_normal+=1
     else:
       self.cotinues_silence=0  
     return
@@ -136,8 +139,7 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
-        if self.cotinues_silence>50:
-          self.level=10
+        
 
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
@@ -150,15 +152,19 @@ class AudioStreamer():
               self.logger.info("playing interuption message")
 
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            if self.cotinues_silence_from_start>100:
+               self.level=10
+               self.cotinues_silence_from_start=0
             if self.level==8:
               self.call.hangup()
               self.audioplayback=False
               sleep(1)
             if self.level!=9:
-              while self.silent_frames_count<75:
+              while self.cotinues_silence_normal<150:
                 sleep(.01)
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
+              self.cotinues_silence_normal=0
               self.data_array=[]
               if self.level!=11:
                 self.last_level=self.level
