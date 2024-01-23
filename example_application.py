@@ -112,7 +112,8 @@ class AudioStreamer():
       else:
         self.cotinues_silence_normal+=1
     else:
-      self.cotinues_silence=0  
+      self.cotinues_silence_from_start=0  
+      self.cotinues_silence_normal=0
     return
   
 
