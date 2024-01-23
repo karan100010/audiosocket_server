@@ -187,7 +187,7 @@ class AudioStreamer():
               self.silent_frames_count=0
               self.cotinues_silence_normal=0
               self.data_array=[]
-              if self.level!=11:
+              if self.level!=11 or self.level!=10:
                 self.last_level=self.level
                 self.level=9
               else:
