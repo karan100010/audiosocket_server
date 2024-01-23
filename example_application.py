@@ -106,7 +106,7 @@ class AudioStreamer():
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
-      if self.silent_frames_count-self.total_frames<5:
+      if self.silent_frames_count-self.total_frames==0:
         self.cotinues_silence_from_start+=1
         self.cotinues_silence_normal+=1
       else:
