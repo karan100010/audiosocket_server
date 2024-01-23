@@ -194,8 +194,11 @@ class AudioStreamer():
               else:
                 self.level=self.last_level
             else:
+              if self.level!=10:
+                self.level=self.last_level+1
+              else:
+                self.level=self.last_level
 
-              self.level=self.last_level+1
 
             
               
