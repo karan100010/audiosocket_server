@@ -34,6 +34,7 @@ class AudioStreamer():
     self.channel="en"
     self.noise_level=0
     self.last_level=0
+    self.total_frames=0
     self.cotinues_silence=0
 
 
@@ -104,7 +105,8 @@ class AudioStreamer():
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
-      self.cotinues_silence+=1
+      if self.silent_frames_count-self.total_frames<5:
+        self.cotinues_silence+=1
     else:
       self.cotinues_silence=0  
     return
