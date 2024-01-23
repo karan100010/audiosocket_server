@@ -152,6 +152,7 @@ class AudioStreamer():
               x=self.read_wave_file(mapping[self.channel][self.level])
               self.send_audio(x)
               self.logger.info("playing interuption message")
+            
             if self.level==10:
               self.long_silence_num=0
               num=0
