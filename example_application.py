@@ -35,7 +35,8 @@ class AudioStreamer():
     self.long_silence=0
     self.noise_level=0
     self.last_level=0
-    self.long_silence=False
+    self.long_silence=0
+    self.total_frames=0
 
 
   def read_wave_file(self, filename):
@@ -51,6 +52,7 @@ class AudioStreamer():
     if is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.noise_frames_count += frames
+      return True
 
   def send_audio(self,audio_file):
 
@@ -100,6 +102,14 @@ class AudioStreamer():
   def dedect_silence(self,indata,frames,rate):
     samples = np.frombuffer(indata, dtype=np.int16)
     is_noise = self.vad.is_speech(samples.tobytes(), rate)
+    sleep(.3)
+    num_silence=0
+    while self.silent_frames_count==self.total_frames:
+      sleep(.3)
+      self.logger.info("waiting to see if silence is long enough")
+      num_silence+=1
+    if num_silence>5:
+      self.level=10
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
@@ -115,6 +125,7 @@ class AudioStreamer():
         self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
       else:
+        self.total_frames+=1
         self.combined_audio+=audio_data
         self.dedect_silence(audio_data,1,8000)
         self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
@@ -157,6 +168,26 @@ class AudioStreamer():
                 self.level=self.last_level
             else:
               self.level=self.last_level+1
+
+            if self.level==10:
+              num=0
+              while self.silent_frames_count==0:
+                if num==0:
+                  sleep(2)
+                
+                x=self.read_wave_file(mapping[self.channel][self.level])
+                self.send_audio(x)
+                self.logger.info("playing no audio message")
+                sleep(2)
+                num+=1
+                if num>3:
+                  self.level=9
+                  break
+              if self.level!=9:
+                self.level=self.last_level
+
+              
+              
 
           # if self.level==11:
           #   self.level=self.noise_level
