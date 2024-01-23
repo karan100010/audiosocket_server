@@ -131,9 +131,9 @@ class AudioStreamer():
         self.detect_noise(audio_data, 1, 8000)
       else:
         self.total_frames+=1
-        self.long_silence()
         self.combined_audio+=audio_data
         self.dedect_silence(audio_data,1,8000)
+        self.long_silence()
         self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
   #write a fuction that detects absolute silence for 5 seconds and then starts the audio playback and changes the level to 10
