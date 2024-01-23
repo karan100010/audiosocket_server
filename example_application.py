@@ -27,7 +27,7 @@ class AudioStreamer():
     self.call=call
     self.w = 0
     self.v = 320
-    self.level = 1
+    self.level = 10
     self.audioplayback=False   
     self.silent_frames_count=0   
     self.combined_audio = b''  
@@ -167,7 +167,7 @@ class AudioStreamer():
               else:
                 self.level=self.last_level
             else:
-              
+
               self.level=self.last_level+1
 
             if self.level==10:
