@@ -36,6 +36,7 @@ class AudioStreamer():
     self.last_level=0
     self.long_silence_wait=False
     self.total_frames=0
+    self.long_silence_num=0
 
 
   def read_wave_file(self, filename):
@@ -110,16 +111,19 @@ class AudioStreamer():
   def long_silence(self):
     sleep(.3)
     num_silence=0
-    while self.silent_frames_count==self.total_frames:
-      self.long_silence_wait=True
-      sleep(.3)
-      self.logger.info("waiting to see if silence is long enough")
-      num_silence+=1
-      if num_silence>5:
-        self.level=10
-        break
-    self.long_silence_wait=False
-    return
+    if self.long_silence_num==0:
+    
+      while self.silent_frames_count==self.total_frames:
+        self.long_silence_wait=True
+        sleep(.3)
+        self.logger.info("waiting to see if silence is long enough")
+        num_silence+=1
+        if num_silence>5:
+          self.level=10
+          self.long_silence_num+=1
+          break
+      self.long_silence_wait=False
+      return
 
   
 
@@ -178,6 +182,7 @@ class AudioStreamer():
               self.level=self.last_level+1
 
             if self.level==10:
+              self.long_silence_num=0
               num=0
               while self.silent_frames_count==self.total_frames:
                 if num==0:
