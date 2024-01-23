@@ -184,6 +184,8 @@ class AudioStreamer():
               if self.cotinues_silence_from_start>100:
                self.level=10
                self.cotinues_silence_from_start=0
+               return
+               
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.cotinues_silence_normal=0
