@@ -108,6 +108,7 @@ class AudioStreamer():
       self.silent_frames_count += frames
       if self.silent_frames_count-self.total_frames<5:
         self.cotinues_silence_from_start+=1
+        self.cotinues_silence_normal+=1
       else:
         self.cotinues_silence_normal+=1
     else:
