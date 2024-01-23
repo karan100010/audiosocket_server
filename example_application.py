@@ -152,9 +152,7 @@ class AudioStreamer():
               self.logger.info("playing interuption message")
 
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
-            if self.cotinues_silence_from_start>100:
-               self.level=10
-               self.cotinues_silence_from_start=0
+            
             if self.level==8:
               self.call.hangup()
               self.audioplayback=False
@@ -162,6 +160,9 @@ class AudioStreamer():
             if self.level!=9:
               while self.cotinues_silence_normal<150:
                 sleep(.01)
+              if self.cotinues_silence_from_start>100:
+               self.level=10
+               self.cotinues_silence_from_start=0
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.cotinues_silence_normal=0
