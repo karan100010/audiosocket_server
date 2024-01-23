@@ -115,8 +115,9 @@ class AudioStreamer():
       sleep(.3)
       self.logger.info("waiting to see if silence is long enough")
       num_silence+=1
-    if num_silence>5:
-      self.level=10
+      if num_silence>5:
+        self.level=10
+        break
     self.long_silence_wait=False
     return
 
