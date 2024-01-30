@@ -141,8 +141,7 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
-        self.logger.info("we are in level {}".format(self.level))
-
+        
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.level])
@@ -194,6 +193,7 @@ class AudioStreamer():
               self.data_array=[]
               if self.level!=11:
                 if self.level!=10:
+                  self.logger.info(self.level)
                   self.last_level=self.level
                   self.level=9
                   self.logger.info("level changed to 9")
