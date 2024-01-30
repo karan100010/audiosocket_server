@@ -150,7 +150,7 @@ class AudioStreamer():
             self.cotinues_silence_normal=0
             self.total_frames=0
             self.cotinues_silence_from_start=0
-            
+
             if self.level==11:
               sleep(1)
               x=self.read_wave_file(mapping[self.channel][self.level])
@@ -160,9 +160,10 @@ class AudioStreamer():
             if self.level==10:
               self.long_silence_num=0
               num=0
+              self.logger.info("science count is {}".format(self.silent_frames_count))
+              self.logger.info("total frames is {}".format(self.total_frames))
               while self.silent_frames_count==self.total_frames:
-                self.logger.info("science count is {}".format(self.silent_frames_count))
-                self.logger.info("total frames is {}".format(self.total_frames))
+                
                 if num==0:
                   sleep(2)
                   self.logger.info("playing no audio message and sleeping for 2 seconds")
