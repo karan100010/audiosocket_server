@@ -146,6 +146,11 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
+            self.silent_frames_count=0
+            self.cotinues_silence_normal=0
+            self.total_frames=0
+            self.cotinues_silence_from_start=0
+            
             if self.level==11:
               sleep(1)
               x=self.read_wave_file(mapping[self.channel][self.level])
