@@ -167,7 +167,7 @@ class AudioStreamer():
                 sleep(2)
                 num+=1
                 if num>3:
-                  self.level=9
+                  self.level=8
                   break
               if self.level!=9:
                 self.level=self.last_level
