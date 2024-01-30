@@ -33,7 +33,7 @@ class AudioStreamer():
     self.combined_audio = b''  
     self.channel="en"
     self.noise_level=0
-    self.last_level=0
+    self.last_level=1
     self.total_frames=0
     self.cotinues_silence_from_start=0
     self.cotinues_silence_normal=0
@@ -195,6 +195,7 @@ class AudioStreamer():
                 if self.level!=10:
                   self.logger.info(self.level)
                   self.last_level=self.level
+                  self.logger.info(self.level)
                   self.level=9
                   self.logger.info("level changed to 9")
                 else:
