@@ -196,6 +196,7 @@ class AudioStreamer():
                 if self.level!=10:
                   self.last_level=self.level
                   self.level=9
+                  self.logger.info("level changed to 9")
                 else:
                   self.logger.info("level is 10")
                   pass
