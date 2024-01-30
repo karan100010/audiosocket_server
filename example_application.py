@@ -160,7 +160,7 @@ class AudioStreamer():
             if self.level==10:
               self.long_silence_num=0
               num=0
-              self.logger.info("science count is {}".format(self.silent_frames_count))
+              self.logger.info("scilence count is {}".format(self.silent_frames_count))
               self.logger.info("total frames is {}".format(self.total_frames))
               while self.silent_frames_count==self.total_frames:
                 
