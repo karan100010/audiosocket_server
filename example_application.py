@@ -156,6 +156,8 @@ class AudioStreamer():
               self.long_silence_num=0
               num=0
               while self.silent_frames_count==self.total_frames:
+                self.logger.info("science count is {}".format(self.silent_frames_count))
+                self.logger.info("total frames is {}".format(self.total_frames))
                 if num==0:
                   sleep(2)
                   self.logger.info("playing no audio message and sleeping for 2 seconds")
