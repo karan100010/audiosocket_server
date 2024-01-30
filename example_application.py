@@ -159,6 +159,7 @@ class AudioStreamer():
               while self.silent_frames_count==self.total_frames:
                 if num==0:
                   sleep(2)
+                  self.logger.info("playing no audio message and sleeping for 2 seconds")
                 
                 x=self.read_wave_file(mapping[self.channel][self.level])
                 self.send_audio(x)
@@ -199,6 +200,7 @@ class AudioStreamer():
                   self.logger.info("level is 10")
                   pass
               else:
+                self.logger.info("level is 11")
                 self.level=self.last_level
             else:
               if self.level!=10:
