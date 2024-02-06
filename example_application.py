@@ -158,10 +158,10 @@ class AudioStreamer():
             print(lang)
             #response=requests.post("http://3.108.66.52:5002/convert_en",data=self.combined_audio)
             #resp=json.loads(response.text)
-            if resp["transcribe"]=="":
-                self.level="cant_hear"
+            # if resp["transcribe"]=="":
+            #     self.level="cant_hear"
             self.combined_audio=b''
-            print(response.text)
+            # print(response.text)
             self.silent_frames_count=0
             self.cotinues_silence_normal=0
             self.total_frames=0
