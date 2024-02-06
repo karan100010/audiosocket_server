@@ -19,7 +19,9 @@ nlp_mapping={"en":{"wrong number":"demo_audios/en/wrong_number.wav",
              "welcome":"demo_audios/en/ask1.wav",
              "payment":"Can I send you a payment link for your premium amount to your number?",
              "inturruption":"I am sorry, please complete what you were saying",
-             "cant_hear":"demo_audios/en/voice1.wav"
+             "cant_hear":"demo_audios/en/voice1.wav",
+             "contact_human_agent":"demo_audios/en/boss.wav"
+
              
              },
              "hi":{"wrong number":"क्षमा करें, मैं आपको फिर से call नहीं करूंगा",

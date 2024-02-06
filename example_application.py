@@ -166,10 +166,14 @@ class AudioStreamer():
             nlp_resp=json.loads(nlp_response.text)
             print(nlp_resp)
             print(resp)
+            if resp["transcribe"]=="":
+                self.level="cant_hear"
             if nlp_resp["intent"]=="wrong number":
                 self.level="wrong number"
-            # if resp["transcribe"]=="":
-            #     self.level="cant_hear"
+            elif nlp_resp["intent"]=='contact_human_agent':
+                self.level="contact_human_agent"
+                
+            
             self.combined_audio=b''
             # print(response.text)
             self.silent_frames_count=0
