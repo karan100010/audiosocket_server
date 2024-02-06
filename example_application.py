@@ -14,6 +14,18 @@ import math
 from req import Requsts
 import json
 import base64
+from test import text_to_speech
+import os
+
+#iterate through nlp_mapping and convert the text to speech and store it in demo_audios for each language
+#check if audios exits if not create them
+for language in nlp_mapping:
+    for key in nlp_mapping[language]:
+  
+        speech=text_to_speech(nlp_mapping[language][key])
+        if not os.path.exists("demo_audios/"+language+"/"+str(key)+".wav"):
+          with open("demo_audios/"+language+"/"+str(key)+".wav","wb") as file:
+              file.write(speech)
 
 class AudioStreamer():
   def __init__(self,call):
@@ -144,7 +156,7 @@ class AudioStreamer():
         
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
-            x = self.read_wave_file(mapping[self.channel][self.level])
+            x = self.read_wave_file("demo_audios/"+self.channel+"/"+str(self.level)+".wav")
             self.send_audio(x)
             while self.silent_frames_count<150:
                 sleep(.01)
