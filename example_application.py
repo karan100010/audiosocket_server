@@ -14,7 +14,6 @@ import math
 from req import Requsts
 import json
 import base64
-from test import text_to_speech
 import os
 
 #iterate through nlp_mapping and convert the text to speech and store it in demo_audios for each language
