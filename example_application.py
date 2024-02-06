@@ -19,13 +19,7 @@ import os
 
 #iterate through nlp_mapping and convert the text to speech and store it in demo_audios for each language
 #check if audios exits if not create them
-for language in nlp_mapping:
-    for key in nlp_mapping[language]:
-  
-        speech=text_to_speech(nlp_mapping[language][key])
-        if not os.path.exists("demo_audios/"+language+"/"+str(key)+".wav"):
-          with open("demo_audios/"+language+"/"+str(key)+".wav","wb") as file:
-              file.write(speech)
+
 
 class AudioStreamer():
   def __init__(self,call):

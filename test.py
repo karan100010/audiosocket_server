@@ -15,7 +15,6 @@ import base64
 from example_application_labels import AudioStreamer
 import pyttsx3
 import io
-    
 
 # stream=AudioStreamer()
 # while stream.conn.connected:
@@ -51,5 +50,10 @@ def text_to_speech(text):
     return speech
 
 # Example usage
-text = "Hello, how are you?"
-speech = text_to_speech(text)
+for language in nlp_mapping:
+    for key in nlp_mapping[language]:
+  
+        speech=text_to_speech(nlp_mapping[language][key])
+        if not os.path.exists("demo_audios/"+language+"/"+str(key)+".wav"):
+          with open("demo_audios/"+language+"/"+str(key)+".wav","wb") as file:
+              file.write(speech)
