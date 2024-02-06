@@ -15,11 +15,12 @@ mapping={"en":{1:"demo_audios/en/hello.wav",
                3:"demo_audios/hi/3.wav",
                4:"demo_audios/hi/4.wav"}
          }
-nlp_mapping={"en":{"wrong number":"sorry will not call you again",
+nlp_mapping={"en":{"wrong number":"demo_audios/en/wrong_number.wav",
              "welcome":"demo_audios/en/ask1.wav",
              "payment":"Can I send you a payment link for your premium amount to your number?",
              "inturruption":"I am sorry, please complete what you were saying",
              "cant_hear":"demo_audios/en/voice1.wav"
+             
              },
              "hi":{"wrong number":"क्षमा करें, मैं आपको फिर से call नहीं करूंगा",
                    "welcome":"नमस्ते क्या यह करण जोशी है?",

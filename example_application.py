@@ -166,6 +166,8 @@ class AudioStreamer():
             nlp_resp=json.loads(nlp_response.text)
             print(nlp_resp)
             print(resp)
+            if nlp_resp["intent"]=="wrong number":
+                self.level="wrong number"
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
             self.combined_audio=b''
