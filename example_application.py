@@ -153,11 +153,11 @@ class AudioStreamer():
             self.send_audio(x)
             while self.cotinues_silence_normal<75:
                 sleep(.01)
-            lang_predict=requests.post("http://3.108.66.52:5000/predict",data=self.combined_audio)
+            lang_predict=requests.post("http://localhost:5000/predict",data=self.combined_audio)
             lang=json.loads(lang_predict.text)
             print(lang)
-            response=requests.post("http://3.108.66.52:5002/convert_en",data=self.combined_audio)
-            resp=json.loads(response.text)
+            #response=requests.post("http://3.108.66.52:5002/convert_en",data=self.combined_audio)
+            #resp=json.loads(response.text)
             if resp["transcribe"]=="":
                 self.level="cant_hear"
             self.combined_audio=b''
