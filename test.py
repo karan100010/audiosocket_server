@@ -34,8 +34,7 @@ def text_to_speech(text):
     # Save the speech to the byte-sized object
     engine.save_to_file(text, "temp.wav")
     
-    # Run the text-to-speech engine
-    engine.runAndWait()
+
     
    #read "temp.wav" as a byte-sized object
     with open("temp.wav", "rb") as file:
