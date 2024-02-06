@@ -27,6 +27,8 @@ def text_to_speech(text,path):
     
     # Save the speech to the byte-sized object
     engine.save_to_file(text, path)
+
+    engine.runAndWait()
     
 
     
