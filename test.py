@@ -1,13 +1,7 @@
 
 from audiosocket import *
-
-
 from mapping import *
-
-
-from example_application_labels import AudioStreamer
 import pyttsx3
-
 import os
 
 # stream=AudioStreamer()
