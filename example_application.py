@@ -154,7 +154,7 @@ class AudioStreamer():
             while self.silent_frames_count<150:
                 sleep(.01)
             response=requests.post("http://3.108.66.52:5002/convert",data=self.combined_audio)
-            print(response)
+            print(response.text)
             self.silent_frames_count=0
             self.cotinues_silence_normal=0
             self.total_frames=0
