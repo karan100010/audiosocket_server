@@ -77,15 +77,15 @@ class AudioStreamer():
       if count%25==0:
         sleep(.25)
         sleep_seconds+=.25
-      if self.level!=11:
-        if self.noise_frames_count >= 4:
-          self.noise_level = self.level
-          self.level = "inturruption"
-          self.logger.info("Level has changed to {}".format(self.level))
+      # if self.level!=11:
+      #   if self.noise_frames_count >= 4:
+      #     self.noise_level = self.level
+      #     self.level = "inturruption"
+      #     self.logger.info("Level has changed to {}".format(self.level))
         
-          self.noise_frames_count=0
-          self.audioplayback=False
-          return
+      #     self.noise_frames_count=0
+      #     self.audioplayback=False
+      #     return
     
     self.logger.info("number of iterations are {}".format(count))
     sleep(len(audio_file)/16000-sleep_seconds)  
