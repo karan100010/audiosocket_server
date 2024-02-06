@@ -170,7 +170,7 @@ class AudioStreamer():
             print(resp)
             if resp["transcribe"]=="":
                 self.level="cant_hear"
-            if nlp_resp["intent"]=="wrong number":
+            if nlp_resp["intent"]=="wrong_number":
                 self.level="wrong number"
             elif nlp_resp["intent"]=='contact_human_agent':
                 self.level="contact_human_agent"
