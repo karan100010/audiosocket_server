@@ -1,20 +1,13 @@
-from time import sleep
+
 from audiosocket import *
-import numpy as np
-import webrtcvad
-from mylogging import ColouredLogger
-import wave
-import threading
-import sys
-import requests
+
+
 from mapping import *
-import math
-from req import Requsts
-import json
-import base64
+
+
 from example_application_labels import AudioStreamer
 import pyttsx3
-import io
+
 import os
 
 # stream=AudioStreamer()
