@@ -153,7 +153,7 @@ class AudioStreamer():
             self.send_audio(x)
             while self.cotinues_silence_normal<75:
                 sleep(.01)
-            lang_predict=requests.post("http://3.108.66:5000/predict",data=self.combined_audio)
+            lang_predict=requests.post("http://3.108.66.42:5000/predict",data=self.combined_audio)
             lang=json.loads(lang_predict.text)
             print(lang)
             response=requests.post("http://3.108.66.52:5002/convert",data=self.combined_audio)
