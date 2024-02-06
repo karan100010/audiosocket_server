@@ -153,6 +153,8 @@ class AudioStreamer():
             self.send_audio(x)
             while self.cotinues_silence_normal<75:
               sleep(.01)
+            if self.level=="wrong number" or self.level=="contact_human_agent":
+              self.call.hangup()
             # lang_predict=requests.post("http://localhost:5000/predict",data=self.combined_audio)
             # lang=json.loads(lang_predict.text)
             # print(lang)
