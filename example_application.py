@@ -159,6 +159,7 @@ class AudioStreamer():
             response=requests.post("http://3.108.66.52:5002/convert_hi",data=self.combined_audio)
             resp=json.loads(response.text)
             nlp={"sentence":resp["transcribe"]}
+            print(nlp)
             nlp_response=requests.post("http://3.108.66.52:5001/get_entities",data=nlp)
             nlp_resp=json.loads(nlp_response.text)
             print(nlp_resp)
