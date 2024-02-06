@@ -37,10 +37,8 @@ def text_to_speech(text):
 
     
    #read "temp.wav" as a byte-sized object
-    with open("temp.wav", "rb") as file:
-        speech = file.read()
-    
-    return speech
+ 
+    return True
 
 # Example usage
 for language in nlp_mapping:
