@@ -13,6 +13,9 @@ from req import Requsts
 import json
 import base64
 from example_application_labels import AudioStreamer
+import pyttsx3
+import io
+    
 
 # stream=AudioStreamer()
 # while stream.conn.connected:
@@ -26,9 +29,7 @@ def text_to_speech(text):
     # Return the byte-sized object
     
     # Example code using pyttsx3 library
-    import pyttsx3
-    import io
-    
+   
     # Initialize the text-to-speech engine
     engine = pyttsx3.init()
     
