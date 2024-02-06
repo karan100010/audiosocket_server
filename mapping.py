@@ -16,7 +16,7 @@ mapping={"en":{1:"demo_audios/en/hello.wav",
                4:"demo_audios/hi/4.wav"}
          }
 nlp_mapping={"en":{"wrong number":"sorry will not call you again",
-             "welcome":"hello is this karan joshi?",
+             "welcome":"ask1.wav",
              "payment":"Can I send you a payment link for your premium amount to your number?",
              "inturruption":"I am sorry, please complete what you were saying"
              },
