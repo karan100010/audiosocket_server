@@ -27,7 +27,7 @@ class AudioStreamer():
     self.call=call
     self.w = 0
     self.v = 320
-    self.level = "welcome"
+    self.level = 1
     self.audioplayback=False   
     self.silent_frames_count=0   
     self.combined_audio = b''  
@@ -75,7 +75,7 @@ class AudioStreamer():
       if self.level!=11:
         if self.noise_frames_count >= 4:
           self.noise_level = self.level
-          self.level = "inturruption"
+          self.level = 11
           self.logger.info("Level has changed to {}".format(self.level))
         
           self.noise_frames_count=0
@@ -135,7 +135,16 @@ class AudioStreamer():
   #write a fuction that detects absolute silence for 5 seconds and then starts the audio playback and changes the level to 10
 
 
-    
+  import pyttsx3
+  import io
+
+  def text_to_ulaw_stream(text):
+    engine = pyttsx3.init()
+    stream = io.BytesIO()
+    engine.save_to_file(text, stream)
+    engine.runAndWait()
+    ulaw_stream = stream.getvalue()
+    return ulaw_stream
 
 
   def start_audio_playback(self,mapping):
@@ -146,16 +155,134 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
-            while self.silent_frames_count<150:
-                sleep(.01)
-            response=requests.post("http://3.108.66.52:5005/convert",data=self.combined_audio)
-            print(response)
             self.silent_frames_count=0
             self.cotinues_silence_normal=0
             self.total_frames=0
             self.cotinues_silence_from_start=0
+
+            if self.level==11:
+              sleep(1)
+              x=self.read_wave_file(mapping[self.channel][self.level])
+              self.send_audio(x)
+              self.logger.info("playing interuption message")
+            
+            if self.level==10:
+              self.long_silence_num=0
+              num=0
+              self.logger.info("scilence count is {}".format(self.silent_frames_count))
+              self.logger.info("total frames is {}".format(self.total_frames))
+              while self.silent_frames_count==self.total_frames:
+                
+                if num==0:
+                  sleep(2)
+                  self.logger.info("playing no audio message and sleeping for 2 seconds")
+                
+                x=self.read_wave_file(mapping[self.channel][self.level])
+                self.send_audio(x)
+                self.logger.info("playing no audio message")
+                sleep(2)
+                num+=1
+                if num>3:
+                  self.level=8
+                  break
+              if self.level!=9:
+                self.level=self.last_level
+
+
+            #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+            
+            if self.level==8:
+              self.call.hangup()
+              self.audioplayback=False
+              sleep(1)
+              return
+            if self.level!=9:
+              while self.cotinues_silence_normal<150:
+                sleep(.01)
+              if self.cotinues_silence_from_start>100:
+               self.level=10
+               self.cotinues_silence_from_start=0
+               self.cotinues_silence_normal=0
+               
+              self.logger.info("waiting for silence")
+              self.silent_frames_count=0
+              self.cotinues_silence_normal=0
+              self.data_array=[]
+              if self.level!=11:
+                if self.level!=10:
+                  self.logger.info(self.level)
+                  self.last_level=self.level
+                  self.logger.info(self.level)
+                  self.level=9
+                  self.logger.info("level changed to 9")
+                else:
+                  self.logger.info("level is 10")
+                  pass
+              else:
+                self.logger.info("level is 11")
+                self.level=self.last_level
+            else:
+              if self.level!=10:
+                self.level=self.last_level+1
+              else:
+                pass
+               
+
+
+            
+              
+              
+
+          # if self.level==11:
+          #   self.level=self.noise_level
+          #   x=self.read_wave_file(mapping[self.channel][self.level])
+          #   self.send_audio(x)
+          # else:
+          #   self.level+=1
+        
+            
+
+
+
+
+          #   while noise - self.noise_level < 10:
+          #     x=self.read_wave_file(mapping[self.channel][self.level])
+          #     self.send_audio(x)
+          #     self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+          #     self.silent_frames_count=0
+          #     self.level=10
+          #   else:
+          #     self.level=last_level
+         
+
+            #  if self.level==11:
+            #   x=self.read_wave_file(mapping[self.channel][self.level])
+            #   self.logger.info("Call inturrupted due to noise")
+            #   self.send_audio(x)
+              
+              
+            #   while self.silent_frames_count<75:
+            #     sleep(.01)
+            #   self.level=last_level
+            #  else:
+            #   x=self.read_wave_file(mapping[self.channel][self.level])
+            #   self.logger.info("Call inturrupted due to noise")
+            #   self.send_audio(x)
+              
+              
+            #   while self.silent_frames_count<75:
+            #     sleep(.01)
+            #   self.level=last_level
+
+
+
+        self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
 
+        #convert data to json
+        #response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
+        #self.logger.info(response.text)
+        
 
 
     print('Connection with {0} over'.format(self.call.peer_addr))

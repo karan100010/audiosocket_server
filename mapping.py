@@ -15,3 +15,13 @@ mapping={"en":{1:"demo_audios/en/hello.wav",
                3:"demo_audios/hi/3.wav",
                4:"demo_audios/hi/4.wav"}
          }
+nlp_mapping={"en":{"wrong number":"sorry will not call you again",
+             "welcome":"hello is this karan joshi?",
+             "payment":"Can I send you a payment link for your premium amount to your number?",
+             "inturruption":"I am sorry, please complete what you were saying"
+             },
+             "hi":{"wrong number":"क्षमा करें, मैं आपको फिर से call नहीं करूंगा",
+                   "welcome":"नमस्ते क्या यह करण जोशी है?",
+                   "payment":"क्या मैं आपको आपके प्रीमियम राशि के लिए एक भुगतान लिंक भेज सकता हूँ?",
+                   "inturruption":"माफ़ कीजिए, कृपया जो आप कह रहे थे उसे पूरा करें"
+                   }}
