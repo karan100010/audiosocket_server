@@ -156,7 +156,7 @@ class AudioStreamer():
             lang_predict=requests.post("http://3.108.66.52:5000/predict",data=self.combined_audio)
             lang=json.loads(lang_predict.text)
             print(lang)
-            response=requests.post("http://3.108.66.52:5002/convert",data=self.combined_audio)
+            response=requests.post("http://3.108.66.52:5002/convert_en",data=self.combined_audio)
             resp=json.loads(response.text)
             if resp["transcribe"]=="":
                 self.level="cant_hear"
