@@ -151,7 +151,7 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(nlp_mapping[self.channel][self.level])
             self.send_audio(x)
-            while self.cotinues_silence_normal<50:
+            while self.cotinues_silence_normal<75:
                 sleep(.01)
             response=requests.post("http://3.108.66.52:5002/convert",data=self.combined_audio)
             print(response.text)
