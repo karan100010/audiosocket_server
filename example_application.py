@@ -160,7 +160,7 @@ class AudioStreamer():
             resp=json.loads(response.text)
             nlp = {"sentence": resp["transcribe"]}
             print(nlp)
-            data=json.dumps(nlp)
+            data=json.dumps({"sentence":"Call me today evening at 5"})
             nlp_response = requests.post("http://3.108.66.52:5001/get_entities", json=data)
             nlp_resp=json.loads(nlp_response.text)
             print(nlp_resp)
