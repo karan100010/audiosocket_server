@@ -156,7 +156,7 @@ class AudioStreamer():
             response=requests.post("http://3.108.66.52:5002/convert",data=self.combined_audio)
             resp=json.loads(response.text)
             if resp["transcribe"]=="":
-                self.level="inturruption"
+                self.level="cant_hear"
             self.combined_audio=b''
             print(response.text)
             self.silent_frames_count=0
