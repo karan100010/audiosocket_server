@@ -160,19 +160,13 @@ class AudioStreamer():
             # print(lang)
             response=requests.post("http://13.201.94.7:5002/convert_en",data=self.combined_audio)
             resp=json.loads(response.text)
-            nlp = {"sentence": resp["transcribe"]}
-            print(nlp)
-            data=json.dumps({"sentence":"Call me today evening at 5"})
-            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-            nlp_response = requests.post("http://13.201.94.7:5001/get_entities", json=nlp, headers=headers)
-            nlp_resp=json.loads(nlp_response.text)
             print(nlp_resp)
             print(resp)
             if resp["transcribe"]=="":
                 self.level="cant_hear"
-            if nlp_resp["intent"]=="wrong_number":
+            if resp["nlp"]["intent"]=="wrong_number":
                 self.level="wrong number"
-            elif nlp_resp["intent"]=='contact_human_agent':
+            elif resp["nlp"]["intent"]=='contact_human_agent':
                 if resp["transcribe"]!="":
                    
                   self.level="contact_human_agent"
