@@ -160,7 +160,6 @@ class AudioStreamer():
             # print(lang)
             response=requests.post("http://13.201.94.7:5002/convert_en",data=self.combined_audio)
             resp=json.loads(response.text)
-            print(nlp_resp)
             print(resp)
             if resp["transcribe"]=="":
                 self.level="cant_hear"
