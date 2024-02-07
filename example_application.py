@@ -120,9 +120,6 @@ class AudioStreamer():
       self.cotinues_silence_from_start=0  
       self.cotinues_silence_normal=0
     return
-  
-
-  
 
 
   def start_noise_detection(self):
@@ -140,9 +137,6 @@ class AudioStreamer():
   #write a fuction that detects absolute silence for 5 seconds and then starts the audio playback and changes the level to 10
 
 
-    
-
-
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
@@ -158,7 +152,7 @@ class AudioStreamer():
             # lang_predict=requests.post("http://localhost:5000/predict",data=self.combined_audio)
             # lang=json.loads(lang_predict.text)
             # print(lang)
-            response=requests.post("http://13.201.94.7:5002/convert_en",data=self.combined_audio)
+            response=requests.post("13.233.13.19:5002/convert_en",data=self.combined_audio)
             resp=json.loads(response.text)
             print(resp)
             if resp["transcribe"]=="":
