@@ -158,13 +158,13 @@ class AudioStreamer():
             # lang_predict=requests.post("http://localhost:5000/predict",data=self.combined_audio)
             # lang=json.loads(lang_predict.text)
             # print(lang)
-            response=requests.post("http://localhost:5002/convert_en",data=self.combined_audio)
+            response=requests.post("http://13.201.94.7:5002/convert_en",data=self.combined_audio)
             resp=json.loads(response.text)
             nlp = {"sentence": resp["transcribe"]}
             print(nlp)
             data=json.dumps({"sentence":"Call me today evening at 5"})
             headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-            nlp_response = requests.post("http://192.168.56.110:5001/get_entities", json=nlp, headers=headers)
+            nlp_response = requests.post("http://13.201.94.7:5001/get_entities", json=nlp, headers=headers)
             nlp_resp=json.loads(nlp_response.text)
             print(nlp_resp)
             print(resp)
