@@ -12,7 +12,7 @@ def connect_to_mongodb(username, password, host, port, database_name):
     return client
 def create_collections(client, collection_name):
 
-    collection = db[collection_name]
+    collection =client[collection_name]
     return collection
 # create post request handelr
 FlaskApp = Flask(__name__)
@@ -53,6 +53,6 @@ def read(collection):
 
 
 if __name__ == '__main__':
-    client = connect_to_mongodb('mongo', 'mongo#2024', '', 27017, 'test')
+    client = connect_to_mongodb('mongo', 'mongo#2024', '3.109.152.180', 27017, 'test')
     collection = create_collections(client, 'test')
     app.run(host='0.0.0.0', port=5008)
