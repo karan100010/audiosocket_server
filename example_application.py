@@ -15,6 +15,7 @@ from req import Requsts
 import json
 import base64
 import uuid
+import pymongo
 class AudioStreamer():
   def __init__(self,call):
     self.logger = ColouredLogger("audio sharing")
@@ -36,6 +37,7 @@ class AudioStreamer():
     self.noise_level=0
     self.last_level=0
     self.call_id=uuid.uuid4()
+    self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/')
 
 
   def read_wave_file(self, filename):
@@ -126,12 +128,12 @@ class AudioStreamer():
     while self.call.connected:
       audio_data = self.call.read()
       if self.audioplayback:
-        self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
+        #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
       else:
         self.combined_audio+=audio_data
         self.dedect_silence(audio_data,1,8000)
-        self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
+        #self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
   
 
@@ -175,7 +177,6 @@ class AudioStreamer():
                                 "level":self.level,
                                 "call_addr":self.call.peer_addr,
                                 "call_id":self.call_id}
-                return database_entry
               try:
                 
                 entry=requests.post("http://localhost:5008/create",data=database_entry)
