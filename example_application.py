@@ -37,7 +37,7 @@ class AudioStreamer():
     self.noise_level=0
     self.last_level=0
     self.call_id=uuid.uuid4()
-    self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/')
+    self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
 
 
   def read_wave_file(self, filename):
