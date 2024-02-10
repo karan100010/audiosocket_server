@@ -5,11 +5,13 @@ app=Flask(__name__)
 
 def connect_to_mongodb(username, password, host, port, database_name):
     # Connection URI with authentication
+    if username == "" and password == "":
+        uri = f"mongodb://{host}:{port}/{database_name}"
     uri = f"mongodb://{username}:{password}@{host}:{port}/{database_name}"
     client = MongoClient(uri)
     return client
-def create_collections(client, database_name, collection_name):
-    db = client[database_name]
+def create_collections(client, collection_name):
+
     collection = db[collection_name]
     return collection
 # create post request handelr
@@ -51,6 +53,6 @@ def read(collection):
 
 
 if __name__ == '__main__':
-    client = connect_to_mongodb('admin', 'admin', 'localhost', 27017, 'test')
+    client = connect_to_mongodb('', '', 'localhost', 27017, 'test')
     collection = create_collections(client, 'test', 'test')
     app.run(host='0.0.0.0', port=5008)
