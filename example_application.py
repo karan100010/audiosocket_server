@@ -179,8 +179,7 @@ class AudioStreamer():
                                 "call_id":self.call_id}
               try:
                 
-                entry=requests.post("http://localhost:5008/create",data=database_entry)
-                self.logger.info(entry)
+                self.conn["test"]["test"].insert_one(database_entry)
               except Exception as e:
                 self.logger.info(e)
                 
