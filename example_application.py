@@ -159,6 +159,18 @@ class AudioStreamer():
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.data_array=[]
+              response=requests.post("13.233.13.19:5002/convert_en",data=self.combined_audio)
+              resp=json.loads(response.text)
+              print(resp)
+              database_entry={"audio":self.combined_audio,
+                              "text":resp['transcribe'],
+                              "nlp":resp['nlp'],
+                              "level":self.level,
+                              "call_id":self.call.peer_addr,
+                              
+                              }
+              self.combined_audio=b''
+              
               if self.level!=11:
                 self.last_level=self.level
                 self.level=9
