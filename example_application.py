@@ -160,31 +160,30 @@ class AudioStreamer():
               self.logger.info("waiting for silence")
               self.silent_frames_count=0
               self.data_array=[]
-              def post():
-                try:
-                  response=requests.post("http://3.109.152.180:5002/convert_en",data=self.combined_audio)
-                  resp=json.loads(response.text)
-                except Exception as e:
-                  self.logger.info(e)
-                  resp={"transcribe":"error","nlp":"error"}
-                if resp['transcribe']!="error":
-                  print(resp)
-                  database_entry={"audio":self.combined_audio,
-                                  "text":resp['transcribe'],
-                                  "nlp":resp['nlp'],
-                                  "level":self.level,
-                                  "call_addr":self.call.peer_addr,
-                                  "call_id":self.call_id}
-                  return database_entry
-                try:
-                  
-                  entry=Requsts().post("http://localhost:5008/create",data=database_entry)
-                  self.logger.info(entry)
-                except Exception as e:
-                  self.logger.info(e)
-                return
-              transribe_thread=threading.Thread(target=post)
-              transribe_thread.start()
+              
+              try:
+                response=requests.post("http://3.109.152.180:5002/convert_en",data=self.combined_audio)
+                resp=json.loads(response.text)
+              except Exception as e:
+                self.logger.info(e)
+                resp={"transcribe":"error","nlp":"error"}
+              if resp['transcribe']!="error":
+                print(resp)
+                database_entry={"audio":self.combined_audio,
+                                "text":resp['transcribe'],
+                                "nlp":resp['nlp'],
+                                "level":self.level,
+                                "call_addr":self.call.peer_addr,
+                                "call_id":self.call_id}
+                return database_entry
+              try:
+                
+                entry=requests.post("http://localhost:5008/create",data=database_entry)
+                self.logger.info(entry)
+              except Exception as e:
+                self.logger.info(e)
+                
+              
 
 
                               

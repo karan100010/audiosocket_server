@@ -17,7 +17,7 @@ def create_collections(client, collection_name):
 # create post request handelr
 FlaskApp = Flask(__name__)
 @FlaskApp.route('/create', methods=['POST'])
-def create(collection):
+def create():
     #use bson data for binary data
     try:
         data = request.get_json()
@@ -30,7 +30,7 @@ def create(collection):
 
 # crate a put request handler
 @FlaskApp.route('/update', methods=['PUT'])
-def update(collection):
+def update():
     try:
         data = request.get_json()
         #update data into 
@@ -44,7 +44,7 @@ def update(collection):
 # create a get request handler
     
 @FlaskApp.route('/read', methods=['GET'])
-def read(collection):
+def read():
     try:
         data = collection.find()
         return dumps(data)
@@ -53,11 +53,13 @@ def read(collection):
 
 
 if __name__ == '__main__':
-    client = connect_to_mongodb('mongo', 'mongo#2024', '3.109.152.180', 27017, 'test')
-    #if test does not exist it will create a new one else connect to the existing one
-    if 'test' not in client.list_database_names():
+    conn = MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/')
+    #if test does not exist collections will be created
+    
         
     
-        collection = create_collections(client, 'test')
+    collection = conn["test"]["test"]
 
     app.run(host='0.0.0.0', port=5008)
+
+
