@@ -14,7 +14,7 @@ import math
 from req import Requsts
 import json
 import base64
-
+import uuid
 class AudioStreamer():
   def __init__(self,call):
     self.logger = ColouredLogger("audio sharing")
@@ -35,6 +35,7 @@ class AudioStreamer():
     self.long_silence=0
     self.noise_level=0
     self.last_level=0
+    self.call_id=uuid.uuid4()
 
 
   def read_wave_file(self, filename):
@@ -166,9 +167,13 @@ class AudioStreamer():
                               "text":resp['transcribe'],
                               "nlp":resp['nlp'],
                               "level":self.level,
-                              "call_id":self.call.peer_addr,
+                              "call_addr":self.call.peer_addr,
+                              "call_id":self.call_id}
+              entry=Requsts().post("http://localhost:5008/create",data=database_entry)
+              self.logger.info(entry)
+
                               
-                              }
+            
               self.combined_audio=b''
               
               if self.level!=11:
