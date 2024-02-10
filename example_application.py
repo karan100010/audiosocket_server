@@ -36,7 +36,7 @@ class AudioStreamer():
     self.long_silence=0
     self.noise_level=0
     self.last_level=0
-    self.call_id=uuid.uuid4()
+    self.call_id=str(uuid.uuid4())
     self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
 
 
@@ -177,11 +177,11 @@ class AudioStreamer():
                                 "level":self.level,
                                 "call_addr":self.call.peer_addr,
                                 "call_id":self.call_id}
-              try:
-                
-                self.conn["test"]["test"].insert_one(database_entry)
-              except Exception as e:
-                self.logger.info(e)
+                try:
+                  
+                  self.conn["test"]["test"].insert_one(database_entry)
+                except Exception as e:
+                  self.logger.info(e)
                 
               
 
