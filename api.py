@@ -53,6 +53,6 @@ def read(collection):
 
 
 if __name__ == '__main__':
-    client = connect_to_mongodb('', '', '', 27017, 'test')
+    client = connect_to_mongodb('mongo', 'mongo#2024', '', 27017, 'test')
     collection = create_collections(client, 'test')
     app.run(host='0.0.0.0', port=5008)
