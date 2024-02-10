@@ -264,13 +264,7 @@ def handel_call():
     noise_stream.start()
     playback_stream=threading.Thread(target=stream.start_audio_playback,args=(mapping,))
     playback_stream.start()
-    #put all the threads in a list exit all wihtn call.hangup
-    theads=[noise_stream,playback_stream]
-    if call.hangup():
-      for thread in theads:
-        thread.exit()
-      print("Call ended")
-      return
+    
   
 handel_call()
 
