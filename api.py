@@ -54,5 +54,10 @@ def read(collection):
 
 if __name__ == '__main__':
     client = connect_to_mongodb('mongo', 'mongo#2024', '3.109.152.180', 27017, 'test')
-    collection = create_collections(client, 'test')
+    #if test does not exist it will create a new one else connect to the existing one
+    if 'test' not in client.list_database_names():
+        
+    
+        collection = create_collections(client, 'test')
+
     app.run(host='0.0.0.0', port=5008)
