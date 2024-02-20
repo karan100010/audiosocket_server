@@ -16,6 +16,10 @@ import json
 import base64
 import uuid
 import pymongo
+import telebot
+import random
+
+
 class AudioStreamer():
   def __init__(self,call):
     self.logger = ColouredLogger("audio sharing")
@@ -37,8 +41,20 @@ class AudioStreamer():
     self.noise_level=0
     self.last_level=0
     self.call_id=str(uuid.uuid4())
-    self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
+    self.bot_api_token="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
+    self.bot = telebot.TeleBot(self.bot_api_token)
+    self.bot.add_message_handler(self.send_audio_tg)
+    self.filepath=""
+    #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
 
+  def send_audio_tg(self, message):
+        if self.level==3:
+          if self.filepath!="":
+            audio = open(self.filepath, 'rb') 
+            self.bot.send_audio(message.chat.id, audio)
+            audio.close()
+        else:
+          self.send_message(message.chat.id,"there is some issue on the user end")
 
   def read_wave_file(self, filename):
     #self.logger.debug("Reading wave file")
@@ -136,6 +152,27 @@ class AudioStreamer():
         #self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))  
     return
   
+  def start_polling(self):
+    self.bot.start_polling()
+  def convert_file(self,file):
+    # Decode and combine u-law fragments into a single bytearray
+    # Remove the unused line of code
+    # combined_pcm_data = bytearray()
+
+    # ulaw_data = bytes(file['data']['data'])
+
+    # Decode the u-law data to 16-bit linear PCM
+    # pcm_data = audioop.ulaw2lin(file, 2)
+
+    # Save the combined PCM data to a WAV file
+    filename='output{}.wav'.format(random.randint(1000, 9999))
+    with wave.open(filename), 'wb' as wf:
+        wf.setnchannels(1)  # Adjust based on the number of channels in your audio
+        wf.setsampwidth(2)  # 2 bytes for 16-bit audio
+        wf.setframerate(8000)  # Adjust based on the sample rate of your u-law audio
+        wf.writeframes(file)
+        return filename
+  
 
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
@@ -145,58 +182,71 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
-            if self.level==11:
-              sleep(1)
-              x=self.read_wave_file(mapping[self.channel][self.level])
-              self.send_audio(x)
-              self.logger.info("playing interuption message")
+        if self.level==1:
+          self.level==2
+
+        if self.level==2:
+          while self.silent_frames_count<100:
+                 sleep(.01)
+          self.filepath=self.convert_file(self.combined_audio)
+          self.level=3
+        if self.level==3:
+          self.call.hangup()
+          
+
+
+            # if self.level==11:
+            #   sleep(1)
+            #   x=self.read_wave_file(mapping[self.channel][self.level])
+            #   self.send_audio(x)
+            #   self.logger.info("playing interuption message")
 
             #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
-            if self.level==8:
-              self.call.hangup()
-              self.audioplayback=False
-              sleep(1)
-            if self.level!=9:
-              while self.silent_frames_count<100:
-                sleep(.01)
-              self.logger.info("waiting for silence")
-              self.silent_frames_count=0
-              self.data_array=[]
+            # if self.level==8:
+            #   self.call.hangup()
+            #   self.audioplayback=False
+            #   sleep(1)
+            # if self.level!=9:
+            #   while self.silent_frames_count<100:
+            #     sleep(.01)
+            #   self.logger.info("waiting for silence")
+            #   self.silent_frames_count=0
+            #   self.data_array=[]
               
-              try:
-                response=requests.post("http://3.109.152.180:5002/convert_en",data=self.combined_audio)
-                resp=json.loads(response.text)
-              except Exception as e:
-                self.logger.info(e)
-                resp={"transcribe":"error","nlp":"error"}
-              if resp['transcribe']!="error":
-                print(resp)
-                database_entry={"audio":self.combined_audio,
-                                "text":resp['transcribe'],
-                                "nlp":resp['nlp'],
-                                "level":self.level,
-                                "call_addr":self.call.peer_addr,
-                                "call_id":self.call_id}
-                try:
+            #   try:
+            #     response=requests.post("http://3.109.152.180:5002/convert_en",data=self.combined_audio)
+            #     resp=json.loads(response.text)
+            #   except Exception as e:
+            #     self.logger.info(e)
+            #     resp={"transcribe":"error","nlp":"error"}
+            #   if resp['transcribe']!="error":
+            #     print(resp)
+            #     database_entry={"audio":self.combined_audio,
+            #                     "text":resp['transcribe'],
+            #                     "nlp":resp['nlp'],
+            #                     "level":self.level,
+            #                     "call_addr":self.call.peer_addr,
+            #                     "call_id":self.call_id}
+            #     try:
                   
-                  self.conn["test"]["test"].insert_one(database_entry)
-                except Exception as e:
-                  self.logger.info(e)
+            #       self.conn["test"]["test"].insert_one(database_entry)
+            #     except Exception as e:
+            #       self.logger.info(e)
                 
               
 
 
                               
             
-              self.combined_audio=b''
+            #   self.combined_audio=b''
               
-              if self.level!=11:
-                self.last_level=self.level
-                self.level=9
-              else:
-                self.level=self.last_level
-            else:
-              self.level=self.last_level+1
+            #   if self.level!=11:
+            #     self.last_level=self.level
+            #     self.level=9
+            #   else:
+            #     self.level=self.last_level
+            # else:
+            #   self.level=self.last_level+1
 
           # if self.level==11:
           #   self.level=self.noise_level
@@ -263,6 +313,9 @@ def handel_call():
     noise_stream.start()
     playback_stream=threading.Thread(target=stream.start_audio_playback,args=(mapping,))
     playback_stream.start()
+    stream.start_polling()
+    
+
     
   
 handel_call()
