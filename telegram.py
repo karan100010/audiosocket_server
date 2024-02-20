@@ -39,6 +39,6 @@ def send_audio():
 
 if __name__ == '__main__':
     
-    poll=threading.Thread(target=bot.polling)
-    poll.run()
+    # poll=threading.Thread(target=bot.polling)
+    # poll.run()
     app.run(debug=True,port=5001)
