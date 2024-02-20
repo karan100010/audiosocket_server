@@ -184,6 +184,7 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
+        
             if self.level==1:
               self.level=2
 
@@ -192,6 +193,9 @@ class AudioStreamer():
                     sleep(.01)
               self.filepath=self.convert_file(self.combined_audio)
               self.level=3
+              req={"path":self.filepath}
+              resp=requests.post("localhost:5010",req)
+              print(resp)
             elif self.level==3:
               self.call.hangup()
           
