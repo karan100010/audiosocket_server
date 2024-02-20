@@ -182,16 +182,16 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.level])
             self.send_audio(x)
-        if self.level==1:
-          self.level=2
+            if self.level==1:
+              self.level=2
 
-        if self.level==2:
-          while self.silent_frames_count<100:
-                 sleep(.01)
-          self.filepath=self.convert_file(self.combined_audio)
-          self.level=3
-        if self.level==3:
-          self.call.hangup()
+            elif self.level==2:
+              while self.silent_frames_count<100:
+                    sleep(.01)
+              self.filepath=self.convert_file(self.combined_audio)
+              self.level=3
+            elif self.level==3:
+              self.call.hangup()
           
 
 
