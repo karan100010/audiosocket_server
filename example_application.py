@@ -166,7 +166,7 @@ class AudioStreamer():
 
     # Save the combined PCM data to a WAV file
     filename='output{}.wav'.format(random.randint(1000, 9999))
-    with wave.open(filename), 'wb' as wf:
+    with wave.open(filename, 'wb') as wf:
         wf.setnchannels(1)  # Adjust based on the number of channels in your audio
         wf.setsampwidth(2)  # 2 bytes for 16-bit audio
         wf.setframerate(8000)  # Adjust based on the sample rate of your u-law audio
