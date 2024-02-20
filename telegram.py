@@ -9,7 +9,7 @@ bot = telebot.TeleBot("7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM")
 @bot.message_handler(commands=['start'])
 def handle_all_messages(message):
     global chat_id 
-    #chat_id.append(message.chat.id)
+    chat_id.append(message.chat.id)
     bot.send_message(message.chat.id,"hi")
 
 # Endpoint to receive audio file
@@ -37,5 +37,5 @@ def send_audio():
         print("no chatid was found")
 
 if __name__ == '__main__':
-    bot.polling()
+  
     app.run(debug=True,port=5010)
