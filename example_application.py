@@ -45,7 +45,9 @@ class AudioStreamer():
     self.bot = telebot.TeleBot(self.bot_api_token)
     self.bot.add_message_handler(self.send_audio_tg)
     self.filepath=""
+    self.chat_id=""
     #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
+
 
   def send_audio_tg(self, message):
         if self.level==3:
