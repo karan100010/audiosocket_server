@@ -319,7 +319,6 @@ def handel_call():
     noise_stream.start()
     playback_stream=threading.Thread(target=stream.start_audio_playback,args=(mapping,))
     playback_stream.start()
-    stream.start_polling()
     
 
     
