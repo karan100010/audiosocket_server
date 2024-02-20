@@ -9,7 +9,7 @@ bot = telebot.TeleBot("7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM")
 def handle_all_messages(message):
     global chat_id 
     with open("chat_id.txt","+a") as file:
-        file.write(message.chat.id + '\n')
+        file.write(str(message.chat.id) + '\n')
         file.close()
 
     bot.send_message(message.chat.id,"hi")
