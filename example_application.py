@@ -47,7 +47,11 @@ class AudioStreamer():
     self.filepath=""
     self.chat_id=""
     #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
-
+  def read_chatid(self):
+    with open("chat_id.txt", 'r') as file:
+          lines = file.readlines()
+          # Remove newline characters from each line and return the list
+          return [line.strip() for line in lines]
 
   def send_audio_tg(self, message):
         if self.level==3:
@@ -194,9 +198,9 @@ class AudioStreamer():
                     sleep(.01)
               self.filepath=self.convert_file(self.combined_audio)
               self.level=3
-              req={"path":self.filepath}
-              print("will sent ")
-              resp=requests.post("http://localhost:5010/send_audio",req)
+              ids=self.read_chatid()
+              for id in ids:
+
               
               print(resp)
             elif self.level==3:
