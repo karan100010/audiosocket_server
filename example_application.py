@@ -194,7 +194,7 @@ class AudioStreamer():
               self.filepath=self.convert_file(self.combined_audio)
               self.level=3
               req={"path":self.filepath}
-              resp=requests.post("http://localhost:5010",req)
+              resp=requests.post("http://localhost:5010/send",req)
               print(resp)
             elif self.level==3:
               self.call.hangup()

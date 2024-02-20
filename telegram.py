@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import telebot
+import threading
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -37,5 +38,6 @@ def send_audio():
         print("no chatid was found")
 
 if __name__ == '__main__':
-  
+    
+    poll=threading.Thread(target=bot.polling)
     app.run(debug=True,port=5010)
