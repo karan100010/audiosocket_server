@@ -200,13 +200,19 @@ class AudioStreamer():
               self.level=3
               ids=self.read_chatid()
               for id in ids:
+                TOKEN="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
+                audio_file=open("output2134.wav","rb")
+                url = "https://api.telegram.org/bot"+TOKEN+"/sendAudio"
+                files = {'audio': audio_file.read()}
+                params = {'chat_id': id}
+                response = requests.post(url, files=files, params=params)
+                print(response)
 
               
-              print(resp)
+              
             elif self.level==3:
               self.call.hangup()
           
-
 
             # if self.level==11:
             #   sleep(1)
