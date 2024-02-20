@@ -9,8 +9,8 @@ bot = telebot.TeleBot("7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM")
 @bot.message_handler(commands=['start'])
 def handle_all_messages(message):
     global chat_id 
-    chat_id.append(message.chat.id)
-    bot.send_message(chat_id, "Your chat ID is: {}".format(chat_id))
+    #chat_id.append(message.chat.id)
+    bot.send_message("hi")
 
 # Endpoint to receive audio file
 @app.route('/send_audio', methods=['POST'])
