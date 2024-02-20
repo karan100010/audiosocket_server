@@ -201,7 +201,7 @@ class AudioStreamer():
               ids=self.read_chatid()
               for id in ids:
                 TOKEN="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
-                audio_file=open("output2134.wav","rb")
+                audio_file=open(self.filepath,"rb")
                 url = "https://api.telegram.org/bot"+TOKEN+"/sendAudio"
                 files = {'audio': audio_file.read()}
                 params = {'chat_id': id}
