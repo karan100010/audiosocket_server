@@ -153,7 +153,7 @@ class AudioStreamer():
     return
   
   def start_polling(self):
-    self.bot.start_polling()
+    self.bot.polling()
   def convert_file(self,file):
     # Decode and combine u-law fragments into a single bytearray
     # Remove the unused line of code
