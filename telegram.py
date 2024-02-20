@@ -35,10 +35,8 @@ def send_audio():
             else:
                 return jsonify({'success': False, 'message': 'Missing chat_id or audio in the request'})
     else:
-        print("no chatid was found")
+        print("no chat id was found")
 
 if __name__ == '__main__':
     
-    poll=threading.Thread(target=bot.polling)
-    poll.run()
-    app.run(debug=True,port=5010)
+    bot.polling(none_stop=True)
