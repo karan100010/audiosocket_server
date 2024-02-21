@@ -1,6 +1,7 @@
-mapping={"en":{1:"demo_audios/en/rec_complain.wav",
+mapping={"en":{1:"demo_audios/en/rec_message.wav",
          2:"demo_audios/en/beep.wav",
-         3:"demo_audios/en/bye.wav"
+         "hi":"demo_audios/en/hi.wav",
+         "en":"demo_audios/en/en.wav"
          },
 
          "hi":{1:"demo_audios/hi/1.wav",
