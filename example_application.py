@@ -199,7 +199,7 @@ class AudioStreamer():
               response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
               resp=json.loads(response.text)
               print(resp)
-              self.level=resp["'prediction'"]
+              self.level=resp["prediction"]
 
               
             elif self.level=="hi" or self.level== "en":
