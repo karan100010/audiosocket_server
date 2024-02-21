@@ -196,10 +196,10 @@ class AudioStreamer():
               while self.silent_frames_count<100:
                     print("waiting")
                     sleep(.01)
-                    response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
-                    resp=json.loads(response.text)
-                    print(resp)
-                    self.level=resp[ "predicted_language"]
+              response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
+              resp=json.loads(response.text)
+              print(resp)
+              self.level=resp[ "predicted_language"]
 
               
             elif self.level=="hi" or self.level== "en":
