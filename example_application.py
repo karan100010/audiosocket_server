@@ -196,21 +196,13 @@ class AudioStreamer():
               while self.silent_frames_count<100:
                     print("waiting")
                     sleep(.01)
-              self.filepath=self.convert_file(self.combined_audio)
-              self.level=3
-              ids=self.read_chatid()
-              for id in ids:
-                TOKEN="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
-                audio_file=open(self.filepath,"rb")
-                url = "https://api.telegram.org/bot"+TOKEN+"/sendAudio"
-                files = {'audio': audio_file.read()}
-                params = {'chat_id': id}
-                response = requests.post(url, files=files, params=params)
-                print(response)
+                    response=requests.post("http://65.2.152.189:5000/pridect",data=self.combined_audio)
+                    resp=json.loads(response.text)
+                    print(resp)
+                    self.level=resp[ "predicted_language"]
 
               
-              
-            elif self.level==3:
+            elif self.level=="hi" or self.level== "en":
               self.call.hangup()
           
 
