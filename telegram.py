@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 import telebot
 import threading
-import tailer
 from pyst2 import Manager
 import os
 
