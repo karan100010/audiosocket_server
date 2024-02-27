@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 import telebot
-import threading
-from astrisk.manager import Manager
+from asterisk.manager import Manager
 import os
 
 manager = Manager()
