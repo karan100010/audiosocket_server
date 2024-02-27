@@ -23,7 +23,7 @@ def handle_all_messages(message):
 @bot.message_handler(content_types=['voice'])
 def handle_audio(update):
     #dounload the audio file from the user and save it in the server as wav file
-    file = bot.get_file(update.message.voice.file_id)
+    file = bot.get_file(update.voice.file_id)
     file_url = f"https://api.telegram.org/file/bot{bot.token}/{file.file_path}"
     response = requests.get(file_url)
 
