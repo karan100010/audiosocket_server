@@ -20,7 +20,7 @@ def handle_all_messages(message):
     bot.send_message(message.chat.id,"hi")
 
 @bot.message_handler(content_types=['voice'])
-def handle_audio(update, context):
+def handle_audio(update):
     #dounload the audio file from the user and save it in the server as wav file
     file = bot.getFile(update.message.voice.file_id)
     file.download('demo_audios/en/audio.wav')
