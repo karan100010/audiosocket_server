@@ -22,7 +22,7 @@ def handle_all_messages(message):
 @bot.message_handler(content_types=['voice'])
 def handle_audio(update):
     #dounload the audio file from the user and save it in the server as wav file
-    file = bot.get_file(update.message.voice.file_id)
+    file = bot.get_file(update.voice.file_id)
     file.download('demo_audios/en/audio.wav')
     #merge audio file with header.wav file
     os.system("sox -m demo_audios/en/header.wav demo_audios/en/audio.wav -r 8000 demo_audios/en/output.wav && chmod 700 demo_audios/en/output.wav")
