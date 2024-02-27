@@ -29,14 +29,14 @@ def handle_audio(update):
 
     if response.status_code == 200:
 
-        with open(' demo_audios/en/audio.wav', 'wb') as f:
+        with open('audio.wav', 'wb') as f:
             f.write(response.content)
         print("Audio downloaded successfully.")
     else:
         print("Failed to download audio.")
     
     #merge audio file with header.wav file
-    os.system("sox -m demo_audios/en/header.wav demo_audios/en/audio.wav -r 8000 demo_audios/en/output.wav && chmod 700 demo_audios/en/output.wav")
+    os.system("sox -m demo_audios/en/header.wav audio.wav -r 8000 demo_audios/en/output.wav && chmod 700 output.wav")
 
     manager.originate(
         channel="SIP/zoiper",
