@@ -4,7 +4,9 @@ import threading
 from astrisk.manager import Manager
 import os
 
-manager = Manager('localhost', 'zoiper', '#supersecret#')
+manager = Manager()
+manager.connect('localhost')
+manager.login('karan', 'test')
 chat_id=[]
 # Initialize Telegram bot
 bot = telebot.TeleBot("7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM")
