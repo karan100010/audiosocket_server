@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import telebot
 import threading
-from pyst2 import Manager
+from astrisk.manager import Manager
 import os
 
 manager = Manager('localhost', 'zoiper', '#supersecret#')
