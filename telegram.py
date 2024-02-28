@@ -56,7 +56,11 @@ def handle_audio(update):
     sound1 = AudioSegment.from_file("output.wav")
     sound2 = AudioSegment.from_file("demo_audios/en/header.wav")
     combined = sound2 + sound1
+    
     combined.export("final.wav", format='wav')
+    #chmod final.wav file to 777
+    os.system("chmod 777 final.wav")
+
    
     manager.originate(
         channel="SIP/zoiper",
@@ -67,7 +71,7 @@ def handle_audio(update):
         timeout=30000,  # Timeout in milliseconds
         #async=True  # Perform asynchronously
         application="Playback",
-        data="/home/vboxuser/audoisocket_server/final.wav"
+        data="/home/vboxuser/audiosocket_server/final.wav"
         
     )
     #play audio file for the user when the call is answered
