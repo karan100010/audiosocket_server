@@ -71,7 +71,7 @@ def handle_audio(update):
         timeout=30000,  # Timeout in milliseconds
         #async=True  # Perform asynchronously
         application="Playback",
-        data="/home/vboxuser/audiosocket_server/final.wav"
+        data="/home/vboxuser/audiosocket_server/final"
         
     )
     #play audio file for the user when the call is answered
