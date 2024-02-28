@@ -4,6 +4,9 @@ from asterisk.manager import Manager
 import os
 import threading
 import requests
+from pydub import AudioSegment
+from io import BytesIO
+
 
 manager = Manager()
 manager.connect('localhost')
@@ -29,15 +32,32 @@ def handle_audio(update):
 
     if response.status_code == 200:
 
-        with open('audio.wav', 'wb') as f:
-            f.write(response.content)
-        print("Audio downloaded successfully.")
-    else:
-        print("Failed to download audio.")
+       
+# Assuming you have the OGG stream stored in a variable named ogg_stream
+
+        # Create a BytesIO object to treat the stream as a file-like object
+        ogg_stream_bytesio = BytesIO(response.content)
+
+        # Load the OGG audio stream from the BytesIO object
+        ogg_audio = AudioSegment.from_file(ogg_stream_bytesio, format="ogg")
+
+        # Set the desired sample rate (8000Hz)
+        desired_sample_rate = 8000
+
+        # Resample the audio to 8000Hz
+        ogg_audio = ogg_audio.set_frame_rate(desired_sample_rate)
+
+        # Export the audio as a WAV file
+        ogg_audio.export("output.wav", format="wav")
+
+
     
     #merge audio file with header.wav file
-    os.system("sox -m demo_audios/en/header.wav audio.wav -r 8000 demo_audios/en/output.wav && chmod 700 output.wav")
-
+    sound1 = AudioSegment.from_file("output.wav")
+    sound2 = AudioSegment.from_file("demo_audios/en/header.wav")
+    combined = sound2 + sound1
+    combined.export("final.wav", format='wav')
+   
     manager.originate(
         channel="SIP/zoiper",
         context="my-phones",
@@ -47,7 +67,7 @@ def handle_audio(update):
         timeout=30000,  # Timeout in milliseconds
         #async=True  # Perform asynchronously
         application="Playback",
-        data="output"
+        data="/home/vboxuser/audoisocket_server/final.wav"
         
     )
     #play audio file for the user when the call is answered
