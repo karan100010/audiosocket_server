@@ -45,7 +45,7 @@ def handle_audio(update):
         desired_sample_rate = 8000
 
         # Resample the audio to 8000Hz
-        ogg_audio = ogg_audio.set_frame_rate(desired_sample_rate)
+        ogg_audio = ogg_audio.set_frame_rate(desired_sample_rate).set_sample_width(2)
 
         # Export the audio as a WAV file
         ogg_audio.export("output.wav", format="wav")
@@ -56,6 +56,8 @@ def handle_audio(update):
     sound1 = AudioSegment.from_file("output.wav")
     sound2 = AudioSegment.from_file("demo_audios/en/header.wav")
     combined = sound2 + sound1
+    combined = combined.set_frame_rate(desired_sample_rate).set_sample_width(2)
+
     
     combined.export("final.wav", format='wav')
     #chmod final.wav file to 777
