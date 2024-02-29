@@ -215,8 +215,11 @@ class AudioStreamer():
                   response=requests.post("http://localhost:5000/predict",data=self.combined_audio)
                   url = "https://api.telegram.org/bot"+TOKEN+"/sendMessage"
                   
+                  #get "transcript" form response
+                  transcript = dict(response.json())["transcript"]
+                  print(transcript)
 
-                  data = {"chat_id": id, "text":response.content.decode('utf-8')}
+                  data = {"chat_id": id, "text":transcript}
                   response2 = requests.post(url, data=data)
                   print(response2.text)
                   return
