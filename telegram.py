@@ -64,7 +64,7 @@ def handle_menu(message):
         # markup = types.ReplyKeyboardMarkup(row_width=2)
         # itembtn1 = types.KeyboardButton("reply")
         # itembtn2 = types.KeyboardButton("forword")
-        bot.send_message(message.chat.id,str(i))
+        bot.send_message(message.chat.id,str(i["transcript"]))
         
         
   
