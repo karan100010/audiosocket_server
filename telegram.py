@@ -87,7 +87,8 @@ def handle_menu(message):
         # itembtn2 = types.KeyboardButton("forword")
 
         bot.send_message(message.chat.id,str(i["transcript"]))
-        bot.send_audio(message.chat.id,i["audio"])
+        file=convert_file(i["audio"])
+        bot.send_audio(message.chat.id,open(file,"rb"))
         
         
   
