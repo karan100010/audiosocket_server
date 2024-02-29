@@ -136,23 +136,6 @@ def handle_next(call):
     reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
     start_index+=5
     end_index+=5
-        
-
-
-
-        
-        
-  
-    
-    
-
-
-
-
-
-    
-    
-       
 
 
 @bot.message_handler(content_types=['voice'])
