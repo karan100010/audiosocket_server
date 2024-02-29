@@ -233,7 +233,8 @@ class AudioStreamer():
                       print(response2.text)
                   dataset["audio"]=self.combined_audio
                   try:
-                    self.conn.insert_one(dataset)
+                    self.conn["Grievance"]["grievances"].insert_one(dataset)
+
                   except Exception as e:
                     self.logger.error(e)
 
