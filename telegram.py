@@ -56,8 +56,8 @@ def handle_audio(update):
 @bot.message_handler(commands=['/get_all'])
 def handle_menu(message):
     #send the user a list of menu options
-    conn["Grievance"]["grievances"].find_all()
-    for i in conn["Grievance"]["grievances"][:5]:
+    x=conn["Grievance"]["grievances"].find_all()
+    for i in x[:5]:
         # markup = types.ReplyKeyboardMarkup(row_width=2)
         # itembtn1 = types.KeyboardButton("reply")
         # itembtn2 = types.KeyboardButton("forword")
