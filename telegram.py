@@ -73,16 +73,19 @@ def handle_audio(update):
 
         # Export the audio as a WAV file
         ogg_audio.export("output.wav", format="wav")
-
+start_index=0
+end_index=5
 #write a handeler for menu options
 @bot.message_handler(commands=['get_all'])
 def handle_menu(message):
     #send the user a list of menu options
+    global start_index
+    global end_index
     x=conn["Grievance"]["grievances"]
 
     lis=[i for i in x.find()]
     print(lis[0])
-    for i in lis[:5]:
+    for i in lis[start_index:end_index]:
         # markup = types.ReplyKeyboardMarkup(row_width=2)
         # itembtn1 = types.KeyboardButton("reply")
         # itembtn2 = types.KeyboardButton("forword")
@@ -93,10 +96,40 @@ def handle_menu(message):
         file=convert_file(i["audio"])
         bot.send_audio(message.chat.id,open(file,"rb"))
         bot.send_message(message.chat.id,"reply",reply_markup=reply_markup)
+    reply_markup = types.InlineKeyboardMarkup()
+    reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
+    start_index+=5
+    end_index+=5
 
 @bot.callback_query_handler(func=lambda call: call.data == 'reply')
 def handle_reply(call):
     bot.send_message(call.message.chat.id, "Please record your reply now...")
+
+@bot.callback_query_handler(func=lambda call: call.data == 'next')
+def handle_next(call):
+    global start_index
+    global end_index
+
+    if end_index>conn["Grievance"]["grievances"].count():
+        end_index=conn["Grievance"]["grievances"].count()
+    x=conn["Grievance"]["grievances"]
+    for i in x.find()[start_index:end_index]:
+        # markup = types.ReplyKeyboardMarkup(row_width=2)
+        # itembtn1 = types.KeyboardButton("reply")
+        # itembtn2 = types.KeyboardButton("forword")
+        reply_markup = types.InlineKeyboardMarkup()
+        reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
+
+        bot.send_message(call.message.chat.id,str(i["transcript"]))
+        file=convert_file(i["audio"])
+        bot.send_audio(call.message.chat.id,open(file,"rb"))
+        bot.send_message(call.message.chat.id,"reply",reply_markup=reply_markup)
+    reply_markup = types.InlineKeyboardMarkup()
+    reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
+    start_index+=5
+    end_index+=5
+        
+
 
 
         
