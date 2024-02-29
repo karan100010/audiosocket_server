@@ -98,6 +98,7 @@ def handle_menu(message):
         bot.send_message(message.chat.id,"reply",reply_markup=reply_markup)
     reply_markup = types.InlineKeyboardMarkup()
     reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
+    bot.send_message(message.chat.id,"next",reply_markup=reply_markup)
     start_index+=5
     end_index+=5
 
