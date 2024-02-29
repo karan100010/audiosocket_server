@@ -53,7 +53,7 @@ def handle_audio(update):
         ogg_audio.export("output.wav", format="wav")
 
 #write a handeler for menu options
-@bot.message_handler(commands=['/get_all'])
+@bot.message_handler(commands=['get_all'])
 def handle_menu(message):
     #send the user a list of menu options
     x=conn["Grievance"]["grievances"]
