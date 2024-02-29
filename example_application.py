@@ -214,7 +214,8 @@ class AudioStreamer():
                 def get_analysis():
                   response=requests.post("http://localhost:5000/predict",data=self.combined_audio)
                   url = "https://api.telegram.org/bot"+TOKEN+"/sendMessage"
-                  data = {"chat_id": id, "text": response.text}
+                  answer=json.loads(response.text)
+                  data = {"chat_id": id, "text":answer["transcript"] }
                   response2 = requests.post(url, data=data)
                   print(response2.text)
                   return
