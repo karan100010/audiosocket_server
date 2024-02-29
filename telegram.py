@@ -47,32 +47,6 @@ def handle_all_messages(message):
 
     bot.send_message(message.chat.id,"hi")
 
-@bot.message_handler(content_types=['voice'])
-def handle_audio(update):
-    #dounload the audio file from the user and save it in the server as wav file
-    file = bot.get_file(update.voice.file_id)
-    file_url = f"https://api.telegram.org/file/bot{bot.token}/{file.file_path}"
-    response = requests.get(file_url)
-
-    if response.status_code == 200:
-
-       
-# Assuming you have the OGG stream stored in a variable named ogg_stream
-
-        # Create a BytesIO object to treat the stream as a file-like object
-        ogg_stream_bytesio = BytesIO(response.content)
-
-        # Load the OGG audio stream from the BytesIO object
-        ogg_audio = AudioSegment.from_file(ogg_stream_bytesio, format="ogg")
-
-        # Set the desired sample rate (8000Hz)
-        desired_sample_rate = 8000
-
-        # Resample the audio to 8000Hz
-        ogg_audio = ogg_audio.set_frame_rate(desired_sample_rate).set_sample_width(2)
-
-        # Export the audio as a WAV file
-        ogg_audio.export("output.wav", format="wav")
 start_index=0
 end_index=5
 #write a handeler for menu options
