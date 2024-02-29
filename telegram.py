@@ -144,6 +144,7 @@ def handle_audio(update):
     file = bot.get_file(update.voice.file_id)
     file_url = f"https://api.telegram.org/file/bot{bot.token}/{file.file_path}"
     response = requests.get(file_url)
+    print(response.status_code)
 
     if response.status_code == 200:
 
