@@ -129,7 +129,7 @@ def handle_menu(message):
 
         bot.send_message(message.chat.id,str(i["transcript"]))
         bot.send_message(message.chat.id,str(i["categoryName"]))
-        bot.send_message(message.chat.id,str(i["status"]))
+        bot.send_message(message.chat.id,"open")
         
         file=convert_file(i["audio"])
         bot.send_audio(message.chat.id,open(file,"rb"))
