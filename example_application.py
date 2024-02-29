@@ -47,7 +47,7 @@ class AudioStreamer():
     self.filepath=""
     self.chat_id=""
     self.long_pause=0
-    self.conn=conn = pymongo.MongoClient("mongodb+srv://root:toor@testcluster.exl8ah5.mongodb.net/Grievance?retryWrites=true&w=majority&appName=TestCluster",uuidRepresentation='standard')
+    self.conn= pymongo.MongoClient("mongodb+srv://root:toor@testcluster.exl8ah5.mongodb.net/Grievance?retryWrites=true&w=majority&appName=TestCluster",uuidRepresentation='standard')
   def read_chatid(self):
     with open("chat_id.txt", 'r') as file:
           lines = file.readlines()
@@ -223,7 +223,7 @@ class AudioStreamer():
                   
                   #get "transcript" form response
                   dataset = dict(response.json())
-                  
+                 
                   for i,j in dataset.items():
                     if j!="":
                       
@@ -232,6 +232,10 @@ class AudioStreamer():
                       response2 = requests.post(url, data=data)
                       print(response2.text)
                   dataset["audio"]=self.combined_audio
+                  try:
+                    self.conn.insert_one(dataset)
+                  except Exception as e:
+                    self.logger.error(e)
 
                   return
                 analysis=threading.Thread(target=get_analysis)
