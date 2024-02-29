@@ -147,10 +147,13 @@ def handle_reply(call):
 def handle_next(call):
     global start_index
     global end_index
-
-    if end_index>conn["Grievance"]["grievances"].count():
-        end_index=conn["Grievance"]["grievances"].count()
     x=conn["Grievance"]["grievances"]
+    lis=[i for i in x.find()]
+
+    if end_index>len(lis):
+        end_index=len(lis)
+    x=conn["Grievance"]["grievances"]
+    lis=[i for i in x.find()]
     for i in x.find()[start_index:end_index]:
         # markup = types.ReplyKeyboardMarkup(row_width=2)
         # itembtn1 = types.KeyboardButton("reply")
