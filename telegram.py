@@ -63,6 +63,7 @@ def handle_menu(message):
     item3 = types.KeyboardButton("get grivance by date")
     item4 = types.KeyboardButton("get grivance by status")
     markup.add(item1, item2, item3,item4)
+    bot.send_message(message.chat.id, "Choose one option:", reply_markup=markup)
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
     if call.data == "Get grivance by category":
