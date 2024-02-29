@@ -86,10 +86,19 @@ def handle_menu(message):
         # markup = types.ReplyKeyboardMarkup(row_width=2)
         # itembtn1 = types.KeyboardButton("reply")
         # itembtn2 = types.KeyboardButton("forword")
+        reply_markup = types.InlineKeyboardMarkup()
+        reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
 
         bot.send_message(message.chat.id,str(i["transcript"]))
         file=convert_file(i["audio"])
         bot.send_audio(message.chat.id,open(file,"rb"))
+        bot.send_message(message.chat.id,"reply",reply_markup=reply_markup)
+
+@bot.callback_query_handler(func=lambda call: call.data == 'reply')
+def handle_reply(call):
+    bot.send_message(call.message.chat.id, "Please record your reply now...")
+
+
         
         
   
