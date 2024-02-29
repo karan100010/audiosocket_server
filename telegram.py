@@ -91,6 +91,13 @@ def handle_menu(message):
         # itembtn2 = types.KeyboardButton("forword")
         reply_markup = types.InlineKeyboardMarkup()
         reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
+        #reply_markup.add(types.InlineKeyboardButton("Change status", callback_data='forward'))
+
+        # try:
+        #     conn["Grievance"]["grievances"].update_one({"_id":i["_id"]},{"$set":{"status":"in progress"}})
+
+        # except:
+        #     bot.send_message(message.chat.id,"error in updating status")
 
         bot.send_message(message.chat.id,str(i["transcript"]))
         file=convert_file(i["audio"])
