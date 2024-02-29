@@ -221,7 +221,7 @@ class AudioStreamer():
                     if j!="":
                       
 
-                      data = {"chat_id": id, "text":i+" = "+dataset[i]}
+                      data = {"chat_id": id, "text":i+" = "+j}
                       response2 = requests.post(url, data=data)
                       print(response2.text)
                   return
