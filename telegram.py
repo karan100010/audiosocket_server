@@ -137,8 +137,6 @@ def handle_menu(message):
         
         reply_markup = types.InlineKeyboardMarkup()
         reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(str(i['_id']))))
-       
-        reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(str(i['_id']))))
         reply_markup.add(types.InlineKeyboardButton("in progress", callback_data='mongo_id:{}'.format(str(i['_id']))))
         reply_markup.add(types.InlineKeyboardButton("resolved", callback_data='mongo_id:{}'.format(str(i['_id']))))
         bot.send_message(message.chat.id,"pelase select an option if you want to change status",reply_markup=reply_markup)
