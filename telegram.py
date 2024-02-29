@@ -152,7 +152,7 @@ def handle_query(call):
     data=call.data
     if data.startswith("mongo_id"):
         try:
-            conn["Grievance"]["grievances"].update_one({"_id":str(i[_id])},{"$set":{"status":data.split(":")[1]}})
+            conn["Grievance"]["grievances"].update_one({"_id":data.split(":")[1]},{"$set":{"status":data.split(":")[1]}})
             bot.send_message(call.message.chat.id,"status updated")
         except Exception as e:
             bot.send_message(call.message.chat.id,"error in updating status")
