@@ -216,12 +216,14 @@ class AudioStreamer():
                   url = "https://api.telegram.org/bot"+TOKEN+"/sendMessage"
                   
                   #get "transcript" form response
-                  transcript = dict(response.json())["transcript"]
-                  print(transcript)
+                  dataset = dict(response.json())["transcript"]
+                  for i,j in dataset.items():
+                    if j!="":
+                      
 
-                  data = {"chat_id": id, "text":transcript}
-                  response2 = requests.post(url, data=data)
-                  print(response2.text)
+                      data = {"chat_id": id, "text":i+" = "+dataset[j]}
+                      response2 = requests.post(url, data=data)
+                      print(response2.text)
                   return
                 analysis=threading.Thread(target=get_analysis)
                 analysis.start()
