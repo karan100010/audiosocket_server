@@ -198,7 +198,7 @@ class AudioStreamer():
               self.level=2
 
             elif self.level==2:
-              while self.silent_frames_count<200:
+              while self.long_pause<200:
                     print("waiting")
                     sleep(.01)
               self.filepath=self.convert_file(self.combined_audio)
