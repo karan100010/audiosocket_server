@@ -118,9 +118,8 @@ def handle_menu(message):
         # markup = types.ReplyKeyboardMarkup(row_width=2)
         # itembtn1 = types.KeyboardButton("reply")
         # itembtn2 = types.KeyboardButton("forword")
-        reply_markup = types.InlineKeyboardMarkup()
-        reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
-        #reply_markup.add(types.InlineKeyboardButton("Change status", callback_data='forward'))
+        
+                         
 
         # try:
         #     conn["Grievance"]["grievances"].update_one({"_id":i["_id"]},{"$set":{"status":"in progress"}})
@@ -131,45 +130,63 @@ def handle_menu(message):
         bot.send_message(message.chat.id,str(i["transcript"]))
         file=convert_file(i["audio"])
         bot.send_audio(message.chat.id,open(file,"rb"))
+        
+        reply_markup = types.InlineKeyboardMarkup()
+        reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
         bot.send_message(message.chat.id,"reply",reply_markup=reply_markup)
+        reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
+        reply_markup = types.InlineKeyboardMarkup()
+        reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
+        reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
+        reply_markup.add(types.InlineKeyboardButton("in progress", callback_data='mongo_id:{}'.format(i['_id'])))
+        reply_markup.add(types.InlineKeyboardButton("resolved", callback_data='mongo_id:{}'.format(i['_id'])))
+        bot.send_message(message.chat.id,"pelase select an option if you want to change status",reply_markup=reply_markup)
     reply_markup = types.InlineKeyboardMarkup()
     reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
     bot.send_message(message.chat.id,"next",reply_markup=reply_markup)
     start_index+=5
     end_index+=5
+@bot.callback_query_handler(func=lambda call: True)
+def handle_query(call):
+    data=call.data
+    if data.startswith("mongo_id"):
+        try:
+            conn["Grievance"]["grievances"].update_one({"_id":i["_id"]},{"$set":{"status":data.split(":")[1]}})
+            bot.send_message(call.message.chat.id,"status updated")
+        except:
+            bot.send_message(call.message.chat.id,"error in updating status")
+    elif data.startswith("reply"):
+        bot.send_message(call.message.chat.id, "Please record your reply now...")
+    elif data.startswith("next"):
+        global start_index
+        global end_index
+        x=conn["Grievance"]["grievances"]
+        lis=[i for i in x.find()]
 
+        if end_index>len(lis):
+            end_index=len(lis)
+        x=conn["Grievance"]["grievances"]
+        lis=[i for i in x.find()]
+        for i in x.find()[start_index:end_index]:
+            reply_markup = types.InlineKeyboardMarkup()
+            reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
+            bot.send_message(call.chat.id,"reply",reply_markup=reply_markup)
+            reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
+            reply_markup = types.InlineKeyboardMarkup()
+            reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
+            reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
+            reply_markup.add(types.InlineKeyboardButton("in progress", callback_data='mongo_id:{}'.format(i['_id'])))
+            reply_markup.add(types.InlineKeyboardButton("resolved", callback_data='mongo_id:{}'.format(i['_id'])))
+            bot.send_message(call.chat.id,"pelase select an option if you want to change status",reply_markup=reply_markup)
 
-@bot.callback_query_handler(func=lambda call: call.data == 'reply')
-def handle_reply(call):
-    bot.send_message(call.message.chat.id, "Please record your reply now...")
-
-@bot.callback_query_handler(func=lambda call: call.data == 'next')
-def handle_next(call):
-    global start_index
-    global end_index
-    x=conn["Grievance"]["grievances"]
-    lis=[i for i in x.find()]
-
-    if end_index>len(lis):
-        end_index=len(lis)
-    x=conn["Grievance"]["grievances"]
-    lis=[i for i in x.find()]
-    for i in x.find()[start_index:end_index]:
-        # markup = types.ReplyKeyboardMarkup(row_width=2)
-        # itembtn1 = types.KeyboardButton("reply")
-        # itembtn2 = types.KeyboardButton("forword")
+            bot.send_message(call.message.chat.id,str(i["transcript"]))
+            file=convert_file(i["audio"])
+            bot.send_audio(call.message.chat.id,open(file,"rb"))
+            bot.send_message(call.message.chat.id,"reply",reply_markup=reply_markup)
         reply_markup = types.InlineKeyboardMarkup()
-        reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
-
-        bot.send_message(call.message.chat.id,str(i["transcript"]))
-        file=convert_file(i["audio"])
-        bot.send_audio(call.message.chat.id,open(file,"rb"))
-        bot.send_message(call.message.chat.id,"reply",reply_markup=reply_markup)
-    reply_markup = types.InlineKeyboardMarkup()
-    reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
-    start_index+=5
-    end_index+=5
-
+        reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
+        start_index+=5
+        end_index+=5
 
 
 if __name__ == '__main__':
