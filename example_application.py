@@ -216,7 +216,7 @@ class AudioStreamer():
                   url = "https://api.telegram.org/bot"+TOKEN+"/sendMessage"
                   
                   #get "transcript" form response
-                  dataset = dict(response.json())["transcript"]
+                  dataset = dict(response.json())
                   for i,j in dataset.items():
                     if j!="":
                       
