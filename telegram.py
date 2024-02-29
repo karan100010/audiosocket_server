@@ -122,7 +122,7 @@ def handle_menu(message):
                          
 
         # try:
-        #     conn["Grievance"]["grievances"].update_one({"_id":i["_id"]},{"$set":{"status":"in progress"}})
+        #     conn["Grievance"]["grievances"].update_one({"_id":str(i[_id])},{"$set":{"status":"in progress"}})
 
         # except:
         #     bot.send_message(message.chat.id,"error in updating status")
@@ -134,12 +134,13 @@ def handle_menu(message):
         reply_markup = types.InlineKeyboardMarkup()
         reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
         bot.send_message(message.chat.id,"reply",reply_markup=reply_markup)
-        reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
+        
         reply_markup = types.InlineKeyboardMarkup()
-        reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
-        reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
-        reply_markup.add(types.InlineKeyboardButton("in progress", callback_data='mongo_id:{}'.format(i['_id'])))
-        reply_markup.add(types.InlineKeyboardButton("resolved", callback_data='mongo_id:{}'.format(i['_id'])))
+        reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(str(i['_id']))))
+       
+        reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(str(i['_id']))))
+        reply_markup.add(types.InlineKeyboardButton("in progress", callback_data='mongo_id:{}'.format(str(i['_id']))))
+        reply_markup.add(types.InlineKeyboardButton("resolved", callback_data='mongo_id:{}'.format(str(i['_id']))))
         bot.send_message(message.chat.id,"pelase select an option if you want to change status",reply_markup=reply_markup)
     reply_markup = types.InlineKeyboardMarkup()
     reply_markup.add(types.InlineKeyboardButton("Next", callback_data='next'))
@@ -151,7 +152,7 @@ def handle_query(call):
     data=call.data
     if data.startswith("mongo_id"):
         try:
-            conn["Grievance"]["grievances"].update_one({"_id":i["_id"]},{"$set":{"status":data.split(":")[1]}})
+            conn["Grievance"]["grievances"].update_one({"_id":str(i[_id])},{"$set":{"status":data.split(":")[1]}})
             bot.send_message(call.message.chat.id,"status updated")
         except:
             bot.send_message(call.message.chat.id,"error in updating status")
@@ -170,14 +171,14 @@ def handle_query(call):
         for i in x.find()[start_index:end_index]:
             reply_markup = types.InlineKeyboardMarkup()
             reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
-            bot.send_message(call.chat.id,"reply",reply_markup=reply_markup)
-            reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
+            bot.send_message(call.message.chat.id,"reply",reply_markup=reply_markup)
+            reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(str(i['_id']))))
             reply_markup = types.InlineKeyboardMarkup()
             reply_markup.add(types.InlineKeyboardButton("Reply", callback_data='reply'))
-            reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(i['_id'])))
-            reply_markup.add(types.InlineKeyboardButton("in progress", callback_data='mongo_id:{}'.format(i['_id'])))
-            reply_markup.add(types.InlineKeyboardButton("resolved", callback_data='mongo_id:{}'.format(i['_id'])))
-            bot.send_message(call.chat.id,"pelase select an option if you want to change status",reply_markup=reply_markup)
+            reply_markup.add(types.InlineKeyboardButton("open", callback_data='"mongo_id":{}'.format(str(i['_id']))))
+            reply_markup.add(types.InlineKeyboardButton("in progress", callback_data='mongo_id:{}'.format(str(i['_id']))))
+            reply_markup.add(types.InlineKeyboardButton("resolved", callback_data='mongo_id:{}'.format(str(i['_id']))))
+            bot.send_message(call.message.chat.id,"pelase select an option if you want to change status",reply_markup=reply_markup)
 
             bot.send_message(call.message.chat.id,str(i["transcript"]))
             file=convert_file(i["audio"])
