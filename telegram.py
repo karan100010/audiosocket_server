@@ -49,8 +49,15 @@ def handle_audio(update):
 
         # Export the audio as a WAV file
         ogg_audio.export("output.wav", format="wav")
+#write a handeler for menu options
+@bot.message_handler(commands=['menu'])
+def handle_menu(message):
+    #send the user a list of menu options
+    bot.send_message(message.chat.id,"1.List Complain\n")
+    
 
-
+#write a handeler for menu options
+    
     
     #merge audio file with header.wav file
     sound1 = AudioSegment.from_file("output.wav")

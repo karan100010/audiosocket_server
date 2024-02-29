@@ -205,9 +205,22 @@ class AudioStreamer():
                 url = "https://api.telegram.org/bot"+TOKEN+"/sendAudio"
                 files = {'audio': audio_file.read()}
                 params = {'chat_id': id}
-                response = requests.post(url, files=files, params=params)
-                print(response)
-
+                def send_audio():
+                  response = requests.post(url, files=files, params=params)
+                  print(response)
+                  return
+                send=threading.Thread(target=send_audio)
+                send.start()
+                def get_analysis():
+                  response=requests.post("http://localhost:5000/predict",data=self.combined_audio)
+                  url = "https://api.telegram.org/bot"+TOKEN+"/sendMessage"
+                  data = {"chat_id": id, "text": response.text}
+                  response2 = requests.post(url, data=data)
+                  print(response2.text)
+                  return
+                analysis=threading.Thread(target=get_analysis)
+                analysis.start()
+              
               
               
             elif self.level==3:
@@ -313,8 +326,12 @@ class AudioStreamer():
         self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
 
-        #convert data to json
-        #response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
+        # #convert data to json
+        # def send_stream(self):
+        #   self.logger.info("sending stream")
+        #   response=requests.post("http://localhost:5000/predict",data=self.combined_audio)
+        #   self.logger.info(response.text)
+        
         #self.logger.info(response.text)
         
 
