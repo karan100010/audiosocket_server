@@ -53,69 +53,21 @@ def handle_audio(update):
         ogg_audio.export("output.wav", format="wav")
 
 #write a handeler for menu options
-@bot.message_handler(commands=['menu'])
+@bot.message_handler(commands=['/get_all'])
 def handle_menu(message):
     #send the user a list of menu options
-    markup = types.ReplyKeyboardMarkup(row_width=2)
-    item1 = types.KeyboardButton("Get grivance by category")
-    item2 = types.KeyboardButton("get grivance by language")
+    conn["Grievance"]["grievances"][:5].find_all()
+    for i in conn["Grievance"]["grievances"]:
+        # markup = types.ReplyKeyboardMarkup(row_width=2)
+        # itembtn1 = types.KeyboardButton("reply")
+        # itembtn2 = types.KeyboardButton("forword")
+        bot.send_message(message.chat.id,i)
+        
+        
+  
     
-    item3 = types.KeyboardButton("get grivance by date")
-    item4 = types.KeyboardButton("get grivance by status")
-    markup.add(item1, item2, item3,item4)
-    bot.send_message(message.chat.id, "Choose one option:", reply_markup=markup)
-@bot.callback_query_handler(func=lambda _: True)
-def callback_query(_):
-    if _.data == "Get grivance by category":
-        x=conn["Grievance"]["grievance"].findall()
-        x=x.distinct("category")
-        for i in x:
-            markup = types.InlineKeyboardMarkup()
-            markup.add(types.InlineKeyboardButton(text=i,callback_data=i))
-        bot.send_message(_.message.chat.id,i,reply_markup=markup)
-    elif _.data == "get grivance by language":
-        x=conn["Grievance"]["grievances"].findall()
-        x=x.distinct("language")
-        for i in x:
-            markup = types.InlineKeyboardMarkup()
-            markup.add(types.InlineKeyboardButton(text=i,callback_data=i))
-        bot.send_message(_.message.chat.id,i,reply_markup=markup)
-    elif _.data == "get grivance by date":
-        markup = types.InlineKeyboardMarkup()
-        markup.add(types.InlineKeyboardButton(text="Today",callback_data="Today"))
-        markup.add(types.InlineKeyboardButton(text="Yesterday",callback_data="Yesterday"))
-        markup.add(types.InlineKeyboardButton(text="Last 7 days",callback_data="Last 7 days"))
-        markup.add(types.InlineKeyboardButton(text="Last 30 days",callback_data="Last 30 days"))
-        bot.send_message(_.message.chat.id,"Select the date",reply_markup=markup)
-    elif _.data == "get grivance by status":
-        x=conn["Grievance"]["grievances"].findall()
-        x=x.distinct("status")
-        for i in x:
-            markup = types.InlineKeyboardMarkup()
-            markup.add(types.InlineKeyboardButton(text=i,callback_data=i))
-        bot.send_message(_.message.chat.id,i,reply_markup=markup)
+    
 
-@bot.callback_query_handler(func=lambda _: True)
-def callback2_query(_):
-    if _.data in ["Today","Yesterday","Last 7 days","Last 30 days"]:
-        x=conn["Grievance"]["grievances"].findall({"date":_.data})
-        for i in x:
-            bot.send_message(_.message.chat.id,i)
-    else:
-        x=conn["Grievance"]["grievances"].findall({"status":_.data})
-        for i in x:
-            bot.send_message(_.message.chat.id,i)
-@bot.callback_query_handler(func=lambda _: True)
-def callback3_query(_):
-    x=conn["Grievance"]["grievances"].findall({"category":_.data})
-    for i in x:
-        bot.send_message(_.message.chat.id,i)
-
-@bot.callback_query_handler(func=lambda _: True)
-def callback4_query(call):
-    x=conn["Grievance"]["grievances"].findall({"language":call.data})
-    for i in x:
-        bot.send_message(call.message.chat.id,i)
 
 
 
