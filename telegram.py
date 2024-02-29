@@ -8,6 +8,8 @@ from pydub import AudioSegment
 from io import BytesIO
 import pymongo
 from telebot import types
+import wave
+
 
 manager = Manager()
 manager.connect('localhost')
@@ -16,6 +18,25 @@ chat_id=[]
 # Initialize Telegram bot
 conn= pymongo.MongoClient("mongodb+srv://root:toor@testcluster.exl8ah5.mongodb.net/Grievance?retryWrites=true&w=majority&appName=TestCluster",uuidRepresentation='standard')
 bot = telebot.TeleBot("7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM")
+def convert_file(file):
+    # Decode and combine u-law fragments into a single bytearray
+    # Remove the unused line of code
+    # combined_pcm_data = bytearray()
+
+    # ulaw_data = bytes(file['data']['data'])
+
+    # Decode the u-law data to 16-bit linear PCM
+    # pcm_data = audioop.ulaw2lin(file, 2)
+
+    # Save the combined PCM data to a WAV file
+    filename='output{}.wav'.format(random.randint(1000, 9999))
+    with wave.open(filename, 'wb') as wf:
+        wf.setnchannels(1)  # Adjust based on the number of channels in your audio
+        wf.setsampwidth(2)  # 2 bytes for 16-bit audio
+        wf.setframerate(8000)  # Adjust based on the sample rate of your u-law audio
+        wf.writeframes(file)
+        return filename
+    
 @bot.message_handler(commands=['start'])
 def handle_all_messages(message):
     global chat_id 
@@ -64,7 +85,9 @@ def handle_menu(message):
         # markup = types.ReplyKeyboardMarkup(row_width=2)
         # itembtn1 = types.KeyboardButton("reply")
         # itembtn2 = types.KeyboardButton("forword")
+
         bot.send_message(message.chat.id,str(i["transcript"]))
+        bot.send_audio(message.chat.id,i["audio"])
         
         
   
