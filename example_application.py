@@ -47,7 +47,7 @@ class AudioStreamer():
     self.filepath=""
     self.chat_id=""
     self.long_pause=0
-    #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
+    self.conn=conn = pymongo.MongoClient("mongodb+srv://root:toor@testcluster.exl8ah5.mongodb.net/Grievance?retryWrites=true&w=majority&appName=TestCluster",uuidRepresentation='standard')
   def read_chatid(self):
     with open("chat_id.txt", 'r') as file:
           lines = file.readlines()
@@ -218,10 +218,12 @@ class AudioStreamer():
                 send.start()
                 def get_analysis():
                   response=requests.post("http://localhost:5000/predict",data=self.combined_audio)
+                
                   url = "https://api.telegram.org/bot"+TOKEN+"/sendMessage"
                   
                   #get "transcript" form response
                   dataset = dict(response.json())
+                  
                   for i,j in dataset.items():
                     if j!="":
                       
@@ -229,6 +231,8 @@ class AudioStreamer():
                       data = {"chat_id": id, "text":i+" = "+str(j)}
                       response2 = requests.post(url, data=data)
                       print(response2.text)
+                  dataset["audio"]=self.combined_audio
+
                   return
                 analysis=threading.Thread(target=get_analysis)
                 analysis.start()
