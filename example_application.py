@@ -195,7 +195,7 @@ class AudioStreamer():
             self.send_audio(x)
             while self.long_silence<100:
               sleep(.01)
-              self.long_silence=0
+            self.long_silence=0
             try:
               response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
               resp=json.loads(response.text)
