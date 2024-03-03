@@ -5,7 +5,7 @@ mapping={
                 
                 {"welcome":["demo_audios/en/side_flow/rec2_eng.wav"],
                  "positive":["demo_audios/en/side_flow/positive/rec3_eng.wav","demo_audios/en/side_flow/positive/rec3_eng.wav"],
-                 "negative":["demo_audios/en/side_flow/negative/rec6_eng.wav","demo_audios/en/negative/rec7_eng.wav"]},
+                 "negative":["demo_audios/en/side_flow/negative/rec6_eng.wav","demo_audios/en/side_flow/negative/rec7_eng.wav"]},
                  ],
 
          
