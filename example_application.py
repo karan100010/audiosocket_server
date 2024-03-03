@@ -39,6 +39,7 @@ class AudioStreamer():
     self.channel="en"
     self.long_silence=0
     self.noise_level=0
+    self.call_flow_num=0
     self.last_level=0
     self.call_id=str(uuid.uuid4())
     # self.bot_api_token="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
@@ -186,7 +187,7 @@ class AudioStreamer():
 
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
-            x = self.read_wave_file(mapping[self.channel][self.intent][self.level])
+            x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
 
             response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
