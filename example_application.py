@@ -199,6 +199,7 @@ class AudioStreamer():
               response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
               resp=json.loads(response.text)
               print(resp)
+              self.combined_audio=b''
            
             except Exception as e:
               self.logger.info(e)
