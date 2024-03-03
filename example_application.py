@@ -42,6 +42,7 @@ class AudioStreamer():
     self.call_flow_num=0
     self.last_level=0
     self.call_id=str(uuid.uuid4())
+    self.long_silence=0
     # self.bot_api_token="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
     # self.bot = telebot.TeleBot(self.bot_api_token)
     # self.bot.add_message_handler(self.send_audio_tg)
@@ -128,6 +129,9 @@ class AudioStreamer():
     if not is_noise:
       #self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
       self.silent_frames_count += frames
+      self.long_silence+=1
+    else:
+      self.long_silence=0
     return
   
 
@@ -189,6 +193,8 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
+            while self.silent_frames_count<100:
+              sleep(.01)
 
             response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
             resp=json.loads(response.text)
