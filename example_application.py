@@ -201,7 +201,7 @@ class AudioStreamer():
               response=requests.post("http://172.16.1.209:5000/predict",data=self.combined_audio)
               resp=json.loads(response.text)
               print(resp)
-            self.channel=resp["prediction"][0]
+              self.channel=resp["prediction"][0]
         
             try:
               response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
