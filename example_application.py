@@ -218,7 +218,7 @@ class AudioStreamer():
                   self.level+=1
                 self.intent="negative"
             if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="change_flow":
-              if self.call_flow_num:
+              if self.call_flow_num==0:
 
                 self.call_flow_num+=1
                 self.level=0
