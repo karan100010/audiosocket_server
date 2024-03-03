@@ -1,6 +1,6 @@
 mapping={
         "en":[{"welcome":["demo_audios/en/rec1_eng.wav"],
-               "positive":["demo_audios/en/main_flow/positive/rec5_eng.wav","demo_audios/en/main_flow//positive/rec8.wav"],
+               "positive":["demo_audios/en/main_flow/positive/rec5_eng.wav","demo_audios/en/main_flow/positive/rec8.wav"],
                 "negative":["change_flow","demo_audios/en/main_flow/negative/rec9_eng.wav"]},
                 
                 {"welcome":["demo_audios/en/side_flow/rec2_eng.wav"],
