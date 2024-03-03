@@ -198,7 +198,7 @@ class AudioStreamer():
             self.long_silence=0
             if self.channel=="en":
               try:
-                response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
+                response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
                 resp=json.loads(response.text)
                 print(resp)
                 self.combined_audio=b''
