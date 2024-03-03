@@ -203,7 +203,7 @@ class AudioStreamer():
            
             except Exception as e:
               self.logger.info(e)
-              self.call.hangup()
+              #self.call.hangup()
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
             if resp["nlp"]["intent"]=="positive":
