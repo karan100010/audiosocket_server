@@ -41,10 +41,10 @@ class AudioStreamer():
     self.noise_level=0
     self.last_level=0
     self.call_id=str(uuid.uuid4())
-    self.bot_api_token="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
-    self.bot = telebot.TeleBot(self.bot_api_token)
-    self.bot.add_message_handler(self.send_audio_tg)
-    self.filepath=""
+    # self.bot_api_token="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
+    # self.bot = telebot.TeleBot(self.bot_api_token)
+    # self.bot.add_message_handler(self.send_audio_tg)
+    # self.filepath=""
     self.intent="welcome"
     #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
   def read_chatid(self):
@@ -188,6 +188,19 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.intent][self.level])
             self.send_audio(x)
+
+            response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
+            resp=json.loads(response.text)
+            print(resp)
+            self.call.hangup()
+            # if resp["transcribe"]=="":
+            #     self.level="cant_hear"
+            # if resp["nlp"]["intent"]=="wrong_number":
+            #     self.level="wrong number"
+            # elif resp["nlp"]["intent"]=='contact_human_agent':
+            #     if resp["transcribe"]!="":
+                   
+            #       self.level="contact_human_agent"
         
             # if self.level==1:
             #   self.level=2
