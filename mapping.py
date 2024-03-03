@@ -1,11 +1,16 @@
-mapping={"en":{1:"demo_audios/en/rec_message.wav",
-         2:"demo_audios/en/beep.wav",
-         "hi":"demo_audios/en/hi.wav",
-         "en":"demo_audios/en/en.wav"
-         },
+mapping={
+        "en":[{"welcome":["demo_audios/en/rec1_eng.wav"],
+               "positive":["demo_audios/en/positive/rec5_eng.wav","demo_audios/en/positive/rec8.wav"],
+                "negative":["change_flow","demo_audios/en/negative/rec9_eng.wav"]},
+                
+                {"welcome":["demo_audios/en/rec2_eng.wav"],
+                 "positive":["demo_audios/en/positive/rec3_eng.wav","demo_audios/en/positive/rec3_eng.wav"],
+                 "negative":["demo_audios/en/negative/rec7_eng.wav","demo_audios/en/negative/rec6_eng.wav"]},
+                 ],
 
-         "hi":{1:"demo_audios/hi/1.wav",
-               2:"demo_audios/hi/2.wav",
-               3:"demo_audios/hi/3.wav",
-               4:"demo_audios/hi/4.wav"}
+         
+
+         "hi":{"welcome":"demo_audios/hi/rec1_hin.wav",
+               "positive":["demo_audios/hi/positive/rec5_hin.wav","demo_audios/hi/positive/rec8_hin.wav"],
+                "negative":["change_flow","demo_audios/hi/negative/rec9_hin.wav"]}
          }

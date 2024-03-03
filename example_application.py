@@ -45,7 +45,7 @@ class AudioStreamer():
     self.bot = telebot.TeleBot(self.bot_api_token)
     self.bot.add_message_handler(self.send_audio_tg)
     self.filepath=""
-    self.chat_id=""
+    self.intent="welcome"
     #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
   def read_chatid(self):
     with open("chat_id.txt", 'r') as file:
