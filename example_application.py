@@ -32,7 +32,7 @@ class AudioStreamer():
     self.call=call
     self.w = 0
     self.v = 320
-    self.level = 1
+    self.level = 0
     self.audioplayback=False   
     self.silent_frames_count=0   
     self.combined_audio = b''  
@@ -186,24 +186,24 @@ class AudioStreamer():
 
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
-            x = self.read_wave_file(mapping[self.channel][self.level])
+            x = self.read_wave_file(mapping[self.channel][self.intent][self.level])
             self.send_audio(x)
         
-            if self.level==1:
-              self.level=2
+            # if self.level==1:
+            #   self.level=2
 
-            elif self.level==2:
-              while self.silent_frames_count<100:
-                    print("waiting")
-                    sleep(.01)
-              response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
-              resp=json.loads(response.text)
-              print(resp)
-              self.level=resp["prediction"][0]
+            # elif self.level==2:
+            #   while self.silent_frames_count<100:
+            #         print("waiting")
+            #         sleep(.01)
+            #   response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
+            #   resp=json.loads(response.text)
+            #   print(resp)
+            #   self.level=resp["prediction"][0]
 
               
-            elif self.level=="hi" or self.level== "en":
-              self.call.hangup()
+            # elif self.level=="hi" or self.level== "en":
+            #   self.call.hangup()
           
 
             # if self.level==11:
