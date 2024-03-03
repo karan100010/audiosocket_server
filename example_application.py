@@ -210,8 +210,7 @@ class AudioStreamer():
                   self.level+=1
                 
                 self.intent="positive"
-                
-                self.level="wrong number"
+  
             elif resp["nlp"]["intent"]=='negative':
                 if self.level==0 and self.intent=="negative":
                   self.level+=1
