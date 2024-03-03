@@ -220,7 +220,9 @@ class AudioStreamer():
             if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="change_flow":
               if self.call_flow_num:
 
-                self.level+=1
+                self.call_flow_num+=1
+                self.level=0
+                self.intent="welcome"
               
 
             
