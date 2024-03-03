@@ -195,19 +195,29 @@ class AudioStreamer():
             self.send_audio(x)
             while self.long_silence<100:
               sleep(.01)
-
-            response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
-            resp=json.loads(response.text)
-            print(resp)
-            self.call.hangup()
+            try:
+              response=requests.post("http://172.16.1.209:5002/convert_en",data=self.combined_audio)
+              resp=json.loads(response.text)
+              print(resp)
+              self.call.hangup()
+            except Exception as e:
+              self.logger.info(e)
+              self.call.hangup()
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
-            # if resp["nlp"]["intent"]=="wrong_number":
-            #     self.level="wrong number"
-            # elif resp["nlp"]["intent"]=='contact_human_agent':
-            #     if resp["transcribe"]!="":
-                   
-            #       self.level="contact_human_agent"
+            if resp["nlp"]["intent"]=="positive":
+                if self.level==0 and self.intent=="positive":
+                  self.level+=1
+                
+                self.intent="positive"
+                
+                self.level="wrong number"
+            elif resp["nlp"]["intent"]=='negative':
+                if self.level==0 and self.intent=="negative":
+                  self.level+=1
+                self.intent="negative"
+               
+
         
             # if self.level==1:
             #   self.level=2
