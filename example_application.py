@@ -196,7 +196,7 @@ class AudioStreamer():
             while self.long_silence<100:
               sleep(.01)
             self.long_silence=0
-            if self.level==0 and self.intent=="welcome":
+            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
   
               response=requests.post("http://172.16.1.209:5000/predict",data=self.combined_audio)
               resp=json.loads(response.text)
@@ -230,7 +230,12 @@ class AudioStreamer():
                 self.call_flow_num+=1
                 self.level=0
                 self.intent="welcome"
-              
+              else:
+                self.call_flow_num-=1
+                self.level=0
+                self.intent="welcome"
+           
+          
 
             
                
