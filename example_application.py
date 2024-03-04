@@ -234,7 +234,11 @@ class AudioStreamer():
                 self.call_flow_num-=1
                 self.level=0
                 self.intent="welcome"
-           
+        
+            if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="end_call":
+              self.call.hangup()
+              self.audioplayback=False
+              sleep(1)
           
 
             
