@@ -215,13 +215,13 @@ class AudioStreamer():
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
             if resp["nlp"]["intent"]=="positive":
-                if self.level==0 and self.intent!="welcome":
+                if self.intent!="welcome":
                   self.level+=1
                 
                 self.intent="positive"
   
             elif resp["nlp"]["intent"]=='negative':
-                if self.level==0 and self.intent!="welcome":
+                if  self.intent!="welcome":
                   self.level+=1
                 self.intent="negative"
             if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="change_flow":
