@@ -16,6 +16,6 @@ mapping={
                     
                     {"welcome":["demo_audios/hi/side_flow/rec2_hin.wav"],
                     "positive":["demo_audios/hi/side_flow/positive/rec3_hin.wav","demo_audios/hi/side_flow/positive/rec3_hin.wav","change_flow"],
-                    "negative":["demo_audios/hi/side_flow/negative/rec6_hin.wav","demo_audios/hi/side_flow/negative/rec7_hin.wav"]}
+                    "negative":["demo_audios/hi/side_flow/negative/rec6_hin.wav","demo_audios/hi/side_flow/negative/rec7_hin.wav","end_call"]}
 
          ]}
