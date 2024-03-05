@@ -214,14 +214,7 @@ class AudioStreamer():
               resp=json.loads(response.text)
               print(resp)
               self.combined_audio=b''
-              if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
-                if not self.is_english(resp["transcribe"]):
-                   self.channel="hi"
-                   self.level=0
-                   self.intent="welcome"
-                   self.call_flow_num=0
-                   self.logger.info("changing channel to hindi")
-
+              
 
           
             except Exception as e:
@@ -257,7 +250,14 @@ class AudioStreamer():
           
 
             
-               
+            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
+                if not self.is_english(resp["transcribe"]):
+                   self.channel="hi"
+                   self.level=0
+                   self.intent="welcome"
+                   self.call_flow_num=0
+                   self.logger.info("changing channel to hindi")
+
 
         
             # if self.level==1:
