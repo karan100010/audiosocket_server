@@ -260,6 +260,7 @@ class AudioStreamer():
               self.intent="welcome"
               self.call_flow_num=0
               self.logger.info("changing channel to hindi")
+              self.lang_change=False
           
 
             
