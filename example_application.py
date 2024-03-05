@@ -18,6 +18,7 @@ import uuid
 import pymongo
 import telebot
 import random
+from langdetect import detect
 
 
 class AudioStreamer():
@@ -183,6 +184,13 @@ class AudioStreamer():
         wf.setframerate(8000)  # Adjust based on the sample rate of your u-law audio
         wf.writeframes(file)
         return filename
+    
+  def is_english(self,text):
+          try:
+              lang = detect(text)
+              return lang == 'en'
+          except:
+              return False
   
 
   def start_audio_playback(self,mapping):
@@ -196,18 +204,25 @@ class AudioStreamer():
             while self.long_silence<100:
               sleep(.01)
             self.long_silence=0
-            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
+           
+               
   
-              response=requests.post("http://172.16.1.209:5000/predict",data=self.combined_audio)
-              resp=json.loads(response.text)
-              print(resp)
-              self.channel=resp["prediction"][0]
+            
         
             try:
               response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
               resp=json.loads(response.text)
               print(resp)
               self.combined_audio=b''
+              if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
+                if not self.is_english(resp["transcribe"]):
+                   self.channel="hi"
+                   self.level=0
+                   self.intent="welcome"
+                   self.call_flow_num=0
+                   self.logger.info("changing channel to hindi")
+
+
           
             except Exception as e:
               self.logger.info(e)
