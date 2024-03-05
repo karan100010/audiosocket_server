@@ -224,7 +224,7 @@ class AudioStreamer():
               #self.call.hangup()
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
-            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
+            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0 and self.channel=="en":
                 if  self.is_english(resp["transcribe"])!="en":
                    
                    self.lang_change=True
