@@ -16,7 +16,7 @@ import json
 import base64
 import uuid
 import pymongo
-import telebot
+#import telebot
 import random
 from langdetect import detect
 
