@@ -205,7 +205,7 @@ class AudioStreamer():
               sleep(.01)
             self.long_silence=0
            
-               
+          
   
             
         
@@ -214,6 +214,7 @@ class AudioStreamer():
               resp=json.loads(response.text)
               print(resp)
               self.combined_audio=b''
+
               
 
           
@@ -222,6 +223,13 @@ class AudioStreamer():
               #self.call.hangup()
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
+            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
+                if  self.is_english(resp["transcribe"])!="en":
+                   self.channel="hi"
+                   self.level=0
+                   self.intent="welcome"
+                   self.call_flow_num=0
+                   self.logger.info("changing channel to hindi")
             if resp["nlp"]["intent"]=="positive":
                 if self.intent!="welcome":
                   self.level+=1
@@ -250,13 +258,7 @@ class AudioStreamer():
           
 
             
-            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
-                if  self.is_english(resp["transcribe"])!="en":
-                   self.channel="hi"
-                   self.level=0
-                   self.intent="welcome"
-                   self.call_flow_num=0
-                   self.logger.info("changing channel to hindi")
+            
 
 
         
