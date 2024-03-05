@@ -207,7 +207,9 @@ class AudioStreamer():
               resp=json.loads(response.text)
               print(resp)
               self.combined_audio=b''
-
+              if resp["transcribe"]=="":
+                x=self.read_wave_file(mapping["utils"][self.channel][1])
+                self.send_audio(x)
               
 
           
