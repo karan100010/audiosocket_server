@@ -191,6 +191,7 @@ class AudioStreamer():
             self.send_audio(x)
             if self.noise:
               x=self.read_wave_file(mapping["utils"][self.channel][0])
+              self.send_audio(x)
             while self.long_silence<100:
               sleep(.01)
             self.long_silence=0
