@@ -39,7 +39,7 @@ class AudioStreamer():
     self.combined_audio = b''  
     self.channel="en"
     self.long_silence=0
-    self.noise_level=0
+    self.noise=False
     self.call_flow_num=0
     self.last_level=0
     self.call_id=str(uuid.uuid4())
@@ -99,14 +99,13 @@ class AudioStreamer():
         sleep(.25)
         sleep_seconds+=.25
       # if self.level!=11:
-      #   if self.noise_frames_count >= 4:
-      #     self.noise_level = self.level
-      #     self.level = 11
-      #     self.logger.info("Level has changed to {}".format(self.level))
+      if self.noise_frames_count >= 4:
+          self.noise
+          
         
-      #     self.noise_frames_count=0
-      #     self.audioplayback=False
-      #     return
+          self.noise_frames_count=0
+          self.audioplayback=False
+          return
     
     self.logger.info("number of iterations are {}".format(count))
     sleep(len(audio_file)/16000-sleep_seconds)  
