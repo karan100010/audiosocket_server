@@ -18,7 +18,7 @@ mapping={
                     "positive":["demo_audios/hi/side_flow/positive/rec3_hin.wav","demo_audios/hi/side_flow/positive/rec3_hin.wav","change_flow"],
                     "negative":["demo_audios/hi/side_flow/negative/rec6_hin.wav","demo_audios/hi/side_flow/negative/rec7_hin.wav","end_call"]}],
 
-        "utils":{"hi":[],
-        "en":[],
+        "utils":{"hi":["demo_audios/rec11_hin.wav"],
+        "en":["demo_audios/rec11_eng.wav"],
         "common":[]}
         }

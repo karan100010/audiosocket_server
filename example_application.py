@@ -51,20 +51,8 @@ class AudioStreamer():
     self.intent="welcome"
     self.lang_change=False
     #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
-  def read_chatid(self):
-    with open("chat_id.txt", 'r') as file:
-          lines = file.readlines()
-          # Remove newline characters from each line and return the list
-          return [line.strip() for line in lines]
-
-  def send_audio_tg(self, message):
-        if self.level==3:
-          if self.filepath!="":
-            audio = open(self.filepath, 'rb') 
-            self.bot.send_audio(message.chat.id, audio)
-            audio.close()
-        else:
-          self.send_message(message.chat.id,"there is some issue on the user end")
+  
+    
 
   def read_wave_file(self, filename):
     #self.logger.debug("Reading wave file")
@@ -100,7 +88,7 @@ class AudioStreamer():
         sleep_seconds+=.25
       # if self.level!=11:
       if self.noise_frames_count >= 4:
-          self.noise
+          self.noise=True
           
         
           self.noise_frames_count=0
@@ -196,11 +184,13 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
-
+       
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
+            if self.noise:
+              x=self.read_wave_file(mapping["utils"][self.channel][0])
             while self.long_silence<100:
               sleep(.01)
             self.long_silence=0
