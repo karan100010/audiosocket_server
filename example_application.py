@@ -226,11 +226,8 @@ class AudioStreamer():
             #     self.level="cant_hear"
             if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
                 if  self.is_english(resp["transcribe"])!="en":
-                   self.channel="hi"
-                   self.level=0
-                   self.intent="welcome"
-                   self.call_flow_num=0
-                   self.logger.info("changing channel to hindi")
+                   
+                   self.lang_change=True
             if resp["nlp"]["intent"]=="positive":
                 if self.intent!="welcome":
                   self.level+=1
@@ -256,6 +253,13 @@ class AudioStreamer():
               self.call.hangup()
               self.audioplayback=False
               sleep(1)
+
+            if self.lang_change:
+              self.channel="hi"
+              self.level=0
+              self.intent="welcome"
+              self.call_flow_num=0
+              self.logger.info("changing channel to hindi")
           
 
             
