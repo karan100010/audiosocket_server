@@ -217,7 +217,7 @@ class AudioStreamer():
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
             if self.level==0 and self.intent=="welcome" and self.call_flow_num==0 and self.channel=="en":
-                if  self.is_english(resp["transcribe"])!="en":
+                if  detect(resp["transcribe"]) != "en":
                    
                    self.lang_change=True
             if resp["nlp"]["intent"]=="positive":
