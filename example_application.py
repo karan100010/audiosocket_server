@@ -251,7 +251,7 @@ class AudioStreamer():
 
             
             if self.level==0 and self.intent=="welcome" and self.call_flow_num==0:
-                if not self.is_english(resp["transcribe"]):
+                if  self.is_english(resp["transcribe"])!="en":
                    self.channel="hi"
                    self.level=0
                    self.intent="welcome"
