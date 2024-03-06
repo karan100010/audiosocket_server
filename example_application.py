@@ -48,7 +48,9 @@ class AudioStreamer():
     self.lang_change=False
     with open("db.txt") as f:
        data=f.read()
-       print(data)
+    print(data)
+    if data.endswith("\n"):
+       data.strip("\n")
 
     try:
       self.conn = pymongo.MongoClient(data)
