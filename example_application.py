@@ -195,9 +195,12 @@ class AudioStreamer():
                                 "file_played":mapping[self.channel][self.call_flow_num][self.intent][self.level]
                                 }
          try:
-          self.conn["test"]["test"].insert_one(database_entry)
+          x=self.conn["test"]["test"].insert_one(database_entry)
+          self.logger.info("data inserted into db")
+          self.logger.info(x)
          except Exception as e:
           self.logger.error(e)
+        
          return
 
   
@@ -227,6 +230,8 @@ class AudioStreamer():
               resp=json.loads(response.text)
               print(resp)
               self.combined_audio=b''
+              threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+
               if resp["transcribe"]=="":
                 x=self.read_wave_file(mapping["utils"][self.channel][1])
                 self.send_audio(x)
