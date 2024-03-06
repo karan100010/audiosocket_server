@@ -44,13 +44,16 @@ class AudioStreamer():
     self.last_level=0
     self.call_id=str(uuid.uuid4())
     self.long_silence=0
-    # self.bot_api_token="7144846540:AAGMzRZRmlV8NtQQfQ67vD5butARXFL4tCM"
-    # self.bot = telebot.TeleBot(self.bot_api_token)
-    # self.bot.add_message_handler(self.send_audio_tg)
-    # self.filepath=""
     self.intent="welcome"
     self.lang_change=False
-    #self.conn=conn = pymongo.MongoClient('mongodb://mongo:mongo#2024@3.109.152.180:27017/',uuidRepresentation='standard')
+    with open("db.txt") as f:
+       data=f.read()
+    print(data)
+
+    try:
+      self.conn = pymongo.MongoClient(data)
+    except Exception as e:
+      self.logger.info(e)
   
     
 
@@ -180,6 +183,23 @@ class AudioStreamer():
               return lang == 'en'
           except:
               return False
+  def db_entry(self,resp,mapping):
+         database_entry={"audio":self.combined_audio,
+                                "text":resp['transcribe'],
+                                "nlp":resp['nlp'],
+                                "level":self.level,
+                                "intent":self.intent,
+                                "lang":self.channel,
+                                "interuption":self.noise,
+                                "call_id":self.call_id,
+                                "file_played":mapping[self.channel][self.call_flow_num][self.intent][self.level]
+                                }
+         try:
+          self.conn["test"]["test"].insert_one(database_entry)
+         except Exception as e:
+          self.logger.error(e)
+         return
+
   
 
   def start_audio_playback(self,mapping):
@@ -269,7 +289,7 @@ class AudioStreamer():
             #   while self.silent_frames_count<100:
             #         print("waiting")
             #         sleep(.01)
-            #   response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
+            #response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
             #   resp=json.loads(response.text)
             #   print(resp)
             #   self.level=resp["prediction"][0]
@@ -305,12 +325,7 @@ class AudioStreamer():
             #     resp={"transcribe":"error","nlp":"error"}
             #   if resp['transcribe']!="error":
             #     print(resp)
-            #     database_entry={"audio":self.combined_audio,
-            #                     "text":resp['transcribe'],
-            #                     "nlp":resp['nlp'],
-            #                     "level":self.level,
-            #                     "call_addr":self.call.peer_addr,
-            #                     "call_id":self.call_id}
+            
             #     try:
                   
             #       self.conn["test"]["test"].insert_one(database_entry)
