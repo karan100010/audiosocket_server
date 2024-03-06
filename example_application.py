@@ -231,8 +231,9 @@ class AudioStreamer():
               response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
               resp=json.loads(response.text)
               print(resp)
-              self.combined_audio=b''
               threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+              self.combined_audio=b''
+              
 
               if resp["transcribe"]=="":
                 x=self.read_wave_file(mapping["utils"][self.channel][1])
