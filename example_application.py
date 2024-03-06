@@ -215,10 +215,12 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            if self.noise:
-              x=self.read_wave_file(mapping["utils"][self.channel][0])
-              self.send_audio(x)
-              self.noise=False
+            if self.intent!="welcome":
+               
+              if self.noise:
+                x=self.read_wave_file(mapping["utils"][self.channel][0])
+                self.send_audio(x)
+                self.noise=False
             while self.long_silence<100:
               sleep(.01)
             self.long_silence=0
