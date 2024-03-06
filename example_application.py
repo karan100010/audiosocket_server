@@ -243,6 +243,7 @@ class AudioStreamer():
           
             except Exception as e:
               self.logger.info(e)
+              self.combined_audio=b''
               #self.call.hangup()
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
