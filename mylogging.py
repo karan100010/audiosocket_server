@@ -1,5 +1,5 @@
-#create a colourd logger class that can be used to log messages to the console and to a file
 import logging
+import os
 from termcolor import colored
 
 class ColouredLogger(logging.Logger):
@@ -18,16 +18,46 @@ class ColouredLogger(logging.Logger):
         self.addHandler(self.fh)
 
     def debug(self, msg):
+        # Get the filename and line number of the error
+        frame = logging.currentframe().f_back
+        filename = os.path.basename(frame.f_code.co_filename)
+        lineno = frame.f_lineno
+        # Append the filename and line number to the message
+        msg = f'{msg} - File: {filename}, Line: {lineno}'
         super(ColouredLogger, self).debug(colored(msg, 'blue'))
 
     def info(self, msg):
+        # Get the filename and line number of the error
+        frame = logging.currentframe().f_back
+        filename = os.path.basename(frame.f_code.co_filename)
+        lineno = frame.f_lineno
+        # Append the filename and line number to the message
+        msg = f'{msg} - File: {filename}, Line: {lineno}'
         super(ColouredLogger, self).info(colored(msg, 'green'))
 
     def warning(self, msg):
+        # Get the filename and line number of the error
+        frame = logging.currentframe().f_back
+        filename = os.path.basename(frame.f_code.co_filename)
+        lineno = frame.f_lineno
+        # Append the filename and line number to the message
+        msg = f'{msg} - File: {filename}, Line: {lineno}'
         super(ColouredLogger, self).warning(colored(msg, 'yellow'))
 
     def error(self, msg):
-        super(ColouredLogger, self).error(colored(msg, 'red'))
+        # Get the filename and line number of the error
+        frame = logging.currentframe().f_back
+        filename = os.path.basename(frame.f_code.co_filename)
+        lineno = frame.f_lineno
+        # Append the filename and line number to the error message
+        error_msg = f'{msg} - File: {filename}, Line: {lineno}'
+        super(ColouredLogger, self).error(colored(error_msg, 'red'))
 
     def critical(self, msg):
-        super(ColouredLogger, self).critical(colored(msg, 'red', 'on_white'))
+        # Get the filename and line number of the error
+        frame = logging.currentframe().f_back
+        filename = os.path.basename(frame.f_code.co_filename)
+        lineno = frame.f_lineno
+        # Append the filename and line number to the error message
+        error_msg = f'{msg} - File: {filename}, Line: {lineno}'
+        super(ColouredLogger, self).critical(colored(error_msg, 'red', 'on_white'))
