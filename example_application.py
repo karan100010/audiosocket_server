@@ -50,7 +50,7 @@ class AudioStreamer():
        data=f.read()
     print(data)
     if data.endswith("\n"):
-       data.strip("\n")
+       data=data.strip("\n")
 
     try:
       self.conn = pymongo.MongoClient(data)
