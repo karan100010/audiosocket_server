@@ -57,7 +57,7 @@ class SimpleCallApplication(SIPApplication):
 
 # place an audio call to the specified URI
 application = SimpleCallApplication()
-application.call("sip:3333@sip2sip.info")
+application.call("sip:zoiper@127.0.0.1")
 print("Placing call, press Enter to quit the program")
 input()
 if application.session:
