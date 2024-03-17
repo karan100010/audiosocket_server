@@ -6,7 +6,7 @@ from sipsimple.storage import FileStorage
 from sipsimple.core import SIPURI, ToHeader
 from sipsimple.lookup import DNSLookup, DNSLookupError
 from sipsimple.session import Session
-from sipsimple.streams import AudioStream
+from sipsimple.streams.rtp.audio import AudioStream
 from sipsimple.threading.green import run_in_green_thread
 
 #rewr
