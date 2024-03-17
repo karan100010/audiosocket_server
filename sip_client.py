@@ -9,8 +9,6 @@ from sipsimple.session import Session
 from sipsimple.streams.rtp.audio import AudioStream
 from sipsimple.threading.green import run_in_green_thread
 
-#rewr
-
 
 
 class SimpleCallApplication(SIPApplication):
@@ -35,6 +33,7 @@ class SimpleCallApplication(SIPApplication):
             print('DNS lookup failed: %s' % str(e))
         else:
             account = AccountManager().default_account
+            print('Account: %s' % account)
             self.session = Session(account)
             self.session.connect(self.callee, routes, [AudioStream()])
 
