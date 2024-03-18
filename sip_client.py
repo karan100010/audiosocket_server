@@ -218,7 +218,7 @@ class AudioStreamer():
         timestart=time.time()
        
         if not self.audioplayback:
-            while self.long_silence<20:
+            while self.long_silence<10:
                 sleep(.2)
                 self.logger.info("sleeping for 0.2 seconds")
             self.logger.info("we are in level {}.wav".format(self.level))
