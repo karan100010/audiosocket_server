@@ -35,7 +35,7 @@ class AudioStreamer():
     self.call=call
     self.w = 0
     self.v = 320
-    self.level = 0
+    self.level = 1
     try:
        pandas.read_csv("test.csv")
     except Exception as e:
