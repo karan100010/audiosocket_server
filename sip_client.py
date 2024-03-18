@@ -220,7 +220,7 @@ class AudioStreamer():
         if not self.audioplayback:
             while self.long_silence<20:
                 sleep(.2)
-            self.logger.info("sleeping for 0.2 seconds")
+                self.logger.info("sleeping for 0.2 seconds")
             self.logger.info("we are in level {}.wav".format(self.level))
             x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
             self.send_audio(x)
