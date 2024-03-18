@@ -220,7 +220,7 @@ class AudioStreamer():
         if not self.audioplayback:
           if self.long_silence>20:
             self.logger.info("we are in level {}.wav".format(self.level))
-            x = self.read_wave_file(testmapping[self.level])
+            x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
             self.send_audio(x)
             self.level+=1
         
