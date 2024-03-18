@@ -223,6 +223,12 @@ class AudioStreamer():
             x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
             self.send_audio(x)
             self.level+=1
+            self.long_silence=0
+          else:
+             sleep(.2)
+
+        
+
         
             
 
