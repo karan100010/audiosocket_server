@@ -23,3 +23,4 @@ mapping={
         "welcome":["demo_audios/rec11_eng.wav","demo_audios/rec10_eng.wav"],
         "common":[]}
         }
+testmapping=[1,2,3]
