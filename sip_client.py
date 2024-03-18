@@ -224,7 +224,7 @@ class AudioStreamer():
             self.logger.info("we are in level {}.wav".format(self.level))
             x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
             self.send_audio(x)
-            self.sleep(10)
+            sleep(10)
             self.call.hangup()
         #     self.level+=1
         #     self.long_silence=0
