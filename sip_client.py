@@ -101,8 +101,6 @@ class AudioStreamer():
       if not self.noise:
         if self.noise_frames_count >= 20:
             self.noise=True
-            
-          
             self.noise_frames_count=0
             self.audioplayback=False
             return
@@ -218,9 +216,13 @@ class AudioStreamer():
         timestart=time.time()
        
         if not self.audioplayback:
-            while self.long_silence<100:
-                sleep(.2)
-                self.logger.info("sleeping for 0.2 seconds")
+            if self.level==1:
+               sleep(9.8)
+            else:
+              
+              while self.long_silence<100:
+                  sleep(.2)
+                  self.logger.info("sleeping for 0.2 seconds")
             self.logger.info("we are in level {}.wav".format(self.level))
             x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
             self.send_audio(x)
@@ -231,7 +233,7 @@ class AudioStreamer():
               self.call.hangup()
             self.level+=1
             self.long_silence=0
-            
+
         
 
         
