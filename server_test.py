@@ -20,7 +20,7 @@ def send_file(audio):
 def combined(filename):
     audio=read_wave_file(filename)
     response_time=send_file(audio)
-    df=df.append({"response_time":response_time,"file_name":"demo_audios/resp/1.wav"},ignore_index=True)
+    df=df.append({"response_time":response_time,"file_name":filename},ignore_index=True)
     return
    
 df=pd.DataFrame(columns=["response_time","file_name"])
