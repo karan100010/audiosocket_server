@@ -26,7 +26,7 @@ def combined(filename):
 df=pd.DataFrame(columns=["response_time","file_name"])
 for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
-        response_time=threading.Thread(target=combined,args=("demo_audios/resp"+i,)).start()
+        response_time=threading.Thread(target=combined,args=("demo_audios/resp/"+i,)).start()
         time.sleep(1)
 df.to_csv("test.csv")
 print("testing done")
