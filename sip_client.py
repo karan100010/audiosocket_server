@@ -23,6 +23,21 @@ import pandas
 from langdetect import detect
 
 
+def get_wav_duration(file_path):
+    try:
+        with wave.open(file_path, 'r') as wf:
+            # Get the number of frames and the frame rate
+            num_frames = wf.getnframes()
+            frame_rate = wf.getframerate()
+            
+            # Calculate duration
+            duration = num_frames / float(frame_rate)
+            return duration
+    except Exception as e:
+        print(f"An error occurred while reading the WAV file: {e}")
+        return None
+
+
 class AudioStreamer():
   def __init__(self,call):
     self.logger = ColouredLogger("audio sharing")
@@ -217,7 +232,7 @@ class AudioStreamer():
        
         if not self.audioplayback:
             if self.level==1:
-               sleep(4.4)
+               sleep(4.259)
             else:
               
               while self.long_silence<100:
