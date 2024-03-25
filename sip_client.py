@@ -226,10 +226,12 @@ class AudioStreamer():
             self.send_audio(x)
          #   sleep(10)
         #    self.call.hangup()
+            
+            if self.level==3:
+              self.call.hangup()
             self.level+=1
             self.long_silence=0
-        if self.level==3:
-           self.call.hangup()
+            
         
 
         
