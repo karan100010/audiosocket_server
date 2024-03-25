@@ -11,7 +11,7 @@ def read_wave_file(filename):
       audio = wave_file.readframes(wave_file.getnframes())
     return audio
 
-iters= 1
+iters= 10
 resp_lis=[]
 file_lis=[]
 def send_file(audio):
