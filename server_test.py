@@ -39,7 +39,8 @@ for i in range(iters):
 for thread in threads:
     if thread:
         thread.join()
-time.sleep(10)
+if len(resp_lis)!=iters:
+    time.sleep(1)
 df["response_time"]=resp_lis
 df["file_name"]=file_lis
 print(df)
