@@ -12,15 +12,20 @@ def read_wave_file(filename):
     return audio
 
 iters= 1
+resp_lis=[]
+file_lis=[]
 def send_file(audio):
    start_time = time.time()
    response=requests.post("http://172.16.1.209:5002/convert_en",data=audio)
    response_time = time.time() - start_time
    return response_time
-def combined(df,filename):
+def combined(file_lis,resp_lis,filename):
     audio=read_wave_file(filename)
     response_time=send_file(audio)
-    df=pd.concat(df,pd.DataFrame({"response_time":response_time,"file_name":filename}))
+    resp_lis.append(response_time)
+    file_lis.append(filename)
+
+  
     print("response time for {} is {}".format(filename,response_time))
     return
    
@@ -34,6 +39,8 @@ for i in range(iters):
 for thread in threads:
     thread.join()
 
+df["response_time"]=resp_lis
+df["file_name"]=file_lis
 print(df)
 df.to_csv("test.csv")
 print("testing done")
