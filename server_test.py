@@ -33,7 +33,7 @@ df=pd.DataFrame(columns=["response_time","file_name"])
 threads = []
 for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
-        response_time=threading.Thread(target=combined,args=(df,"demo_audios/resp/"+i,)).start()
+        response_time=threading.Thread(target=combined,args=(file_lis,resp_lis,"demo_audios/resp/"+i,)).start()
         threads.append(response_time)
         time.sleep(1)
 for thread in threads:
