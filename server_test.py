@@ -11,7 +11,7 @@ def read_wave_file(filename):
       audio = wave_file.readframes(wave_file.getnframes())
     return audio
 
-iters= 10 
+iters= 1
 def send_file(audio):
    start_time = time.time()
    response=requests.post("http://172.16.1.209:5002/convert_en",data=audio)
