@@ -239,15 +239,16 @@ class AudioStreamer():
                   sleep(.2)
                   self.logger.info("sleeping for 0.2 seconds")
             self.logger.info("we are in level {}.wav".format(self.level))
-            x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
-            self.send_audio(x)
-         #   sleep(10)
-        #    self.call.hangup()
+            while True:
+              x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
+        #     self.send_audio(x)
+        #  #   sleep(10)
+        # #    self.call.hangup()
             
-            if self.level==3:
-              self.call.hangup()
-            self.level+=1
-            self.long_silence=0
+        #     if self.level==3:
+        #       self.call.hangup()
+        #     self.level+=1
+        #     self.long_silence=0
 
         
 
