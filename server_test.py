@@ -26,8 +26,7 @@ def combined(filename):
 df=pd.DataFrame(columns=["response_time","file_name","call_num"])
 for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
-        audio=read_wave_file()
-        response_time=threading.Thread(target=combined,args=(audio,)).start()
+        response_time=threading.Thread(target=combined,args=(i,)).start()
         time.sleep(1)
 df.to_csv("test.csv")
 print("testing done")
