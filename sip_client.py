@@ -217,7 +217,7 @@ class AudioStreamer():
        
         if not self.audioplayback:
             if self.level==1:
-               sleep(9)
+               sleep(4.4)
             else:
               
               while self.long_silence<100:
