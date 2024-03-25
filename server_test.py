@@ -36,7 +36,7 @@ for i in range(iters):
         response_time=threading.Thread(target=combined,args=(file_lis,resp_lis,"demo_audios/resp/"+i,)).start()
         threads.append(response_time)
         time.sleep(1)
-for thread in threads:
+for thread in threads[:-1]:
     thread.join()
 
 df["response_time"]=resp_lis
