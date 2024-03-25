@@ -232,7 +232,7 @@ class AudioStreamer():
        
         if not self.audioplayback:
             if self.level==1:
-               sleep(4.259)
+               sleep(5)
             else:
               
               while self.long_silence<100:
