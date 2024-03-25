@@ -20,13 +20,13 @@ def send_file(audio):
 def combined(filename):
     audio=read_wave_file(filename)
     response_time=send_file(audio)
-    df=df.append({"response_time":response_time,"file_name":"demo_audios/resp/1.wav","call_num":i},ignore_index=True)
+    df=df.append({"response_time":response_time,"file_name":"demo_audios/resp/1.wav"},ignore_index=True)
     return
    
-df=pd.DataFrame(columns=["response_time","file_name","call_num"])
+df=pd.DataFrame(columns=["response_time","file_name"])
 for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
-        response_time=threading.Thread(target=combined,args=(i,)).start()
+        response_time=threading.Thread(target=combined,args=("demo_audios/resp"+i,)).start()
         time.sleep(1)
 df.to_csv("test.csv")
 print("testing done")
