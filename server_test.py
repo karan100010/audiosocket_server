@@ -29,5 +29,6 @@ for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
         response_time=threading.Thread(target=combined,args=("demo_audios/resp/"+i,)).start()
         time.sleep(1)
+print(df)
 df.to_csv("test.csv")
 print("testing done")
