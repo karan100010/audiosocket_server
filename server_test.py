@@ -17,7 +17,7 @@ def send_file(audio):
    response=requests.post("http://172.16.1.209:5002/convert_en",data=audio)
    response_time = time.time() - start_time
    return response_time
-def combined(filename):
+def combined(df,filename):
     audio=read_wave_file(filename)
     response_time=send_file(audio)
     df=df.append({"response_time":response_time,"file_name":filename},ignore_index=True)
@@ -28,7 +28,7 @@ df=pd.DataFrame(columns=["response_time","file_name"])
 threads = []
 for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
-        response_time=threading.Thread(target=combined,args=("demo_audios/resp/"+i,)).start()
+        response_time=threading.Thread(target=combined,args=(df,"demo_audios/resp/"+i,)).start()
         threads.append(response_time)
         time.sleep(1)
 for thread in threads:
