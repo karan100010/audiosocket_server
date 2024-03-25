@@ -228,20 +228,20 @@ class AudioStreamer():
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
         #start timing the duration of the call
-        timestart=time.time()
+        # timestart=time.time()
        
-        if not self.audioplayback:
-            if self.level==1:
-               sleep(5)
-            else:
+        # if not self.audioplayback:
+        #     if self.level==1:
+        #        sleep(5)
+        #     else:
               
-              while self.long_silence<100:
-                  sleep(.2)
-                  self.logger.info("sleeping for 0.2 seconds")
-            self.logger.info("we are in level {}.wav".format(self.level))
+        #       while self.long_silence<100:
+        #           sleep(.2)
+        #           self.logger.info("sleeping for 0.2 seconds")
+        #     self.logger.info("we are in level {}.wav".format(self.level))
             while True:
               x = self.read_wave_file("demo_audios/resp/{}.wav".format(self.level))
-        #     self.send_audio(x)
+              self.send_audio(x)
         #  #   sleep(10)
         # #    self.call.hangup()
             
