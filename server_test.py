@@ -27,13 +27,15 @@ def combined(file_lis,resp_lis,filename):
 
   
     print("response time for {} is {}".format(filename,response_time))
+    print(len(resp_lis))
     return
    
 df=pd.DataFrame(columns=["response_time","file_name"])
 threads = []
 for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
-        response_time=threading.Thread(target=combined,args=(file_lis,resp_lis,"demo_audios/resp/"+i,)).start()
+        response_time=threading.Thread(target=combined,args=(file_lis,resp_lis,"demo_audios/resp/"+i,))
+        response_time.start()
         threads.append(response_time)
 
 for thread in threads:
