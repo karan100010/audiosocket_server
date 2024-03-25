@@ -5,6 +5,7 @@ import pandas as pd
 import requests
 import time
 import threading
+import threading
 def read_wave_file(filename):
     #self.logger.debug("Reading wave file")
     with wave.open(filename, 'rb') as wave_file:
@@ -25,10 +26,15 @@ def combined(filename):
     return
    
 df=pd.DataFrame(columns=["response_time","file_name"])
+threads = []
 for i in range(iters):
     for i in os.listdir("demo_audios/resp"):
         response_time=threading.Thread(target=combined,args=("demo_audios/resp/"+i,)).start()
+        threads.append(response_time)
         time.sleep(1)
+for thread in threads:
+    thread.join()
+    
 print(df)
 df.to_csv("test.csv")
 print("testing done")
