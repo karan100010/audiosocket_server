@@ -41,6 +41,7 @@ for thread in threads:
         thread.join()
 if len(resp_lis)<iters*3:
     time.sleep(1)
+    print("waiting for all threads to complete")
 df["response_time"]=resp_lis
 df["file_name"]=file_lis
 print(df)
