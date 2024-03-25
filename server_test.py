@@ -11,7 +11,7 @@ def read_wave_file(filename):
       audio = wave_file.readframes(wave_file.getnframes())
     return audio
 
-iters= 30
+iters= 300
 resp_lis=[]
 file_lis=[]
 def send_file(audio):
@@ -39,7 +39,7 @@ for i in range(iters):
 for thread in threads:
     if thread:
         thread.join()
-sleep(10)
+time.sleep(10)
 df["response_time"]=resp_lis
 df["file_name"]=file_lis
 print(df)
