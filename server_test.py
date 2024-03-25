@@ -5,7 +5,6 @@ import pandas as pd
 import requests
 import time
 import threading
-import threading
 def read_wave_file(filename):
     #self.logger.debug("Reading wave file")
     with wave.open(filename, 'rb') as wave_file:
