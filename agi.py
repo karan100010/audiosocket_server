@@ -7,11 +7,5 @@ logger=mylogging.ColouredLogger()
 agi=astrisk.AGI()
 
 #start a audio socket server
-agi.answer()
-try:
-    agi.appexec("AudioSocket("+uuid.uuid4+",localhost:1122)")
-except:
-    pass
-    logger.info("AudioSocket is already running")
-
-
+# start a audio socket server
+agi.stream_file('demo_audios/resp/1.wav', loop=True)
