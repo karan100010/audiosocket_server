@@ -46,6 +46,6 @@ if len(resp_lis)!=iters*3:
     print("waiting for all threads to complete")
 df["response_time"]=resp_lis
 df["file_name"]=file_lis
-print(df)
+print(df.describe())
 df.to_csv("test.csv")
 print("testing done")
