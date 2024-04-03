@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-import astrisk
+import asterisk
 
 import mylogging
 #start a agi session
 import uuid
 
 logger=mylogging.ColouredLogger()
-agi=astrisk.AGI()
+agi= asterisk.AGI()
 
 #start a audio socket server
 # start a audio socket server
