@@ -24,7 +24,7 @@ import socket
 
 
 class AudioStreamer():
-  def __init__(self,call):
+  def __init__(self,socket):
     self.logger = ColouredLogger("audio sharing")
     self.channels = 1
     self.sample_rate = 8000
@@ -32,7 +32,8 @@ class AudioStreamer():
     self.vad.set_mode(3)
     self.noise_frames_threshold = int(2 * self.sample_rate / 512)
     self.noise_frames_count = 0
-    self.call=call
+    self.call=socket.listen()
+    self.audiosocket=socket
     self.w = 0
     self.v = 320
     self.level = 0
@@ -217,10 +218,7 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.connect(self.call.peer_addr)
-            sock.close()
-
+            self.audiosocket.initial_sock.close()
 
             if self.intent!="welcome":
                
@@ -428,7 +426,7 @@ def handel_call():
   audiosocket=Audiosocket(("localhost",1122))
   while True:
     call=audiosocket.listen()
-    stream=AudioStreamer(call)
+    stream=AudioStreamer(audiosocket)
     noise_stream=threading.Thread(target=stream.start_noise_detection)
     noise_stream.start()
     playback_stream=threading.Thread(target=stream.start_audio_playback,args=(mapping,))
