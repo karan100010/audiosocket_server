@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 import asterisk
-
-import mylogging
 #start a agi session
 import uuid
 
-logger=mylogging.ColouredLogger()
+
 agi= asterisk.AGI()
 
 #start a audio socket server
