@@ -4,7 +4,7 @@ import asterisk
 import uuid
 
 
-agi= asterisk.AGI()
+agi= asterisk.agi.AGI()
 
 #start a audio socket server
 # start a audio socket server
