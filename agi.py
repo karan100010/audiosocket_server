@@ -8,7 +8,7 @@ agi= AGI()
 
 #start a audio socket server
 # start a audio socket server
-agi.stream_file('demo_audios/resp/1')
+agi.stream_file('/home/vboxuser/audiosocket_server/demo_audios/resp/1')
 agi.exec_command("Audiosocket",[str(uuid.uuid4()),"localhost:1122"])
-agi.stream_flie("demo_audios/resp/2")
+agi.stream_flie("/home/vboxuser/audiosocket_server/demo_audios/resp/2")
 agi.hangup()
