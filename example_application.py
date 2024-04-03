@@ -19,6 +19,8 @@ import pymongo
 #import telebot
 import random
 from langdetect import detect
+import socket
+
 
 
 class AudioStreamer():
@@ -215,7 +217,11 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            sys.exit()
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.connect(self.call.peer_addr)
+            sock.close()
+
+
             if self.intent!="welcome":
                
               if self.noise:
