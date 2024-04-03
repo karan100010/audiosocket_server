@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-import asterisk
+from asterisk.agi import AGI
 #start a agi session
 import uuid
 
 
-agi= asterisk.agi.AGI()
+agi= AGI()
 
 #start a audio socket server
 # start a audio socket server
