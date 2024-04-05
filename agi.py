@@ -10,6 +10,6 @@ agi= AGI()
 # start a audio socket server
 agi.stream_file('/home/vboxuser/audiosocket_server/demo_audios/resp/1')
 agi.exec_command("Audiosocket","".join([str(uuid.uuid4()),",localhost:1122"]))
-agi.exec_command("Verbose","audiosocket has ended")
+#agi.exec_command("Verbose","audiosocket has ended")
 agi.stream_flie("/home/vboxuser/audiosocket_server/demo_audios/resp/2")
 agi.hangup()
