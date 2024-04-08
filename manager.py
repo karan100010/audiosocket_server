@@ -5,7 +5,7 @@ manager.login('karan', 'test')
 data="/root/audiosocket_server/agi.py"
 manager.originate(
 
-        channel="SIP/zoiper",
+        channel="SIP/9999",
         context="my-phones",
         exten="500",  # Assuming Zoiper is extension 100
         priority=1,
