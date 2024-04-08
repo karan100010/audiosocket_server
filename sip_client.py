@@ -23,6 +23,7 @@ import pandas
 from langdetect import detect
 
 
+
 def get_wav_duration(file_path):
     try:
         with wave.open(file_path, 'r') as wf:

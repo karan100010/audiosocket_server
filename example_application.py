@@ -20,6 +20,7 @@ import pymongo
 import random
 from langdetect import detect
 import socket
+from asterisk.manager import Manager
 
 
 
@@ -48,6 +49,12 @@ class AudioStreamer():
     self.call_id=str(uuid.uuid4())
     self.long_silence=0
     self.intent="welcome"
+    self.manager=Manager()
+    
+    self.manager.connect("localhost")
+    self.manager.login('karan', 'test')
+
+    
     self.lang_change=False
     with open("db.txt") as f:
        data=f.read()
@@ -218,7 +225,21 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            self.call.hangup()
+          #  self.call.hangup()
+            data="/home/vboxuser/audiosocket_server/agi.py"
+            self.manager.originate(
+
+        channel="SIP/zoiper",
+        context="my-phones",
+        exten="500",  # Assuming Zoiper is extension 100
+        priority=1,
+        caller_id="114",
+        timeout=300000,  # Timeout in milliseconds
+        #async=True  # Perform asynchronously
+        application="AGI",
+     #   application="Playback",
+        data=data
+        )
 
             if self.intent!="welcome":
                
