@@ -2,7 +2,7 @@ from asterisk.manager import Manager
 manager=Manager()
 manager.connect('localhost')
 manager.login('karan', 'test')
-data="/home/vboxuser/audiosocket_server/agi.py"
+data="/root/audiosocket_server/agi.py"
 manager.originate(
 
         channel="SIP/zoiper",
