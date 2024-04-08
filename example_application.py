@@ -226,6 +226,7 @@ class AudioStreamer():
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
             self.audiosocket.initial_sock.close()
+            return
           #  self.call.hangup()
     #         data="/home/vboxuser/audiosocket_server/agi.py"
     #         self.manager.originate(
