@@ -7,7 +7,7 @@ manager.originate(
 
         channel="SIP/zoiper",
         context="my-phones",
-        exten="500",  # Assuming Zoiper is extension 100
+        exten="200",  # Assuming Zoiper is extension 100
         priority=1,
         caller_id="114",
         timeout=300000,  # Timeout in milliseconds
