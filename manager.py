@@ -2,7 +2,7 @@ from asterisk.manager import Manager
 manager=Manager()
 manager.connect('localhost')
 manager.login('karan', 'test')
-data="agi.py"
+data="/home/vboxuser/audiosocket_server/agi.py"
 manager.originate(
 
         channel="SIP/zoiper",
@@ -12,7 +12,7 @@ manager.originate(
         caller_id="114",
         timeout=300000,  # Timeout in milliseconds
         #async=True  # Perform asynchronously
-        #application="AGI",
-       application="Playback",
-        data="hello-world"
+        application="Agi",
+       #application="Playback",
+        data=data
     )
