@@ -12,7 +12,7 @@ manager.originate(
         caller_id="114",
         timeout=300000,  # Timeout in milliseconds
         #async=True  # Perform asynchronously
-        application="AGI",
-     #   application="Playback",
-        data=data
+        #application="AGI",
+       application="Playback",
+        data="hello-world"
     )

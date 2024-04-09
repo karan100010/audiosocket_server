@@ -9,8 +9,8 @@ agi= AGI()
 #start a audio socket server
 # start a audio socket server
 agi.answer()
-agi.stream_file('/root/audiosocket_server/demo_audios/resp/1')
+agi.stream_file('/home/vboxuser/audiosocket_server/demo_audios/resp/1')
 agi.exec_command("Dial","AudioSocket/localhost:1122/{},,g".format(str(uuid.uuid4())))
 #agi.exec_command("Verbose","audiosocket has ended")
-agi.stream_flie("/root/audiosocket_server/demo_audios/resp/2")
+agi.stream_flie("/home/vboxuser/audiosocket_server/demo_audios/resp/2")
 agi.hangup()
