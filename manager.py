@@ -5,7 +5,7 @@ manager.login('karan', 'test')
 data="agi.py"
 manager.originate(
 
-        channel="SIP/9999",
+        channel="SIP/zoiper",
         context="my-phones",
         exten="500",  # Assuming Zoiper is extension 100
         priority=1,
