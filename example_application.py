@@ -225,7 +225,10 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            self.audiosocket.initial_sock.close()
+            self.call.hangup()
+          
+            #disconnet call from audio socket
+            
 
           #  self.call.hangup()
     #         data="/home/vboxuser/audiosocket_server/agi.py"
@@ -272,6 +275,7 @@ class AudioStreamer():
               if resp["transcribe"]=="":
                 x=self.read_wave_file(mapping["utils"][self.channel][1])
                 self.send_audio(x)
+              
               
 
           
