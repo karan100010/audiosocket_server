@@ -160,8 +160,10 @@ class AudioStreamer():
   def start_noise_detection(self):
     while self.call.connected:
       audio_data = self.call.read()
-      #print first 30 bytes of audio data
-      print(audio_data[:30])
+      # write stream to a file
+      with open("stream.txt", "ab") as f:
+        f.write(audio_data)
+      
 
 
       if self.audioplayback:
