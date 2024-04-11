@@ -35,7 +35,7 @@ class AudioStreamer():
     self.noise_frames_count = 0
     self.call=call
     self.audiosocket=socket
-    self.uudi=call.get_uuid()
+    self.uudi=self.audiosocket.get_uuid()
     self.w = 0
     self.v = 320
     self.level = 0
