@@ -35,7 +35,7 @@ class AudioStreamer():
     self.noise_frames_count = 0
     self.call=call
     self.audiosocket=socket
-    self.uudi=self.audiosocket.uudi
+    #self.uudi=self.audiosocket.uudi
     self.w = 0
     self.v = 320
     self.level = 0
