@@ -36,6 +36,7 @@ class AudioStreamer():
     self.call=call
     self.audiosocket=socket
     #self.uudi=self.audiosocket.uudi
+    self.uuid=call.uuid
     self.w = 0
     self.v = 320
     self.level = 0
