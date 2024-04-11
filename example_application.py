@@ -225,7 +225,7 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
-        self.logger.info("the uuid for this call is {}".format(self.uudi))
+        self.logger.info("the uuid for this call is {}".format(self.uuid))
        
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
