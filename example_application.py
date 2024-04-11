@@ -35,6 +35,7 @@ class AudioStreamer():
     self.noise_frames_count = 0
     self.call=call
     self.audiosocket=socket
+    self.uudi=call.get_uuid()
     self.w = 0
     self.v = 320
     self.level = 0
@@ -220,6 +221,7 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
+        self.logger.info("the uuid for this call is {}".format(self.uudi))
        
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
