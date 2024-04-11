@@ -160,6 +160,10 @@ class AudioStreamer():
   def start_noise_detection(self):
     while self.call.connected:
       audio_data = self.call.read()
+      #print first 30 bytes of audio data
+      print(audio_data[:30])
+
+
       if self.audioplayback:
         #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
         self.detect_noise(audio_data, 1, 8000)
