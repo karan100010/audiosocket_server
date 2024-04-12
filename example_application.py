@@ -259,7 +259,7 @@ class AudioStreamer():
               self.logger.info("audio file converted {}".format(m))
               resp=json.loads(response.text)
               print(resp)
-              return
+              
               threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
               
               self.combined_audio=b''
@@ -278,10 +278,10 @@ class AudioStreamer():
               #self.call.hangup()
             # if resp["transcribe"]=="":
             #     self.level="cant_hear"
-            if self.level==0 and self.intent=="welcome" and self.call_flow_num==0 and self.channel=="en":
-                if  detect(resp["transcribe"]) != "en":
+           # if self.level==0 and self.intent=="welcome" and self.call_flow_num==0 and self.channel=="en":
+                # if  detect(resp["transcribe"]) != "en":
                    
-                   self.lang_change=True
+                #    self.lang_change=True
             if resp["nlp"]["intent"]=="positive":
                 if self.intent!="welcome":
                   self.level+=1
