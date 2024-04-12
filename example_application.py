@@ -236,31 +236,17 @@ class AudioStreamer():
             #disconnet call from audio socket
             
 
-          #  self.call.hangup()
-    #         data="/home/vboxuser/audiosocket_server/agi.py"
-    #         self.manager.originate(
 
-    #     channel="SIP/zoiper",
-    #     context="my-phones",
-    #     exten="500",  # Assuming Zoiper is extension 100
-    #     priority=1,
-    #     caller_id="114",
-    #     timeout=300000,  # Timeout in milliseconds
-    #     #async=True  # Perform asynchronously
-    #     application="AGI",
-    #  #   application="Playback",
-    #     data=data
-    #     )
 
-    #         if self.intent!="welcome":
+            if self.intent!="welcome":
                
-    #           if self.noise:
-    #             x=self.read_wave_file(mapping["utils"][self.channel][0])
-    #             self.send_audio(x)
-    #             self.noise=False
-    #         while self.long_silence<100:
-    #           sleep(.01)
-    #         self.long_silence=0
+              if self.noise:
+                x=self.read_wave_file(mapping["utils"][self.channel][0])
+                self.send_audio(x)
+                self.noise=False
+            while self.long_silence<100:
+              sleep(.01)
+            self.long_silence=0
               
            
           
