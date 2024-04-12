@@ -231,7 +231,7 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            self.call.hangup()
+            #self.call.hangup()
           
             #disconnet call from audio socket
             
