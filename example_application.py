@@ -69,7 +69,7 @@ class AudioStreamer():
     except Exception as e:
       self.logger.info(e)
   
-    self.callflow=self.conn["test"][""].find_one({"call_id":"uuid"})
+    self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
 
   def read_wave_file(self, filename):
     #self.logger.debug("Reading wave file")
@@ -273,11 +273,12 @@ class AudioStreamer():
               self.logger.info("audio file converted {}".format(m))
               resp=json.loads(response.text)
               print(resp)
+              return
               threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
               
               self.combined_audio=b''
               
-
+            
               if resp["transcribe"]=="":
                 x=self.read_wave_file(mapping["utils"][self.channel][1])
                 self.send_audio(x)
