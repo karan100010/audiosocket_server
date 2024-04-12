@@ -282,39 +282,39 @@ class AudioStreamer():
                 # if  detect(resp["transcribe"]) != "en":
                    
                 #    self.lang_change=True
-            if resp["nlp"]["intent"]=="positive":
-                if self.intent!="welcome":
-                  self.level+=1
+          #   if resp["nlp"]["intent"]=="positive":
+          #       if self.intent!="welcome":
+          #         self.level+=1
                 
-                self.intent="positive"
+          #       self.intent="positive"
   
-            elif resp["nlp"]["intent"]=='negative':
-                if  self.intent!="welcome":
-                  self.level+=1
-                self.intent="negative"
-            if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="change_flow":
-              if self.call_flow_num==0:
+          #   elif resp["nlp"]["intent"]=='negative':
+          #       if  self.intent!="welcome":
+          #         self.level+=1
+          #       self.intent="negative"
+          #   if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="change_flow":
+          #     if self.call_flow_num==0:
 
-                self.call_flow_num+=1
-                self.level=0
-                self.intent="welcome"
-              else:
-                self.call_flow_num-=1
-                self.level=0
-                self.intent="welcome"
+          #       self.call_flow_num+=1
+          #       self.level=0
+          #       self.intent="welcome"
+          #     else:
+          #       self.call_flow_num-=1
+          #       self.level=0
+          #       self.intent="welcome"
         
-            if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="end_call":
-              self.call.hangup()
-              self.audioplayback=False
-              sleep(1)
+          #   if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="end_call":
+          #     self.call.hangup()
+          #     self.audioplayback=False
+          #     sleep(1)
 
-            if self.lang_change:
-              self.channel="hi"
-              self.level=0
-              self.intent="welcome"
-              self.call_flow_num=0
-              self.logger.info("changing channel to hindi")
-              self.lang_change=False
+          #   if self.lang_change:
+          #     self.channel="hi"
+          #     self.level=0
+          #     self.intent="welcome"
+          #     self.call_flow_num=0
+          #     self.logger.info("changing channel to hindi")
+          #     self.lang_change=False
           
 
             
@@ -322,77 +322,77 @@ class AudioStreamer():
 
 
         
-            # if self.level==1:
-            #   self.level=2
+          #   # if self.level==1:
+          #   #   self.level=2
 
-            # elif self.level==2:
-            #   while self.silent_frames_count<100:
-            #         print("waiting")
-            #         sleep(.01)
-            #response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
-            #   resp=json.loads(response.text)
-            #   print(resp)
-            #   self.level=resp["prediction"][0]
+          #   # elif self.level==2:
+          #   #   while self.silent_frames_count<100:
+          #   #         print("waiting")
+          #   #         sleep(.01)
+          #   #response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
+          #   #   resp=json.loads(response.text)
+          #   #   print(resp)
+          #   #   self.level=resp["prediction"][0]
 
               
-            # elif self.level=="hi" or self.level== "en":
-            #   self.call.hangup()
+          #   # elif self.level=="hi" or self.level== "en":
+          #   #   self.call.hangup()
           
 
-            # if self.level==11:
-            #   sleep(1)
-            #   x=self.read_wave_file(mapping[self.channel][self.level])
-            #   self.send_audio(x)
-            #   self.logger.info("playing interuption message")
+          #   # if self.level==11:
+          #   #   sleep(1)
+          #   #   x=self.read_wave_file(mapping[self.channel][self.level])
+          #   #   self.send_audio(x)
+          #   #   self.logger.info("playing interuption message")
 
-            #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
-            # if self.level==8:
-            #   self.call.hangup()
-            #   self.audioplayback=False
-            #   sleep(1)
-            # if self.level!=9:
-            #   while self.silent_frames_count<100:
-            #     sleep(.01)
-            #   self.logger.info("waiting for silence")
-            #   self.silent_frames_count=0
-            #   self.data_array=[]
+          #   #self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
+          #   # if self.level==8:
+          #   #   self.call.hangup()
+          #   #   self.audioplayback=False
+          #   #   sleep(1)
+          #   # if self.level!=9:
+          #   #   while self.silent_frames_count<100:
+          #   #     sleep(.01)
+          #   #   self.logger.info("waiting for silence")
+          #   #   self.silent_frames_count=0
+          #   #   self.data_array=[]
               
-            #   try:
-            #     response=requests.post("http://3.109.152.180:5002/convert_en",data=self.combined_audio)
-            #     resp=json.loads(response.text)
-            #   except Exception as e:
-            #     self.logger.info(e)
-            #     resp={"transcribe":"error","nlp":"error"}
-            #   if resp['transcribe']!="error":
-            #     print(resp)
+          #   #   try:
+          #   #     response=requests.post("http://3.109.152.180:5002/convert_en",data=self.combined_audio)
+          #   #     resp=json.loads(response.text)
+          #   #   except Exception as e:
+          #   #     self.logger.info(e)
+          #   #     resp={"transcribe":"error","nlp":"error"}
+          #   #   if resp['transcribe']!="error":
+          #   #     print(resp)
             
-            #     try:
+          #   #     try:
                   
-            #       self.conn["test"]["test"].insert_one(database_entry)
-            #     except Exception as e:
-            #       self.logger.info(e)
+          #   #       self.conn["test"]["test"].insert_one(database_entry)
+          #   #     except Exception as e:
+          #   #       self.logger.info(e)
                 
               
 
 
                               
             
-            #   self.combined_audio=b''
+          #   #   self.combined_audio=b''
               
-            #   if self.level!=11:
-            #     self.last_level=self.level
-            #     self.level=9
-            #   else:
-            #     self.level=self.last_level
-            # else:
-            #   self.level=self.last_level+1
+          #   #   if self.level!=11:
+          #   #     self.last_level=self.level
+          #   #     self.level=9
+          #   #   else:
+          #   #     self.level=self.last_level
+          #   # else:
+          #   #   self.level=self.last_level+1
 
-          # if self.level==11:
-          #   self.level=self.noise_level
-          #   x=self.read_wave_file(mapping[self.channel][self.level])
-          #   self.send_audio(x)
-          # else:
-          #   self.level+=1
+          # # if self.level==11:
+          # #   self.level=self.noise_level
+          # #   x=self.read_wave_file(mapping[self.channel][self.level])
+          # #   self.send_audio(x)
+          # # else:
+          # #   self.level+=1
         
             
 
