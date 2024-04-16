@@ -22,7 +22,7 @@ def get_decider(id):
     id=str(id)
     print(id)
     try:
-        connection_data = connection.find({"call_id": str(id)})
+        connection_data = connection.find({"call_id": id})
         #run minima fuction on the num_connected field
         # get decision form the data
         for i in connection_data:
