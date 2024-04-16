@@ -234,14 +234,14 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
-        requests.put(self.call_api+"/update",data={"call_id":self.call_id,"addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":self.num_connected})
+       # requests.put(self.call_api+"/update",data={"call_id":self.call_id,"addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":self.num_connected})
         self.logger.info("the uuid for this call is {}".format(self.uuid))
        
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"decision":"tranfer"})
+            #requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"decision":"tranfer"})
             self.call.hangup()
           
             #disconnet call from audio socket
