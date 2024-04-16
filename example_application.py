@@ -57,7 +57,7 @@ class AudioStreamer():
     # requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
     # #self.manager=Manager()
     
-    # self.manager.connect("localhost"c
+    # self.manager.connect("localhost")
     # self.manager.login('karan', 'test')
 
     
@@ -68,10 +68,10 @@ class AudioStreamer():
     if data.endswith("\n"):
        data=data.strip("\n")
 
-    # try:
-    #   self.conn = pymongo.MongoClient(data)
-    # except Exception as e:
-    #   self.logger.info(e)
+    try:
+      self.conn = pymongo.MongoClient(data)
+    except Exception as e:
+      self.logger.info(e)
   
     # self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
 
@@ -168,7 +168,7 @@ class AudioStreamer():
 
   def start_noise_detection(self):
     while self.call.connected:
-      #requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
+      requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
       audio_data = self.call.read()
       # write stream to a file
       # with open("stream.txt", "ab") as f:
@@ -234,14 +234,14 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
-       # requests.put(self.call_api+"/update",data={"call_id":self.call_id,"addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":self.num_connected})
+        #requests.put(self.call_api+"/update",data={"call_id":self.call_id,"addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":self.num_connected})
         self.logger.info("the uuid for this call is {}".format(self.uuid))
        
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            #requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"decision":"tranfer"})
+            requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"hangup":"true","transfer":None})
             self.call.hangup()
           
             #disconnet call from audio socket
