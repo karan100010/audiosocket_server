@@ -89,6 +89,15 @@ def get_decider(id):
         return jsonify(connection_data)
     except:
         return jsonify("Error in getting data")
+#see all calls
+@app.route('/api/connections/calls', methods=['GET'])
+def get_calls():
+    connection = conn['test']["calls"]
+    try:
+        connection_data = connection.find()
+        return jsonify(list(connection_data))
+    except:
+        return jsonify("Error in getting data")
 
 if __name__ == '__main__':
     app.run(port=5011, debug=True)    
