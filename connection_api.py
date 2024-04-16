@@ -62,7 +62,7 @@ def get_free_connection():
 @app.route('/api/connections/calls', methods=['POST'])
 def add_call():
     connection = conn['test']["calls"]
-    data = request.data
+    data = request.json
     print(data)
 
     try:
