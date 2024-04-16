@@ -63,7 +63,7 @@ def get_free_connection():
 def add_call():
     connection = conn['test']["calls"]
     data = request.json
-    connection_id = data['connection_id']
+
     try:
         connection.insert_one(data)
         print("sucessfully inserted call data")

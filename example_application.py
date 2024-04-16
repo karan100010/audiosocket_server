@@ -51,6 +51,8 @@ class AudioStreamer():
     self.call_id=str(uuid.uuid4())
     self.long_silence=0
     self.intent="welcome"
+    self.call_api="http://localhost:5011/api/connection"
+    requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0})
     # #self.manager=Manager()
     
     # self.manager.connect("localhost")
@@ -76,6 +78,10 @@ class AudioStreamer():
     with wave.open(filename, 'rb') as wave_file:
       audio = wave_file.readframes(wave_file.getnframes())
     return audio
+  def update_and_hangup(self):
+    self.call.hangup()
+    
+    return
 
   def detect_noise(self, indata, frames, rate):
     
@@ -160,6 +166,7 @@ class AudioStreamer():
 
   def start_noise_detection(self):
     while self.call.connected:
+      requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
       audio_data = self.call.read()
       # write stream to a file
       # with open("stream.txt", "ab") as f:
