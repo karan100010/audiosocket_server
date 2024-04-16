@@ -451,7 +451,8 @@ class AudioStreamer():
 
 
         self.logger.info("silent frames count is {}".format(self.silent_frames_count))
-        data= json.dumps({"call_id":self.uuid,"hangup":"true","transfer":None})
+        uuid_str=str(self.uuid)
+        data= json.dumps({"call_id":uuid_str,"hangup":"true","transfer":None})
         
         re=requests.post(self.call_api+"/calls",json=data)
         #convert data to json
