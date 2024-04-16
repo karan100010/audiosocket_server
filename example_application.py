@@ -253,7 +253,7 @@ class AudioStreamer():
             data= json.dumps({"call_id":uuid_str,"hangup":"true","transfer":None})
         
             re=requests.post(self.call_api+"/calls",json=data)
-            print(re)
+            print(re.text)
             #self.logger.info(re.text)
             self.call.hangup()
           

@@ -71,6 +71,7 @@ def add_call():
     except Exception as e:
         return jsonify("Error in inserting data due to "+str(e))
     
+    
 # @app.route('/api/connections/calls/<id>', methods=['GET'])
 # def get_call(id):
 #     connection = conn['test']["calls"]
