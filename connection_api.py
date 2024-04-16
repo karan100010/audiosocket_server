@@ -26,8 +26,8 @@ def get_decider(id):
         for i in connection_data:
             
             return jsonify(i)
-    except:
-        return jsonify("Error in getting data")
+    except Exception as e:
+        return jsonify("Error in getting data because "+str(e))
 
 @app.route('/api/connections', methods=['POST'])
 def create_connection():
