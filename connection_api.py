@@ -23,8 +23,9 @@ def get_decider(id):
         connection_data = connection.find({'call_id': id})
         #run minima fuction on the num_connected field
         # get decision form the data
-        
-        return jsonify(connection_data)
+        for i in connection_data:
+            
+            return jsonify(i)
     except:
         return jsonify("Error in getting data")
 
