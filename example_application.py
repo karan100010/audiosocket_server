@@ -73,7 +73,7 @@ class AudioStreamer():
     except Exception as e:
       self.logger.info(e)
   
-    self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
+    # self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
 
   def read_wave_file(self, filename):
     #self.logger.debug("Reading wave file")
