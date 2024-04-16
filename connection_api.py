@@ -15,7 +15,7 @@ try:
 except:
     print("Could not connect to MongoDB")
 
-app.route('/api/connections/decider/<id>', methods=['GET'])
+@app.route('/api/connections/decider/<id>', methods=['GET'])
 def get_decider(id):
     connection = conn['test']["calls"]
     print(id)
