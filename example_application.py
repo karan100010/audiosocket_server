@@ -38,6 +38,9 @@ class AudioStreamer():
     self.audiosocket=socket
     #self.uudi=self.audiosocket.uudi
     self.uuid=call.uuid
+    bytes_uuid = bytes.fromhex(self.uuid)
+    uuid4_format = uuid.UUID(bytes=bytes_uuid)
+    self.uuid=uuid4_format
     self.num_connected=0
     self.w = 0
     self.v = 320
@@ -171,9 +174,7 @@ class AudioStreamer():
     uuid4_format = uuid.UUID(bytes=bytes_uuid)
 
     while self.call.connected:
-      bytes_uuid = bytes.fromhex(self.uuid)
-      uuid4_format = uuid.UUID(bytes=bytes_uuid)
-      self.logger.info("the uuid for this call is {}".format(uuid4_format))
+      
       #requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
       audio_data = self.call.read()
       # write stream to a file
@@ -450,8 +451,9 @@ class AudioStreamer():
 
 
         self.logger.info("silent frames count is {}".format(self.silent_frames_count))
+        data= json.dumps({"call_id":self.uuid,"hangup":"true","transfer":None})
         
-        re=requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"hangup":"true","transfer":None})
+        re=requests.post(self.call_api+"/calls",json=data)
         #convert data to json
         #response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
         #self.logger.info(response.text)
