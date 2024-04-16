@@ -241,7 +241,7 @@ class AudioStreamer():
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
-            re=requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"hangup":"true","transfer":None})
+            
             self.logger.info(re.text)
             self.call.hangup()
           
@@ -445,7 +445,7 @@ class AudioStreamer():
 
         self.logger.info("silent frames count is {}".format(self.silent_frames_count))
         
-
+        re=requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"hangup":"true","transfer":None})
         #convert data to json
         #response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
         #self.logger.info(response.text)
