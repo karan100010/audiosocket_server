@@ -38,9 +38,7 @@ class AudioStreamer():
     self.audiosocket=socket
     #self.uudi=self.audiosocket.uudi
     self.call_uuid=str(call.uuid)
-    bytes_uuid = bytes.fromhex(self.call_uuid)
-    uuid4_format = uuid.UUID(bytes=bytes_uuid)
-    self.uuid=uuid4_format
+    
     self.num_connected=0
     self.w = 0
     self.v = 320
@@ -249,12 +247,16 @@ class AudioStreamer():
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
             self.logger.info("silent frames count is {}".format(self.silent_frames_count))
+            
             uuid_str=str(self.uuid)
             data= {"call_id":uuid_str,"hangup":"true","transfer":"none"}
         
             # re=requests.post(self.call_api+"/calls",json=data)
             # print(re.text)
             #self.logger.info(re.text)
+            bytes_uuid = bytes.fromhex(self.call_uuid)
+            uuid4_format = uuid.UUID(bytes=bytes_uuid)
+            self.uuid=uuid4_format
             x=self.conn["test"]["calls"].insert_one(data)
             print(x)
             self.call.hangup()
