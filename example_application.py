@@ -249,7 +249,7 @@ class AudioStreamer():
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
             
-            self.logger.info(re.text)
+            #self.logger.info(re.text)
             self.call.hangup()
           
             #disconnet call from audio socket
