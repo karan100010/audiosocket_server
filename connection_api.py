@@ -83,7 +83,7 @@ app.route('/api/connections/decider/<id>', methods=['GET'])
 def get_decider(id):
     connection = conn['test']["calls"]
     try:
-        connection_data = connection.find({'connection_id': id})
+        connection_data = connection.find({'call_id': id})
         #run minima fuction on the num_connected field
         # get decision form the data
         
