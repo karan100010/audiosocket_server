@@ -25,9 +25,13 @@ def get_decider(id):
         connection_data = connection.find({"call_id": id})
         #run minima fuction on the num_connected field
         # get decision form the data
+        resp={}
         for i in connection_data:
+            resp["hangup"]=i["hangup"]
+            resp["transfer"]=i["transfer"]
             
-            return jsonify(i)
+            
+            return jsonify(resp)
     except Exception as e:
         return jsonify("Error in getting data because "+str(e))
 
