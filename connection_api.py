@@ -15,22 +15,21 @@ try:
     print("Connected successfully!!!")
 except:
     print("Could not connect to MongoDB")
+@app.route('/min_connetions', methods=['GET'])
+def min_connections():
+    return jsonify("localhost:1121")
 
 @app.route('/api/connections/decider/<id>', methods=['GET'])
 def get_decider(id):
     connection = conn['test']["calls"]
-    id=str(id)
-    print(id)
     try:
         connection_data = connection.find({"call_id": id})
         #run minima fuction on the num_connected field
         # get decision form the data
         resp={}
-        for i in connection_data:
+        for i in connection_data[0:]:
             resp["hangup"]=i["hangup"]
             resp["transfer"]=i["transfer"]
-            
-            
             return jsonify(resp)
     except Exception as e:
         return jsonify("Error in getting data because "+str(e))
