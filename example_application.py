@@ -249,7 +249,7 @@ class AudioStreamer():
             self.logger.info("silent frames count is {}".format(self.silent_frames_count))
             
             uuid_str=str(self.uuid)
-            data= {"call_id":uuid_str,"hangup":"true","transfer":"none"}
+            
         
             # re=requests.post(self.call_api+"/calls",json=data)
             # print(re.text)
@@ -257,6 +257,7 @@ class AudioStreamer():
             bytes_uuid = bytes.fromhex(self.uuid)
             uuid4_format = uuid.UUID(bytes=bytes_uuid)
             self.uuid=uuid4_format
+            data= {"call_id":uuid4_format,"hangup":"true","transfer":"none"}
             x=self.conn["test"]["calls"].insert_one(data)
             print(x)
             self.call.hangup()
