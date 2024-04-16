@@ -27,7 +27,7 @@ def get_decider(id):
         #run minima fuction on the num_connected field
         # get decision form the data
         resp={}
-        for i in connection_data[0:]:
+        for i in connection_data:
             resp["hangup"]=i["hangup"]
             resp["transfer"]=i["transfer"]
             return jsonify(resp)
