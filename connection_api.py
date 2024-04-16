@@ -1,6 +1,7 @@
 
 from flask import Flask, request, jsonify
 import pymongo
+
 with open("db.txt") as f:
        data=f.read()
 if data.endswith("\n"):
@@ -18,9 +19,10 @@ except:
 @app.route('/api/connections/decider/<id>', methods=['GET'])
 def get_decider(id):
     connection = conn['test']["calls"]
+    id=str(id)
     print(id)
     try:
-        connection_data = connection.find({'call_id': str(id)})
+        connection_data = connection.find({"call_id": str(id)})
         #run minima fuction on the num_connected field
         # get decision form the data
         for i in connection_data:
