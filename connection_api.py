@@ -15,6 +15,19 @@ try:
 except:
     print("Could not connect to MongoDB")
 
+app.route('/api/connections/decider/<id>', methods=['GET'])
+def get_decider(id):
+    connection = conn['test']["calls"]
+    print(id)
+    try:
+        connection_data = connection.find({'call_id': id})
+        #run minima fuction on the num_connected field
+        # get decision form the data
+        
+        return jsonify(connection_data)
+    except:
+        return jsonify("Error in getting data")
+
 @app.route('/api/connections', methods=['POST'])
 def create_connection():
     connection = conn['test']['connection']
@@ -80,18 +93,7 @@ def add_call():
 #         return jsonify(list(connection_data))
 #     except:
 #         return jsonify("Error in getting data")
-app.route('/api/connections/decider/<id>', methods=['GET'])
-def get_decider(id):
-    connection = conn['test']["calls"]
-    print(id)
-    try:
-        connection_data = connection.find({'call_id': id})
-        #run minima fuction on the num_connected field
-        # get decision form the data
-        
-        return jsonify(connection_data)
-    except:
-        return jsonify("Error in getting data")
+
 #see all calls
 @app.route('/api/connections/calls', methods=['GET'])
 def get_calls():
