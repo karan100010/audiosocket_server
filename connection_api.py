@@ -63,6 +63,7 @@ def get_free_connection():
 def add_call():
     connection = conn['test']["calls"]
     data = request.data
+    print(data)
 
     try:
         connection.insert_one(data)
