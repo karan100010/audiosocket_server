@@ -57,7 +57,7 @@ class AudioStreamer():
     # requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
     # #self.manager=Manager()
     
-    # self.manager.connect("localhost")
+    # self.manager.connect("localhost"c
     # self.manager.login('karan', 'test')
 
     
@@ -168,7 +168,7 @@ class AudioStreamer():
 
   def start_noise_detection(self):
     while self.call.connected:
-      requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
+      #requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
       audio_data = self.call.read()
       # write stream to a file
       # with open("stream.txt", "ab") as f:
