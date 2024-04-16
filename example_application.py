@@ -68,10 +68,10 @@ class AudioStreamer():
     if data.endswith("\n"):
        data=data.strip("\n")
 
-    try:
-      self.conn = pymongo.MongoClient(data)
-    except Exception as e:
-      self.logger.info(e)
+    # try:
+    #   self.conn = pymongo.MongoClient(data)
+    # except Exception as e:
+    #   self.logger.info(e)
   
     # self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
 
