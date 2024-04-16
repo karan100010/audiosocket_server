@@ -167,8 +167,14 @@ class AudioStreamer():
 
 
   def start_noise_detection(self):
+    bytes_uuid = bytes.fromhex(self.uuid)
+    uuid4_format = uuid.UUID(bytes=bytes_uuid)
+
     while self.call.connected:
-      requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
+      bytes_uuid = bytes.fromhex(self.uuid)
+      uuid4_format = uuid.UUID(bytes=bytes_uuid)
+      self.logger.info("the uuid for this call is {}".format(uuid4_format))
+      #requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
       audio_data = self.call.read()
       # write stream to a file
       # with open("stream.txt", "ab") as f:

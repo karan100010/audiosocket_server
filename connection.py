@@ -251,4 +251,5 @@ class Connection:
         self._decode_error(payload)
 
       elif type == types.uuid:
-        self.uuid = str(payload)
+        self.uuid = payload.hex()
+        #convert uuid to uuid4 format
