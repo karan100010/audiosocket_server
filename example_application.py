@@ -17,6 +17,7 @@ import base64
 import uuid
 import pymongo
 #import telebot
+import datetime
 import random
 from langdetect import detect
 import socket
@@ -37,6 +38,7 @@ class AudioStreamer():
     self.audiosocket=socket
     #self.uudi=self.audiosocket.uudi
     self.uuid=call.uuid
+    self.num_connected=0
     self.w = 0
     self.v = 320
     self.level = 0
@@ -52,7 +54,7 @@ class AudioStreamer():
     self.long_silence=0
     self.intent="welcome"
     self.call_api="http://localhost:5011/api/connection"
-    requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0})
+    # requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
     # #self.manager=Manager()
     
     # self.manager.connect("localhost")
@@ -232,12 +234,14 @@ class AudioStreamer():
   def start_audio_playback(self,mapping):
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     while self.call.connected:
+        requests.put(self.call_api+"/update",data={"call_id":self.call_id,"addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":self.num_connected})
         self.logger.info("the uuid for this call is {}".format(self.uuid))
        
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
+            requests.post(self.call_api+"/calls",data={"call_id":self.uuid,"decision":"tranfer"})
             self.call.hangup()
           
             #disconnet call from audio socket

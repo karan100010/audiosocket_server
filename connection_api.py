@@ -29,9 +29,9 @@ def create_connection():
 def update_connection():
     connection = conn['test']['connection']
     data = request.json
-    connection_id = data['connection_id']
+    connection_id = data['addr']
     try:
-        connection.update_one({'_id': connection_id}, {'$set': data})
+        connection.update_one({'_id': connection_id}, {'$set': {"conn":data['conn']}})
         print("sucessfully updated connection data")
     except:
         return jsonify("Error in updating data")
@@ -70,12 +70,23 @@ def add_call():
     except:
         return jsonify("Error in inserting data")
     return jsonify("sucessfully inserted call data")
-@app.route('/api/connections/calls/<id>', methods=['GET'])
-def get_call(id):
+# @app.route('/api/connections/calls/<id>', methods=['GET'])
+# def get_call(id):
+#     connection = conn['test']["calls"]
+#     try:
+#         connection_data = connection.find({'connection_id': id})
+#         return jsonify(list(connection_data))
+#     except:
+#         return jsonify("Error in getting data")
+app.route('/api/connections/decider/<id>', methods=['GET'])
+def get_decider(id):
     connection = conn['test']["calls"]
     try:
         connection_data = connection.find({'connection_id': id})
-        return jsonify(list(connection_data))
+        #run minima fuction on the num_connected field
+        # get decision form the data
+        decison=connection_data['decision']
+        return jsonify(decison)
     except:
         return jsonify("Error in getting data")
 
