@@ -18,7 +18,7 @@ except:
 @app.route('/api/connections', methods=['POST'])
 def create_connection():
     connection = conn['test']['connection']
-    data = request.json
+    data = request.data
     try:
         connection_id = connection.insert_one(data)
         print("sucessfully inserted connection data")
@@ -28,7 +28,7 @@ def create_connection():
 @app.route('/api/connections/update', methods=['PUT'])
 def update_connection():
     connection = conn['test']['connection']
-    data = request.json
+    data = request.data
     connection_id = data['addr']
     try:
         connection.update_one({'_id': connection_id}, {'$set': {"conn":data['conn']}})
@@ -38,7 +38,7 @@ def update_connection():
 @app.route('/api/connections/delete', methods=['DELETE'])
 def delete_connection():
     connection = conn['test']['connection']
-    data = request.json
+    data = request.data
     connection_id = data['connection_id']
     try:
         connection.delete_one({'_id': connection_id})
@@ -62,7 +62,7 @@ def get_free_connection():
 @app.route('/api/connections/calls', methods=['POST'])
 def add_call():
     connection = conn['test']["calls"]
-    data = request.json
+    data = request.data
 
     try:
         connection.insert_one(data)
