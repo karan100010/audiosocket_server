@@ -17,7 +17,7 @@ except:
     print("Could not connect to MongoDB")
 @app.route('/min_connetions', methods=['GET'])
 def min_connections():
-    connection = conn['test']['connection']
+    connection = conn['test']['connections']
     try:
         
         #run minima fuction on the num_connected field
@@ -42,7 +42,7 @@ def get_decider(id):
 
 @app.route('/api/connections', methods=['POST'])
 def create_connection():
-    connection = conn['test']['connection']
+    connection = conn['test']['connections']
     data = request.data
     try:
         connection_id = connection.insert_one(data)
@@ -54,7 +54,7 @@ def create_connection():
 
 @app.route('/api/connections/update', methods=['PUT'])
 def update_connection():
-    connection = conn['test']['connection']
+    connection = conn['test']['connections']
     data = request.data
     connection_id = data['addr']
     try:
@@ -75,17 +75,7 @@ def delete_connection():
     except:
         return jsonify("Error in deleting data")
 @app.route('/api/connections/get_free', methods=['GET'])
-def get_free_connection():
-    connection = conn['test']['connection']
-    #find all the connctions that are active 
-    try:
-        connection_data = connection.find({'status': 'active'})
-        #run minima fuction on the num_connected field
-        min_connections = min(connection_data, key=lambda x:x['num_connected'])
-        return jsonify(min_connections)
-    except:
-        return jsonify("Error in getting data")
-    
+
 #calls apis start here 
     
 @app.route('/api/connections/calls', methods=['POST'])
