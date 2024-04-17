@@ -267,7 +267,7 @@ class AudioStreamer():
             #self.logger.info(re.text)
             bytes_uuid = bytes.fromhex(self.uuid)
             uuid4_format = uuid.UUID(bytes=bytes_uuid)
-            self.uuid=uuid4_format
+            self.uuid=str(uuid4_format)
             self.logger.info(uuid4_format)
            
             data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
