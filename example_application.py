@@ -485,7 +485,7 @@ class AudioStreamer():
 
 def handel_call():
 
-  audiosocket=Audiosocket(("localhost",8010))
+  audiosocket=Audiosocket(("localhost",8000))
   while True:
     call=audiosocket.listen()
 
