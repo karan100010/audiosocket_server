@@ -17,8 +17,14 @@ except:
     print("Could not connect to MongoDB")
 @app.route('/min_connetions', methods=['GET'])
 def min_connections():
-    return jsonify("localhost:1121")
-
+    connection = conn['test']['connection']
+    try:
+        
+        #run minima fuction on the num_connected field
+        min_value_document = connection.find_one({}, sort=[("field_name", 1)])
+        return jsonify(min_value_document["addr"])
+    except Exception as e:
+        return jsonify("Error in getting data because "+str(e))
 @app.route('/api/connections/decider/<id>', methods=['GET'])
 def get_decider(id):
     connection = conn['test']["calls"]
@@ -44,6 +50,8 @@ def create_connection():
     except:
         return jsonify("Error in inserting data")    
     return jsonify(str(connection_id.inserted_id))
+
+
 @app.route('/api/connections/update', methods=['PUT'])
 def update_connection():
     connection = conn['test']['connection']
@@ -54,6 +62,8 @@ def update_connection():
         print("sucessfully updated connection data")
     except:
         return jsonify("Error in updating data")
+
+
 @app.route('/api/connections/delete', methods=['DELETE'])
 def delete_connection():
     connection = conn['test']['connection']
