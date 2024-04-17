@@ -242,7 +242,7 @@ class AudioStreamer():
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     if self.call.connected:
        self.num_connected+=1
-       self.conn({ "addr":self.audiosocket.addr+":"+str(self.audiosocket.port) ,"conn":self.num_connected})
+       self.conn["test"]["connections"].update_one({ "addr":self.audiosocket.addr+":"+str(self.audiosocket.port) ,"conn":self.num_connected})
     while self.call.connected:
         #
         self.logger.info("the uuid for this call is {}".format(self.uuid))
@@ -252,7 +252,7 @@ class AudioStreamer():
             x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
             self.send_audio(x)
             self.logger.info("silent frames count is {}".format(self.silent_frames_count))       
-             
+
             # re=requests.post(self.call_api+"/calls",json=data)
             # print(re.text)
             #self.logger.info(re.text)
