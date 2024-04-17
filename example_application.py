@@ -168,8 +168,6 @@ class AudioStreamer():
 
 
   def start_noise_detection(self):
-    bytes_uuid = bytes.fromhex(self.uuid)
-    uuid4_format = uuid.UUID(bytes=bytes_uuid)
 
     while self.call.connected:
       
@@ -240,7 +238,7 @@ class AudioStreamer():
     self.logger.info('Received connection from {0}'.format(self.call.peer_addr))
     if self.call.connected:
        self.num_connected+=1
-       requests.put(self.call_api+"/update",data={"conn":self.num_connected})
+       requests.put(self.call_api+"/update",data={ "addr":self.audiosocket.addr+":"+str(self.audiosocket.port) ,"conn":self.num_connected})
     while self.call.connected:
         #
         self.logger.info("the uuid for this call is {}".format(self.uuid))
