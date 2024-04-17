@@ -50,8 +50,6 @@ def create_connection():
     data_dict = json.loads(data_string)  # Convert JSON string to dictionary
     print(data_dict)
     connection.insert_one(data_dict)
-    print(type(data))
-    print(data)
     try:
         connection_id = connection.insert_one(data)
         print("sucessfully inserted connection data")
