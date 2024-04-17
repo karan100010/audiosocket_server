@@ -45,6 +45,7 @@ def get_decider(id):
 def create_connection():
     connection = conn['test']['connections']
     data = request.data
+    data=dict(data)
     try:
         connection_id = connection.insert_one(data)
         print("sucessfully inserted connection data")
