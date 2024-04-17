@@ -252,8 +252,10 @@ class AudioStreamer():
        
         if not self.audioplayback:
             self.logger.info("we are in level {}".format(self.level))
-            #x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
-            self.send_audio(self.welcome_audio)
+            
+            x = self.read_wave_file(mapping[self.channel][self.call_flow_num][self.intent][self.level])
+            self.send_audio(x)
+            #self.send_audio(self.welcome_audio)
             self.logger.info("silent frames count is {}".format(self.silent_frames_count))       
 
             # re=requests.post(self.call_api+"/calls",json=data)
