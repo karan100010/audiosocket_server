@@ -251,11 +251,8 @@ class AudioStreamer():
             # re=requests.post(self.call_api+"/calls",json=data)
             # print(re.text)
             #self.logger.info(re.text)
-            bytes_uuid = bytes.fromhex(self.uuid)
-            uuid4_format = uuid.UUID(bytes=bytes_uuid)
-            self.uuid=uuid4_format
-            print(uuid4_format)
-            data= {"call_id":uuid4_format,"hangup":"none","transfer":"true"}
+           
+            data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
             x=self.conn["test"]["calls"].insert_one(data)
             print(x)
             self.call.hangup()

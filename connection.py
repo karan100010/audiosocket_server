@@ -4,6 +4,7 @@ from queue import Queue, Empty
 from dataclasses import dataclass
 from threading import Lock
 from time import sleep
+import uuid
 
 
 
@@ -251,5 +252,5 @@ class Connection:
         self._decode_error(payload)
 
       elif type == types.uuid:
-        self.uuid = payload.hex()
+        self.uuid = uuid.UUID(bytes=payload)
         #convert uuid to uuid4 format
