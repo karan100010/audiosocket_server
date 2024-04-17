@@ -48,7 +48,7 @@ def create_connection():
     data = request.data
     data_string = data.decode('utf-8')  # Decode bytes to string
     data_dict = json.loads(data_string)  # Convert JSON string to dictionary
-    type(data_dict)
+    print(data_dict)
     connection.insert_one(data_dict)
     print(type(data))
     print(data)
