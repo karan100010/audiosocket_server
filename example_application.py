@@ -56,7 +56,6 @@ class AudioStreamer():
     self.intent="welcome"
     self.call_api="http://localhost:5011/api/connections"
     
-    print(req)
     # #self.manager=Manager()
     
     # self.manager.connect("localhost")
