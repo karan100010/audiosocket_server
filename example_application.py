@@ -37,7 +37,7 @@ class AudioStreamer():
     self.call=call
     self.audiosocket=socket
     #self.uudi=self.audiosocket.uudi
-    self.uuid=str(call.uuid)
+    self.uuid=call.uuid
     
     self.num_connected=0
     self.w = 0
