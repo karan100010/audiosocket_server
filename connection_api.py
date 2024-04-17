@@ -46,6 +46,7 @@ def create_connection():
     connection = conn['test']['connections']
     data = request.data
     print(type(data))
+    print(data)
     try:
         connection_id = connection.insert_one(data)
         print("sucessfully inserted connection data")
