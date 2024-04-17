@@ -18,12 +18,12 @@ except:
     print("Could not connect to MongoDB")
 @app.route('/min_connetions', methods=['GET'])
 def min_connections():
-    connection = conn['test']['connections']
+    # connection = conn['test']['connections']
     try:
         
-        #run minima fuction on the num_connected field
-        min_value_document = connection.find_one({}, sort=[("field_name", 1)])
-        return jsonify(min_value_document["addr"].strip("\n"))
+    #     #run minima fuction on the num_connected field
+    #     min_value_document = connection.find_one({}, sort=[("field_name", 1)])
+        return jsonify("172.16.1.209:1122")
     except Exception as e:
         return jsonify("Error in getting data because "+str(e))
     
