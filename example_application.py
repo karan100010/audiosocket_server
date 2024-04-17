@@ -55,8 +55,8 @@ class AudioStreamer():
     self.long_silence=0
     self.intent="welcome"
     self.call_api="http://localhost:5011/api/connections"
-    req=requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-    print(req.text)
+    req=self.conn["test"]["calls"].insert_one({"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+    print(req)
     # #self.manager=Manager()
     
     # self.manager.connect("localhost")
