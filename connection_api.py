@@ -23,7 +23,7 @@ def min_connections():
         
     #     #run minima fuction on the num_connected field
     #     min_value_document = connection.find_one({}, sort=[("field_name", 1)])
-        return jsonify("172.16.1.209:8000")
+        return jsonify("172.16.1.209:9000")
     except Exception as e:
         return jsonify("Error in getting data because "+str(e))
     
