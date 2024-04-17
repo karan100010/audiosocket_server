@@ -75,7 +75,7 @@ class AudioStreamer():
     except Exception as e:
       self.logger.info(e)
     try:
-      self.conn["test"]["calls"].insert_one({"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+      self.conn["test"]["connections"].insert_one({"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
     except Exception as e:
       self.logger.info(e) 
     # self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
