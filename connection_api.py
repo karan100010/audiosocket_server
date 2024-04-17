@@ -49,7 +49,7 @@ def create_connection():
         connection_id = connection.insert_one(data)
         print("sucessfully inserted connection data")
     except Exception as e:
-        return jsonify("Error in inserting data")    
+        return jsonify("Error in inserting data becuase "+str(e))    
     return jsonify(str(connection_id.inserted_id))
 
 
