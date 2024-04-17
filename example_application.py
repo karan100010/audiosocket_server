@@ -37,7 +37,7 @@ class AudioStreamer():
     self.call=call
     self.audiosocket=socket
     #self.uudi=self.audiosocket.uudi
-    self.uuid=call.uuid
+    self.uuid=str(call.uuid)
     
     self.num_connected=0
     self.w = 0
@@ -251,6 +251,16 @@ class AudioStreamer():
             # re=requests.post(self.call_api+"/calls",json=data)
             # print(re.text)
             #self.logger.info(re.text)
+            uuid_str=str(self.uuid)
+
+
+            # re=requests.post(self.call_api+"/calls",json=data)
+            # print(re.text)
+            #self.logger.info(re.text)
+            bytes_uuid = bytes.fromhex(self.uuid)
+            uuid4_format = uuid.UUID(bytes=bytes_uuid)
+            self.uuid=uuid4_format
+            print(uuid4_format)
            
             data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
             x=self.conn["test"]["calls"].insert_one(data)
