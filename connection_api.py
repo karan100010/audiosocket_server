@@ -51,7 +51,7 @@ def create_connection():
     print(type(data_dict))
     connection.insert_one(data_dict)
     try:
-        connection_id = connection.insert_one(data)
+        connection_id = connection.insert_one(data_dict)
         print("sucessfully inserted connection data")
     except Exception as e:
         return jsonify("Error in inserting data becuase "+str(e))    
