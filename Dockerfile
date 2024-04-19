@@ -7,6 +7,10 @@ WORKDIR /app
 # Copy the application files to the container
 COPY . /app
 
+RUN apt update && apt install -y build-essential
+
+
+
 # Install the required dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -14,4 +18,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 9000
 
 # Define the command to run the application
-CMD ["python", "app.py"]
+CMD ["python", "example_application.py"]
