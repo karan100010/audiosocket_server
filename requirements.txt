@@ -1,12 +1,15 @@
 #create a requrement.txt for the project
 
-time
+# time
 numpy
 webrtcvad
 wave
-threading
-sys
+# threading
+# sys
 requests
-math
-json
-base64
+# math
+# json
+# base64
+termcolor
+pymongo
+langdetect
