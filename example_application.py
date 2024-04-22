@@ -178,6 +178,7 @@ class AudioStreamer():
       
       #requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
       audio_data = self.call.read()
+      print(audio_data)
 
       with open("stream.txt", "ab") as f:
         f.write(audio_data)
