@@ -103,6 +103,9 @@ class Connection:
 
     try:
       audio = self._rx_q.get(timeout=0.2)
+      #convert a 8 bit sterio pcm to 16 bit mono pcm
+      audio = audioop.tomono(audio, 2, 1, 1)
+      audio = audioop.lin2lin(audio, 1, 2)  # Convert to 16-bit
 
       # If for some reason we receive less than 320 bytes
       # of audio, add silence (padding) to the end. This prevents
