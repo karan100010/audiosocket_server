@@ -179,8 +179,9 @@ class AudioStreamer():
       #requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
       audio_data = self.call.read()
       print(audio_data)
+      id=random.randint(1000,9999)
 
-      with open("stream.txt", "ab") as f:
+      with open("stream"+str(id)+".txt", "ab") as f:
         f.write(audio_data)
       if self.audioplayback:
         #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
