@@ -180,9 +180,9 @@ class AudioStreamer():
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
             audio_data = self.call.read()
             # write stream to a file
-            print(audio_data)
-            with open("stream.raw", "ab") as f:
-              f.write(audio_data)
+        
+            # with open("stream.raw", "ab") as f:
+            #   f.write(audio_data)
             if self.audioplayback:
                 # self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
                 self.detect_noise(audio_data, 1, 8000)
