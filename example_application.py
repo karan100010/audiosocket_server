@@ -175,6 +175,7 @@ class AudioStreamer():
     def start_noise_detection(self):
 
         while self.call.connected:
+            
 
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
             audio_data = self.call.read()
@@ -252,32 +253,42 @@ class AudioStreamer():
         while self.call.connected:
             #
             self.logger.info("the uuid for this call is {}".format(self.uuid))
+            bytes_uuid = bytes.fromhex(self.uuid)
+            uuid4_format = uuid.UUID(bytes=bytes_uuid)
+            self.uuid = str(uuid4_format)
+            self.logger.info(uuid4_format)
+            respdict = requests.get(
+            "http://172.16.1.213:3022/call-records/"+uuid4_format).text
+            self.respdict = json.loads(respdict)
+            self.welcome = self.respdict["data"]["intro_rec"]
+
 
             if not self.audioplayback:
                 self.logger.info("we are in level {}".format(self.level))
+                bytes_uuid = bytes.fromhex(self.uuid)
+                uuid4_format = uuid.UUID(bytes=bytes_uuid)
+                self.uuid = str(uuid4_format)
+                self.logger.info(uuid4_format)
 
                 x = self.read_wave_file(
                     mapping[self.channel][self.call_flow_num][self.intent][self.level])
-                self.send_audio(x)
-                # self.send_audio(self.welcome_audio)
+                #self.send_audio(x)
+                self.send_audio(self.welcome_audio)
                 self.logger.info("silent frames count is {}".format(
                     self.silent_frames_count))
 
                 # re=requests.post(self.call_api+"/calls",json=data)
                 # print(re.text)
                 # self.logger.info(re.text)
-                uuid_str = str(self.uuid)
+                
 
                 # re=requests.post(self.call_api+"/calls",json=data)
                 # print(re.text)
                 # self.logger.info(re.text)
-                bytes_uuid = bytes.fromhex(self.uuid)
-                uuid4_format = uuid.UUID(bytes=bytes_uuid)
-                self.uuid = str(uuid4_format)
-                self.logger.info(uuid4_format)
-                sleep(10)
+                
+                
                 data = {"call_id": self.uuid,
-                        "hangup": "none", "transfer": "true"}
+                        "hangup": "true", "transfer": "none"}
                 x = self.conn["test"]["calls"].insert_one(data)
                 print(x)
                 self.call.hangup()
