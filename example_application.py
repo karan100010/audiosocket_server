@@ -238,20 +238,20 @@ class AudioStreamer():
             self.conn["test"]["connections"].update_one(
                 {"addr": self.audiosocket.addr+":"+str(self.audiosocket.port)}, {"$set": {"conn": self.num_connected}})
         while self.call.connected:
-            #
-            self.logger.info("the uuid for this call is {}".format(self.uuid))
-            bytes_uuid = bytes.fromhex(self.uuid)
-            uuid4_format = uuid.UUID(bytes=bytes_uuid)
-            self.uuid = str(uuid4_format)
-            self.logger.info(uuid4_format)
-            respdict = requests.get(
-            "http://172.16.1.213:3022/call-records/"+self.uuid).text
-            self.respdict = json.loads(respdict)
-            self.welcome = self.respdict["data"]["intro_rec"]
+            # #
+            # self.logger.info("the uuid for this call is {}".format(self.uuid))
+            # bytes_uuid = bytes.fromhex(self.uuid)
+            # uuid4_format = uuid.UUID(bytes=bytes_uuid)
+            # self.uuid = str(uuid4_format)
+            # self.logger.info(uuid4_format)
+            # respdict = requests.get(
+            # "http://172.16.1.213:3022/call-records/"+self.uuid).text
+            # self.respdict = json.loads(respdict)
+            # self.welcome = self.respdict["data"]["intro_rec"]
 
 
-            if not self.audioplayback:
-                self.logger.info("audio playback started")
+            # if not self.audioplayback:
+            #     self.logger.info("audio playback started")
                 audio_data = self.call.read()
                 self.send_audio(audio_data)
                 self.logger.info(audio_data)
