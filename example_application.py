@@ -123,7 +123,7 @@ class AudioStreamer():
                 sleep_seconds += .25
             # if self.level!=11:
             if not self.noise:
-                if self.noise_frames_count >= 20:
+                if self.noise_frames_count >= 100:
                     self.noise = True
 
                     self.noise_frames_count = 0
@@ -271,6 +271,7 @@ class AudioStreamer():
                     mapping[self.channel][self.call_flow_num][self.intent][self.level])
                 #self.send_audio(x)
                 self.send_audio(self.welcome_audio)
+                
                 self.logger.info("silent frames count is {}".format(
                     self.silent_frames_count))
 
@@ -287,7 +288,6 @@ class AudioStreamer():
                 data = {"call_id": self.uuid,
                         "hangup": "true", "transfer": "none"}
                 x = self.conn["test"]["calls"].insert_one(data)
-                sleep(10)
                 print(x)
                 self.call.hangup()
 
