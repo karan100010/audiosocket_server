@@ -109,8 +109,8 @@ class Connection:
       # audioop related errors that are caused by the current frame
       # not being the same size as the last
       # Assuming `audio` is your 8-bit stereo audio
-      mono_audio = audioop.tomono(audio, 2, 0.5, 0.5)  # Convert to mono
-      mono_audio_16bit = audioop.lin2lin(mono_audio, 1, 2)  # Convert to 16-bit
+   #   mono_audio = audioop.tomono(audio, 2, 0.5, 0.5)  # Convert to mono
+    #  mono_audio_16bit = audioop.lin2lin(mono_audio, 1, 2)  # Convert to 16-bit
       
       if len(audio) != 320:
         audio += bytes(320 - len(mono_audio_16bit))
