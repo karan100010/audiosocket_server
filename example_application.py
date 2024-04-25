@@ -317,10 +317,12 @@ class AudioStreamer():
                   if resp["transcribe"]=="":
                     x=self.read_wave_file(mapping["utils"][self.channel][1])
                     self.send_audio(x)
+                    self.call.hangup()
 
                 except Exception as e:
                   self.logger.info(e)
                   self.combined_audio=b''
+                  self.call.hangup()
                   #self.call.hangup()
                 # # if resp["transcribe"]=="":
                 # #     self.level="cant_hear"
