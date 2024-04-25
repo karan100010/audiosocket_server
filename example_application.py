@@ -287,6 +287,7 @@ class AudioStreamer():
                 data = {"call_id": self.uuid,
                         "hangup": "true", "transfer": "none"}
                 x = self.conn["test"]["calls"].insert_one(data)
+                sleep(10)
                 print(x)
                 self.call.hangup()
 
