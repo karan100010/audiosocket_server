@@ -297,7 +297,7 @@ class AudioStreamer():
                   response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
                   self.logger.error(response.text)
                  # m= self.convert_file(self.combined_audio)
-                  self.logger.info("audio file converted {}".format(m))
+                 # self.logger.info("audio file converted {}".format(m))
                   resp=json.loads(response.text)
                   print(resp)
 
