@@ -253,7 +253,10 @@ class AudioStreamer():
             # if not self.audioplayback:
             #     self.logger.info("audio playback started")
                 audio_data = self.call.read()
-                self.send_audio(audio_data)
+                mono_audio = audioop.tomono(audio_data, 2, 0.5, 0.5)  # Convert to mono
+                mono_audio_16bit = audioop.lin2lin(mono_audio, 1, 2)  # Convert to 16-bit
+                
+                self.send_audio(mono_audio_16bit)
                 self.logger.info(audio_data)
 
                 # self.logger.info("we are in level {}".format(self.level))
