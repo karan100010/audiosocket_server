@@ -285,9 +285,9 @@ class AudioStreamer():
                 # self.logger.info(re.text)
                 
                 
-                data = {"call_id": self.uuid,
-                        "hangup": "true", "transfer": "none"}
-                x = self.conn["test"]["calls"].insert_one(data)
+                # data = {"call_id": self.uuid,
+                #         "hangup": "true", "transfer": "none"}
+                # x = self.conn["test"]["calls"].insert_one(data)
                 
 
                 # disconnet call from audio socket
@@ -298,7 +298,7 @@ class AudioStreamer():
                 #     x=self.read_wave_file(mapping["utils"][self.channel][0])
                 #     self.send_audio(x)
                 #     self.noise=False
-                while self.long_silence<100:
+                while self.long_silence<50:
                   sleep(.01)
                 self.long_silence=0
 
