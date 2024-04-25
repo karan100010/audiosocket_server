@@ -286,7 +286,7 @@ class AudioStreamer():
                 #     self.send_audio(x)
                 #     self.noise=False
                 while self.silent_frames_count<50:
-                  print("waiting for silence")
+                  self.logger.info("waiting for silence")
                   sleep(.01)
                 self.logger.info("waiting for silence is over")
                 self.long_silence=0
@@ -296,7 +296,7 @@ class AudioStreamer():
                 try:
                   response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
                   self.logger.error(response.text)
-                  m= self.convert_file(self.combined_audio)
+                 # m= self.convert_file(self.combined_audio)
                   self.logger.info("audio file converted {}".format(m))
                   resp=json.loads(response.text)
                   print(resp)
