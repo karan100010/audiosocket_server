@@ -157,20 +157,6 @@ class AudioStreamer():
             self.long_silence = 0
         return
 
-    def detect_long_silence(self, indata, frames, rate):
-        samples = np.frombuffer(indata, dtype=np.int16)
-        is_noise = self.vad.is_speech(samples.tobytes(), rate)
-        frames = 0
-        if not is_noise:
-            # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
-            frames += 1
-
-            if frames > 200:
-
-                self.long_silence = +1
-                return
-            else:
-                return
 
     def start_noise_detection(self):
 
@@ -298,7 +284,7 @@ class AudioStreamer():
                 #     x=self.read_wave_file(mapping["utils"][self.channel][0])
                 #     self.send_audio(x)
                 #     self.noise=False
-                while self.long_silence<50:
+                while self.silent_frames_count<50:
                   sleep(.01)
                 self.long_silence=0
 
