@@ -251,70 +251,72 @@ class AudioStreamer():
 
 
             if not self.audioplayback:
-                self.logger.info("we are in level {}".format(self.level))
+                self.logger.info("audio playback started")
+                self.send_audio(self.call.read())
+                # self.logger.info("we are in level {}".format(self.level))
 
 
-                x = self.read_wave_file(
-                    mapping[self.channel][self.call_flow_num][self.intent][self.level])
-                #self.send_audio(x)
-                self.send_audio(self.welcome_audio)
+                # x = self.read_wave_file(
+                #     mapping[self.channel][self.call_flow_num][self.intent][self.level])
+                # #self.send_audio(x)
+                # self.send_audio(self.welcome_audio)
                 
-                self.logger.info("silent frames count is {}".format(
-                    self.silent_frames_count))
+                # self.logger.info("silent frames count is {}".format(
+                #     self.silent_frames_count))
 
-                # re=requests.post(self.call_api+"/calls",json=data)
-                # print(re.text)
-                # self.logger.info(re.text)
-                
-
-                # re=requests.post(self.call_api+"/calls",json=data)
-                # print(re.text)
-                # self.logger.info(re.text)
-                
-                
-                # data = {"call_id": self.uuid,
-                #         "hangup": "true", "transfer": "none"}
-                # x = self.conn["test"]["calls"].insert_one(data)
+                # # re=requests.post(self.call_api+"/calls",json=data)
+                # # print(re.text)
+                # # self.logger.info(re.text)
                 
 
-                # disconnet call from audio socket
+                # # re=requests.post(self.call_api+"/calls",json=data)
+                # # print(re.text)
+                # # self.logger.info(re.text)
+                
+                
+                # # data = {"call_id": self.uuid,
+                # #         "hangup": "true", "transfer": "none"}
+                # # x = self.conn["test"]["calls"].insert_one(data)
+                
 
-                # if self.intent!="welcome":
+                # # disconnet call from audio socket
 
-                #   if self.noise:
-                #     x=self.read_wave_file(mapping["utils"][self.channel][0])
-                #     self.send_audio(x)
-                #     self.noise=False
-                while self.silent_frames_count<50:
-                  self.logger.info("waiting for silence")
-                  sleep(.01)
-                self.logger.info("waiting for silence is over")
-                self.long_silence=0
-                self.silent_frames_count=0
+                # # if self.intent!="welcome":
+
+                # #   if self.noise:
+                # #     x=self.read_wave_file(mapping["utils"][self.channel][0])
+                # #     self.send_audio(x)
+                # #     self.noise=False
+                # while self.silent_frames_count<50:
+                #   self.logger.info("waiting for silence")
+                #   sleep(.01)
+                # self.logger.info("waiting for silence is over")
+                # self.long_silence=0
+                # self.silent_frames_count=0
 
 
-                try:
-                  response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
-                  self.logger.error(response.text)
-                 # m= self.convert_file(self.combined_audio)
-                 # self.logger.info("audio file converted {}".format(m))
-                  resp=json.loads(response.text)
-                  print(resp)
+                # try:
+                #   response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                #   self.logger.error(response.text)
+                #  # m= self.convert_file(self.combined_audio)
+                #  # self.logger.info("audio file converted {}".format(m))
+                #   resp=json.loads(response.text)
+                #   print(resp)
 
-                  threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                #   threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
                   
 
-                  self.combined_audio=b''
+                #   self.combined_audio=b''
 
-                  if resp["transcribe"]=="":
-                    x=self.read_wave_file(mapping["utils"][self.channel][1])
-                    self.send_audio(x)
-                    self.call.hangup()
+                #   if resp["transcribe"]=="":
+                #     x=self.read_wave_file(mapping["utils"][self.channel][1])
+                #     self.send_audio(x)
+                #     self.call.hangup()
 
-                except Exception as e:
-                  self.logger.info(e)
-                  self.combined_audio=b''
-                  self.call.hangup()
+                # except Exception as e:
+                #   self.logger.info(e)
+                #   self.combined_audio=b''
+                #   self.call.hangup()
                   #self.call.hangup()
                 # # if resp["transcribe"]=="":
                 # #     self.level="cant_hear"
