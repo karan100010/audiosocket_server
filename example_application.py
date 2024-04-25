@@ -285,6 +285,7 @@ class AudioStreamer():
                 #     self.send_audio(x)
                 #     self.noise=False
                 while self.silent_frames_count<50:
+                  print("waiting for silence")
                   sleep(.01)
                 self.logger.info("waiting for silence is over")
                 self.long_silence=0
