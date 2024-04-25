@@ -286,8 +286,10 @@ class AudioStreamer():
                 #     self.noise=False
                 while self.silent_frames_count<50:
                   sleep(.01)
+                self.logger.info("waiting for silence is over")
                 self.long_silence=0
                 self.silent_frames_count=0
+
 
                 try:
                   response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
@@ -298,7 +300,7 @@ class AudioStreamer():
                   print(resp)
 
                   threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
-                  print(self.combined_audio)
+                  
 
                   self.combined_audio=b''
 
