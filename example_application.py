@@ -149,6 +149,7 @@ class AudioStreamer():
     def dedect_silence(self, indata, frames, rate):
         samples = np.frombuffer(indata, dtype=np.int16)
         is_noise = self.vad.is_speech(samples.tobytes(), rate)
+        print(is_noise)
         if not is_noise:
             # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
             self.silent_frames_count += frames
@@ -463,7 +464,7 @@ def handel_call():
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
         playback_stream = threading.Thread(
-            target=stream.start_audio_playback, args=(mapping,))
+        target=stream.start_audio_playback, args=(mapping,))
         playback_stream.start()
 
 
