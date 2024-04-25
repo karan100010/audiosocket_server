@@ -265,10 +265,7 @@ class AudioStreamer():
 
             if not self.audioplayback:
                 self.logger.info("we are in level {}".format(self.level))
-                bytes_uuid = bytes.fromhex(self.uuid)
-                uuid4_format = uuid.UUID(bytes=bytes_uuid)
-                self.uuid = str(uuid4_format)
-                self.logger.info(uuid4_format)
+
 
                 x = self.read_wave_file(
                     mapping[self.channel][self.call_flow_num][self.intent][self.level])
