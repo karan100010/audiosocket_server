@@ -311,6 +311,7 @@ class AudioStreamer():
                   print(resp)
 
                   threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                  print(self.combined_audio)
 
                   self.combined_audio=b''
 
