@@ -113,7 +113,7 @@ class Connection:
     #  mono_audio_16bit = audioop.lin2lin(mono_audio, 1, 2)  # Convert to 16-bit
       
       if len(audio) != 320:
-        audio += bytes(320 - len(mono_audio_16bit))
+        audio += bytes(320 - len(audio))
 
     except Empty:
       return bytes(320)
