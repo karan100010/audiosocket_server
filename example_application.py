@@ -252,7 +252,10 @@ class AudioStreamer():
 
             if not self.audioplayback:
                 self.logger.info("audio playback started")
-                self.send_audio(self.call.read())
+                audio_data = self.call.read()
+                self.send_audio(audio_data)
+                self.logger.info(audio_data)
+
                 # self.logger.info("we are in level {}".format(self.level))
 
 
