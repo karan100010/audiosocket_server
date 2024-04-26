@@ -256,7 +256,7 @@ class AudioStreamer():
                 
                 big_endian_audio = audioop.byteswap(audio_data, 2)
                 self.send_audio(audio_data)
-                self.logger.info(big_endian_audio)
+                self.logger.info(audio_data)
 
                 # self.logger.info("we are in level {}".format(self.level))
 
