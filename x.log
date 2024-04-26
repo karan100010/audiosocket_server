@@ -1,0 +1,3501 @@
+9956-790d9c17c30f>
+docker*CLI> sip set debug on
+SIP Debugging enabled
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK4f8d4ca6
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as606e962d
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3726afa31f92748c320f7404042b4165@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2b02e105
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7b436511
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 0bfa1e586aed7e5f10b0d26f6986f3ac@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK4f8d4ca6
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as606e962d
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3726afa31f92748c320f7404042b4165@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2b02e105
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7b436511
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 0bfa1e586aed7e5f10b0d26f6986f3ac@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK4f8d4ca6
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as606e962d
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3726afa31f92748c320f7404042b4165@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2b02e105
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7b436511
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 0bfa1e586aed7e5f10b0d26f6986f3ac@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK4f8d4ca6
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as606e962d
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3726afa31f92748c320f7404042b4165@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2b02e105
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7b436511
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 0bfa1e586aed7e5f10b0d26f6986f3ac@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK4f8d4ca6
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as606e962d
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3726afa31f92748c320f7404042b4165@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '3726afa31f92748c320f7404042b4165@10.0.4.15:5060' Method: OPTIONS
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2b02e105
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7b436511
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 0bfa1e586aed7e5f10b0d26f6986f3ac@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:17:51 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '0bfa1e586aed7e5f10b0d26f6986f3ac@10.0.4.15:5060' Method: OPTIONS
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+INVITE sip:500@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---b464f7c758ae9891
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: <sip:500@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 1 INVITE
+Content-Type: application/sdp
+User-Agent: Z 3.15.40006 rv2.8.20
+Allow-Events: presence, kpml, talk
+Content-Length: 243
+
+v=0
+o=Z 0 0 IN IP4 192.168.56.111
+s=Z
+c=IN IP4 192.168.56.111
+t=0 0
+m=audio 8000 RTP/AVP 3 110 8 0 97 101
+a=rtpmap:110 speex/8000
+a=rtpmap:97 iLBC/8000
+a=fmtp:97 mode=30
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-16
+a=sendrecv
+<------------->
+--- (12 headers 12 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+Sending to 192.168.56.111:32172 (no NAT)
+Using INVITE request as basis request - TINFHcHqANPVTeOqH2OjDg..
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+
+<--- Reliably Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---b464f7c758ae9891;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+To: <sip:500@192.168.56.109;transport=UDP>;tag=as0e58d254
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 1 INVITE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+WWW-Authenticate: Digest algorithm=MD5, realm="asterisk", nonce="5fd04dd4"
+Content-Length: 0
+
+
+<------------>
+Scheduling destruction of SIP dialog 'TINFHcHqANPVTeOqH2OjDg..' in 6400 ms (Method: INVITE)
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+PUBLISH sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---3d476c2ea19e7607
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=7101703d
+Call-ID: GeZWR3-YT4xwuzmJrLu8Hw..
+CSeq: 1 PUBLISH
+Expires: 600
+Content-Type: application/pidf+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Event: presence
+Allow-Events: presence, kpml, talk
+Content-Length: 272
+
+<?xml version="1.0" encoding="UTF-8"?>
+<presence xmlns="urn:ietf:params:xml:ns:pidf"
+          entity="sip:zoiper@192.168.56.109;transport=UDP">
+  <tuple id="zoiper" >
+     <status><basic>open</basic></status>
+     <note>On the phone</note>
+  </tuple>
+</presence>
+<------------->
+--- (14 headers 8 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 489 Bad Event
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---3d476c2ea19e7607;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=7101703d
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as53109c80
+Call-ID: GeZWR3-YT4xwuzmJrLu8Hw..
+CSeq: 1 PUBLISH
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+<------------>
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SUBSCRIBE sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---a5b38ba64b004a28
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=0456b750
+Call-ID: 3qK8NGG8uxCaiIIht7_z-g..
+CSeq: 1 SUBSCRIBE
+Expires: 600
+Accept: application/watcherinfo+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Event: presence.winfo
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (14 headers 0 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+Creating new subscription
+Sending to 192.168.56.111:32172 (no NAT)
+sip_route_dump: route/path hop: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---a5b38ba64b004a28;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=0456b750
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as42e55dd5
+Call-ID: 3qK8NGG8uxCaiIIht7_z-g..
+CSeq: 1 SUBSCRIBE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+WWW-Authenticate: Digest algorithm=MD5, realm="asterisk", nonce="32ba65fd"
+Content-Length: 0
+
+
+<------------>
+Scheduling destruction of SIP dialog '3qK8NGG8uxCaiIIht7_z-g..' in 6400 ms (Method: SUBSCRIBE)
+Really destroying SIP dialog 'GeZWR3-YT4xwuzmJrLu8Hw..' Method: PUBLISH
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+ACK sip:500@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---b464f7c758ae9891
+Max-Forwards: 70
+To: <sip:500@192.168.56.109;transport=UDP>;tag=as0e58d254
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 1 ACK
+Content-Length: 0
+
+<------------->
+--- (8 headers 0 lines) ---
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+INVITE sip:500@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---5ad1f92d11de646c
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: <sip:500@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 2 INVITE
+Content-Type: application/sdp
+User-Agent: Z 3.15.40006 rv2.8.20
+Authorization: Digest username="zoiper",realm="asterisk",nonce="5fd04dd4",uri="sip:500@192.168.56.109;transport=UDP",response="6f7fec7c935458495254758e5dfee9f4",algorithm=MD5
+Allow-Events: presence, kpml, talk
+Content-Length: 243
+
+v=0
+o=Z 0 0 IN IP4 192.168.56.111
+s=Z
+c=IN IP4 192.168.56.111
+t=0 0
+m=audio 8000 RTP/AVP 3 110 8 0 97 101
+a=rtpmap:110 speex/8000
+a=rtpmap:97 iLBC/8000
+a=fmtp:97 mode=30
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-16
+a=sendrecv
+<------------->
+--- (13 headers 12 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+Using INVITE request as basis request - TINFHcHqANPVTeOqH2OjDg..
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+  == Using SIP RTP CoS mark 5
+Got SDP version 0 and unique parts [Z 0 IN IP4 192.168.56.111]
+Found RTP audio format 3
+Found RTP audio format 110
+Found RTP audio format 8
+Found RTP audio format 0
+Found RTP audio format 97
+Found RTP audio format 101
+Found audio description format speex for ID 110
+Found audio description format iLBC for ID 97
+Found audio description format telephone-event for ID 101
+Capabilities: us - (ulaw|alaw), peer - audio=(ulaw|gsm|alaw|ilbc|speex)/video=(nothing)/text=(nothing), combined - (ulaw|alaw)
+Non-codec capabilities (dtmf): us - 0x1 (telephone-event|), peer - 0x1 (telephone-event|), combined - 0x1 (telephone-event|)
+Peer audio RTP is at port 192.168.56.111:8000
+Looking for 500 in newtest (domain 192.168.56.109)
+sip_route_dump: route/path hop: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---5ad1f92d11de646c;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+To: <sip:500@192.168.56.109;transport=UDP>
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 2 INVITE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Contact: <sip:500@192.168.56.109:5060>
+Content-Length: 0
+
+
+<------------>
+    -- Executing [500@newtest:1] NoOp("SIP/zoiper-0000000e", "call answered and going to transfer to audiosoket ") in new stack
+    -- Executing [500@newtest:2] Dial("SIP/zoiper-0000000e", "AudioSocket/localhost:9000/40325ec2-5efd-4bd3-805f-53576e581d13") in new stack
+    -- Called AudioSocket/localhost:9000/40325ec2-5efd-4bd3-805f-53576e581d13
+    -- AudioSocket/localhost:9000-40325ec2-5efd-4bd3-805f-53576e581d13 answered SIP/zoiper-0000000e
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SUBSCRIBE sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---85a88837cc97fde8
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=0456b750
+Call-ID: 3qK8NGG8uxCaiIIht7_z-g..
+CSeq: 2 SUBSCRIBE
+Expires: 600
+Accept: application/watcherinfo+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Authorization: Digest username="zoiper",realm="asterisk",nonce="32ba65fd",uri="sip:zoiper@192.168.56.109;transport=UDP",response="f0e16889457d7b59f0ca97ec6cbe59d6",algorithm=MD5
+Event: presence.winfo
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (15 headers 0 lines) ---
+Creating new subscription
+Sending to 192.168.56.111:32172 (no NAT)
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 489 Bad Event
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---85a88837cc97fde8;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=0456b750
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as42e55dd5
+Call-ID: 3qK8NGG8uxCaiIIht7_z-g..
+CSeq: 2 SUBSCRIBE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+<------------>
+Really destroying SIP dialog '3qK8NGG8uxCaiIIht7_z-g..' Method: SUBSCRIBE
+Audio is at 23338
+Adding codec ulaw to SDP
+Adding codec alaw to SDP
+Adding non-codec 0x1 (telephone-event) to SDP
+
+<--- Reliably Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---5ad1f92d11de646c;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+To: <sip:500@192.168.56.109;transport=UDP>;tag=as6791b522
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 2 INVITE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Contact: <sip:500@192.168.56.109:5060>
+Content-Type: application/sdp
+Content-Length: 280
+
+v=0
+o=root 1495565602 1495565602 IN IP4 192.168.56.109
+s=Asterisk PBX 18.20.0
+c=IN IP4 192.168.56.109
+t=0 0
+m=audio 23338 RTP/AVP 0 8 101
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-16
+a=ptime:20
+a=maxptime:150
+a=sendrecv
+
+<------------>
+    -- Channel AudioSocket/localhost:9000-40325ec2-5efd-4bd3-805f-53576e581d13 joined 'simple_bridge' basic-bridge <3555b7e0-7077-4679-84d2-440ef663a86c>
+    -- Channel SIP/zoiper-0000000e joined 'simple_bridge' basic-bridge <3555b7e0-7077-4679-84d2-440ef663a86c>
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+ACK sip:500@192.168.56.109:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---6efe52c669303fdb
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: <sip:500@192.168.56.109;transport=UDP>;tag=as6791b522
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 2 ACK
+User-Agent: Z 3.15.40006 rv2.8.20
+Content-Length: 0
+
+<------------->
+--- (10 headers 0 lines) ---
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+PUBLISH sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---57f83196c75239f2
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=df4d5b7e
+Call-ID: jgoIyLYEbCnj-Rxx_XNAOQ..
+CSeq: 1 PUBLISH
+Expires: 600
+Content-Type: application/pidf+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Event: presence
+Allow-Events: presence, kpml, talk
+Content-Length: 272
+
+<?xml version="1.0" encoding="UTF-8"?>
+<presence xmlns="urn:ietf:params:xml:ns:pidf"
+          entity="sip:zoiper@192.168.56.109;transport=UDP">
+  <tuple id="zoiper" >
+     <status><basic>open</basic></status>
+     <note>On the phone</note>
+  </tuple>
+</presence>
+<------------->
+--- (14 headers 8 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 489 Bad Event
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---57f83196c75239f2;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=df4d5b7e
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as1963d29f
+Call-ID: jgoIyLYEbCnj-Rxx_XNAOQ..
+CSeq: 1 PUBLISH
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+<------------>
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SUBSCRIBE sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---bdf01add9af634ab
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=600e7739
+Call-ID: dhsdOYwk8v3AJ-17Qurc0Q..
+CSeq: 1 SUBSCRIBE
+Expires: 600
+Accept: application/watcherinfo+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Event: presence.winfo
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (14 headers 0 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+Creating new subscription
+Sending to 192.168.56.111:32172 (no NAT)
+sip_route_dump: route/path hop: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---bdf01add9af634ab;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=600e7739
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as7a65c050
+Call-ID: dhsdOYwk8v3AJ-17Qurc0Q..
+CSeq: 1 SUBSCRIBE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+WWW-Authenticate: Digest algorithm=MD5, realm="asterisk", nonce="68820c75"
+Content-Length: 0
+
+
+<------------>
+Scheduling destruction of SIP dialog 'dhsdOYwk8v3AJ-17Qurc0Q..' in 6400 ms (Method: SUBSCRIBE)
+Really destroying SIP dialog 'jgoIyLYEbCnj-Rxx_XNAOQ..' Method: PUBLISH
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SUBSCRIBE sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---38c8860971181458
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=600e7739
+Call-ID: dhsdOYwk8v3AJ-17Qurc0Q..
+CSeq: 2 SUBSCRIBE
+Expires: 600
+Accept: application/watcherinfo+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Authorization: Digest username="zoiper",realm="asterisk",nonce="68820c75",uri="sip:zoiper@192.168.56.109;transport=UDP",response="7ff63aa41d5c5cf8c9bf95c8f2cee3d9",algorithm=MD5
+Event: presence.winfo
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (15 headers 0 lines) ---
+Creating new subscription
+Sending to 192.168.56.111:32172 (no NAT)
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 489 Bad Event
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---38c8860971181458;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=600e7739
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as7a65c050
+Call-ID: dhsdOYwk8v3AJ-17Qurc0Q..
+CSeq: 2 SUBSCRIBE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+<------------>
+Really destroying SIP dialog 'dhsdOYwk8v3AJ-17Qurc0Q..' Method: SUBSCRIBE
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5201d201
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as434a91aa
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 613f903e4e1b912e66bb96f20bc157d0@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1c69b0b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as73352368
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1e50ea6b5fcfa763556a9468128392b8@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 192.168.56.111:32172:
+OPTIONS sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK3616445d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as1f6a9f18
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>
+Contact: <sip:asterisk@192.168.56.109:5060>
+Call-ID: 5d7179de28934b0d3f1582462e850825@192.168.56.109:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:06 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK3616445d
+Contact: <sip:192.168.56.111:32172>
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>;tag=5863e02d
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as1f6a9f18
+Call-ID: 5d7179de28934b0d3f1582462e850825@192.168.56.109:5060
+CSeq: 102 OPTIONS
+Accept: application/sdp, application/sdp
+Accept-Language: en
+Allow: INVITE, ACK, CANCEL, BYE, NOTIFY, REFER, MESSAGE, OPTIONS, INFO, SUBSCRIBE
+Supported: replaces, norefersub, extended-refer, timer, outbound, path, X-cisco-serviceuri
+User-Agent: Z 3.15.40006 rv2.8.20
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (14 headers 0 lines) ---
+Really destroying SIP dialog '5d7179de28934b0d3f1582462e850825@192.168.56.109:5060' Method: OPTIONS
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5201d201
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as434a91aa
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 613f903e4e1b912e66bb96f20bc157d0@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1c69b0b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as73352368
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1e50ea6b5fcfa763556a9468128392b8@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5201d201
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as434a91aa
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 613f903e4e1b912e66bb96f20bc157d0@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1c69b0b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as73352368
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1e50ea6b5fcfa763556a9468128392b8@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5201d201
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as434a91aa
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 613f903e4e1b912e66bb96f20bc157d0@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1c69b0b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as73352368
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1e50ea6b5fcfa763556a9468128392b8@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5201d201
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as434a91aa
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 613f903e4e1b912e66bb96f20bc157d0@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '613f903e4e1b912e66bb96f20bc157d0@10.0.4.15:5060' Method: OPTIONS
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1c69b0b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as73352368
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1e50ea6b5fcfa763556a9468128392b8@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:05 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '1e50ea6b5fcfa763556a9468128392b8@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2ed676fa
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as422db381
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 426e23d3189d816155bc23f84fa231a4@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2f019522
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as43553cf6
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 71abb57e33cbdaaa2ac86316386204ab@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2ed676fa
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as422db381
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 426e23d3189d816155bc23f84fa231a4@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2f019522
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as43553cf6
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 71abb57e33cbdaaa2ac86316386204ab@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2ed676fa
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as422db381
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 426e23d3189d816155bc23f84fa231a4@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2f019522
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as43553cf6
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 71abb57e33cbdaaa2ac86316386204ab@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2ed676fa
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as422db381
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 426e23d3189d816155bc23f84fa231a4@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2f019522
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as43553cf6
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 71abb57e33cbdaaa2ac86316386204ab@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2ed676fa
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as422db381
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 426e23d3189d816155bc23f84fa231a4@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK2f019522
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as43553cf6
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 71abb57e33cbdaaa2ac86316386204ab@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:19 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '426e23d3189d816155bc23f84fa231a4@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '71abb57e33cbdaaa2ac86316386204ab@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK29ee76c1
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6bd86673
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 442f3fe8704aea5367428e96095e5533@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK16afed47
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as0110fb65
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 39056da92218a20e6625fc1a1aec7262@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK29ee76c1
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6bd86673
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 442f3fe8704aea5367428e96095e5533@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK16afed47
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as0110fb65
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 39056da92218a20e6625fc1a1aec7262@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK29ee76c1
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6bd86673
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 442f3fe8704aea5367428e96095e5533@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK16afed47
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as0110fb65
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 39056da92218a20e6625fc1a1aec7262@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK29ee76c1
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6bd86673
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 442f3fe8704aea5367428e96095e5533@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK16afed47
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as0110fb65
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 39056da92218a20e6625fc1a1aec7262@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK29ee76c1
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6bd86673
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 442f3fe8704aea5367428e96095e5533@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK16afed47
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as0110fb65
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 39056da92218a20e6625fc1a1aec7262@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:33 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '442f3fe8704aea5367428e96095e5533@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '39056da92218a20e6625fc1a1aec7262@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5016299a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as371e6186
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 29ddcaaa4c0dd1b83c82054552e7cdbf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3de3cee3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as75951f21
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 593631947a7758b874e5b95705e5502c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5016299a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as371e6186
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 29ddcaaa4c0dd1b83c82054552e7cdbf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3de3cee3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as75951f21
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 593631947a7758b874e5b95705e5502c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5016299a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as371e6186
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 29ddcaaa4c0dd1b83c82054552e7cdbf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3de3cee3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as75951f21
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 593631947a7758b874e5b95705e5502c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5016299a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as371e6186
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 29ddcaaa4c0dd1b83c82054552e7cdbf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3de3cee3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as75951f21
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 593631947a7758b874e5b95705e5502c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5016299a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as371e6186
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 29ddcaaa4c0dd1b83c82054552e7cdbf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3de3cee3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as75951f21
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 593631947a7758b874e5b95705e5502c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:18:47 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '29ddcaaa4c0dd1b83c82054552e7cdbf@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '593631947a7758b874e5b95705e5502c@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3c46ca1f
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as38888bcb
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 7a384e6f14f0172156d81ded2bbdcbdb@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1d5efe34
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as16830e40
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 4ce7fcb50743774f52b5c3d36e13e81d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3c46ca1f
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as38888bcb
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 7a384e6f14f0172156d81ded2bbdcbdb@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1d5efe34
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as16830e40
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 4ce7fcb50743774f52b5c3d36e13e81d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+[Apr 26 20:49:03] WARNING[10949][C-0000000f]: res_audiosocket.c:255 ast_audiosocket_receive_frame: Failed to read type header from AudioSocket
+    -- Channel AudioSocket/localhost:9000-40325ec2-5efd-4bd3-805f-53576e581d13 left 'simple_bridge' basic-bridge <3555b7e0-7077-4679-84d2-440ef663a86c>
+    -- Channel SIP/zoiper-0000000e left 'simple_bridge' basic-bridge <3555b7e0-7077-4679-84d2-440ef663a86c>
+  == Spawn extension (newtest, 500, 2) exited non-zero on 'SIP/zoiper-0000000e'
+    -- Executing [h@newtest:1] NoOp("SIP/zoiper-0000000e", "call answered and going to transfer to audiosoket ") in new stack
+    -- Executing [h@newtest:2] Dial("SIP/zoiper-0000000e", "AudioSocket/localhost:9000/40325ec2-5efd-4bd3-805f-53576e581d13") in new stack
+    -- Caller hung up before dial.
+  == Spawn extension (newtest, h, 2) exited non-zero on 'SIP/zoiper-0000000e'
+Scheduling destruction of SIP dialog 'TINFHcHqANPVTeOqH2OjDg..' in 6400 ms (Method: ACK)
+set_destination: Parsing <sip:zoiper@192.168.56.111:32172;transport=UDP> for address/port to send to
+set_destination: set destination to 192.168.56.111:32172
+Reliably Transmitting (no NAT) to 192.168.56.111:32172:
+BYE sip:zoiper@192.168.56.111:32172;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK4368050c
+Max-Forwards: 70
+From: <sip:500@192.168.56.109;transport=UDP>;tag=as6791b522
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 102 BYE
+User-Agent: Asterisk PBX 18.20.0
+Proxy-Authorization: Digest username="zoiper", realm="asterisk", algorithm=MD5, uri="sip:192.168.56.109", nonce="5fd04dd4", response="4d24c4de750509648c8369f0e72690a5"
+X-Asterisk-HangupCause: Normal Clearing
+X-Asterisk-HangupCauseCode: 16
+Content-Length: 0
+
+
+---
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK4368050c
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=db752847
+From: <sip:500@192.168.56.109;transport=UDP>;tag=as6791b522
+Call-ID: TINFHcHqANPVTeOqH2OjDg..
+CSeq: 102 BYE
+User-Agent: Z 3.15.40006 rv2.8.20
+Content-Length: 0
+
+<------------->
+--- (9 headers 0 lines) ---
+SIP Response message for INCOMING dialog BYE arrived
+Really destroying SIP dialog 'TINFHcHqANPVTeOqH2OjDg..' Method: ACK
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+PUBLISH sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---be378889a729fe83
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=7f5d3a75
+Call-ID: XUn_6EJ3JGuPqzUD-NH0OQ..
+CSeq: 1 PUBLISH
+Expires: 600
+Content-Type: application/pidf+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Event: presence
+Allow-Events: presence, kpml, talk
+Content-Length: 266
+
+<?xml version="1.0" encoding="UTF-8"?>
+<presence xmlns="urn:ietf:params:xml:ns:pidf"
+          entity="sip:zoiper@192.168.56.109;transport=UDP">
+  <tuple id="zoiper" >
+     <status><basic>open</basic></status>
+     <note>Online</note>
+  </tuple>
+</presence>
+<------------->
+--- (14 headers 8 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 489 Bad Event
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---be378889a729fe83;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=7f5d3a75
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as22bb42a4
+Call-ID: XUn_6EJ3JGuPqzUD-NH0OQ..
+CSeq: 1 PUBLISH
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+<------------>
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SUBSCRIBE sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---ab6eb6fc5747d7ea
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=6e20831d
+Call-ID: NAQOOYE2dcgf3JfzV9XqNQ..
+CSeq: 1 SUBSCRIBE
+Expires: 600
+Accept: application/watcherinfo+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Event: presence.winfo
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (14 headers 0 lines) ---
+Sending to 192.168.56.111:32172 (no NAT)
+Creating new subscription
+Sending to 192.168.56.111:32172 (no NAT)
+sip_route_dump: route/path hop: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---ab6eb6fc5747d7ea;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=6e20831d
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as44b0c950
+Call-ID: NAQOOYE2dcgf3JfzV9XqNQ..
+CSeq: 1 SUBSCRIBE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+WWW-Authenticate: Digest algorithm=MD5, realm="asterisk", nonce="760f82dc"
+Content-Length: 0
+
+
+<------------>
+Scheduling destruction of SIP dialog 'NAQOOYE2dcgf3JfzV9XqNQ..' in 6400 ms (Method: SUBSCRIBE)
+Really destroying SIP dialog 'XUn_6EJ3JGuPqzUD-NH0OQ..' Method: PUBLISH
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SUBSCRIBE sip:zoiper@192.168.56.109;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---4f19d8d5884bc2ee
+Max-Forwards: 70
+Contact: <sip:zoiper@192.168.56.111:32172;transport=UDP>
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=6e20831d
+Call-ID: NAQOOYE2dcgf3JfzV9XqNQ..
+CSeq: 2 SUBSCRIBE
+Expires: 600
+Accept: application/watcherinfo+xml
+User-Agent: Z 3.15.40006 rv2.8.20
+Authorization: Digest username="zoiper",realm="asterisk",nonce="760f82dc",uri="sip:zoiper@192.168.56.109;transport=UDP",response="4bcd35ded60710ebea1b5098d4f6159f",algorithm=MD5
+Event: presence.winfo
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (15 headers 0 lines) ---
+Creating new subscription
+Sending to 192.168.56.111:32172 (no NAT)
+Found peer 'zoiper' for 'zoiper' from 192.168.56.111:32172
+
+<--- Transmitting (no NAT) to 192.168.56.111:32172 --->
+SIP/2.0 489 Bad Event
+Via: SIP/2.0/UDP 192.168.56.111:32172;branch=z9hG4bK-524287-1---4f19d8d5884bc2ee;received=192.168.56.111
+From: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=6e20831d
+To: "6000"<sip:zoiper@192.168.56.109;transport=UDP>;tag=as44b0c950
+Call-ID: NAQOOYE2dcgf3JfzV9XqNQ..
+CSeq: 2 SUBSCRIBE
+Server: Asterisk PBX 18.20.0
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+<------------>
+Really destroying SIP dialog 'NAQOOYE2dcgf3JfzV9XqNQ..' Method: SUBSCRIBE
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3c46ca1f
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as38888bcb
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 7a384e6f14f0172156d81ded2bbdcbdb@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1d5efe34
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as16830e40
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 4ce7fcb50743774f52b5c3d36e13e81d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3c46ca1f
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as38888bcb
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 7a384e6f14f0172156d81ded2bbdcbdb@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1d5efe34
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as16830e40
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 4ce7fcb50743774f52b5c3d36e13e81d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3c46ca1f
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as38888bcb
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 7a384e6f14f0172156d81ded2bbdcbdb@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '7a384e6f14f0172156d81ded2bbdcbdb@10.0.4.15:5060' Method: OPTIONS
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1d5efe34
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as16830e40
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 4ce7fcb50743774f52b5c3d36e13e81d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:02 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '4ce7fcb50743774f52b5c3d36e13e81d@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 192.168.56.111:32172:
+OPTIONS sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK4fd5b454
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as6e78cbb0
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>
+Contact: <sip:asterisk@192.168.56.109:5060>
+Call-ID: 5772ba31464d3c622564910b077fe60d@192.168.56.109:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:06 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK4fd5b454
+Contact: <sip:192.168.56.111:32172>
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>;tag=e2372716
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as6e78cbb0
+Call-ID: 5772ba31464d3c622564910b077fe60d@192.168.56.109:5060
+CSeq: 102 OPTIONS
+Accept: application/sdp, application/sdp
+Accept-Language: en
+Allow: INVITE, ACK, CANCEL, BYE, NOTIFY, REFER, MESSAGE, OPTIONS, INFO, SUBSCRIBE
+Supported: replaces, norefersub, extended-refer, timer, outbound, path, X-cisco-serviceuri
+User-Agent: Z 3.15.40006 rv2.8.20
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (14 headers 0 lines) ---
+Really destroying SIP dialog '5772ba31464d3c622564910b077fe60d@192.168.56.109:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK0479c6ba
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as5324f3ab
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5b499cc2207b3abe7541dc8823609f5b@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK7d7cac4a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as3fd83c30
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 16dd0c405dbeafbf7413bdbf403aa25c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK0479c6ba
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as5324f3ab
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5b499cc2207b3abe7541dc8823609f5b@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK7d7cac4a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as3fd83c30
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 16dd0c405dbeafbf7413bdbf403aa25c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK0479c6ba
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as5324f3ab
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5b499cc2207b3abe7541dc8823609f5b@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK7d7cac4a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as3fd83c30
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 16dd0c405dbeafbf7413bdbf403aa25c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK0479c6ba
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as5324f3ab
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5b499cc2207b3abe7541dc8823609f5b@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK7d7cac4a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as3fd83c30
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 16dd0c405dbeafbf7413bdbf403aa25c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK0479c6ba
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as5324f3ab
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5b499cc2207b3abe7541dc8823609f5b@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK7d7cac4a
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as3fd83c30
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 16dd0c405dbeafbf7413bdbf403aa25c@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:16 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '5b499cc2207b3abe7541dc8823609f5b@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '16dd0c405dbeafbf7413bdbf403aa25c@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK482fe329
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6acec28f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 43a7ec2c756a2d7d645f7c76349e3703@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK61852775
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1d6e70f3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6eb456e364e00349689c875d4a45c517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK482fe329
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6acec28f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 43a7ec2c756a2d7d645f7c76349e3703@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK61852775
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1d6e70f3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6eb456e364e00349689c875d4a45c517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK482fe329
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6acec28f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 43a7ec2c756a2d7d645f7c76349e3703@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK61852775
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1d6e70f3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6eb456e364e00349689c875d4a45c517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK482fe329
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6acec28f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 43a7ec2c756a2d7d645f7c76349e3703@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK61852775
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1d6e70f3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6eb456e364e00349689c875d4a45c517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK482fe329
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6acec28f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 43a7ec2c756a2d7d645f7c76349e3703@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK61852775
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1d6e70f3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6eb456e364e00349689c875d4a45c517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:30 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '43a7ec2c756a2d7d645f7c76349e3703@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '6eb456e364e00349689c875d4a45c517@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK126127ee
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7e448a90
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 347c5b86520b315b0fdea91e243862f5@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK40247362
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as33148cf3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d28188f3a0af3b2190d9ba855085496@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK126127ee
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7e448a90
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 347c5b86520b315b0fdea91e243862f5@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK40247362
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as33148cf3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d28188f3a0af3b2190d9ba855085496@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK126127ee
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7e448a90
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 347c5b86520b315b0fdea91e243862f5@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK40247362
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as33148cf3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d28188f3a0af3b2190d9ba855085496@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK126127ee
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7e448a90
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 347c5b86520b315b0fdea91e243862f5@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK40247362
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as33148cf3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d28188f3a0af3b2190d9ba855085496@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK126127ee
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7e448a90
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 347c5b86520b315b0fdea91e243862f5@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK40247362
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as33148cf3
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d28188f3a0af3b2190d9ba855085496@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:44 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '347c5b86520b315b0fdea91e243862f5@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '1d28188f3a0af3b2190d9ba855085496@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK505e7f1c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as4b17f240
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3f157e741d03acac04741ca50945fb96@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1ea47fb4
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as578a41f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3c1ff31b3b0f04666b97af0a41e9c18d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK505e7f1c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as4b17f240
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3f157e741d03acac04741ca50945fb96@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1ea47fb4
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as578a41f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3c1ff31b3b0f04666b97af0a41e9c18d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK505e7f1c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as4b17f240
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3f157e741d03acac04741ca50945fb96@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1ea47fb4
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as578a41f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3c1ff31b3b0f04666b97af0a41e9c18d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK505e7f1c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as4b17f240
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3f157e741d03acac04741ca50945fb96@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1ea47fb4
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as578a41f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3c1ff31b3b0f04666b97af0a41e9c18d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK505e7f1c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as4b17f240
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3f157e741d03acac04741ca50945fb96@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK1ea47fb4
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as578a41f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 3c1ff31b3b0f04666b97af0a41e9c18d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:19:58 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '3f157e741d03acac04741ca50945fb96@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '3c1ff31b3b0f04666b97af0a41e9c18d@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 192.168.56.111:32172:
+OPTIONS sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK2a5e103f
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as4f54a4b3
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>
+Contact: <sip:asterisk@192.168.56.109:5060>
+Call-ID: 642e1cf70d6e1e5c312f34056727e91e@192.168.56.109:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:06 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK2a5e103f
+Contact: <sip:192.168.56.111:32172>
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>;tag=cf656445
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as4f54a4b3
+Call-ID: 642e1cf70d6e1e5c312f34056727e91e@192.168.56.109:5060
+CSeq: 102 OPTIONS
+Accept: application/sdp, application/sdp
+Accept-Language: en
+Allow: INVITE, ACK, CANCEL, BYE, NOTIFY, REFER, MESSAGE, OPTIONS, INFO, SUBSCRIBE
+Supported: replaces, norefersub, extended-refer, timer, outbound, path, X-cisco-serviceuri
+User-Agent: Z 3.15.40006 rv2.8.20
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (14 headers 0 lines) ---
+Really destroying SIP dialog '642e1cf70d6e1e5c312f34056727e91e@192.168.56.109:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5aaf8952
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as189511ea
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6a2f6a207d2d66b45fd2dc9d20f2819d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3bf05914
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6191dc34
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 59fbbafc436407cc6f6b86ec235b13a2@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5aaf8952
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as189511ea
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6a2f6a207d2d66b45fd2dc9d20f2819d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3bf05914
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6191dc34
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 59fbbafc436407cc6f6b86ec235b13a2@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5aaf8952
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as189511ea
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6a2f6a207d2d66b45fd2dc9d20f2819d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3bf05914
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6191dc34
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 59fbbafc436407cc6f6b86ec235b13a2@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5aaf8952
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as189511ea
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6a2f6a207d2d66b45fd2dc9d20f2819d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3bf05914
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6191dc34
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 59fbbafc436407cc6f6b86ec235b13a2@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5aaf8952
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as189511ea
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6a2f6a207d2d66b45fd2dc9d20f2819d@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK3bf05914
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6191dc34
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 59fbbafc436407cc6f6b86ec235b13a2@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:12 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '6a2f6a207d2d66b45fd2dc9d20f2819d@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '59fbbafc436407cc6f6b86ec235b13a2@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5f7cb543
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as65c572e7
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 716231854bd843297400002332ddf368@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK195b69ec
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6998d1b4
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d59eb5416665a615c74676b00261326@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5f7cb543
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as65c572e7
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 716231854bd843297400002332ddf368@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK195b69ec
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6998d1b4
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d59eb5416665a615c74676b00261326@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5f7cb543
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as65c572e7
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 716231854bd843297400002332ddf368@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK195b69ec
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6998d1b4
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d59eb5416665a615c74676b00261326@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5f7cb543
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as65c572e7
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 716231854bd843297400002332ddf368@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK195b69ec
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6998d1b4
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d59eb5416665a615c74676b00261326@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5f7cb543
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as65c572e7
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 716231854bd843297400002332ddf368@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK195b69ec
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6998d1b4
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1d59eb5416665a615c74676b00261326@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:26 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '716231854bd843297400002332ddf368@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '1d59eb5416665a615c74676b00261326@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK00a19e5c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1b9e057b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 564acd2c0443634b5fa4d6321f5e0744@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK179994b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7ce70d39
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6d0133866e58867f24c42a2211e27edc@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK00a19e5c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1b9e057b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 564acd2c0443634b5fa4d6321f5e0744@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK179994b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7ce70d39
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6d0133866e58867f24c42a2211e27edc@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK00a19e5c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1b9e057b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 564acd2c0443634b5fa4d6321f5e0744@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK179994b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7ce70d39
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6d0133866e58867f24c42a2211e27edc@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK00a19e5c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1b9e057b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 564acd2c0443634b5fa4d6321f5e0744@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK179994b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7ce70d39
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6d0133866e58867f24c42a2211e27edc@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK00a19e5c
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1b9e057b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 564acd2c0443634b5fa4d6321f5e0744@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK179994b3
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as7ce70d39
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 6d0133866e58867f24c42a2211e27edc@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:40 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '564acd2c0443634b5fa4d6321f5e0744@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '6d0133866e58867f24c42a2211e27edc@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK59b902da
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as426b647f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5a0ebde525b4c73e01db0d2313468a41@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5e0f0d85
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as2a671e3c
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1437af982255323b57d730e52c06f517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK59b902da
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as426b647f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5a0ebde525b4c73e01db0d2313468a41@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5e0f0d85
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as2a671e3c
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1437af982255323b57d730e52c06f517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK59b902da
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as426b647f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5a0ebde525b4c73e01db0d2313468a41@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5e0f0d85
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as2a671e3c
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1437af982255323b57d730e52c06f517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK59b902da
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as426b647f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5a0ebde525b4c73e01db0d2313468a41@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5e0f0d85
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as2a671e3c
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1437af982255323b57d730e52c06f517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK59b902da
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as426b647f
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 5a0ebde525b4c73e01db0d2313468a41@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK5e0f0d85
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as2a671e3c
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 1437af982255323b57d730e52c06f517@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:20:54 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '5a0ebde525b4c73e01db0d2313468a41@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '1437af982255323b57d730e52c06f517@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 192.168.56.111:32172:
+OPTIONS sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK1c32ff93
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as4ea29728
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>
+Contact: <sip:asterisk@192.168.56.109:5060>
+Call-ID: 5231236d79acd70c6558209f6f2f4d56@192.168.56.109:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:06 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+
+<--- SIP read from UDP:192.168.56.111:32172 --->
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.56.109:5060;branch=z9hG4bK1c32ff93
+Contact: <sip:192.168.56.111:32172>
+To: <sip:zoiper@192.168.56.111:32172;rinstance=49977a24a504d2f1;transport=UDP>;tag=f57a0730
+From: "asterisk" <sip:asterisk@192.168.56.109>;tag=as4ea29728
+Call-ID: 5231236d79acd70c6558209f6f2f4d56@192.168.56.109:5060
+CSeq: 102 OPTIONS
+Accept: application/sdp, application/sdp
+Accept-Language: en
+Allow: INVITE, ACK, CANCEL, BYE, NOTIFY, REFER, MESSAGE, OPTIONS, INFO, SUBSCRIBE
+Supported: replaces, norefersub, extended-refer, timer, outbound, path, X-cisco-serviceuri
+User-Agent: Z 3.15.40006 rv2.8.20
+Allow-Events: presence, kpml, talk
+Content-Length: 0
+
+<------------->
+--- (14 headers 0 lines) ---
+Really destroying SIP dialog '5231236d79acd70c6558209f6f2f4d56@192.168.56.109:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6f9d554d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1bd7065b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 74977ace70b18c824a54742156e62b94@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK46a5888d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1f3419f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 58fe434c01227f31752c005b3769e8cf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6f9d554d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1bd7065b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 74977ace70b18c824a54742156e62b94@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK46a5888d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1f3419f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 58fe434c01227f31752c005b3769e8cf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6f9d554d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1bd7065b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 74977ace70b18c824a54742156e62b94@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK46a5888d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1f3419f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 58fe434c01227f31752c005b3769e8cf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6f9d554d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1bd7065b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 74977ace70b18c824a54742156e62b94@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK46a5888d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1f3419f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 58fe434c01227f31752c005b3769e8cf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6f9d554d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1bd7065b
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 74977ace70b18c824a54742156e62b94@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK46a5888d
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1f3419f9
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 58fe434c01227f31752c005b3769e8cf@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:08 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '74977ace70b18c824a54742156e62b94@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '58fe434c01227f31752c005b3769e8cf@10.0.4.15:5060' Method: OPTIONS
+Reliably Transmitting (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6458cec0
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6ed355b1
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 429d70fa215749e51f8f96643a3a43fd@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Reliably Transmitting (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK72e61065
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1be55601
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 33c0223627152f5d501eed8a533b1515@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6458cec0
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6ed355b1
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 429d70fa215749e51f8f96643a3a43fd@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #1 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK72e61065
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1be55601
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 33c0223627152f5d501eed8a533b1515@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6458cec0
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6ed355b1
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 429d70fa215749e51f8f96643a3a43fd@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #2 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK72e61065
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1be55601
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 33c0223627152f5d501eed8a533b1515@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6458cec0
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6ed355b1
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 429d70fa215749e51f8f96643a3a43fd@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #3 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK72e61065
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1be55601
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 33c0223627152f5d501eed8a533b1515@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.117:5060:
+OPTIONS sip:172.16.1.117 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK6458cec0
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as6ed355b1
+To: <sip:172.16.1.117>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 429d70fa215749e51f8f96643a3a43fd@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Retransmitting #4 (no NAT) to 172.16.1.115:5060:
+OPTIONS sip:172.16.1.115 SIP/2.0
+Via: SIP/2.0/UDP 10.0.4.15:5060;branch=z9hG4bK72e61065
+Max-Forwards: 70
+From: "asterisk" <sip:asterisk@10.0.4.15>;tag=as1be55601
+To: <sip:172.16.1.115>
+Contact: <sip:asterisk@10.0.4.15:5060>
+Call-ID: 33c0223627152f5d501eed8a533b1515@10.0.4.15:5060
+CSeq: 102 OPTIONS
+User-Agent: Asterisk PBX 18.20.0
+Date: Fri, 26 Apr 2024 15:21:22 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Content-Length: 0
+
+
+---
+Really destroying SIP dialog '429d70fa215749e51f8f96643a3a43fd@10.0.4.15:5060' Method: OPTIONS
+Really destroying SIP dialog '33c0223627152f5d501eed8a533b1515@10.0.4.15:5060' Method: OPTIONS

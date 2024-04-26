@@ -118,10 +118,10 @@ class AudioStreamer():
             v += 320
 
             # self.detect_noise(indata, 1, 8000)
-            count += 1
-            if count % 25 == 0:
-                sleep(.25)
-                sleep_seconds += .25
+            # count += 1
+            # if count % 25 == 0:
+            #     sleep(.25)
+            #     sleep_seconds += .25
             # if self.level!=11:
             if not self.noise:
                 if self.noise_frames_count >= 100:
@@ -258,8 +258,8 @@ class AudioStreamer():
                 x = audioop.alaw2lin(audio_data,2)
                 pcm_data = audioop.ratecv(x, 2, 1, 44100, 8000, None)[0]
                 pcm_data = audioop.lin2lin(pcm_data, 2,2)
-                self.send_audio(audio_data)
-                self.logger.info(audio_data)
+                self.send_audio(pcm_data)
+                self.logger.info(pcm_data)
 
                 # self.logger.info("we are in level {}".format(self.level))
 
