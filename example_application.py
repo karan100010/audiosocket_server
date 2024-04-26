@@ -262,6 +262,9 @@ class AudioStreamer():
                 self.send_audio(audio_data)
                 self.logger.info(audio_data)
 
+                if len(self.combined_audio)>5000:
+                    self.convert_file(self.combined_audio)
+
                 # self.logger.info("we are in level {}".format(self.level))
 
 
