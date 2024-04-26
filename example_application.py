@@ -77,11 +77,11 @@ class AudioStreamer():
             self.conn = pymongo.MongoClient(data)
         except Exception as e:
             self.logger.info(e)
-        try:
-            self.conn["test"]["connections"].insert_one({"status": "active", "addr": "172.16.1.209"+":"+str(
-                self.audiosocket.port), "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-        except Exception as e:
-            self.logger.info(e)
+        # try:
+        #     self.conn["test"]["connections"].insert_one({"status": "active", "addr": "172.16.1.209"+":"+str(
+        #         self.audiosocket.port), "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+        # except Exception as e:
+        #     self.logger.info(e)
         # self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
 
     def read_wave_file(self, filename):
