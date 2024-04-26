@@ -35,6 +35,7 @@ class AudioStreamer():
         self.noise_frames_count = 0
         self.call = call
         self.audiosocket = socket
+        
         # self.uudi=self.audiosocket.uudi
         self.uuid = str(call.uuid)
         self.num_connected = 0
@@ -465,7 +466,9 @@ def handel_call():
 
     audiosocket = Audiosocket(("0.0.0.0", 9000))
     while True:
+        audiosocket.prepare_output(outrate=44000, channels=2, ulaw2lin=True)
         call = audiosocket.listen()
+
 
         stream = AudioStreamer(audiosocket, call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
