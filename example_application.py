@@ -256,8 +256,8 @@ class AudioStreamer():
                 audio_data = self.call.read()
                 
                 x = audioop.ulaw2lin(audio_data,2)
-                pcm_data = audioop.ratecv(x, 2, 1, 16000, 8000, None)[0]
-                pcm_data = audioop.lin2lin(pcm_data, 2,2)
+                pcm_data = audioop.ratecv(x, 2, 1, 8000, 8000, None)[0]
+                pcm_data = audioop.lin2lin(pcm_data, 2,1)
                 self.send_audio(pcm_data)
                 self.logger.info(pcm_data)
 
