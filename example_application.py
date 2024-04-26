@@ -258,8 +258,8 @@ class AudioStreamer():
                 x = audioop.alaw2lin(audio_data,2)
                 pcm_data = audioop.ratecv(x, 2, 1, 8000, 8000, None)[0]
                 pcm_data = audioop.lin2lin(pcm_data, 2,2)
-                self.send_audio(pcm_data)
-                self.logger.info(pcm_data)
+                self.send_audio(audio_data)
+                self.logger.info(audio_data)
 
                 # self.logger.info("we are in level {}".format(self.level))
 
@@ -468,7 +468,7 @@ def handel_call():
 
     audiosocket = Audiosocket(("0.0.0.0", 9000))
     while True:
-        audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
+        #audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
         call = audiosocket.listen()
 
 
