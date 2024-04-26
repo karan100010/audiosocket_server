@@ -468,7 +468,7 @@ def handel_call():
 
     audiosocket = Audiosocket(("0.0.0.0", 9000))
     while True:
-        audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=False)
+        audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
         call = audiosocket.listen()
 
 
