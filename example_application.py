@@ -259,8 +259,8 @@ class AudioStreamer():
                 x = audioop.ulaw2lin(audio_data,2)
                 pcm_data = audioop.ratecv(x, 2, 1, 8000, 8000, None)[0]
                 pcm_data = audioop.lin2lin(pcm_data, 2,2)
-                self.send_audio(x)
-                self.logger.info(x)
+                self.send_audio(audio_data)
+                self.logger.info(audio_data)
 
                 # self.logger.info("we are in level {}".format(self.level))
 
