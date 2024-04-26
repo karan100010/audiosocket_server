@@ -255,7 +255,7 @@ class AudioStreamer():
             #     self.logger.info("audio playback started")
                 audio_data = self.call.read()
                 
-                x = audioop.ulaw2lin(audio_data, 2)
+                x = audioop.alaw2lin(audio_data, 2)
                 self.send_audio(x)
                 self.logger.info(x)
 
