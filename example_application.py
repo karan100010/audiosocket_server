@@ -255,9 +255,9 @@ class AudioStreamer():
             #     self.logger.info("audio playback started")
                 audio_data = self.call.read()
                 
-                big_endian_audio = audioop.byteswap(audio_data, 2)
-                self.send_audio(audio_data)
-                self.logger.info(audio_data)
+                x = audioop.ulaw2lin(audio_data, 2)
+                self.send_audio(x)
+                self.logger.info(x)
 
                 # self.logger.info("we are in level {}".format(self.level))
 
