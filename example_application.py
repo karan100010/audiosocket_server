@@ -200,7 +200,7 @@ class AudioStreamer():
             wf.setnchannels(1)
             wf.setsampwidth(2)  # 2 bytes for 16-bit audio
             # Adjust based on the sample rate of your u-law audio
-            wf.setframerate(8000*.75)
+            wf.setframerate(8000)
             wf.writeframes(file)
             return filename
 
