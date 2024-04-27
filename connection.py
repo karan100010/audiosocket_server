@@ -111,6 +111,7 @@ class Connection:
       # Assuming `audio` is your 8-bit stereo audio
    #   mono_audio = audioop.tomono(audio, 2, 0.5, 0.5)  # Convert to mono
       audio = audioop.ulaw2lin(audio,2)  # Convert to 16-bit
+      
       return audio
       
       if len(audio) != 320:
