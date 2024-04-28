@@ -47,7 +47,7 @@ def create_connection():
     connection = conn['test']['connections']
     data_dict = request.get_json()
     
-    connection.insert_one(data_dict)
+
     try:
         connection_id = connection.insert_one(data_dict)
         print("sucessfully inserted connection data")
