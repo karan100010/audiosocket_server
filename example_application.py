@@ -187,7 +187,7 @@ class AudioStreamer():
         # Decode and combine u-law fragments into a single bytearray
         # Remove the unused line of code
         # combined_pcm_data = bytearray()
-        pcm_data = audioop.ratecv(x, 2, 1, 8000, 8000, None)[0]
+        pcm_data = audioop.ratecv(file, 2, 1, 8000, 8000, None)[0]
         pcm_data = audioop.lin2lin(pcm_data, 2,2)
 
         # ulaw_data = bytes(file['data']['data'])
