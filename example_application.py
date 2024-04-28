@@ -98,11 +98,16 @@ class AudioStreamer():
 
     def detect_noise(self, indata, frames, rate):
 
-        samples = np.frombuffer(indata, dtype=np.int16)
-        is_noise = self.vad.is_speech(samples.tobytes(), rate)
-        if is_noise:
-            # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
-            self.noise_frames_count += frames
+        try:
+            samples = np.frombuffer(indata, dtype=np.int16)
+            is_noise = self.vad.is_speech(samples.tobytes(), rate)
+            if is_noise:
+                # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
+                self.noise_frames_count += frames
+            return
+        except Exception as e:
+            self.logger.info("error occered while trying to dedect silence {}".format(e))
+
 
     def send_audio(self, audio_file):
 
