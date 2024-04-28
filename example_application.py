@@ -59,7 +59,7 @@ class AudioStreamer():
         self.respdict = json.loads(respdict)
         self.welcome = self.respdict["data"]["intro_rec"]
         self.welcome_audio = requests.get(self.welcome).content
-        req=requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+      #  req=requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
         print(req.text)
         #self.manager=Manager()
 
