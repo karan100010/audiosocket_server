@@ -61,10 +61,6 @@ class AudioStreamer():
         self.welcome_audio = requests.get(self.welcome).content
       #  req=requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
         #print(req.text)
-        #self.manager=Manager()
-
-        self.manager.connect("localhost")
-        self.manager.login('karan', 'test')
 
         self.lang_change = False
         with open("db.txt") as f:
