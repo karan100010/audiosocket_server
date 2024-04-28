@@ -290,7 +290,7 @@ class AudioStreamer():
                 #     x=self.read_wave_file(mapping["utils"][self.channel][0])
                 #     self.send_audio(x)
                 #     self.noise=False
-                while self.silent_frames_count<50:
+                while self.long_silence<100:
                   self.logger.info("waiting for silence")
                   sleep(.01)
                 self.logger.info("waiting for silence is over")
