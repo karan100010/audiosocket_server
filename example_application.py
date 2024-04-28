@@ -54,13 +54,18 @@ class AudioStreamer():
         self.long_silence = 0
         self.intent = "welcome"
         self.call_api = "http://localhost:5011/api/connections"
-        # respdict = requests.get(
+        #respdict = requests.get(
         #     "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
         # self.respdict = json.loads(respdict)
         # self.welcome = self.respdict["data"]["intro_rec"]
         # self.welcome_audio = requests.get(self.welcome).content
-      #  req=requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-        #print(req.text)
+        data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        json_data=json.dumps(data)
+        headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'}
+        req=requests.post(self.call_api,data=json_data,headers=headers)
+        print(req.text)
 
         self.lang_change = False
         with open("db.txt") as f:
@@ -136,8 +141,6 @@ class AudioStreamer():
         self.audioplayback = False
         return
 
-    # write a function that reads the lenth of a audiofile in seconds
-
     def read_length(self, audio_file):
         with wave.open(audio_file, 'rb') as wave_file:
             audio = wave_file.getnframes()
@@ -154,7 +157,6 @@ class AudioStreamer():
         else:
             self.long_silence = 0
         return
-
 
     def start_noise_detection(self):
 
@@ -176,7 +178,6 @@ class AudioStreamer():
               #  self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
-    def start_polling(self):
         self.bot.polling()
 
     def convert_file(self, file):

@@ -45,10 +45,8 @@ def get_decider(id):
 @app.route('/api/connections', methods=['POST'])
 def create_connection():
     connection = conn['test']['connections']
-    data = request.data
-    data_string = data.decode('utf-8')  # Decode bytes to string
-    data_dict = json.loads(data_string)  # Convert JSON string to dictionary
-    print(type(data_dict))
+    data_dict = request.get_json()
+    
     connection.insert_one(data_dict)
     try:
         connection_id = connection.insert_one(data_dict)
