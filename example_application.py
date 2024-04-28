@@ -244,10 +244,10 @@ class AudioStreamer():
             uuid4_format = uuid.UUID(bytes=bytes_uuid)
             self.uuid = str(uuid4_format)
             self.logger.info(uuid4_format)
-            respdict = requests.get(
-            "http://172.16.1.213:3022/call-records/"+self.uuid).text
-            self.respdict = json.loads(respdict)
-            self.welcome = self.respdict["data"]["intro_rec"]
+            # respdict = requests.get(
+            # "http://172.16.1.213:3022/call-records/"+self.uuid).text
+            # self.respdict = json.loads(respdict)
+            # self.welcome = self.respdict["data"]["intro_rec"]
 
 
             if not self.audioplayback:
