@@ -53,18 +53,18 @@ class AudioStreamer():
         self.call_id = str(uuid.uuid4())
         self.long_silence = 0
         self.intent = "welcome"
-        # self.call_api = "http://localhost:5011/api/connections"
-        # respdict = requests.get(
-        #     "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
-        # self.respdict = json.loads(respdict)
-        # self.welcome = self.respdict["data"]["intro_rec"]
-        # self.welcome_audio = requests.get(self.welcome).content
-        # req=requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-        # print(req.text)
-        # #self.manager=Manager()
+        self.call_api = "http://localhost:5011/api/connections"
+        respdict = requests.get(
+            "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
+        self.respdict = json.loads(respdict)
+        self.welcome = self.respdict["data"]["intro_rec"]
+        self.welcome_audio = requests.get(self.welcome).content
+        req=requests.post(self.call_api,data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+        print(req.text)
+        #self.manager=Manager()
 
-        # self.manager.connect("localhost")
-        # self.manager.login('karan', 'test')
+        self.manager.connect("localhost")
+        self.manager.login('karan', 'test')
 
         self.lang_change = False
         with open("db.txt") as f:
@@ -77,12 +77,12 @@ class AudioStreamer():
             self.conn = pymongo.MongoClient(data)
         except Exception as e:
             self.logger.info(e)
-        # try:
-        #     self.conn["test"]["connections"].insert_one({"status": "active", "addr": "172.16.1.209"+":"+str(
-        #         self.audiosocket.port), "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-        # except Exception as e:
-        #     self.logger.info(e)
-        # self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
+        try:
+            self.conn["test"]["connections"].insert_one({"status": "active", "addr": "172.16.1.209"+":"+str(
+                self.audiosocket.port), "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+        except Exception as e:
+            self.logger.info(e)
+        self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
 
     def read_wave_file(self, filename):
         # self.logger.debug("Reading wave file")
@@ -242,39 +242,31 @@ class AudioStreamer():
             # self.conn["test"]["connections"].update_one(
             #     {"addr": self.audiosocket.addr+":"+str(self.audiosocket.port)}, {"$set": {"conn": self.num_connected}})
         while self.call.connected:
-            # #
-            # self.logger.info("the uuid for this call is {}".format(self.uuid))
-            # bytes_uuid = bytes.fromhex(self.uuid)
-            # uuid4_format = uuid.UUID(bytes=bytes_uuid)
-            # self.uuid = str(uuid4_format)
-            # self.logger.info(uuid4_format)
-            # respdict = requests.get(
-            # "http://172.16.1.213:3022/call-records/"+self.uuid).text
-            # self.respdict = json.loads(respdict)
-            # self.welcome = self.respdict["data"]["intro_rec"]
+            #
+            self.logger.info("the uuid for this call is {}".format(self.uuid))
+            bytes_uuid = bytes.fromhex(self.uuid)
+            uuid4_format = uuid.UUID(bytes=bytes_uuid)
+            self.uuid = str(uuid4_format)
+            self.logger.info(uuid4_format)
+            respdict = requests.get(
+            "http://172.16.1.213:3022/call-records/"+self.uuid).text
+            self.respdict = json.loads(respdict)
+            self.welcome = self.respdict["data"]["intro_rec"]
 
 
-            # if not self.audioplayback:
-            #     self.logger.info("audio playback started")
-                audio_data = self.call.read()
-            #    audio_data=audio_data.replace(b"x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00",b"")
-                
-                x = audioop.ulaw2lin(audio_data,2)
-                pcm_data = audioop.ratecv(x, 2, 1, 8000, 8000, None)[0]
-                pcm_data = audioop.lin2lin(pcm_data, 2,2)
-                self.send_audio(audio_data)
-                self.logger.info(audio_data)
+            if not self.audioplayback:
+                self.logger.info("audio playback started")
+             
+          
+    
 
-                if len(self.combined_audio)>5000:
-                    self.convert_file(self.combined_audio)
-
-                # self.logger.info("we are in level {}".format(self.level))
+                self.logger.info("we are in level {}".format(self.level))
 
 
                 # x = self.read_wave_file(
-                #     mapping[self.channel][self.call_flow_num][self.intent][self.level])
-                # #self.send_audio(x)
-                # self.send_audio(self.welcome_audio)
+                    # mapping[self.channel][self.call_flow_num][self.intent][self.level])
+                #self.send_audio(x)
+                self.send_audio(self.welcome_audio)
                 
                 # self.logger.info("silent frames count is {}".format(
                 #     self.silent_frames_count))
@@ -298,41 +290,41 @@ class AudioStreamer():
 
                 # # if self.intent!="welcome":
 
-                # #   if self.noise:
-                # #     x=self.read_wave_file(mapping["utils"][self.channel][0])
-                # #     self.send_audio(x)
-                # #     self.noise=False
-                # while self.silent_frames_count<50:
-                #   self.logger.info("waiting for silence")
-                #   sleep(.01)
-                # self.logger.info("waiting for silence is over")
-                # self.long_silence=0
-                # self.silent_frames_count=0
-
-
-                # try:
-                #   response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
-                #   self.logger.error(response.text)
-                #  # m= self.convert_file(self.combined_audio)
-                #  # self.logger.info("audio file converted {}".format(m))
-                #   resp=json.loads(response.text)
-                #   print(resp)
-
-                #   threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
-                  
-
-                #   self.combined_audio=b''
-
-                #   if resp["transcribe"]=="":
-                #     x=self.read_wave_file(mapping["utils"][self.channel][1])
+                #   if self.noise:
+                #     x=self.read_wave_file(mapping["utils"][self.channel][0])
                 #     self.send_audio(x)
-                #     self.call.hangup()
+                #     self.noise=False
+                while self.silent_frames_count<50:
+                  self.logger.info("waiting for silence")
+                  sleep(.01)
+                self.logger.info("waiting for silence is over")
+                self.long_silence=0
+                self.silent_frames_count=0
 
-                # except Exception as e:
-                #   self.logger.info(e)
-                #   self.combined_audio=b''
-                #   self.call.hangup()
-                  #self.call.hangup()
+
+                try:
+                  response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                  self.logger.error(response.text)
+                 # m= self.convert_file(self.combined_audio)
+                 # self.logger.info("audio file converted {}".format(m))
+                  resp=json.loads(response.text)
+                  print(resp)
+
+                  threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+        
+
+                  self.combined_audio=b''
+
+                  if resp["transcribe"]=="":
+                    x=self.read_wave_file(mapping["utils"][self.channel][1])
+                    self.send_audio(x)
+                    self.call.hangup()
+
+                except Exception as e:
+                  self.logger.info(e)
+                  self.combined_audio=b''
+                  self.call.hangup()
+                  self.call.hangup()
                 # # if resp["transcribe"]=="":
                 # #     self.level="cant_hear"
                 # if self.level==0 and self.intent=="welcome" and self.call_flow_num==0 and self.channel=="en":
