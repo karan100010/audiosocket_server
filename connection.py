@@ -227,6 +227,7 @@ class Connection:
 
       type, length, payload = self._split_data(data)
       print(type)
+      print(length)
 
 
       if type == types.uuid:
