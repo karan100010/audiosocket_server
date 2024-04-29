@@ -217,7 +217,6 @@ class Connection:
 
       except ConnectionResetError:
         print("323 bits were not recived")
-        self.hangup()
         pass
 
       if not data:
