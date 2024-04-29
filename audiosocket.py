@@ -81,7 +81,7 @@ class Audiosocket:
         
         connection_thread = Thread(target=connection._process, args=())
         connection_thread.start()
-        sleep(.5)
+        sleep(.1)
 
         return connection
 
