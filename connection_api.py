@@ -59,10 +59,12 @@ def create_connection():
 @app.route('/api/connections/update', methods=['PUT'])
 def update_connection():
     connection = conn['test']['connections']
-    data = request.data
+    data = request.get_json()
+    data=json.loads(data)
     connection_id = data['addr']
+
     try:
-        connection.update_one({'addr': connection_id}, {'$set': {"conn":data['conn']}})
+        connection.update_one({'addr': connection_id}, {'$set': {list(data["update"].keys()[0]):data["updates"][list(data["update"].keys()[0])]}})
         print("sucessfully updated connection data")
     except:
         return jsonify("Error in updating data")

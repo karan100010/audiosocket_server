@@ -59,12 +59,12 @@ class AudioStreamer():
         self.respdict = json.loads(respdict)
         self.welcome = self.respdict["data"]["intro_rec"]
         self.welcome_audio = requests.get(self.welcome).content
-        data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        data={"status":"active","addr":"172.16.1.209"+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         json_data=json.dumps(data)
-        headers = {
+        self.headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'}
-        req=requests.post(self.call_api,data=json_data,headers=headers)
+        req=requests.post(self.call_api,data=json_data,headers=self.headers)
         print(req.text)
 
         self.lang_change = False
@@ -78,12 +78,7 @@ class AudioStreamer():
             self.conn = pymongo.MongoClient(data)
         except Exception as e:
             self.logger.info(e)
-        try:
-            self.conn["test"]["connections"].insert_one({"status": "active", "addr": "172.16.1.209"+":"+str(
-                self.audiosocket.port), "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-        except Exception as e:
-            self.logger.info(e)
-        self.callflow=self.conn["test"]["callflow"].find_one({"call_id":"uuid"})
+       
 
     def read_wave_file(self, filename):
         # self.logger.debug("Reading wave file")
@@ -107,7 +102,6 @@ class AudioStreamer():
             return
         except Exception as e:
             self.logger.info("error occered while trying to dedect silence {}".format(e))
-
 
     def send_audio(self, audio_file):
 
@@ -249,15 +243,11 @@ class AudioStreamer():
             self.uuid = str(uuid4_format)
             self.logger.info(uuid4_format)
             self.num_connected += 1
+            update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
+            requests.put(self.call_api+"/update",update_data)
 
            
         while self.call.connected:
-            #
-           
-            # respdict = requests.get(
-            # "http://172.16.1.213:3022/call-records/"+self.uuid).text
-            # self.respdict = json.loads(respdict)
-            # self.welcome = self.respdict["data"]["intro_rec"]
 
 
             if not self.audioplayback:
@@ -474,7 +464,6 @@ def handel_call():
     while True:
         #audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
         call = audiosocket.listen()
-        print(call.uuid)
         stream = AudioStreamer(audiosocket, call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
