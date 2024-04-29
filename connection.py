@@ -224,6 +224,7 @@ class Connection:
 
 
       type, length, payload = self._split_data(data)
+      print(type)
 
 
 
