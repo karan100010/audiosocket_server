@@ -220,7 +220,7 @@ class Connection:
       except ConnectionResetError:
         print("323 bits were not recived")
         pass
-      print(data==None)
+      print(self.empty)
       if self.empty:
         self.connected = False
         self.conn.close()
