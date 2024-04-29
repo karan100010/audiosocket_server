@@ -211,6 +211,7 @@ class Connection:
       try:
         with self._lock:
           data = self.conn.recv(323)
+          print(data)
 
           
 
