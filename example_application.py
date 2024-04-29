@@ -297,6 +297,7 @@ class AudioStreamer():
                     sleep(.01)
                   else:
                         break
+                        return
 
                 self.logger.info("waiting for silence is over")
                 self.long_silence=0
