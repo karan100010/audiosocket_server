@@ -213,8 +213,6 @@ class Connection:
           data = self.conn.recv(323)
 
 
-          
-
       except ConnectionResetError:
         print("323 bits were not recived")
         pass
