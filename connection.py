@@ -228,6 +228,9 @@ class Connection:
 
       type, length, payload = self._split_data(data)
 
+      if type == types.uuid:
+        self.uuid = payload.hex()
+        #convert uuid to uuid4 format
 
       if type == types.audio:
 
@@ -260,6 +263,4 @@ class Connection:
       if type == types.error:
         self._decode_error(payload)
 
-      if type == types.uuid:
-        self.uuid = payload.hex()
-        #convert uuid to uuid4 format
+      
