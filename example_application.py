@@ -239,17 +239,19 @@ class AudioStreamer():
     def start_audio_playback(self, mapping):
         self.logger.info(
             'Received connection from {0}'.format(self.call.peer_addr))
-       # if self.call.connected:
-            # self.num_connected += 1
-            # self.conn["test"]["connections"].update_one(
-            #     {"addr": self.audiosocket.addr+":"+str(self.audiosocket.port)}, {"$set": {"conn": self.num_connected}})
-        while self.call.connected:
-            #
+    
+        if self.call.connected:
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             bytes_uuid = bytes.fromhex(self.uuid)
             uuid4_format = uuid.UUID(bytes=bytes_uuid)
             self.uuid = str(uuid4_format)
             self.logger.info(uuid4_format)
+            # self.num_connected += 1
+            # self.conn["test"]["connections"].update_one(
+            #     {"addr": self.audiosocket.addr+":"+str(self.audiosocket.port)}, {"$set": {"conn": self.num_connected}})
+        while self.call.connected:
+            #
+           
             # respdict = requests.get(
             # "http://172.16.1.213:3022/call-records/"+self.uuid).text
             # self.respdict = json.loads(respdict)
