@@ -211,7 +211,7 @@ class Connection:
       try:
         with self._lock:
           data = self.conn.recv(323)
-          print(data)
+
 
           
 
@@ -226,8 +226,7 @@ class Connection:
 
 
       type, length, payload = self._split_data(data)
-      print(type)
-      print(length)
+
 
 
       if length == 16:
