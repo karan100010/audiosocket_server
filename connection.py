@@ -230,7 +230,7 @@ class Connection:
       print(length)
 
 
-      if type == types.uuid:
+      if length == 16:
         self.uuid = payload.hex()
         #convert uuid to uuid4 format
 
