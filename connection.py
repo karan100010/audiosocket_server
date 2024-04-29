@@ -211,10 +211,8 @@ class Connection:
       try:
         with self._lock:
           data = self.conn.recv(323)
-          print(len(data))
-          if len(data.decode())==19:
-            self.uuid=data.hex()[6:]
 
+          
 
       except ConnectionResetError:
         print("323 bits were not recived")
