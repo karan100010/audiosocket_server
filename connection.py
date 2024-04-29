@@ -216,7 +216,7 @@ class Connection:
       except ConnectionResetError:
         print("323 bits were not recived")
         pass
-
+      print(data==True)
       if not data:
         self.connected = False
         self.conn.close()
@@ -224,7 +224,7 @@ class Connection:
 
 
       type, length, payload = self._split_data(data)
-      print(type)
+
 
 
 
