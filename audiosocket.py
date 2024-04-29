@@ -78,9 +78,10 @@ class Audiosocket:
             self.user_resample,
             self.asterisk_resample,
         )
-        sleep(.5)
+        
         connection_thread = Thread(target=connection._process, args=())
         connection_thread.start()
+        sleep(.5)
 
         return connection
 
