@@ -221,7 +221,7 @@ class Connection:
         print("323 bits were not recived")
         pass
       print(self.empty)
-      if self.empty>=2:
+      if self.empty>2:
         self.connected = False
         self.conn.close()
         return
