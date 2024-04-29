@@ -244,7 +244,8 @@ class AudioStreamer():
             self.logger.info(uuid4_format)
             self.num_connected += 1
             update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
-            requests.put(self.call_api+"/update",update_data)
+            update_data=json.dumps(update_data)
+            requests.put(self.call_api+"/update",update_data,headers=self.headers)
 
            
         while self.call.connected:
@@ -454,8 +455,14 @@ class AudioStreamer():
             # convert data to json
             # response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
             # self.logger.info(response.text)
+        self.num_connected-=1
+        update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
+        update_data=json.dumps(update_data)
+        requests.put(self.call_api+"/update",update_data,headers=self.headers)
 
         print('Connection with {0} over'.format(self.call.peer_addr))
+
+        return
 
 
 def handel_call():

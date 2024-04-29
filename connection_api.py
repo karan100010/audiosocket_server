@@ -64,7 +64,7 @@ def update_connection():
     connection_id = data['addr']
 
     try:
-        connection.update_one({'addr': connection_id}, {'$set': {list(data["update"].keys()[0]):data["updates"][list(data["update"].keys()[0])]}})
+        connection.update_one({'addr': connection_id}, {'$set': {list(data["update"].keys())[0]:data["updates"][list(data["update"].keys())[0]]}})
         print("sucessfully updated connection data")
     except:
         return jsonify("Error in updating data")
