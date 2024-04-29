@@ -119,6 +119,7 @@ class Connection:
 
     except Empty:
       print("no data recived terminating connection")
+      return
 
     if self._asterisk_resample:
       # If AudioSocket is bridged with a channel
