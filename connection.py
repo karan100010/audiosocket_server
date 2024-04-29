@@ -56,7 +56,7 @@ class Connection:
     self.connected = True  # An instance  gets created because a connection occurred
     self._user_resample = user_resample
     self._asterisk_resample = asterisk_resample
-    self.empty=False
+    self.empty=0
 
     # Underlying Queue objects for passing incoming/outgoing audio between threads
     self._rx_q = Queue(500)
@@ -120,7 +120,7 @@ class Connection:
 
     except Empty:
       print("no data recived terminating connection")
-      self.empty=True
+      self.empty+=1
       return
 
 
@@ -221,7 +221,7 @@ class Connection:
         print("323 bits were not recived")
         pass
       print(self.empty)
-      if self.empty:
+      if self.empty>10:
         self.connected = False
         self.conn.close()
         return
