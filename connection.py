@@ -257,9 +257,9 @@ class Connection:
             self.conn.send(types.audio + len(audio_data).to_bytes(2, 'big') + audio_data)
 
 
-      elif type == types.error:
+      if type == types.error:
         self._decode_error(payload)
 
-      elif type == types.uuid:
+      if type == types.uuid:
         self.uuid = payload.hex()
         #convert uuid to uuid4 format
