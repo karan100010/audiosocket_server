@@ -211,7 +211,7 @@ class Connection:
       try:
         with self._lock:
           data = self.conn.recv(323)
-          print(data)
+          print(len(data))
           if len(data)==19:
             self.uuid=data.hex()[6:]
 
