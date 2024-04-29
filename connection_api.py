@@ -60,7 +60,6 @@ def create_connection():
 def update_connection():
     connection = conn['test']['connections']
     data = request.get_json()
-    data=json.loads(data)
     connection_id = data['addr']
 
     try:
