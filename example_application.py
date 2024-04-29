@@ -296,7 +296,9 @@ class AudioStreamer():
                   if self.call.connected:
                     sleep(.01)
                   else:
-                        return
+                        break
+                if not self.call.connected:
+                    break
                         
 
                 self.logger.info("waiting for silence is over")
