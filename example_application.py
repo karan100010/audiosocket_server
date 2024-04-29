@@ -241,6 +241,8 @@ class AudioStreamer():
             'Received connection from {0}'.format(self.call.peer_addr))
     
         if self.call.connected:
+
+        
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             bytes_uuid = bytes.fromhex(self.uuid)
             uuid4_format = uuid.UUID(bytes=bytes_uuid)
