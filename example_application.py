@@ -54,11 +54,11 @@ class AudioStreamer():
         self.long_silence = 0
         self.intent = "welcome"
         self.call_api = "http://localhost:5011/api/connections"
-        #respdict = requests.get(
-        #     "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
-        # self.respdict = json.loads(respdict)
-        # self.welcome = self.respdict["data"]["intro_rec"]
-        # self.welcome_audio = requests.get(self.welcome).content
+        respdict = requests.get(
+            "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
+        self.respdict = json.loads(respdict)
+        self.welcome = self.respdict["data"]["intro_rec"]
+        self.welcome_audio = requests.get(self.welcome).content
         data={"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         json_data=json.dumps(data)
         headers = {
@@ -269,7 +269,7 @@ class AudioStreamer():
 
                 x = self.read_wave_file(
                     mapping[self.channel][self.call_flow_num][self.intent][self.level])
-                self.send_audio(x)
+                self.send_audio(self.welcome)
        
                 
                 # self.logger.info("silent frames count is {}".format(
