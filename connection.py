@@ -120,7 +120,7 @@ class Connection:
 
     except Empty:
       print("no data recived terminating connection")
-      self.empty==True
+      self.empty=True
       return
 
 
