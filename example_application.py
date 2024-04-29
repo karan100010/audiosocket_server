@@ -321,6 +321,7 @@ class AudioStreamer():
                   self.logger.info(e)
                   self.combined_audio=b''
                   self.call.hangup()
+                print(self.call.connected)
                 # # if resp["transcribe"]=="":
                 # #     self.level="cant_hear"
                 # if self.level==0 and self.intent=="welcome" and self.call_flow_num==0 and self.channel=="en":
