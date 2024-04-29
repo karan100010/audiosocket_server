@@ -118,7 +118,7 @@ class Connection:
         audio += bytes(320 - len(audio))
 
     except Empty:
-      return bytes(320)
+      print("no data recived terminating connection")
 
     if self._asterisk_resample:
       # If AudioSocket is bridged with a channel
