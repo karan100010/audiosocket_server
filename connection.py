@@ -212,12 +212,13 @@ class Connection:
         with self._lock:
           data = self.conn.recv(323)
           print(data)
-      
+          if len(data)==19:
+            self.uuid=data.hex()[6:]
+
 
       except ConnectionResetError:
         print("323 bits were not recived")
         pass
-
 
       if not data:
         self.connected = False
