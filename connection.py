@@ -211,8 +211,11 @@ class Connection:
       try:
         with self._lock:
           data = self.conn.recv(323)
+          print(data)
+      
 
       except ConnectionResetError:
+        print("323 bits were not recived")
         pass
 
 
