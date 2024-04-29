@@ -293,7 +293,11 @@ class AudioStreamer():
                 #     self.noise=False
                 while self.long_silence<100:
                   #self.logger.info("waiting for silence")
-                  sleep(.01)
+                  if self.call.connected:
+                    sleep(.01)
+                  else:
+                        break
+
                 self.logger.info("waiting for silence is over")
                 self.long_silence=0
                 self.silent_frames_count=0
