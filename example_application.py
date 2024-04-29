@@ -474,8 +474,7 @@ def handel_call():
     while True:
         #audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
         call = audiosocket.listen()
-
-
+        print(call.uuid)
         stream = AudioStreamer(audiosocket, call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
