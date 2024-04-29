@@ -99,8 +99,8 @@ class AudioStreamer():
     def detect_noise(self, indata, frames, rate):
 
         try:
-            samples = np.frombuffer(indata, dtype=np.int16)
-            is_noise = self.vad.is_speech(samples.tobytes(), rate)
+            #samples = np.frombuffer(indata, dtype=np.int16)
+            is_noise = self.vad.is_speech(indata, rate)
             if is_noise:
                 # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
                 self.noise_frames_count += frames
@@ -246,9 +246,9 @@ class AudioStreamer():
             uuid4_format = uuid.UUID(bytes=bytes_uuid)
             self.uuid = str(uuid4_format)
             self.logger.info(uuid4_format)
-            # self.num_connected += 1
-            # self.conn["test"]["connections"].update_one(
-            #     {"addr": self.audiosocket.addr+":"+str(self.audiosocket.port)}, {"$set": {"conn": self.num_connected}})
+            self.num_connected += 1
+
+           
         while self.call.connected:
             #
            
@@ -312,7 +312,7 @@ class AudioStreamer():
                  # m= self.convert_file(self.combined_audio)
                  # self.logger.info("audio file converted {}".format(m))
                   resp=json.loads(response.text)
-                  print(resp)
+                  print(resp.text)
 
                   threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
         
@@ -327,7 +327,6 @@ class AudioStreamer():
                 except Exception as e:
                   self.logger.info(e)
                   self.combined_audio=b''
-                  self.call.hangup()
                   self.call.hangup()
                 # # if resp["transcribe"]=="":
                 # #     self.level="cant_hear"
