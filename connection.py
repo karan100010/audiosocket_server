@@ -226,6 +226,8 @@ class Connection:
 
 
       type, length, payload = self._split_data(data)
+      print(type)
+
 
       if type == types.uuid:
         self.uuid = payload.hex()
