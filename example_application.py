@@ -268,9 +268,11 @@ class AudioStreamer():
                     self.level+=1
                 elif self.level==1 and self.intent=="yes_intent":
                     self.send_audio(self.master_audio)
+                    self.logger.info("sending master audio")
                 else:
                     audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
                     self.send_audio(audio.content)
+                    self.logger.info("sending other audios")
 
                 
                 # # data = {"call_id": self.uuid,
