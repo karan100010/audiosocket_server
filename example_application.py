@@ -118,7 +118,7 @@ class AudioStreamer():
             self.call.write(audio_file[w:v])
             w += 320
             v += 320
-            sleep(.05)
+            sleep(.01)
 
 
             # if self.level!=11:
