@@ -124,7 +124,7 @@ class AudioStreamer():
             count += 1
             if count % 25 == 0:
                 sleep(.25)
-                sleep_seconds += .05
+                sleep_seconds += .4
             # if self.level!=11:
             # if not self.noise:
             #     if self.noise_frames_count >= 100:
