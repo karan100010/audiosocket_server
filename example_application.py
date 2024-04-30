@@ -286,7 +286,7 @@ class AudioStreamer():
                     self.logger.info("sending other audios")
                 self.level+=1
                 if self.intent=="welcome":
-                    while self.long_silence<100:
+                    while self.long_silence<50:
                     #self.logger.info("waiting for silence")
                         if self.call.connected:
                             sleep(.01)
