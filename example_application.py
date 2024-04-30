@@ -122,9 +122,16 @@ class AudioStreamer():
 
           
             count += 1
-            if count % 25 == 0:
-                sleep(.25)
-                sleep_seconds += .25
+            if len(audio_file)/(320*25)<40:
+                if count % 25 == 0:
+                    sleep(.25)
+                    sleep_seconds += .25
+            else:
+            
+                if count % 25 == 0:
+                    sleep(.25)
+                    sleep_seconds += .5
+
             # if self.level!=11:
             # if not self.noise:
             #     if self.noise_frames_count >= 100:
