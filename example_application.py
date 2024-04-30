@@ -221,8 +221,7 @@ class AudioStreamer():
                           "intent": self.intent,
                           "lang": self.channel,
                           "interuption": self.noise,
-                          "call_id": self.call_id,
-                          "file_played": mapping[self.channel][self.call_flow_num][self.intent][self.level]
+                          "call_id": self.call_id
                           }
         try:
             x = self.conn["test"]["test"].insert_one(database_entry)
@@ -269,6 +268,7 @@ class AudioStreamer():
                 elif self.level==1 and self.intent=="yes_intent":
                     self.send_audio(self.master_audio)
                     self.logger.info("sending master audio")
+                    level+=1
                 else:
                     audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
                     self.send_audio(audio.content)
