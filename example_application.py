@@ -255,10 +255,6 @@ class AudioStreamer():
 
             if not self.audioplayback:
                 self.logger.info("audio playback started")
-             
-          
-    
-
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
                 self.audioplayback=True
