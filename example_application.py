@@ -41,7 +41,7 @@ class AudioStreamer():
         self.num_connected = 0
         self.w = 0
         self.v = 320
-        self.level = 0
+        self.level = 1
         self.audioplayback = False
         self.silent_frames_count = 0
         self.combined_audio = b''
@@ -58,6 +58,9 @@ class AudioStreamer():
             "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
         self.respdict = json.loads(respdict)
         self.welcome = self.respdict["data"]["intro_rec"]
+
+        self.master =  self.respdict["data"]["master_rec"]
+        self.master_audio= requests.get(self.master).content
         self.welcome_audio = requests.get(self.welcome).content
         data={"status":"active","addr":"172.16.1.209"+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         json_data=json.dumps(data)
@@ -259,24 +262,15 @@ class AudioStreamer():
 
                 self.logger.info("we are in level {}".format(self.level))
 
+                if self.level==0:
 
-                x = self.read_wave_file(
-                    mapping[self.channel][self.call_flow_num][self.intent][self.level])
-                self.send_audio(self.welcome_audio)
-       
-                
-                # self.logger.info("silent frames count is {}".format(
-                #     self.silent_frames_count))
+                    self.send_audio(self.welcome_audio)
+                if self.level==1 and self.intent=="yes_intent":
+                    self.send_audio(self.master_audio)
+                else:
+                    audio=requests.get("http://172.16.1.209:8000/LEVEL"+self.level+"_"+self.intent+"_1.wav")
+                    self.send_audio(audio.content)
 
-                # # re=requests.post(self.call_api+"/calls",json=data)
-                # # print(re.text)
-                # # self.logger.info(re.text)
-                
-
-                # # re=requests.post(self.call_api+"/calls",json=data)
-                # # print(re.text)
-                # # self.logger.info(re.text)
-                
                 
                 # # data = {"call_id": self.uuid,
                 # #         "hangup": "true", "transfer": "none"}
@@ -284,13 +278,6 @@ class AudioStreamer():
                 
 
                 # # disconnet call from audio socket
-
-                # # if self.intent!="welcome":
-
-                #   if self.noise:
-                #     x=self.read_wave_file(mapping["utils"][self.channel][0])
-                #     self.send_audio(x)
-                #     self.noise=False
                 while self.long_silence<100:
                   #self.logger.info("waiting for silence")
                   if self.call.connected:
@@ -316,49 +303,32 @@ class AudioStreamer():
 
                   threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
         
-
                   self.combined_audio=b''
+                  resp["nlp"]["intent"]==self.intent
+                  self.level+=1
 
                   if resp["transcribe"]=="":
                     x=self.read_wave_file(mapping["utils"][self.channel][1])
                     self.send_audio(x)
-                    self.call.hangup()
+  
 
                 except Exception as e:
                   self.logger.info(e)
                   self.combined_audio=b''
-                  self.call.hangup()
-                # # if resp["transcribe"]=="":
-                # #     self.level="cant_hear"
+
+
+
+
+                # if resp["transcribe"]=="":
+                #     self.level="cant_hear"
                 # if self.level==0 and self.intent=="welcome" and self.call_flow_num==0 and self.channel=="en":
                 #     if  detect(resp["transcribe"]) != "en":
+                #        if resp["transcribe"]!="":
 
-                #        self.lang_change=True
-                # if resp["nlp"]["intent"]=="positive":
-                #     if self.intent!="welcome":
-                #       self.level+=1
+                #         self.lang_change=True
 
-                #     self.intent="positive"
+        
 
-                # elif resp["nlp"]["intent"]=='negative':
-                #     if  self.intent!="welcome":
-                #       self.level+=1
-                #     self.intent="negative"
-                # if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="change_flow":
-                #   if self.call_flow_num==0:
-
-                #     self.call_flow_num+=1
-                #     self.level=0
-                #     self.intent="welcome"
-                #   else:
-                #     self.call_flow_num-=1
-                #     self.level=0
-                #     self.intent="welcome"
-
-                # if mapping[self.channel][self.call_flow_num][self.intent][self.level]=="end_call":
-                #   self.call.hangup()
-                #   self.audioplayback=False
-                #   sleep(1)
 
                 # if self.lang_change:
                 #   self.channel="hi"
