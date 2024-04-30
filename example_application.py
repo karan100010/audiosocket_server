@@ -123,9 +123,7 @@ class AudioStreamer():
             self.call.write(audio_file[w:v])
             w += 320
             v += 320
-            count += 1
-           
-            
+            count += 1 
             if count % 25 == 0:
                 sleep(.25)
                 sleep_seconds += .25
@@ -268,18 +266,16 @@ class AudioStreamer():
                     self.call.hangup()
 
                 if self.level==0:
-
                     self.send_audio(self.welcome_audio)
-
-                    
                 elif self.level==1 and self.intent=="yes_intent":
                     self.send_audio(self.master_audio)
                     self.logger.info("sending master audio")
-                elif self.noise==True:
+                elif self.noise:
                     audio=requests.get("http://172.16.1.209:8000/LEVEL0_apologise_interupt_1.wav")
                     self.send_audio(audio.content)
                     self.logger.info("sending other audios")
                     self.long_noise=0
+                    self.noise=False
                     pass
                 else:
                     audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
