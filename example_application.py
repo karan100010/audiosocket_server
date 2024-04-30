@@ -310,9 +310,9 @@ class AudioStreamer():
                   self.combined_audio=b''
                   self.intent=resp["nlp"]["intent"]
 
-                #   if resp["transcribe"]=="":
-                #     x=self.read_wave_file(mapping["utils"][self.channel][1])
-                #     self.send_audio(x)
+                  if resp["transcribe"]=="":
+                    x=self.read_wave_file(mapping["utils"][self.channel][1])
+                    self.send_audio(x)
   
 
                 except Exception as e:
