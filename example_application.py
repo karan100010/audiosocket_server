@@ -125,7 +125,7 @@ class AudioStreamer():
             if len(audio_file)/(320*25)<40:
                 if count % 25 == 0:
                     sleep(.25)
-                    sleep_seconds += .20
+                    sleep_seconds += .22
             else:
             
                 if count % 25 == 0:
