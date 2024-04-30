@@ -262,6 +262,8 @@ class AudioStreamer():
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
                 self.audioplayback=True
+                if self.level==3:
+                    self.call.hangup()
 
                 if self.level==0:
 
