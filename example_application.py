@@ -255,7 +255,7 @@ class AudioStreamer():
 
            
         while self.call.connected:
-
+            self.long_silence=0
 
             if not self.audioplayback:
                 self.logger.info("audio playback started")
