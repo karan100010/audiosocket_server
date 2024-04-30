@@ -41,7 +41,7 @@ class AudioStreamer():
         self.num_connected = 0
         self.w = 0
         self.v = 320
-        self.level = 1
+        self.level = 0
         self.audioplayback = False
         self.silent_frames_count = 0
         self.combined_audio = b''
@@ -268,7 +268,7 @@ class AudioStreamer():
                 if self.level==1 and self.intent=="yes_intent":
                     self.send_audio(self.master_audio)
                 else:
-                    audio=requests.get("http://172.16.1.209:8000/LEVEL"+self.level+"_"+self.intent+"_1.wav")
+                    audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
                     self.send_audio(audio.content)
 
                 
