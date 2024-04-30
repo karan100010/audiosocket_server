@@ -185,7 +185,6 @@ class AudioStreamer():
                # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
-        self.bot.polling()
 
     def convert_file(self, file):
         # Decode and combine u-law fragments into a single bytearray
