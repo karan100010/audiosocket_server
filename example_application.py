@@ -264,7 +264,6 @@ class AudioStreamer():
                 self.logger.info("audio playback started")
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
-                self.audioplayback=True
                 if self.level==3:
                     self.call.hangup()
 
@@ -281,7 +280,6 @@ class AudioStreamer():
                     audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
                     self.send_audio(audio.content)
                     self.logger.info("sending other audios")
-                self.audioplayback=False
                 self.level+=1
                 if self.intent=="welcome":
                     while self.long_silence<50:
