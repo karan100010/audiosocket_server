@@ -55,7 +55,7 @@ class AudioStreamer():
         self.intent = "welcome"
         self.call_api = "http://localhost:5011/api/connections"
         respdict = requests.get(
-            "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").content
+            "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
         self.respdict = json.loads(respdict)
         self.welcome = self.respdict["data"]["intro_rec"]
 
@@ -302,7 +302,7 @@ class AudioStreamer():
                  # m= self.convert_file(self.combined_audio)
                  # self.logger.info("audio file converted {}".format(m))
                   resp=json.loads(response.text)
-                  print(resp.text)
+
 
                   threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
         
