@@ -252,10 +252,11 @@ class AudioStreamer():
             update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
             update_data=json.dumps(update_data)
             requests.put(self.call_api+"/update",update_data,headers=self.headers)
+            self.long_silence=0
 
            
         while self.call.connected:
-            self.long_silence=0
+            
 
             if not self.audioplayback:
                 self.logger.info("audio playback started")
