@@ -329,6 +329,7 @@ class AudioStreamer():
                   if resp["transcribe"]=="":
                     x=self.read_wave_file(mapping["utils"][self.channel][1])
                     self.send_audio(x)
+                    self.level-=1
   
 
                 except Exception as e:
