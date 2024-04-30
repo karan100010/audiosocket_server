@@ -121,17 +121,6 @@ class AudioStreamer():
             v += 320
             sleep(.2)
 
-          
-            count += 1
-            if len(audio_file)/(320*25)<40:
-                if count % 25 == 0:
-                    sleep(.25)
-                    sleep_seconds += .25
-            else:
-            
-                if count % 25 == 0:
-                    sleep(.25)
-                    sleep_seconds += .29
 
             # if self.level!=11:
             if not self.noise:
@@ -142,11 +131,6 @@ class AudioStreamer():
                     self.audioplayback = False
                     return
 
-        self.logger.info("number of iterations are {}".format(count))
-        sleep(len(audio_file)/16000-sleep_seconds)
-        self.logger.info(sleep_seconds)
-        self.logger.info("Sleeping for {} seconds".format(
-            (len(audio_file)/16000)-sleep_seconds))
         self.noise_frames_count = 0
         self.audioplayback = False
         return
