@@ -286,7 +286,7 @@ class AudioStreamer():
                 
 
                 # # disconnet call from audio socket
-                while self.long_silence<100:
+                while self.long_silence<50:
                   #self.logger.info("waiting for silence")
                   if self.call.connected:
                     sleep(.01)
