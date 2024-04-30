@@ -30,7 +30,7 @@ class AudioStreamer():
         self.channels = 1
         self.sample_rate = 8000
         self.vad = webrtcvad.Vad()
-        self.vad.set_mode(3)
+        self.vad.set_mode(2)
         self.noise_frames_threshold = int(2 * self.sample_rate / 512)
         self.noise_frames_count = 0
         self.call = call
@@ -270,36 +270,28 @@ class AudioStreamer():
                 elif self.level==1 and self.intent=="yes_intent":
                     self.send_audio(self.master_audio)
                     self.logger.info("sending master audio")
-                elif self.noise:
-                    audio=requests.get("http://172.16.1.209:8000/LEVEL0_apologise_interupt_1.wav")
-                    self.send_audio(audio.content)
-                    self.logger.info("sending other audios")
-                    self.long_noise=0
-                    self.noise=False
-                    pass
+                # elif self.noise:
+                #     audio=requests.get("http://172.16.1.209:8000/LEVEL0_apologise_interupt_1.wav")
+                #     self.send_audio(audio.content)
+                #     self.logger.info("sending other audios")
+                #     self.long_noise=0
+                #     self.noise=False
+
                 else:
                     audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
                     self.send_audio(audio.content)
                     self.logger.info("sending other audios")
                 self.level+=1
-                if self.intent=="welcome":
-                    while self.long_silence<50:
-                    #self.logger.info("waiting for silence")
-                        if self.call.connected:
-                            sleep(.01)
-                        else:
-                                break
-                    if not self.call.connected:
-                        break
-                else:
-                    while self.long_silence<50:
-                    #self.logger.info("waiting for silence")
-                        if self.call.connected:
-                            sleep(.01)
-                        else:
-                                break
-                    if not self.call.connected:
-                        break
+
+                    
+                while self.long_silence<20:
+                #self.logger.info("waiting for silence")
+                    if self.call.connected:
+                        sleep(.01)
+                    else:
+                            break
+                if not self.call.connected:
+                    break
 
                         
 
