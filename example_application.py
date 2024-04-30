@@ -316,7 +316,7 @@ class AudioStreamer():
   
 
                 except Exception as e:
-                  self.logger.info(e)
+                  self.logger.error(e)
                   self.combined_audio=b''
 
 
