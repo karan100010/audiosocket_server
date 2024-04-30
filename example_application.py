@@ -45,7 +45,7 @@ class AudioStreamer():
         self.audioplayback = False
         self.silent_frames_count = 0
         self.combined_audio = b''
-        self.channel = "hi"
+        self.channel = "en"
         self.long_silence = 0
         self.noise = False
         self.call_flow_num = 0
