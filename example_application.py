@@ -260,6 +260,7 @@ class AudioStreamer():
     
 
                 self.logger.info("we are in level {}".format(self.level))
+                self.logger.error(self.intent)
 
                 if self.level==0:
 
