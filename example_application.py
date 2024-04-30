@@ -112,13 +112,14 @@ class AudioStreamer():
 
     def send_audio(self, audio_file):
 
+        self.audioplayback = True
         self.logger.info("Sending audio file of length {}".format(
             len(audio_file)/(320*25)))
         count = 0
         w = 0
         v = 320
         sleep_seconds = 0
-        self.audioplayback = True
+        
         for i in range(math.floor(int(len(audio_file) / (320)))):
             self.call.write(audio_file[w:v])
             w += 320
