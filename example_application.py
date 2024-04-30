@@ -279,13 +279,6 @@ class AudioStreamer():
                 self.audioplayback=False
                 self.level+=1
 
-                
-                # # data = {"call_id": self.uuid,
-                # #         "hangup": "true", "transfer": "none"}
-                # # x = self.conn["test"]["calls"].insert_one(data)
-                
-
-                # # disconnet call from audio socket
                 while self.long_silence<50:
                   #self.logger.info("waiting for silence")
                   if self.call.connected:
