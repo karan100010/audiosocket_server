@@ -320,7 +320,7 @@ class AudioStreamer():
 
             self.level+=1
             self.long_silence=0    
-            while self.long_silence<50:
+            while self.long_silence<100:
             #self.logger.info("waiting for silence")
                 if self.call.connected:
                     sleep(.2)
