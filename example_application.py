@@ -272,7 +272,7 @@ class AudioStreamer():
 
             #handel hangup        
                 elif self.level==3:
-                    if self.intent== "yes_intent" or "no_intent" or "call_back_later_intent":
+                    if self.intent== "yes_intent"  or "call_back_later_intent":
                         try:
                             self.logger.info("{self.intent} found at level 3")
                             data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
