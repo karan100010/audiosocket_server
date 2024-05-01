@@ -363,24 +363,24 @@ class AudioStreamer():
 
                 # if resp["transcribe"]=="":
                 #     self.level="cant_hear"
-            if self.level==0 and self.intent=="welcome" and self.channel=="en":
-                if resp["transcribe"]:
-                    try:
-                        if  detect(resp["transcribe"]) != "en":
+            # if self.level==0 and self.intent=="welcome" and self.channel=="en":
+            #     if resp["transcribe"]:
+            #         try:
+            #             if  detect(resp["transcribe"]) != "en":
 
 
-                        self.lang_change=True
-                    except Exception as e:
-                        self.logger.error("error occred while trying to change language {}".format(e))
+            #                 self.lang_change=True
+            #         except Exception as e:
+            #             self.logger.error("error occred while trying to change language {}".format(e))
         
 
         
 
 
-            if self.lang_change:
-                self.channel="hi"
-                self.logger.info("changing channel to hindi")
-                self.lang_change=False
+            # if self.lang_change:
+            #     self.channel="hi"
+            #     self.logger.info("changing channel to hindi")
+            #     self.lang_change=False
 
                 # if self.level==1:
                 #   self.level=2
