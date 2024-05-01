@@ -140,7 +140,7 @@ class AudioStreamer():
 
         self.logger.info("number of iterations are {}".format(count))
         if len(audio_file)/8000>40:
-            self.logger.error(len(audio_file)/16000)
+            self.logger.error(len(audio_file)/8000)
             sleep(len(audio_file)/16000-sleep_seconds-3)
         else:
             sleep(len(audio_file)/16000-sleep_seconds)    
