@@ -132,7 +132,7 @@ class AudioStreamer():
 
             # if self.level!=11:
             if not self.noise:
-                if self.long_noise >= 5:
+                if self.long_noise >= 10:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = False
@@ -299,7 +299,7 @@ class AudioStreamer():
                         audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
                         self.send_audio(audio.content)
                         self.logger.info("sending other audios")
-                        if self.intent=="contact_human_agent":
+                        if self.intent=="contact_human_agent" or "other_intent":
                             self.logger.error("contat human agent activated")
                             data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
                             x=self.conn["test"]["calls"].insert_one(data)
