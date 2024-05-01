@@ -278,7 +278,7 @@ class AudioStreamer():
                     audio=requests.get("http://172.16.1.209:8000/LEVEL"+str(self.level)+"_"+self.intent+"_1.wav")
                     self.send_audio(audio.content)
                     self.logger.info("sending other audios")
-                self.level+=1
+
             else:
                   
                     audio=requests.get("http://172.16.1.209:8000/LEVEL0_apologise_interupt_1.wav")
@@ -287,7 +287,7 @@ class AudioStreamer():
                     self.long_noise=0
                     self.noise=False
 
-                
+            self.level+=1    
             while self.long_silence<100:
             #self.logger.info("waiting for silence")
                 if self.call.connected:
