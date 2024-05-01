@@ -314,6 +314,7 @@ class AudioStreamer():
                     self.send_audio(audio.content)
                     self.logger.info("sending other audios")
                     self.long_noise=0
+                    self.level-=1
                     self.noise=False
 
             self.level+=1
