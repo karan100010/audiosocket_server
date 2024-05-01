@@ -251,10 +251,7 @@ class AudioStreamer():
             self.num_connected += 1
             update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
             update_data=json.dumps(update_data)
-            requests.put(self.call_api+"/update",update_data,headers=self.headers)
-            self.long_silence=0
-
-           
+            requests.put(self.call_api+"/update",update_data,headers=self.headers)           
         while self.call.connected:
             
 
@@ -321,8 +318,9 @@ class AudioStreamer():
                     self.long_noise=0
                     self.noise=False
 
-            self.level+=1    
-            while self.long_silence<100:
+            self.level+=1
+            self.long_silence=0    
+            while self.long_silence<50:
             #self.logger.info("waiting for silence")
                 if self.call.connected:
                     sleep(.2)
