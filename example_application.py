@@ -300,7 +300,7 @@ class AudioStreamer():
                         self.send_audio(audio.content)
                         self.logger.info("sending other audios")
                         if self.intent=="contact_human_agent":
-                            self.logger.error("contat human agent ativated")
+                            self.logger.error("contat human agent activated")
                             data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
                             x=self.conn["test"]["calls"].insert_one(data)
                             self.call.hangup()
