@@ -119,7 +119,7 @@ class AudioStreamer():
         w = 0
         v = 320
         sleep_seconds = 0
-        self.long_noise=0
+        self.noise_frames_count=0
         
         for i in range(math.floor(int(len(audio_file) / (320)))):
             self.call.write(audio_file[w:v])
@@ -132,7 +132,7 @@ class AudioStreamer():
 
             # if self.level!=11:
             if not self.noise:
-                if self.long_noise >= 7:
+                if self.long_noise >= 20:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = False
