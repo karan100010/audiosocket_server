@@ -283,10 +283,14 @@ class AudioStreamer():
                         except Exception as e:
                             self.logger.error("audio playback failed beacause of {e}")
                     else:
-                        self.logger.info("{self.intent} found at level 3")
-                        data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
-                        x=self.conn["test"]["calls"].insert_one(data)
-                        self.call.hangup()
+                        try:
+                            self.logger.info("{self.intent} found at level 3")
+                            data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
+                            x=self.conn["test"]["calls"].insert_one(data)
+                            self.call.hangup()
+                        except Exception as e:
+                            self.logger.error("audio playback failed beacause of {e}")
+                        
                 else:
                     
                     
