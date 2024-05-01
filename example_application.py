@@ -132,7 +132,7 @@ class AudioStreamer():
 
             # if self.level!=11:
             if not self.noise:
-                if self.long_noise >= 10:
+                if self.long_noise >= 5:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = False
@@ -273,7 +273,7 @@ class AudioStreamer():
 
             #handel hangup        
                 elif self.level==3:
-                    if self.intent== "yes_intent" :
+                    if self.intent== "yes_intent" or "call_back_later_intent" :
                         try:
                             self.logger.info("{} found at level 3".format(self.intent))
                             data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
