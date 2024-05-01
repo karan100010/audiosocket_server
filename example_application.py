@@ -330,8 +330,7 @@ class AudioStreamer():
                 break
                     
             self.logger.info("waiting for silence is over")
-            self.long_silence=0
-            self.silent_frames_count=0
+
 
 
             try:
@@ -356,7 +355,8 @@ class AudioStreamer():
             except Exception as e:
                 self.logger.error(e)
                 self.combined_audio=b''
-            
+            self.long_silence=0
+            self.silent_frames_count=0
 
 
 
