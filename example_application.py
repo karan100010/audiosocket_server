@@ -132,10 +132,11 @@ class AudioStreamer():
 
             # if self.level!=11:
             if not self.noise:
-                if self.long_noise >= 5:
+                if self.long_noise >=10:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = False
+                    self.logger.error("audio intrruted")
                     return
 
         self.logger.info("number of iterations are {}".format(count))
