@@ -119,7 +119,7 @@ class AudioStreamer():
         w = 0
         v = 320
         sleep_seconds = 0
-        self.long_noise=0
+        self.noise_frames_count=0
         
         for i in range(math.floor(int(len(audio_file) / (320)))):
             self.call.write(audio_file[w:v])
@@ -132,7 +132,7 @@ class AudioStreamer():
 
             # if self.level!=11:
             if not self.noise:
-                if self.long_noise >= 10:
+                if self.noise_frames_count >= 10:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = False
@@ -273,24 +273,24 @@ class AudioStreamer():
 
             #handel hangup        
                 elif self.level==3:
-                    if self.intent== "yes_intent"  or "call_back_later_intent":
+                    if self.intent== "yes_intent" :
                         try:
-                            self.logger.info("{self.intent} found at level 3")
+                            self.logger.info("{} found at level 3".format(self.intent))
                             data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
                             x=self.conn["test"]["calls"].insert_one(data)
                             audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
                             self.send_audio(audio.content)
                             self.call.hangup()
                         except Exception as e:
-                            self.logger.error("audio playback failed beacause of {e}")
+                            self.logger.error("audio playback failed beacause of {}".format(e))
                     else:
                         try:
-                            self.logger.info("{self.intent} found at level 3")
-                            data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
+                            self.logger.info("{} found at level 3".format(self.intent))
+                            data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
                             x=self.conn["test"]["calls"].insert_one(data)
                             self.call.hangup()
                         except Exception as e:
-                            self.logger.error("audio playback failed beacause of {e}")
+                            self.logger.error("audio playback failed beacause of {}".format())
                         
                 else:
                     
@@ -306,7 +306,7 @@ class AudioStreamer():
                             self.call.hangup()
                             
                     except Exception as e:
-                        self.logger.error("audio playback failed beacause of {e}")
+                        self.logger.error("audio playback failed beacause of {}".format(e))
 
             else:
                   
