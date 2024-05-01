@@ -132,7 +132,7 @@ class AudioStreamer():
 
             # if self.level!=11:
             if not self.noise:
-                if self.long_noise >= 20:
+                if self.noise_frames_count >= 20:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = False
