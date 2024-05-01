@@ -287,43 +287,43 @@ class AudioStreamer():
                     self.long_noise=0
                     self.noise=False
 
+                
+            while self.long_silence<100:
+            #self.logger.info("waiting for silence")
+                if self.call.connected:
+                    sleep(.2)
+                else:
+                        break
+            if not self.call.connected:
+                break
                     
-                while self.long_silence<100:
-                #self.logger.info("waiting for silence")
-                    if self.call.connected:
-                        sleep(.2)
-                    else:
-                            break
-                if not self.call.connected:
-                    break
-                        
-                self.logger.info("waiting for silence is over")
-                self.long_silence=0
-                self.silent_frames_count=0
+            self.logger.info("waiting for silence is over")
+            self.long_silence=0
+            self.silent_frames_count=0
 
 
-                try:
-                  response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
-                  self.logger.error(response.text)
-                 # m= self.convert_file(self.combined_audio)
-                 # self.logger.info("audio file converted {}".format(m))
-                  resp=json.loads(response.text)
+            try:
+                response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                self.logger.error(response.text)
+                # m= self.convert_file(self.combined_audio)
+                # self.logger.info("audio file converted {}".format(m))
+                resp=json.loads(response.text)
 
 
-                  threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
-        
-                  self.combined_audio=b''
-                  self.intent=resp["nlp"]["intent"]
+                threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+    
+                self.combined_audio=b''
+                self.intent=resp["nlp"]["intent"]
 
-                  if resp["transcribe"]=="":
+                if resp["transcribe"]=="":
                     x=self.read_wave_file(mapping["utils"][self.channel][1])
                     self.send_audio(x)
                     self.level-=1
-  
 
-                except Exception as e:
-                  self.logger.error(e)
-                  self.combined_audio=b''
+
+            except Exception as e:
+                self.logger.error(e)
+                self.combined_audio=b''
 
 
 
