@@ -261,8 +261,6 @@ class AudioStreamer():
                 self.logger.error(self.intent)
                 
             if not self.noise:
-                if self.level==3:
-                    self.call.hangup()
 
                 if self.level==0:
                     self.send_audio(self.welcome_audio)
