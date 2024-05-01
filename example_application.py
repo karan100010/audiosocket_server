@@ -267,15 +267,29 @@ class AudioStreamer():
                 elif self.level==1 and self.intent=="yes_intent":
                     self.send_audio(self.master_audio)
                     self.logger.info("sending master audio")
-                elif self.level==2 and self.intent== "yes_intent":
-                    try:
-                        data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
-                        x=self.conn["test"]["calls"].insert_one(data)
-                        audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
-                        self.send_audio(audio.content)
-                        self.call.hangup()
-                    except Exception as e:
-                        self.logger.error("audio playback failed beacause of {e}")
+
+            #handel hangup        
+                elif self.level==3:
+                    if self.intent== "yes_intent":
+                        try:
+                            data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
+                            x=self.conn["test"]["calls"].insert_one(data)
+                            audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
+                            self.send_audio(audio.content)
+                            self.call.hangup()
+                        except Exception as e:
+                            self.logger.error("audio playback failed beacause of {e}")
+                    if self.intent=="np_intent":
+                        try:
+                            data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
+                            x=self.conn["test"]["calls"].insert_one(data)
+                            audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
+                            self.send_audio(audio.content)
+                            self.call.hangup()
+                        except Exception as e:
+                            self.logger.error("audio playback failed beacause of {e}")
+                        
+                
                 elif self.level==2 and self.intent== "no_intent":
                     try:
                         data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
