@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  example_application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+
+  connection_api:
+    build:
+      context: .
+      dockerfile: Dockerfile-connection_api
+    ports:
+      - "5011:5011"
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
