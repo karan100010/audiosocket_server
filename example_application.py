@@ -291,7 +291,7 @@ class AudioStreamer():
                     
                 else:
                     
-                    if self.intent=="other_intent" and self.level==2:
+                    if self.intent=="other_intent" and self.level==3:
                         try:
                             data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
                             x=self.conn["test"]["calls"].insert_one(data)
