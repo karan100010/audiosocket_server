@@ -281,7 +281,7 @@ class AudioStreamer():
                             self.logger.info("{} found at level 3".format(self.intent))
                             data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
                             x=self.conn["test"]["calls"].insert_one(data)
-                            audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
+                            audio= requests.get(self.call_flow["utils"]["bye"])
                             self.send_audio(audio.content)
                             self.call.hangup()
                         except Exception as e:
@@ -333,7 +333,7 @@ class AudioStreamer():
                             self.logger.info("{} found at level 3".format(self.intent))
                             data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
                             x=self.conn["test"]["calls"].insert_one(data)
-                            audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
+                            audio= requests.get(self.call_flow["utils"]["bye"])
                             self.send_audio(audio.content)
                             self.call.hangup()
                 except Exception as e:
@@ -343,7 +343,7 @@ class AudioStreamer():
                             self.logger.info("{} found at level 3".format(self.intent))
                             data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
                             x=self.conn["test"]["calls"].insert_one(data)
-                            audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
+                            audio= requests.get(self.call_flow["utils"]["bye"])
                             self.send_audio(audio.content)
                             self.call.hangup()
                 except Exception as e:
