@@ -83,7 +83,7 @@ class AudioStreamer():
             self.conn = pymongo.MongoClient(data)
         except Exception as e:
             self.logger.info(e)
-       
+        self.call_flow=self.conn["test"]["flows"].find_one({})      
 
     def read_wave_file(self, filename):
         # self.logger.debug("Reading wave file")

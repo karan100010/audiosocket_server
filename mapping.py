@@ -42,5 +42,14 @@ map_mongo={
         "contact_human_agent_1":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
          "contact_human_agent_1": ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
         "contact_human_agent_1" : ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],          
+    },
+    "utils":{
+        "sorry":"http://172.16.1.207:5005/voice/20221205151448TZ19PK_EH-M2.wav",
+        "bye":"http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav"
+        
+
+
+
+
     }
 }
