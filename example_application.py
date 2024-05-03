@@ -139,6 +139,9 @@ class AudioStreamer():
                     self.audioplayback = True
                     self.logger.error("audio intrruted")
                     self.send_audio(self.call_flow["utils"]["sorry"])
+                    self.long_noise=0
+                    self.level-=1
+                    self.noise=False
                     return
 
         self.logger.info("number of iterations are {}".format(count))
