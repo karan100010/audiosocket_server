@@ -138,7 +138,10 @@ class AudioStreamer():
                     self.noise_frames_count = 0
                     self.audioplayback = True
                     self.logger.error("audio intrruted")
-                    self.send_audio(self.call_flow["utils"]["sorry"])
+                    try:
+                        self.send_audio(self.call_flow["utils"]["sorry"])
+                    except Exception as e:
+                        self.logger.warning("no playback because {e}".format(e))
                     self.long_noise=0
                     self.level-=1
                     self.noise=False
