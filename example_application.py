@@ -139,10 +139,10 @@ class AudioStreamer():
                     self.audioplayback = True
                     self.logger.error("audio intrruted")
                     try:
-                        audio_file=self.call_flow["utils"]["sorry"]
+                        audio_file_x=self.call_flow["utils"]["sorry"]
                         self.audioplayback = True
                         self.logger.info("Sending audio file of length {}".format(
-                            len(audio_file)/(320*25)))
+                            len(audio_file_x)/(320*25)))
                         count = 0
                         w = 0
                         v = 320
@@ -150,7 +150,7 @@ class AudioStreamer():
                         self.long_noise=0
                         
                         for i in range(math.floor(int(len(audio_file) / (320)))):
-                            self.call.write(audio_file[w:v])
+                            self.call.write(audio_file_x[w:v])
                             w += 320
                             v += 320
                             count += 1 
