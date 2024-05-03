@@ -275,7 +275,7 @@ class AudioStreamer():
                     self.logger.info("sending master audio")
 
             #handel hangup        
-                elif self.level==3:
+                elif self.level==self.call_flow["level"]:
                     if self.intent== "yes_intent" or "call_back_later_intent" :
                         try:
                             self.logger.info("{} found at level 3".format(self.intent))
