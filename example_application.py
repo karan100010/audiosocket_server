@@ -275,26 +275,7 @@ class AudioStreamer():
                     self.logger.info("sending master audio")
 
             #handel hangup        
-                elif self.level==self.call_flow["end_level"]:
-                    if self.intent== "yes_intent" or "call_back_later_intent" :
-                        try:
-                            self.logger.info("{} found at level 3".format(self.intent))
-                            data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
-                            x=self.conn["test"]["calls"].insert_one(data)
-                            audio= requests.get(self.call_flow["utils"]["bye"])
-                            self.send_audio(audio.content)
-                            self.call.hangup()
-                        except Exception as e:
-                            self.logger.error("audio playback failed beacause of {}".format(e))
-                    else:
-                        try:
-                            self.logger.info("{} found at level 3".format(self.intent))
-                            data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
-                            x=self.conn["test"]["calls"].insert_one(data)
-                            self.call.hangup()
-                        except Exception as e:
-                            self.logger.error("audio playback failed beacause of {}".format())
-                        
+    
                 else:
                     
                     
