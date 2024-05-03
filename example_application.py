@@ -133,13 +133,31 @@ class AudioStreamer():
 
             # if self.level!=11:
             if not self.noise:
-                if self.long_noise >=30:
+                if self.long_noise >=10:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = True
                     self.logger.error("audio intrruted")
                     try:
-                        self.send_audio(self.call_flow["utils"]["sorry"])
+                        audio_file=self.call_flow["utils"]["sorry"]
+                        self.audioplayback = True
+                        self.logger.info("Sending audio file of length {}".format(
+                            len(audio_file)/(320*25)))
+                        count = 0
+                        w = 0
+                        v = 320
+                        sleep_seconds = 0
+                        self.long_noise=0
+                        
+                        for i in range(math.floor(int(len(audio_file) / (320)))):
+                            self.call.write(audio_file[w:v])
+                            w += 320
+                            v += 320
+                            count += 1 
+                            if count % 25 == 0:
+                                sleep(.25)
+                                sleep_seconds += .25
+                        
                     except Exception as e:
                         self.logger.warning("no playback because {e}".format(e))
                     self.long_noise=0
