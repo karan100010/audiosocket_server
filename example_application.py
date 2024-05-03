@@ -338,7 +338,7 @@ class AudioStreamer():
                             self.call.hangup()
                 except Exception as e:
                     self.logger.error("audio playback failed beacause of {}".format(e))
-            if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
+            elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
                 try:
                             self.logger.info("{} found at level 3".format(self.intent))
                             data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
