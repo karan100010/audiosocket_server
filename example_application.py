@@ -299,7 +299,7 @@ class AudioStreamer():
                     
                     
                     try:
-                        audio=requests.get(self.call_flow["main_audios"][self.intent+"_"+str(self.level)])
+                        audio=requests.get(self.call_flow["main_audios"][self.intent+"_"+str(self.level)]+"[0]")
                         self.logger.warning("level is {}".format(self.level))
                         self.logger.warning("intent is {}".format(self.intent))
                     
