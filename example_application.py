@@ -160,7 +160,6 @@ class AudioStreamer():
                                 sleep_seconds += .25
                         self.audioplayback=False
                         self.long_noise=0
-                        self.level-=1
                         self.noise=False
                     except Exception as e:
                         self.logger.warning("no playback because {e}".format(e))
