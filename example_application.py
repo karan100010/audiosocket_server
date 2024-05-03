@@ -323,30 +323,31 @@ class AudioStreamer():
                     self.level-=1
                     self.noise=False
 
-    
-            # if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
-            #     self.level+=1
-            #     self.logger.info("new level is {}".format(self.level))
-            # if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="hangup":
-            #     try:
-            #                 self.logger.info("{} found at level 3".format(self.intent))
-            #                 data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
-            #                 x=self.conn["test"]["calls"].insert_one(data)
-            #                 audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
-            #                 self.send_audio(audio.content)
-            #                 self.call.hangup()
-            #     except Exception as e:
-            #         self.logger.error("audio playback failed beacause of {}".format(e))
-            # if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
-            #     try:
-            #                 self.logger.info("{} found at level 3".format(self.intent))
-            #                 data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
-            #                 x=self.conn["test"]["calls"].insert_one(data)
-            #                 audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
-            #                 self.send_audio(audio.content)
-            #                 self.call.hangup()
-            #     except Exception as e:
-            #         self.logger.error("audio playback failed beacause of {}".format(e))
+            if self.level==0:
+                self.level+=1
+            elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
+                self.level+=1
+                self.logger.info("new level is {}".format(self.level))
+            elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="hangup":
+                try:
+                            self.logger.info("{} found at level 3".format(self.intent))
+                            data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
+                            x=self.conn["test"]["calls"].insert_one(data)
+                            audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
+                            self.send_audio(audio.content)
+                            self.call.hangup()
+                except Exception as e:
+                    self.logger.error("audio playback failed beacause of {}".format(e))
+            if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
+                try:
+                            self.logger.info("{} found at level 3".format(self.intent))
+                            data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
+                            x=self.conn["test"]["calls"].insert_one(data)
+                            audio= requests.get("http://172.16.1.209:8000/LEVEL0_goodbye_1.wav")
+                            self.send_audio(audio.content)
+                            self.call.hangup()
+                except Exception as e:
+                    self.logger.error("audio playback failed beacause of {}".format(e))
                     
                     
 
