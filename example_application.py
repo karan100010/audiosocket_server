@@ -139,7 +139,8 @@ class AudioStreamer():
                     self.audioplayback = True
                     self.logger.error("audio intrruted")
                     try:
-                        audio_file_x=self.call_flow["utils"]["sorry"]
+                        audio_file_x=requests.get(self.call_flow["utils"]["sorry"]).content
+                
                         self.audioplayback = True
                         self.logger.info("Sending audio file of length {}".format(
                             len(audio_file_x)/(320*25)))
