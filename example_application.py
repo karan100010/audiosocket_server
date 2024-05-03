@@ -322,9 +322,12 @@ class AudioStreamer():
                     self.long_noise=0
                     self.level-=1
                     self.noise=False
-            if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0][1]["meta"]=="next_level":
+
+    
+            if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
                 self.level+=1
-            if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0][1]["meta"]=="hangup":
+                self.logger.info("new level is {}".format(self.level))
+            if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="hangup":
                 try:
                             self.logger.info("{} found at level 3".format(self.intent))
                             data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
