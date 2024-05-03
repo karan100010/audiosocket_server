@@ -300,6 +300,9 @@ class AudioStreamer():
                     
                     try:
                         audio=requests.get(self.call_flow["main_audios"][self.intent+"_"+str(self.level)])
+                        self.logger.warning("level is {}".format(self.level))
+                        self.logger.warning("intent is {}".format(self.intent))
+                    
                         self.send_audio(audio.content)
                         self.logger.info("sending other audios")
                         if self.intent=="contact_human_agent" or self.intent=="other_intent":
