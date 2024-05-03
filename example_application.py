@@ -136,8 +136,9 @@ class AudioStreamer():
                 if self.long_noise >=30:
                     self.noise = True
                     self.noise_frames_count = 0
-                    self.audioplayback = False
+                    self.audioplayback = True
                     self.logger.error("audio intrruted")
+                    self.send_audio(self.call_flow["utils"]["sorry"])
                     return
 
         self.logger.info("number of iterations are {}".format(count))
