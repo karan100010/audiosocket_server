@@ -55,8 +55,9 @@ class AudioStreamer():
         self.long_silence = 0
         self.intent = "welcome"
         self.call_api = "http://localhost:5011/api/connections"
-        respdict = requests.get(
-            "http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770").text
+        self.call_link="http://172.16.1.213:3022/call-records/a91d0293-cfb2-40c0-8248-cbabbf64f770"
+        respdict = requests.get(self.call_link
+            ).text
         self.respdict = json.loads(respdict)
         self.welcome = self.respdict["data"]["intro_rec"]
 
