@@ -35,7 +35,7 @@ class AudioStreamer():
         self.audiosocket = socket
         self.call = socket.listen()
         self.long_noise=0
-        
+        self.noise=False
         # self.uudi=self.audiosocket.uudi
         self.uuid = str(self.call.uuid)
         self.num_connected = 0
@@ -248,14 +248,13 @@ class AudioStreamer():
             requests.put(self.call_api+"/update",update_data,headers=self.headers)           
         while self.call.connected:
             
-
             if not self.audioplayback:
                 self.logger.info("audio playback started")
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
                 
 
-
+            
                 if self.level==0:
                     self.send_audio(self.welcome_audio)
                 #handeling level 1
@@ -341,6 +340,9 @@ class AudioStreamer():
                     x=self.read_wave_file(mapping["utils"][self.channel][1])
                     self.send_audio(x)
                     self.level-=1
+                else:
+                    self.combined_audio=b''
+                    self.intent=resp["nlp"]["intent"]
 
 
             except Exception as e:
