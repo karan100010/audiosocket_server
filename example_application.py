@@ -142,8 +142,6 @@ class AudioStreamer():
                 count = 0
                 w = 0
                 v = 320
-                sleep_seconds = 0
-                self.long_noise = 0
                 send_audio_file(audio_file_x)
                 self.audioplayback = False
                 self.long_noise = 0
@@ -304,7 +302,7 @@ class AudioStreamer():
                             
                     except Exception as e:
                         self.logger.error("audio playback failed beacause of {}".format(e))
-                        
+
             if self.level==0:
                 self.level+=1
             elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
