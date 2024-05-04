@@ -23,7 +23,6 @@ from langdetect import detect
 import socket
 # from asterisk.manager import Manager
 
-
 class AudioStreamer():
     def __init__(self, socket):
         self.logger = ColouredLogger("audio sharing")
