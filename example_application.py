@@ -335,7 +335,7 @@ class AudioStreamer():
                         
                 self.logger.info("waiting for silence is over")
 
-
+                self,long_silence=0
 
                 try:
                     response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
