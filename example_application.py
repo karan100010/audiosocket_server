@@ -131,6 +131,7 @@ class AudioStreamer():
                     sleep_seconds += .25
         
         send_audio_file(audio_file)
+        print(self.long_noise)
         
         if  self.long_noise >= 10:
             self.audioplayback = True
