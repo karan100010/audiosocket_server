@@ -258,7 +258,7 @@ class AudioStreamer():
                 if self.noise:
                     try:
 
-                        self.send_audio(requests.get(self.call_flow["utils"]["sorry"]).content)
+                        self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
                         self.noise=False
                         self.logger.warning("noise detected")
                         self.noise_frames_count=0
