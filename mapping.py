@@ -38,7 +38,7 @@ map_mongo={
         "call_back_later_intent_3":["http://172.16.1.207:5005/voice/20221205152848SB0SXI_EH-M2.wav",{"meta":"hangup"}],
         "other_intent_1":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
          "other_intent_2":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
-        "other_intet_3":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
+        "other_intent_3":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
         "contact_human_agent_1":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
          "contact_human_agent_1": ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
         "contact_human_agent_1" : ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],          
