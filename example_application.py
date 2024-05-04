@@ -132,8 +132,7 @@ class AudioStreamer():
         
         send_audio_file(audio_file)
         
-        if not self.noise and self.long_noise >= 10:
-            self.noise_frames_count = 0
+        if  self.long_noise >= 10:
             self.audioplayback = True
             self.logger.error("audio intrruted")
             try:
@@ -148,12 +147,11 @@ class AudioStreamer():
                 send_audio_file(audio_file_x)
                 self.audioplayback = False
                 self.long_noise = 0
-                self.noise = False
             except Exception as e:
                 self.logger.warning("no playback because {e}".format(e))
             self.long_noise = 0
             self.level -= 1
-            self.noise = False
+
             return
 
         self.logger.info("number of iterations are {}".format(count))
@@ -261,8 +259,6 @@ class AudioStreamer():
             'Received connection from {0}'.format(self.call.peer_addr))
     
         if self.call.connected:
-
-        
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             bytes_uuid = bytes.fromhex(self.uuid)
             uuid4_format = uuid.UUID(bytes=bytes_uuid)
@@ -280,7 +276,7 @@ class AudioStreamer():
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
                 
-            if not self.noise:
+
 
                 if self.level==0:
                     self.send_audio(self.welcome_audio)
@@ -290,8 +286,6 @@ class AudioStreamer():
                     self.send_audio(self.master_audio)
                     self.logger.info("sending master audio")
 
-            #handel hangup        
-    
                 else:
                     
                     
@@ -310,16 +304,7 @@ class AudioStreamer():
                             
                     except Exception as e:
                         self.logger.error("audio playback failed beacause of {}".format(e))
-
-            else:
-                  
-                    audio=requests.get("http://172.16.1.209:8000/LEVEL0_apologise_interupt_1.wav")
-                    self.send_audio(audio.content)
-                    self.logger.info("sending other audios")
-                    self.long_noise=0
-                    self.level-=1
-                    self.noise=False
-
+                        
             if self.level==0:
                 self.level+=1
             elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
@@ -368,7 +353,6 @@ class AudioStreamer():
                 # m= self.convert_file(self.combined_audio)
                 # self.logger.info("audio file converted {}".format(m))
                 resp=json.loads(response.text)
-
 
                 threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
     
