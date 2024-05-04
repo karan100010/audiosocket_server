@@ -256,6 +256,7 @@ class AudioStreamer():
                 if self.noise:
 
                     self.send_audio(self.call_flow["utils"]["sorry"])
+                    self.noise=False
                 else:     
 
                 
