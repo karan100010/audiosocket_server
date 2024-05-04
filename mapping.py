@@ -40,9 +40,9 @@ map_mongo={
         "other_intent_1":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
          "other_intent_2":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
         "other_intent_3":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
-        "contact_human_agent_1":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
-         "contact_human_agent_1": ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
-        "contact_human_agent_1" : ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],          
+        "contact_human_agent_intent_1":["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
+         "contact_human_agent_intent_1": ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],
+        "contact_human_agent_intent_1" : ["http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav",{"meta":"transfer"}],          
     },
     "utils":{
         "sorry":"http://172.16.1.207:5005/voice/20221205151448TZ19PK_EH-M2.wav",
