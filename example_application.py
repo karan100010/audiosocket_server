@@ -253,7 +253,7 @@ class AudioStreamer():
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
 
-            if self.long_noise >= 20:
+            if self.noise:
 
                 self.send_audio(self.call_flow["utils"]["sorry"])
             else:     
