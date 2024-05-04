@@ -261,6 +261,8 @@ class AudioStreamer():
                         self.send_audio(self.call_flow["utils"]["sorry"])
                         self.noise=False
                         self.logger.warning("noise detected")
+                        self.noise_frames_count=0
+                        
                     except Exception as e:  
                         self.logger.error("audio playback failed beacause of {}".format(e))
                 else:     
