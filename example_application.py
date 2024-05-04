@@ -338,9 +338,6 @@ class AudioStreamer():
                 resp=json.loads(response.text)
 
                 threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
-    
-                self.combined_audio=b''
-                self.intent=resp["nlp"]["intent"]
 
                 if resp["transcribe"]=="":
                     x=self.read_wave_file(mapping["utils"][self.channel][1])
