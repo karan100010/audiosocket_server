@@ -253,104 +253,104 @@ class AudioStreamer():
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
 
-            if self.noise:
+                if self.noise:
 
-                self.send_audio(self.call_flow["utils"]["sorry"])
-            else:     
+                    self.send_audio(self.call_flow["utils"]["sorry"])
+                else:     
 
-            
-                if self.level==0:
-                    self.send_audio(self.welcome_audio)
-                #handeling level 1
-                elif self.level==1 and self.intent=="yes_intent":
+                
+                    if self.level==0:
+                        self.send_audio(self.welcome_audio)
+                    #handeling level 1
+                    elif self.level==1 and self.intent=="yes_intent":
 
-                    self.send_audio(self.master_audio)
-                    self.logger.info("sending master audio")
+                        self.send_audio(self.master_audio)
+                        self.logger.info("sending master audio")
 
-                else:
-                    
-                    
-                    try:
-                        audio=requests.get(self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0])
-                        self.logger.warning("level is {}".format(self.level))
-                        self.logger.warning("intent is {}".format(self.intent))
-                    
-                        self.send_audio(audio.content)
-                        self.logger.info("sending other audios")
-                        if self.intent=="contact_human_agent" or self.intent=="other_intent":
-                            self.logger.error("contat human agent activated")
-                            data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
-                            x=self.conn["test"]["calls"].insert_one(data)
-                            self.call.hangup()
-                            
-                    except Exception as e:
-                        self.logger.error("audio playback failed beacause of {}".format(e))
-
-                if self.level==0:
-                    self.level+=1
-                elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
-                    self.level+=1
-                    self.logger.info("new level is {}".format(self.level))
-                elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="hangup":
-                    try:
-                                self.logger.info("{} found at level 3".format(self.intent))
-                                data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
-                                x=self.conn["test"]["calls"].insert_one(data)
-                                audio= requests.get(self.call_flow["utils"]["bye"])
-                                self.send_audio(audio.content)
-                                self.call.hangup()
-                    except Exception as e:
-                        self.logger.error("audio playback failed beacause of {}".format(e))
-                elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
-                    try:
-                                self.logger.info("{} found at level 3".format(self.intent))
+                    else:
+                        
+                        
+                        try:
+                            audio=requests.get(self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0])
+                            self.logger.warning("level is {}".format(self.level))
+                            self.logger.warning("intent is {}".format(self.intent))
+                        
+                            self.send_audio(audio.content)
+                            self.logger.info("sending other audios")
+                            if self.intent=="contact_human_agent" or self.intent=="other_intent":
+                                self.logger.error("contat human agent activated")
                                 data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
                                 x=self.conn["test"]["calls"].insert_one(data)
-                                audio= requests.get(self.call_flow["utils"]["bye"])
-                                self.send_audio(audio.content)
                                 self.call.hangup()
-                    except Exception as e:
-                        self.logger.error("audio playback failed beacause of {}".format(e))
+                                
+                        except Exception as e:
+                            self.logger.error("audio playback failed beacause of {}".format(e))
+
+                    if self.level==0:
+                        self.level+=1
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
+                        self.level+=1
+                        self.logger.info("new level is {}".format(self.level))
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="hangup":
+                        try:
+                                    self.logger.info("{} found at level 3".format(self.intent))
+                                    data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
+                                    x=self.conn["test"]["calls"].insert_one(data)
+                                    audio= requests.get(self.call_flow["utils"]["bye"])
+                                    self.send_audio(audio.content)
+                                    self.call.hangup()
+                        except Exception as e:
+                            self.logger.error("audio playback failed beacause of {}".format(e))
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
+                        try:
+                                    self.logger.info("{} found at level 3".format(self.intent))
+                                    data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
+                                    x=self.conn["test"]["calls"].insert_one(data)
+                                    audio= requests.get(self.call_flow["utils"]["bye"])
+                                    self.send_audio(audio.content)
+                                    self.call.hangup()
+                        except Exception as e:
+                            self.logger.error("audio playback failed beacause of {}".format(e))
+                            
                         
-                    
 
-            self.long_silence=0    
-            while self.long_silence<100:
-            #self.logger.info("waiting for silence")
-                if self.call.connected:
-                    sleep(.2)
-                else:
-                        break
-            if not self.call.connected:
-                break
-                    
-            self.logger.info("waiting for silence is over")
-
+                self.long_silence=0    
+                while self.long_silence<100:
+                #self.logger.info("waiting for silence")
+                    if self.call.connected:
+                        sleep(.2)
+                    else:
+                            break
+                if not self.call.connected:
+                    break
+                        
+                self.logger.info("waiting for silence is over")
 
 
-            try:
-                response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
-                self.logger.error(response.text)
-                # m= self.convert_file(self.combined_audio)
-                # self.logger.info("audio file converted {}".format(m))
-                resp=json.loads(response.text)
 
-                threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                try:
+                    response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                    self.logger.error(response.text)
+                    # m= self.convert_file(self.combined_audio)
+                    # self.logger.info("audio file converted {}".format(m))
+                    resp=json.loads(response.text)
 
-                if resp["transcribe"]=="":
-                    x=self.read_wave_file(mapping["utils"][self.channel][1])
-                    self.send_audio(x)
-                    self.level-=1
-                else:
+                    threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+
+                    if resp["transcribe"]=="":
+                        x=self.read_wave_file(mapping["utils"][self.channel][1])
+                        self.send_audio(x)
+                        self.level-=1
+                    else:
+                        self.combined_audio=b''
+                        self.intent=resp["nlp"]["intent"]
+
+
+                except Exception as e:
+                    self.logger.error(e)
                     self.combined_audio=b''
-                    self.intent=resp["nlp"]["intent"]
-
-
-            except Exception as e:
-                self.logger.error(e)
-                self.combined_audio=b''
-            self.long_silence=0
-            self.silent_frames_count=0
+                self.long_silence=0
+                self.silent_frames_count=0
 
 
 
