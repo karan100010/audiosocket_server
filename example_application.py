@@ -347,7 +347,6 @@ class AudioStreamer():
                     if resp["transcribe"]=="":
                         x=self.read_wave_file(mapping["utils"][self.channel][1])
                         self.send_audio(x)
-                        self.level-=1
                     else:
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
