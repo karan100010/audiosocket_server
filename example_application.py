@@ -235,6 +235,7 @@ class AudioStreamer():
     def start_audio_playback(self, mapping):
         self.logger.info(
             'Received connection from {0}'.format(self.call.peer_addr))
+
     
         if self.call.connected:
             self.logger.info("the uuid for this call is {}".format(self.uuid))
@@ -247,12 +248,17 @@ class AudioStreamer():
             update_data=json.dumps(update_data)
             requests.put(self.call_api+"/update",update_data,headers=self.headers)           
         while self.call.connected:
+
             
             if not self.audioplayback:
                 self.logger.info("audio playback started")
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
-                
+
+            if self.long_noise >= 20:
+
+                self.send_audio(self.call_flow["utils"]["sorry"])
+            else:     
 
             
                 if self.level==0:
@@ -282,32 +288,32 @@ class AudioStreamer():
                     except Exception as e:
                         self.logger.error("audio playback failed beacause of {}".format(e))
 
-            if self.level==0:
-                self.level+=1
-            elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
-                self.level+=1
-                self.logger.info("new level is {}".format(self.level))
-            elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="hangup":
-                try:
-                            self.logger.info("{} found at level 3".format(self.intent))
-                            data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
-                            x=self.conn["test"]["calls"].insert_one(data)
-                            audio= requests.get(self.call_flow["utils"]["bye"])
-                            self.send_audio(audio.content)
-                            self.call.hangup()
-                except Exception as e:
-                    self.logger.error("audio playback failed beacause of {}".format(e))
-            elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
-                try:
-                            self.logger.info("{} found at level 3".format(self.intent))
-                            data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
-                            x=self.conn["test"]["calls"].insert_one(data)
-                            audio= requests.get(self.call_flow["utils"]["bye"])
-                            self.send_audio(audio.content)
-                            self.call.hangup()
-                except Exception as e:
-                    self.logger.error("audio playback failed beacause of {}".format(e))
-                    
+                if self.level==0:
+                    self.level+=1
+                elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="next_level":
+                    self.level+=1
+                    self.logger.info("new level is {}".format(self.level))
+                elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="hangup":
+                    try:
+                                self.logger.info("{} found at level 3".format(self.intent))
+                                data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
+                                x=self.conn["test"]["calls"].insert_one(data)
+                                audio= requests.get(self.call_flow["utils"]["bye"])
+                                self.send_audio(audio.content)
+                                self.call.hangup()
+                    except Exception as e:
+                        self.logger.error("audio playback failed beacause of {}".format(e))
+                elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][1]["meta"]=="transfer":
+                    try:
+                                self.logger.info("{} found at level 3".format(self.intent))
+                                data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
+                                x=self.conn["test"]["calls"].insert_one(data)
+                                audio= requests.get(self.call_flow["utils"]["bye"])
+                                self.send_audio(audio.content)
+                                self.call.hangup()
+                    except Exception as e:
+                        self.logger.error("audio playback failed beacause of {}".format(e))
+                        
                     
 
             self.long_silence=0    
