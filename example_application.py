@@ -110,6 +110,7 @@ class AudioStreamer():
         except Exception as e:
             self.logger.info("error occered while trying to dedect silence {}".format(e))
 
+
     def send_audio(self,audio_file):
 
         self.logger.info("Sending audio file of length {}".format(len(audio_file)/(320*25)))
@@ -125,12 +126,13 @@ class AudioStreamer():
             
             #self.detect_noise(indata, 1, 8000)
             count+=1
-        
-        # if self.level!=11:
+            if count%25==0:
+                sleep(.25)
+                sleep_seconds+=.25
             if not self.noise:
-                if self.long_noise >= 5:
+                if self.noise_frames_count >= 4:
                     self.noise=True
-                    self.long_noise=0
+                    self.noise_frames_count=0
                     self.audioplayback=False
                     return
         
@@ -141,7 +143,7 @@ class AudioStreamer():
         self.noise_frames_count=0
         self.audioplayback=False
         return
-        
+            
 
     def read_length(self, audio_file):
         with wave.open(audio_file, 'rb') as wave_file:
