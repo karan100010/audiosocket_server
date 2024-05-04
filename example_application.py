@@ -125,11 +125,13 @@ class AudioStreamer():
                 self.call.write(file[w:v])
                 w += 320
                 v += 320
-                print(self.long_noise)
+           
                 count += 1 
                 if count % 25 == 0:
                     sleep(.25)
                     sleep_seconds += .25
+                if self.long_noise >= 10:
+                    break
                     
         
         send_audio_file(audio_file)
