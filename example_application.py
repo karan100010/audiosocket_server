@@ -127,12 +127,12 @@ class AudioStreamer():
             count+=1
         
         # if self.level!=11:
-        if not self.noise:
-            if self.long_noise >= 5:
-                self.noise=True
-                self.long_noise=0
-                self.audioplayback=False
-                return
+            if not self.noise:
+                if self.long_noise >= 5:
+                    self.noise=True
+                    self.long_noise=0
+                    self.audioplayback=False
+                    return
         
         self.logger.info("number of iterations are {}".format(count))
         sleep(len(audio_file)/16000-sleep_seconds)  
