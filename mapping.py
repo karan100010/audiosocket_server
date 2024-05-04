@@ -21,6 +21,7 @@ mapping={
         "utils":{"hi":["demo_audios/rec11_hin.wav","demo_audios/rec10_hin.wav"],
         "en":["demo_audios/rec11_eng.wav","demo_audios/rec10_eng.wav"],
         "welcome":["demo_audios/rec11_eng.wav","demo_audios/rec10_eng.wav"],
+
         "common":[]}
         }
 testmapping=[1,2,3]
@@ -45,8 +46,8 @@ map_mongo={
     },
     "utils":{
         "sorry":"http://172.16.1.207:5005/voice/20221205151448TZ19PK_EH-M2.wav",
-        "bye":"http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav"
-        
+        "bye":"http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav",
+        "inttrupt":"http://172.16.1.207:8084/inttrupt.wav"
     },
     "end_level":4
 }
