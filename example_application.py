@@ -318,6 +318,8 @@ class AudioStreamer():
                                     audio= requests.get(self.call_flow["utils"]["bye"])
                                     self.send_audio(audio.content)
                                     self.call.hangup()
+                        except KeyError as e:
+                            self.logger.error("audio playback failed beacause of {}".format(e))
                         except Exception as e:
                             self.logger.error("audio playback failed beacause of {}".format(e))
                             
