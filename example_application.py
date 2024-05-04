@@ -110,65 +110,40 @@ class AudioStreamer():
         except Exception as e:
             self.logger.info("error occered while trying to dedect silence {}".format(e))
 
-    def send_audio(self, audio_file):
-        self.audioplayback = True
+    def send_audio(self,audio_file):
+
         self.logger.info("Sending audio file of length {}".format(len(audio_file)/(320*25)))
         count = 0
-        w = 0
-        v = 320
-        sleep_seconds = 0
-        self.long_noise = 0
+        w=0
+        v=320
+        sleep_seconds=0
+        self.audioplayback=True
+        for i in range(math.floor(int(len(audio_file) / (320)))):
+            self.call.write(audio_file[w:v])
+            w += 320
+            v += 320
+            
+            #self.detect_noise(indata, 1, 8000)
+            count+=1
         
-        def send_audio_file(file):
-            nonlocal count, w, v, sleep_seconds
-            for i in range(math.floor(int(len(file) / (320)))):
-                self.call.write(file[w:v])
-                w += 320
-                v += 320
-           
-                count += 1 
-                if count % 25 == 0:
-                    sleep(.25)
-                    sleep_seconds += .25
-                if self.long_noise >= 10:
-                    break
-                    
+        # if self.level!=11:
+        if not self.noise:
+            if self.noise_frames_count >= 20:
+                self.noise=True
+                
+            
+                self.noise_frames_count=0
+                self.audioplayback=False
+                return
         
-        send_audio_file(audio_file)
-        
-        
-        if  self.long_noise >= 10:
-            self.audioplayback = True
-            self.logger.error("audio intrruted")
-            try:
-                audio_file_x = requests.get(self.call_flow["utils"]["sorry"]).content
-                self.audioplayback = True
-                self.logger.info("Sending audio file of length {}".format(len(audio_file_x)/(320*25)))
-                count = 0
-                w = 0
-                v = 320
-                send_audio_file(audio_file_x)
-                self.audioplayback = False
-                self.long_noise = 0
-            except Exception as e:
-                self.logger.warning("no playback because {e}".format(e))
-            self.long_noise = 0
-            self.level -= 1
-
-            return
-
         self.logger.info("number of iterations are {}".format(count))
-        if len(audio_file)/8000>40:
-            self.logger.error(len(audio_file)/8000)
-            sleep(len(audio_file)/16000-sleep_seconds-3)
-        else:
-            sleep(len(audio_file)/16000-sleep_seconds)    
+        sleep(len(audio_file)/16000-sleep_seconds)  
         self.logger.info(sleep_seconds)
-        self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-count*.25+sleep_seconds))
-        self.noise_frames_count = 0
-        self.long_noise=0
-        self.audioplayback = False
+        self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-sleep_seconds))
+        self.noise_frames_count=0
+        self.audioplayback=False
         return
+        
 
     def read_length(self, audio_file):
         with wave.open(audio_file, 'rb') as wave_file:
