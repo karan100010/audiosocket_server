@@ -112,61 +112,50 @@ class AudioStreamer():
             self.logger.info("error occered while trying to dedect silence {}".format(e))
 
     def send_audio(self, audio_file):
-
         self.audioplayback = True
-        self.logger.info("Sending audio file of length {}".format(
-            len(audio_file)/(320*25)))
+        self.logger.info("Sending audio file of length {}".format(len(audio_file)/(320*25)))
         count = 0
         w = 0
         v = 320
         sleep_seconds = 0
-        self.long_noise=0
+        self.long_noise = 0
         
-        for i in range(math.floor(int(len(audio_file) / (320)))):
-            self.call.write(audio_file[w:v])
-            w += 320
-            v += 320
-            count += 1 
-            if count % 25 == 0:
-                sleep(.25)
-                sleep_seconds += .25
-
-            # if self.level!=11:
-            if not self.noise:
-                if self.long_noise >=10:
-                    self.noise = True
-                    self.noise_frames_count = 0
-                    self.audioplayback = True
-                    self.logger.error("audio intrruted")
-                    try:
-                        audio_file_x=requests.get(self.call_flow["utils"]["sorry"]).content
-                
-                        self.audioplayback = True
-                        self.logger.info("Sending audio file of length {}".format(
-                            len(audio_file_x)/(320*25)))
-                        count = 0
-                        w = 0
-                        v = 320
-                        sleep_seconds = 0
-                        self.long_noise=0
-                        
-                        for i in range(math.floor(int(len(audio_file) / (320)))):
-                            self.call.write(audio_file_x[w:v])
-                            w += 320
-                            v += 320
-                            count += 1 
-                            if count % 25 == 0:
-                                sleep(.25)
-                                sleep_seconds += .25
-                        self.audioplayback=False
-                        self.long_noise=0
-                        self.noise=False
-                    except Exception as e:
-                        self.logger.warning("no playback because {e}".format(e))
-                    self.long_noise=0
-                    self.level-=1
-                    self.noise=False
-                    return
+        def send_audio_file(file):
+            nonlocal count, w, v, sleep_seconds
+            for i in range(math.floor(int(len(file) / (320)))):
+                self.call.write(file[w:v])
+                w += 320
+                v += 320
+                count += 1 
+                if count % 25 == 0:
+                    sleep(.25)
+                    sleep_seconds += .25
+        
+        send_audio_file(audio_file)
+        
+        if not self.noise and self.long_noise >= 10:
+            self.noise_frames_count = 0
+            self.audioplayback = True
+            self.logger.error("audio intrruted")
+            try:
+                audio_file_x = requests.get(self.call_flow["utils"]["sorry"]).content
+                self.audioplayback = True
+                self.logger.info("Sending audio file of length {}".format(len(audio_file_x)/(320*25)))
+                count = 0
+                w = 0
+                v = 320
+                sleep_seconds = 0
+                self.long_noise = 0
+                send_audio_file(audio_file_x)
+                self.audioplayback = False
+                self.long_noise = 0
+                self.noise = False
+            except Exception as e:
+                self.logger.warning("no playback because {e}".format(e))
+            self.long_noise = 0
+            self.level -= 1
+            self.noise = False
+            return
 
         self.logger.info("number of iterations are {}".format(count))
         if len(audio_file)/8000>40:
