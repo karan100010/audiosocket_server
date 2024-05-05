@@ -60,14 +60,14 @@ class AudioStreamer():
         self.respdict = json.loads(respdict)
         try:
             self.welcome = self.respdict["data"]["intro_rec"]
-        except KeyError as e:
+        except Exception as e:
             self.welcome = "http://172.16.1.207:8084/hello.wav"
             self.logger.error("welcome audio not found {}".format(e))
         
 
         try:
             self.master =  self.respdict["data"]["master_rec"]
-        except KeyError as e:
+        except Exception as e:
             self.master = "http://172.16.1.207:8084/130302750R_KOTAKV1063666LAPSE.wav"
             self.logger.error("master audio not found {}".format(e))    
         self.master_audio= requests.get(self.master).content
