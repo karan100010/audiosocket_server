@@ -45,9 +45,9 @@ map_mongo={
         "contact_human_agent_intent_3": [("http://172.16.1.207:5005/voice/20221213092638PSKL7I_EH-M5.wav", {"meta":"transfer"}),( "http://172.16.207:8084/voice/20221213092638PSKL7I_EH-M5.wav", {"meta":"transfer"})],          
     },
     "utils":{
-        "sorry": [("http://172.16.1.207:5005/voice/20221205151448TZ19PK_EH-M2.wav",), ("http://172.16.1.207:5005/voice/20221205151448TZ19PK_EH-M2.wav",)],
-        "bye": [("http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav",), ("http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav",)],
-        "inttrupt": [("http://172.16.1.207:8084/inttrupt.wav",), ("http://172.16.1.207:8084/inttrupt.wav")]
-    },
+        "sorry": "http://172.16.1.207:5005/voice/20221205151448TZ19PK_EH-M2.wav",
+        "bye": "http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav",
+        "inttrupt": "http://172.16.1.207:8084/inttrupt.wav"
     "end_level": 4
+}
 }
