@@ -58,9 +58,18 @@ class AudioStreamer():
         respdict = requests.get(self.call_link
             ).text
         self.respdict = json.loads(respdict)
-        self.welcome = self.respdict["data"]["intro_rec"]
+        try:
+            self.welcome = self.respdict["data"]["intro_rec"]
+        except KeyError as e:
+            self.welcome = "http://172.16.1.207:8084/hello.wav"
+            self.logger.error("welcome audio not found {}".format(e))
+        
 
-        self.master =  self.respdict["data"]["master_rec"]
+        try:
+            self.master =  self.respdict["data"]["master_rec"]
+        except KeyError as e:
+            self.master = "http://172.16.1.207:8084/130302750R_KOTAKV1063666LAPSE.wav"
+            self.logger.error("master audio not found {}".format(e))    
         self.master_audio= requests.get(self.master).content
         self.welcome_audio = requests.get(self.welcome).content
         data={"status":"active","addr":"172.16.1.209"+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
