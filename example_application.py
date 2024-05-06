@@ -27,6 +27,7 @@ class AudioStreamer():
     def __init__(self, socket):
         self.logger = ColouredLogger("audio sharing")
         self.channels = 1
+        self.flow_num=0
         self.sample_rate = 8000
         self.vad = webrtcvad.Vad()
         self.vad.set_mode(3)
