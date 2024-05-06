@@ -51,10 +51,13 @@ class AudioStreamer():
         self.call_flow_num = 0
         self.last_level = 0
         self.call_id = str(uuid.uuid4())
+        bytes_uuid = bytes.fromhex(self.uuid)
+        uuid4_format = uuid.UUID(bytes=bytes_uuid)
+        self.uuid = str(uuid4_format)
         self.long_silence = 0
         self.intent = "welcome"
         self.call_api = "http://localhost:5011/api/connections"
-        self.call_link="http://172.16.1.213:3022/call-records/f8bda0a6-32cd-4ca6-9075-5bc260c7fbd0"
+        self.call_link="http://172.16.1.213:3022/call-records/{0}".format(self.uuid)
         respdict = requests.get(self.call_link
             ).text
         self.respdict = json.loads(respdict)
