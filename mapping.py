@@ -29,10 +29,10 @@ testmapping=[1,2,3]
 map_mongo={
     "main_audios":{
         "yes_intent_1": [("self.master", {"meta":"next_level"}),( "http://172.16.207:8084/give_phone.wav", {"meta":"next_level"})],
-        "yes_intent_2": [("http://172.16.1.207:5005/voice/20221205152448KQMS18_EH-M2.wav", {"meta":"next_level"}),( "http://172.16.207:8084/phone_given", {"meta":"switch_flow_to_0"})],
+        "yes_intent_2": [("http://172.16.1.207:5005/voice/20221205152448KQMS18_EH-M2.wav", {"meta":"next_level"}),( "http://172.16.207:8084/phone_given.wav", {"meta":"switch_flow_to_0"})],
         "yes_intent_3": [(" http://172.16.1.207:8084/payment_link_sent.wav", {"meta":"hangup"})],
-        "no_intent_1": [("http://172.16.1.207:8084/is_he_aviable.wav", {"meta":"swich_flow"}),( "http://172.16.207:8084/please_share_alt", {"meta":"hangup"})],
-        "no_intent_2": [("http://172.16.1.207:5005/voice/20230526112400HKP2VP_EH-M5.wav", {"meta":"hangup"}),( "http://172.16.207:8084/time_when_avl", {"meta":"hangup"})],
+        "no_intent_1": [("http://172.16.1.207:8084/is_he_aviable.wav", {"meta":"swich_flow"}),( "http://172.16.207:8084/please_share_alt.wav", {"meta":"hangup"})],
+        "no_intent_2": [("http://172.16.1.207:5005/voice/20230526112400HKP2VP_EH-M5.wav", {"meta":"hangup"}),( "http://172.16.207:8084/time_when_avl.wav", {"meta":"hangup"})],
         "no_intent_3": [("http://172.16.1.207:5005/voice/202301021418523IWNWJ_EH-M2.wav", {"meta":"hangup"})],
         "call_back_later_intent_1": [("http://172.16.1.207:5005/voice/20221205152848SB0SXI_EH-M2.wav", {"meta":"hangup"}),("http://172.16.1.207:5005/voice/20221205152848SB0SXI_EH-M2.wav", {"meta":"hangup"})],
         "call_back_later_intent_2": [("http://172.16.1.207:5005/voice/20221205152848SB0SXI_EH-M2.wav", {"meta":"hangup"}),( "http://172.16.207:8084/voice/20221205152848SB0SXI_EH-M2.wav", {"meta":"hangup"})],
