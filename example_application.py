@@ -313,6 +313,17 @@ class AudioStreamer():
                         self.level+=1
                         self.logger.info("new level is {}".format(self.level))
                     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="hangup":
+                        if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["silence"]:
+                            self.long_silence=0
+                            while self.long_silence<100:
+                                if self.call.connected:
+                                    sleep(.2)
+                                else:
+                                    break
+                            if not self.call.connected:
+                                break
+
+                        
                         try:
                                     self.logger.info("{} found at level 3".format(self.intent))
                                     data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
@@ -323,6 +334,7 @@ class AudioStreamer():
                         except Exception as e:
                             self.logger.error("audio playback failed beacause of {}".format(e))
                     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="transfer":
+                        
                         try:
                                     self.logger.info("{} found at level 3".format(self.intent))
                                     data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
