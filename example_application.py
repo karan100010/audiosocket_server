@@ -49,7 +49,6 @@ class AudioStreamer():
         self.channel = "en"
         self.long_silence = 0
         self.noise = False
-        self.call_flow_num = 0
         self.last_level = 0
         self.call_id = str(uuid.uuid4())
         self.long_silence = 0
