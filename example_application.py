@@ -54,7 +54,22 @@ class AudioStreamer():
         self.long_silence = 0
         self.intent = "welcome"
         self.call_api = "http://localhost:5011/api/connections"
+        self.call_link="http://172.16.1.213:3022/call-records/{0}".format(self.uuid)
+        respdict = requests.get(self.call_link
+            ).text
+        self.respdict = json.loads(respdict)
+        try:
+            self.welcome = self.respdict["data"]["intro_rec"]
+        except Exception as e:
+            self.welcome = "http://172.16.1.207:8084/hello.wav"
+            self.logger.error("welcome audio not found {}".format(e))
+        
 
+        try:
+            self.master =  self.respdict["data"]["master_rec"]
+        except Exception as e:
+            self.master = "http://172.16.1.207:8084/130302750R_KOTAKV1063666LAPSE.wav"
+            self.logger.error("master audio not found {}".format(e))    
         self.master_audio= requests.get(self.master).content
         self.welcome_audio = requests.get(self.welcome).content
         data={"status":"active","addr":"172.16.1.209"+":"+str(self.audiosocket.port),"conn":0,"time_updates":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
@@ -233,30 +248,16 @@ class AudioStreamer():
     
         if self.call.connected:
             self.logger.info("the uuid for this call is {}".format(self.uuid))
-            bytes_uuid = bytes.fromhex(self.uuid)
-            uuid4_format = uuid.UUID(bytes=bytes_uuid)
-            self.uuid = str(uuid4_format)
-            self.logger.info(uuid4_format)
+            self.logger.info(self.uuid)
             self.num_connected += 1
             update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
             update_data=json.dumps(update_data)
             requests.put(self.call_api+"/update",update_data,headers=self.headers)  
-            self.call_link="http://172.16.1.213:3022/call-records/{}".format(self.uuid)
-            respdict = requests.get(self.call_link
-                ).text
-            self.respdict = json.loads(respdict)
             try:
                 self.welcome = self.respdict["data"]["intro_rec"]
             except Exception as e:
                 self.welcome = "http://172.16.1.207:8084/hello.wav"
-                self.logger.error("welcome audio not found {}".format(e))
-            
-
-            try:
-                self.master =  self.respdict["data"]["master_rec"]
-            except Exception as e:
-                self.master = "http://172.16.1.207:8084/130302750R_KOTAKV1063666LAPSE.wav"
-                self.logger.error("master audio not found {}".format(e))        
+                self.logger.error("welcome audio not found {}".format(e))         
         while self.call.connected:
 
             

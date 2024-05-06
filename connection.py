@@ -4,6 +4,7 @@ from queue import Queue, Empty
 from dataclasses import dataclass
 from threading import Lock
 from time import sleep
+import uuid
 
 
 
@@ -232,7 +233,9 @@ class Connection:
 
 
       if length == 16:
-        self.uuid = payload.hex()
+
+        uuid4_format = uuid.UUID(bytes=payload)
+        self.uuid = uuid4_format
         #convert uuid to uuid4 format
 
       if type == types.audio:
