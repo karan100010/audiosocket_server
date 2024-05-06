@@ -308,10 +308,10 @@ class AudioStreamer():
 
                     if self.level==0:
                         self.level+=1
-                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0][1]["meta"]=="next_level":
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="next_level":
                         self.level+=1
                         self.logger.info("new level is {}".format(self.level))
-                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0][1]["meta"]=="hangup":
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="hangup":
                         try:
                                     self.logger.info("{} found at level 3".format(self.intent))
                                     data= {"call_id":self.uuid,"hangup":"true","transfer":"none"}
@@ -321,7 +321,7 @@ class AudioStreamer():
                                     self.call.hangup()
                         except Exception as e:
                             self.logger.error("audio playback failed beacause of {}".format(e))
-                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0][1]["meta"]=="transfer":
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="transfer":
                         try:
                                     self.logger.info("{} found at level 3".format(self.intent))
                                     data= {"call_id":self.uuid,"hangup":"none","transfer":"true"}
@@ -333,7 +333,7 @@ class AudioStreamer():
                             self.logger.error("audio playback failed beacause of {}".format(e))
                         except Exception as e:
                             self.logger.error("audio playback failed beacause of {}".format(e))
-                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][0][1]["meta"]=="switch_flowa":
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="switch_flow":
                         self.level=0
                         
 
