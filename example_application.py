@@ -283,7 +283,7 @@ class AudioStreamer():
                     if self.level==0:
                         self.send_audio(self.welcome_audio)
                     #handeling level 1
-                    elif self.level==1 and self.intent=="yes_intent":
+                    elif self.level==1 and self.intent=="yes_intent" and self.flow_num==0:
 
                         self.send_audio(self.master_audio)
                         self.logger.info("sending master audio")
