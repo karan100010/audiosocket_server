@@ -334,7 +334,7 @@ class AudioStreamer():
                             self.logger.error("audio playback failed beacause of {}".format(e))
                         except Exception as e:
                             self.logger.error("audio playback failed beacause of {}".format(e))
-                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="switch_flow":
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="swich_flow":
                         self.level=0
                         self.flow_num=1
                         self.logger.info("switching flow")
