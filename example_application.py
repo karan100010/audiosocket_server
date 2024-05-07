@@ -263,7 +263,8 @@ class AudioStreamer():
                 self.welcome = self.respdict["data"]["intro_rec"]
             except Exception as e:
                 self.welcome = "http://172.16.1.207:8084/hello.wav"
-                self.logger.error("welcome audio not found {}".format(e))         
+                self.logger.error("welcome audio not found {}".format(e)) 
+            self.audioplayback=True        
             while not self.startcall:
             #    self.logger.info("waiting for call to start")
                 sleep(.1)
