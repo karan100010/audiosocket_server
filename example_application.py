@@ -140,7 +140,7 @@ class AudioStreamer():
                 sleep(.25)
                 sleep_seconds+=.25
             if not self.noise:
-                if self.noise_frames_count >= 300:
+                if self.noise_frames_count >= 100:
                     self.noise=True
                     self.noise_frames_count=0
                     self.audioplayback=False
