@@ -170,6 +170,8 @@ class AudioStreamer():
            # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
             self.silent_frames_count += frames
             self.long_silence += 1
+            if self.noise_frames_count>10:
+                self.startcall=True
         else:
             self.long_silence = 0
         return
@@ -186,7 +188,7 @@ class AudioStreamer():
 
 
             if self.audioplayback:
-                self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
+                #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
                 self.detect_noise(audio_data, 1, 8000)
             else:
                 self.combined_audio += audio_data
@@ -250,7 +252,6 @@ class AudioStreamer():
 
     
         if self.call.connected:
-
 
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             self.logger.info(self.uuid)
