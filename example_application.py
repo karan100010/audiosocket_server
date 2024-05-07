@@ -137,8 +137,8 @@ class AudioStreamer():
             #self.detect_noise(indata, 1, 8000)
             count+=1
             if count%25==0:
-                sleep(.25)
-                sleep_seconds+=.25
+                sleep(5)
+                #sleep_seconds+=.25
             if not self.noise:
                 if self.noise_frames_count >= 40:
                     self.noise=True
@@ -146,12 +146,12 @@ class AudioStreamer():
                     self.audioplayback=False
                     return
         
-        self.logger.info("number of iterations are {}".format(count))
-        sleep(len(audio_file)/16000-sleep_seconds)  
-        self.logger.info(sleep_seconds)
-        self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-sleep_seconds))
-        self.noise_frames_count=0
-        self.audioplayback=False
+        # self.logger.info("number of iterations are {}".format(count))
+        # sleep(len(audio_file)/16000-sleep_seconds)  
+        # self.logger.info(sleep_seconds)
+        # self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-sleep_seconds))
+        # self.noise_frames_count=0
+        # self.audioplayback=False
         return
             
 
