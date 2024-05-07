@@ -188,9 +188,9 @@ class AudioStreamer():
                     count += 1
                     print(count)
                     sleep(.2)
-                    if count > 10:
-                        self.startcall = True
-                        break
+                if count > 10:
+                    self.startcall = True
+                    break
 
            
 
@@ -274,7 +274,7 @@ class AudioStreamer():
                 self.welcome = "http://172.16.1.207:8084/hello.wav"
                 self.logger.error("welcome audio not found {}".format(e))         
             while not self.startcall:
-              #  self.logger.info("waiting for call to start")
+                self.logger.info("waiting for call to start")
                 sleep(.1)
             while self.call.connected:
 
