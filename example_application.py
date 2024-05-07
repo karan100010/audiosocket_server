@@ -54,7 +54,7 @@ class AudioStreamer():
         self.long_silence = 0
         self.intent = "welcome"
         self.call_api = "http://localhost:5011/api/connections"
-        self.call_link="http://172.16.1.213:3022/call-records/{0}".format(self.uuid)
+        self.call_link="http://172.16.1.213:3022/call-records/{}".format(self.uuid)
         respdict = requests.get(self.call_link
             ).text
         self.respdict = json.loads(respdict)
@@ -140,7 +140,7 @@ class AudioStreamer():
                 sleep(.25)
                 sleep_seconds+=.25
             if not self.noise:
-                if self.noise_frames_count >= 100:
+                if self.noise_frames_count >= 300:
                     self.noise=True
                     self.noise_frames_count=0
                     self.audioplayback=False
