@@ -259,6 +259,8 @@ class AudioStreamer():
 
     
         if self.call.connected:
+
+
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             self.logger.info(self.uuid)
             self.num_connected += 1
@@ -270,7 +272,8 @@ class AudioStreamer():
             except Exception as e:
                 self.welcome = "http://172.16.1.207:8084/hello.wav"
                 self.logger.error("welcome audio not found {}".format(e))         
-        while self.call.connected:
+        if self.startcall:
+            while self.call.connected:
 
             
             if not self.audioplayback:
