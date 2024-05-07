@@ -68,6 +68,7 @@ class AudioStreamer():
         try:
             self.master =  self.respdict["data"]["master_rec"]
         except Exception as e:
+
             self.master = "http://172.16.1.207:8084/130302750R_KOTAKV1063666LAPSE.wav"
             self.logger.error("master audio not found {}".format(e))    
         self.master_audio= requests.get(self.master).content
@@ -266,9 +267,17 @@ class AudioStreamer():
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
 
-                if not self.noise:
-                    
-                 
+                if self.noise:
+                    try:
+                        self.audioplayback=True
+                        self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
+                        self.noise=False
+                        self.logger.warning("noise detected")
+                        self.noise_frames_count=0
+
+                    except Exception as e:  
+                        self.logger.error("audio playback failed beacause of {}".format(e))
+                else:     
 
                 
                     if self.level==0:
