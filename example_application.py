@@ -183,12 +183,13 @@ class AudioStreamer():
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
             audio_data = self.call.read()
             count = 0
-            while self.vad.is_speech(audio_data, 8000):
-                count += 1
-                sleep(.1)
-                if count > 10:
-                    self.startcall = True
-                    break
+            while True:
+                if self.vad.is_speech(audio_data, 8000):
+                    count += 1
+                    sleep(.1)
+                    if count > 10:
+                        self.startcall = True
+                        break
 
            
 
