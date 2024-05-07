@@ -276,7 +276,7 @@ class AudioStreamer():
             while self.call.connected:
 
             
-            if not self.audioplayback:
+             if not self.audioplayback:
                 self.logger.info("audio playback started")
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
