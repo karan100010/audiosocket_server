@@ -137,7 +137,7 @@ class AudioStreamer():
             #self.detect_noise(indata, 1, 8000)
             count+=1
             if count%25==0:
-                sleep(1)
+                sleep(.9)
                 #sleep_seconds+=.25
             if not self.noise:
                 if self.noise_frames_count >= 40:
