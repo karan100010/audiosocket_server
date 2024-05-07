@@ -272,16 +272,16 @@ class AudioStreamer():
             except Exception as e:
                 self.welcome = "http://172.16.1.207:8084/hello.wav"
                 self.logger.error("welcome audio not found {}".format(e))         
-        
+            while not self.startcall:
+                self.logger.info("waiting for call to start")
+                sleep(.1)
             while self.call.connected:
-             if self.startcall:
-            
 
             
-                if not self.audioplayback:
-                    self.logger.info("audio playback started")
-                    self.logger.info("we are in level {}".format(self.level))
-                    self.logger.error(self.intent)
+             if not self.audioplayback:
+                self.logger.info("audio playback started")
+                self.logger.info("we are in level {}".format(self.level))
+                self.logger.error(self.intent)
 
 
                 if not self.noise:     
