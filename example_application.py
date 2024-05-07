@@ -127,7 +127,7 @@ class AudioStreamer():
         count = 0
         w=0
         v=320
-        sleep_seconds=0
+
         self.audioplayback=True
         for i in range(math.floor(int(len(audio_file) / (320)))):
             self.call.write(audio_file[w:v])
@@ -136,6 +136,7 @@ class AudioStreamer():
             
             #self.detect_noise(indata, 1, 8000)
             count+=1
+            print(self.audioplayback)
             if count%25==0:
                 sleep(.5)
                 #sleep_seconds+=.25
