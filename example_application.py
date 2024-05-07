@@ -184,13 +184,14 @@ class AudioStreamer():
             audio_data = self.call.read()
             count = 0
             while True:
+                sleep(.2)
                 data=audio_data
                 noise= self.vad.is_speech(data, 8000)
                 print(noise)
                 if noise:
                     count += 1
                     print("the count is {}".format(count))
-                    sleep(.2)
+    
                 if count > 10:
                     self.startcall = True
                     break
