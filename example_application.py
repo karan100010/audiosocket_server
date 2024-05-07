@@ -111,7 +111,7 @@ class AudioStreamer():
             #samples = np.frombuffer(indata, dtype=np.int16)
             is_noise = self.vad.is_speech(indata, rate)
             if is_noise:
-                # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
+                self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
                 self.noise_frames_count += frames
                 self.long_noise+=1
             else:
@@ -165,7 +165,7 @@ class AudioStreamer():
         is_noise = self.vad.is_speech(indata, rate)
         #print(is_noise)
         if not is_noise:
-            self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
+           # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
             self.silent_frames_count += frames
             self.long_silence += 1
         else:
