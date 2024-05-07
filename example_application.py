@@ -351,6 +351,11 @@ class AudioStreamer():
                         self.level=1
                         self.flow_num=1
                         self.logger.info("switching flow")
+                    elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="switch_flow_to_0":
+                        self.level=0
+                        self.flow_num=0
+                        self.logger.info("switching flow")
+                        
                         
 
                             
