@@ -184,7 +184,8 @@ class AudioStreamer():
             audio_data = self.call.read()
             count = 0
             while True:
-                noise= self.vad.is_speech(audio_data, 8000)
+                data=audio_data
+                noise= self.vad.is_speech(data, 8000)
                 print(noise)
                 if noise:
                     count += 1
