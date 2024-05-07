@@ -179,10 +179,10 @@ class AudioStreamer():
 
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
             audio_data = self.call.read()
-            # write stream to a file
-        
-            # with open("stream.raw", "ab") as f:
-            #   f.write(audio_data)
+
+           
+
+
             if self.audioplayback:
                 # self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
                 self.detect_noise(audio_data, 1, 8000)
@@ -267,17 +267,8 @@ class AudioStreamer():
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
 
-                if self.noise:
-                    try:
-                        self.audioplayback=True
-                        self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
-                        self.noise=False
-                        self.logger.warning("noise detected")
-                        self.noise_frames_count=0
 
-                    except Exception as e:  
-                        self.logger.error("audio playback failed beacause of {}".format(e))
-                else:     
+                if not self.noise:     
 
                 
                     if self.level==0:
@@ -357,9 +348,18 @@ class AudioStreamer():
                         self.logger.info("switching flow")
 
                         
+                if self.noise:
+                    try:
+                        self.audioplayback=True
+                        self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
+                        self.noise=False
+                        self.logger.warning("noise detected")
+                        self.noise_frames_count=0
 
+                    except Exception as e:  
+                        self.logger.error("audio playback failed beacause of {}".format(e))
                             
-                        
+                
 
                 self.long_silence=0    
                 while self.long_silence<100:
