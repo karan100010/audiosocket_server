@@ -187,7 +187,7 @@ class AudioStreamer():
                 if self.vad.is_speech(audio_data, 8000):
                     count += 1
                     print(count)
-                    sleep(.1)
+                    sleep(.2)
                     if count > 10:
                         self.startcall = True
                         break
