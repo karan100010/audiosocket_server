@@ -140,7 +140,7 @@ class AudioStreamer():
                 sleep(.25)
                 sleep_seconds+=.25
             if not self.noise:
-                if self.noise_frames_count >= 50:
+                if self.noise_frames_count >= 100:
                     self.noise=True
                     self.noise_frames_count=0
                     self.audioplayback=False
@@ -355,7 +355,7 @@ class AudioStreamer():
                         self.level=0
                         self.flow_num=0
                         self.logger.info("switching flow")
-                        
+
                         
 
                             
