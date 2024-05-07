@@ -61,7 +61,7 @@ class AudioStreamer():
         try:
             self.welcome = self.respdict["data"]["intro_rec"]
         except Exception as e:
-            self.welcome = "http://172.16.1.207:8084/hello.wav"
+            self.welcome = "http://172.16.1.207:8084/karan.wav"
             self.logger.error("welcome audio not found {}".format(e))
         
 
@@ -266,17 +266,9 @@ class AudioStreamer():
                 self.logger.info("we are in level {}".format(self.level))
                 self.logger.error(self.intent)
 
-                if self.noise:
-                    try:
-                        self.audioplayback=True
-                        self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
-                        self.noise=False
-                        self.logger.warning("noise detected")
-                        self.noise_frames_count=0
-
-                    except Exception as e:  
-                        self.logger.error("audio playback failed beacause of {}".format(e))
-                else:     
+                if not self.noise:
+                    
+                 
 
                 
                     if self.level==0:
