@@ -268,6 +268,10 @@ class AudioStreamer():
             while not self.startcall:
             #    self.logger.info("waiting for call to start")
                 sleep(.1)
+            self.audioplayback=False
+            self.logger.info("call started")
+            self.noise_frames_count=0
+            self.long_noise=0
             while self.call.connected:
 
             
