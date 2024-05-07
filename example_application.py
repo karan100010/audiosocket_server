@@ -37,6 +37,7 @@ class AudioStreamer():
         self.call = socket.listen()
         self.long_noise=0
         self.noise=False
+        self.startcall = False
         # self.uudi=self.audiosocket.uudi
         self.uuid = str(self.call.uuid)
         self.num_connected = 0
@@ -174,12 +175,20 @@ class AudioStreamer():
         return
 
     def start_noise_detection(self):
+         
 
         while self.call.connected:
             
 
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
             audio_data = self.call.read()
+            count = 0
+            while self.vad.is_speech(audio_data, 8000):
+                audio_data += self.call.read()
+                count += 1
+                if count > 10:
+                    self.startcall = True
+                    break
 
            
 
@@ -529,13 +538,7 @@ class AudioStreamer():
 def handel_call():
 
     audiosocket = Audiosocket(("0.0.0.0", 9000))
-    vad=webrtcvad.Vad()
-    vad.set_mode(3)
-    count=0
-    while vad.is_speech(audiosocket.listen().read(),8000):
-        count+=1
-        if count>10:
-            break
+   
     while True:
         #audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
         #call = audiosocket.listen()
