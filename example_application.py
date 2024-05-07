@@ -184,7 +184,6 @@ class AudioStreamer():
             audio_data = self.call.read()
             count = 0
             while self.vad.is_speech(audio_data, 8000):
-                audio_data += self.call.read()
                 count += 1
                 sleep(.1)
                 if count > 10:
