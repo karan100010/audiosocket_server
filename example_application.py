@@ -151,8 +151,8 @@ class AudioStreamer():
         # sleep(len(audio_file)/16000-sleep_seconds)  
         # self.logger.info(sleep_seconds)
         # self.logger.info("Sleeping for {} seconds".format((len(audio_file)/16000)-sleep_seconds))
-            self.noise_frames_count=0
-            self.audioplayback=False
+        self.noise_frames_count=0
+        self.audioplayback=False
         return
             
 
