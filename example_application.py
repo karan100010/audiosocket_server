@@ -30,7 +30,7 @@ class AudioStreamer():
         self.flow_num=0
         self.sample_rate = 8000
         self.vad = webrtcvad.Vad()
-        self.vad.set_mode(2)
+        self.vad.set_mode(3)
         self.noise_frames_threshold = int(2 * self.sample_rate / 512)
         self.noise_frames_count = 0
         self.audiosocket = socket
