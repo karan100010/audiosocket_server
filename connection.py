@@ -125,7 +125,7 @@ class Connection:
   def read_for_vad(self):
     try:
       combined_audio = b""
-      for i in range(5):
+      for i in range(2):
         audio = self.read()
         combined_audio += audio
       return combined_audio
