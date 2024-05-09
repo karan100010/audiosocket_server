@@ -196,10 +196,12 @@ class AudioStreamer():
                 #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
                 if len(combined_byts) == 1600:
                     self.detect_noise(combined_byts, 1, 8000)
+                    sleep(.5)
             else:
                 self.combined_audio += combined_byts
                 if len(combined_byts)==1600:
                     self.dedect_silence(combined_byts, 1, 8000)
+                    sleep(.5)
                 self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
