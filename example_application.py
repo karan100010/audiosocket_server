@@ -3,7 +3,7 @@
 from time import sleep
 from audiosocket import *
 import numpy as np
-import webrtcvad
+from vad import *
 from mylogging import ColouredLogger
 import wave
 import threading
@@ -16,6 +16,7 @@ import json
 import base64
 import uuid
 import pymongo
+import webrtcvad
 # import telebot
 import datetime
 import random
@@ -110,7 +111,7 @@ class AudioStreamer():
 
         try:
             #samples = np.frombuffer(indata, dtype=np.int16)
-            is_noise = self.vad.is_speech(indata, rate)
+            is_noise = is_speech(indata, rate)
             if is_noise:
                 self.logger.debug("Noise detected in frames {0}".format(self.long_noise))
                 self.noise_frames_count += frames
