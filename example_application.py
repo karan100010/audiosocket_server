@@ -186,12 +186,20 @@ class AudioStreamer():
 
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
             audio_data = self.call.read()
-            combined_byts=b''
-            while True:
-                sleep(.2)
-                combined_byts= combined_byts+audio_data
-                if len(combined_byts)>1600:
-                    break
+            def combine_audio(audio_data):
+
+                self.combined_byts=b''
+                while True:
+                    sleep(.2)
+                    combined_byts= combined_byts+audio_data
+                    if len(combined_byts)>1600:
+                        combined_byts=b""
+                    if not self.call.connected:
+                        break
+                    return
+                threading.Thread(target=combine_audio, args=(audio_data,)).start()
+            
+
             
 
            
