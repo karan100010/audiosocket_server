@@ -188,7 +188,7 @@ class AudioStreamer():
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
             audio_data = self.call.read()
             combined_byts=self.call.read_for_vad()
-            print(len(combined_byts))
+            #print(len(combined_byts))
            
 
 
@@ -200,7 +200,7 @@ class AudioStreamer():
                 self.combined_audio += audio_data
                 if len(self.combined_audio)==1600:
                     self.dedect_silence(combined_byts, 1, 8000)
-               # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
+                self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
     def convert_file(self, file):
