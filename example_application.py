@@ -199,7 +199,7 @@ class AudioStreamer():
                 self.combined_audio += combined_byts
         
                 self.dedect_silence(combined_byts, 1, 8000)
-                self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
+               # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
     def convert_file(self, file):
