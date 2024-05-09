@@ -201,11 +201,6 @@ class AudioStreamer():
                 threading.Thread(target=combine_audio, args=(audio_data,)).start()
             
 
-            
-
-           
-
-
             if self.audioplayback:
                 #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
                 if len(self.combined_audio) ==1600:
