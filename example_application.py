@@ -371,7 +371,7 @@ class AudioStreamer():
                     try:
                         self.audioplayback=True
                         self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
-                        self.noise=False
+                        
                         self.logger.warning("noise detected")
                         self.noise_frames_count=0
 
@@ -406,12 +406,13 @@ class AudioStreamer():
                     if resp["transcribe"]=="":
                         x=self.read_wave_file(mapping["utils"][self.channel][1])
                         self.send_audio(x)
-                        self.level -=1
+                        if self.noise:
+                            self.level -=1
                     else:
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
 
-
+                    self.noise=False
                 except Exception as e:
                     self.logger.error(e)
                     self.combined_audio=b''
