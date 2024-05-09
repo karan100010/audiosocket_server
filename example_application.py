@@ -119,7 +119,7 @@ class AudioStreamer():
                 self.long_noise+=1
             else:
                 self.long_noise=0
-            if self.noise_frames_count>3:
+            if self.noise_frames_count>1:
                 self.startcall=True
             return
         except Exception as e:
