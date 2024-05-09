@@ -124,14 +124,12 @@ class Connection:
       return bytes(320)
   def read_for_vad(self):
     try:
-      audio = self._rx_q.get(timeout=.2)
-      audio = audioop.ulaw2lin(audio,2)
-      combined_audio = audio
-      for i in range(4):
+      combined_audio = b""
+      for i in range(5):
         audio = self._rx_q.get(timeout=.2)
         audio = audioop.ulaw2lin(audio,2)
         combined_audio += audio
-      return audio
+      return con
     except Empty:
       return bytes(1600)
     
