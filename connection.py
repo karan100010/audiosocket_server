@@ -129,7 +129,7 @@ class Connection:
         audio = self._rx_q.get(timeout=.2)
         audio = audioop.ulaw2lin(audio,2)
         combined_audio += audio
-      return con
+      return combined_audio
     except Empty:
       return bytes(1600)
     
