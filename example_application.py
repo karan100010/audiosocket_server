@@ -327,9 +327,9 @@ class AudioStreamer():
                     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="hangup":
                         if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["silence"]:
                             self.long_silence=0
-                            while self.long_silence<20:
+                            while self.long_silence<10:
                                 if self.call.connected:
-                                    sleep(.2)
+                                    sleep(.5)
                                 else:
                                     break
                             if not self.call.connected:
@@ -382,10 +382,10 @@ class AudioStreamer():
                 
 
                 self.long_silence=0    
-                while self.long_silence<20:
+                while self.long_silence<10:
                 #self.logger.info("waiting for silence")
                     if self.call.connected:
-                        sleep(.2)
+                        sleep(.5)
                     else:
                             break
                 if not self.call.connected:
