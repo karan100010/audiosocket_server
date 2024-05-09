@@ -13,3 +13,4 @@ requests
 termcolor
 pymongo
 langdetect
+soundfile

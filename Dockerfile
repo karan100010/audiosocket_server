@@ -8,6 +8,8 @@ WORKDIR /app
 COPY . /app
 
 RUN apt update && apt install -y build-essential
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
 
 
 
