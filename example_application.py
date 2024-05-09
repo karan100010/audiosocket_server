@@ -39,6 +39,7 @@ class AudioStreamer():
         self.long_noise=0
         self.noise=False
         self.startcall = False
+        self.combined_byts=b''
         # self.uudi=self.audiosocket.uudi
         self.uuid = str(self.call.uuid)
         self.num_connected = 0
@@ -188,10 +189,10 @@ class AudioStreamer():
             audio_data = self.call.read()
             def combine_audio(audio_data):
 
-                self.combined_byts=b''
+                
                 while True:
                     sleep(.2)
-                    combined_byts= combined_byts+audio_data
+                    self.combined_byts= combined_byts+audio_data
                     if len(combined_byts)>1600:
                         combined_byts=b""
                     if not self.call.connected:
@@ -207,10 +208,10 @@ class AudioStreamer():
 
             if self.audioplayback:
                 #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
-                self.detect_noise(combined_byts, 1, 8000)
+                self.detect_noise(self.combined_byts, 1, 8000)
             else:
                 self.combined_audio += audio_data
-                self.dedect_silence(combined_byts, 1, 8000)
+                self.dedect_silence(self.combined_byts, 1, 8000)
                # self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
