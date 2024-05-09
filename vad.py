@@ -37,7 +37,6 @@ def vad(audio_chunk, sample_rate):
    audio_float32 = int2float(audio_int16)
 
    val=model(torch.from_numpy(audio_float32),sample_rate).item()
-   print(val)
    return val
 
 def is_speech(audio_chunk, sample_rate):
