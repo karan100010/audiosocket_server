@@ -126,8 +126,7 @@ class Connection:
     try:
       combined_audio = b""
       for i in range(5):
-        audio = self._rx_q.get(timeout=.2)
-        audio = audioop.ulaw2lin(audio,2)
+        audio = self.read()
         combined_audio += audio
       return combined_audio
     except Empty:
