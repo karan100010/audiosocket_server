@@ -130,7 +130,7 @@ class Connection:
         combined_audio += audio
       return combined_audio
     except Empty:
-      return bytes(1600)
+      return bytes(640)
     
 
     if self._asterisk_resample:
