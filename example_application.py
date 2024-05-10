@@ -433,8 +433,6 @@ class AudioStreamer():
 
 
 
-                    if self.noise:
-                        self.level -=1
                     if resp["transcribe"]!="":
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
