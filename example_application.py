@@ -424,8 +424,8 @@ class AudioStreamer():
                         self.logger.info("retries are {}".format(self.retries))
                         if resp["transcribe"]!="":
                             break
-                        if self.retries>3:
-                            self.intent="other_intent"
+                        if self.retries>=3:
+                        
                             break
                         
 
@@ -436,7 +436,11 @@ class AudioStreamer():
                     if resp["transcribe"]!="":
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
+                        if self.retries>=3:
+                            selfintent="other_intent"
+                            
                         self.retries=0
+                        
 
                     if self.noise:
                         self.noise=False
