@@ -442,6 +442,7 @@ class AudioStreamer():
 
                     if self.noise:
                         self.noise=False
+                        self.long_noise=0
         
                 except Exception as e:
                     self.logger.error(e)
