@@ -404,13 +404,37 @@ class AudioStreamer():
                     threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
 
                     while resp["transcribe"]=="":
+
                         x=self.read_wave_file(mapping["utils"][self.channel][1])
                         self.send_audio(x)
+                        self.retries+=1
+                        while self.long_silence<15:
+                #self.logger.info("waiting for silence")
+                            if self.call.connected:
+                                sleep(.5)
+                            else:
+                                    break
+                        if not self.call.connected:
+                            break
+                        self.long_silence=0
+                        response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                        resp=json.loads(response.text)
+                        if resp["transcribe"]!="":
+                            break
+                        if self.retries>3:
+                            break
+
+
+
+
+
                         if self.noise:
                             self.level -=1
-                    if self["transcribe"]!="":
+                    if resp["transcribe"]!="":
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
+                        self.retries=0
+
                     if self.noise:
                         self.noise=False
         
