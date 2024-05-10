@@ -409,6 +409,38 @@ class AudioStreamer():
                         if self.noise:
                             self.level -=1
                             self.noise=False
+                            self.combined_audio=b''
+
+                            try:
+                                while self.long_silence<15:
+                                    #self.logger.info("waiting for silence")
+                                        if self.call.connected:
+                                            sleep(.5)
+                                        else:
+                                                break
+                                        if not self.call.connected:
+                                            break
+                                        self.silence=0
+                                        self.long_silence=0
+                                        self.logger.info("waiting for silence is over")
+                                        response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                                        self.logger.error(response.text)
+                                        resp=json.loads(response.text)
+                                        threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                            except Exception as e:
+                                self.logger.error(e)
+                          
+                                
+                                
+                        
+                
+
+                
+
+
+                            
+
+
                     else:
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
