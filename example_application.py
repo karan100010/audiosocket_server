@@ -408,11 +408,11 @@ class AudioStreamer():
                         self.send_audio(x)
                         if self.noise:
                             self.level -=1
+                            self.noise=False
                     else:
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
-                    if self.noise:
-                        self.noise=False
+                   
         
                 except Exception as e:
                     self.logger.error(e)
