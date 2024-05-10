@@ -423,7 +423,9 @@ class AudioStreamer():
                         if resp["transcribe"]!="":
                             break
                         if self.retries>3:
+                            self.intent="other_intent"
                             break
+                        
 
 
 
