@@ -403,6 +403,7 @@ class AudioStreamer():
                     resp=json.loads(response.text)
 
                     threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                    self.combined_audio=b''
 
                     while resp["transcribe"]=="":
 
@@ -422,15 +423,13 @@ class AudioStreamer():
                         response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
                         resp=json.loads(response.text)
                         self.logger.info("retries are {}".format(self.retries))
+                        self.combined_audio=b''
                         if resp["transcribe"]!="":
                             break
                         if self.retries>=3:
                         
                             break
                         
-
-
-
 
 
                     if resp["transcribe"]!="":
