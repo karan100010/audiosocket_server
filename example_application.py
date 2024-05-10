@@ -327,7 +327,7 @@ class AudioStreamer():
                     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"]=="hangup":
                         if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["silence"]:
                             self.long_silence=0
-                            while self.long_silence<15:
+                            while self.long_silence<35:
                                 if self.call.connected:
                                     sleep(.5)
                                 else:
@@ -382,7 +382,7 @@ class AudioStreamer():
                 
 
                 self.long_silence=0    
-                while self.long_silence<15:
+                while self.long_silence<35:
                 #self.logger.info("waiting for silence")
                     if self.call.connected:
                         sleep(.5)
@@ -411,7 +411,7 @@ class AudioStreamer():
                         self.send_audio(x)
                         self.retries+=1
                         self.long_silence=0
-                        while self.long_silence<15:
+                        while self.long_silence<35:
                 #self.logger.info("waiting for silence")
                             if self.call.connected:
                                 sleep(.5)
@@ -481,7 +481,7 @@ class AudioStreamer():
                 #   while self.silent_frames_count<100:
                 #         print("waiting")
                 #         sleep(.01)
-                # response=requests.post("http://65.2.152.189:5000/predict",data=self.combined_audio)
+                # response=requests.post("http://65.2.352.189:5000/predict",data=self.combined_audio)
                 #   resp=json.loads(response.text)
                 #   print(resp)
                 #   self.level=resp["prediction"][0]
@@ -508,7 +508,7 @@ class AudioStreamer():
                 #   self.data_array=[]
 
                 #   try:
-                #     response=requests.post("http://3.109.152.180:5002/convert_en",data=self.combined_audio)
+                #     response=requests.post("http://3.109.352.180:5002/convert_en",data=self.combined_audio)
                 #     resp=json.loads(response.text)
                 #   except Exception as e:
                 #     self.logger.info(e)
