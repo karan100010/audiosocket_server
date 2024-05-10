@@ -146,7 +146,7 @@ class AudioStreamer():
                 sleep(.5)
                 #sleep_seconds+=.25
             if not self.noise:
-                if self.long_noise >= 4:
+                if self.noise_frames_count >= 10:
                     self.noise=True
                     self.noise_frames_count=0
                     self.audioplayback=False
@@ -278,7 +278,7 @@ class AudioStreamer():
             self.audioplayback=False
             self.logger.info("call started")
             self.noise_frames_count=0
-            self.long_noise=0
+            self.noise_frames_count=0
             while self.call.connected:
 
             
