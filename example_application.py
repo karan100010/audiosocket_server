@@ -403,12 +403,12 @@ class AudioStreamer():
 
                     threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
 
-                    if resp["transcribe"]=="":
+                    while resp["transcribe"]=="":
                         x=self.read_wave_file(mapping["utils"][self.channel][1])
                         self.send_audio(x)
                         if self.noise:
                             self.level -=1
-                    else:
+                    if self["transcribe"]!="":
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
                     if self.noise:
