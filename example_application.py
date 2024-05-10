@@ -436,7 +436,7 @@ class AudioStreamer():
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
                         if self.retries>=3:
-                            selfintent="other_intent"
+                            self.intent="other_intent"
                             
                         self.retries=0
                         
