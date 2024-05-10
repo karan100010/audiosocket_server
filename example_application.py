@@ -421,7 +421,7 @@ class AudioStreamer():
                         self.long_silence=0
                         response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
                         resp=json.loads(response.text)
-                        logger.info("retries are {}".format(self.retries))
+                        self.logger.info("retries are {}".format(self.retries))
                         if resp["transcribe"]!="":
                             break
                         if self.retries>3:
