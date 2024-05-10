@@ -420,24 +420,16 @@ class AudioStreamer():
                                                 break
                                         if not self.call.connected:
                                             break
-                                        self.silence=0
-                                        self.long_silence=0
-                                        self.logger.info("waiting for silence is over")
-                                        response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
-                                        self.logger.error(response.text)
-                                        resp=json.loads(response.text)
-                                        threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
-                                        self.noise=False
+                                self.silence=0
+                                self.long_silence=0
+                                self.logger.info("waiting for silence is over")
+                                response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                                self.logger.error(response.text)
+                                resp=json.loads(response.text)
+                                threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                                self.noise=False
                             except Exception as e:
                                 self.logger.error(e)
-                          
-                                
-                                
-                        
-                
-
-                
-
 
                             
 
