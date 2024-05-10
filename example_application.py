@@ -410,6 +410,14 @@ class AudioStreamer():
                             self.level -=1
                             self.noise=False
                             self.combined_audio=b''
+                            while self.long_silence<15:
+                                    #self.logger.info("waiting for silence")
+                                        if self.call.connected:
+                                            sleep(.5)
+                                        else:
+                                                break
+                                        if not self.call.connected:
+                                            break
 
                             try:
                                 while self.long_silence<15:
