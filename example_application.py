@@ -427,6 +427,7 @@ class AudioStreamer():
                                         self.logger.error(response.text)
                                         resp=json.loads(response.text)
                                         threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                                        self.noise=False
                             except Exception as e:
                                 self.logger.error(e)
                           
