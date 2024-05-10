@@ -40,6 +40,7 @@ class AudioStreamer():
         self.noise=False
         self.startcall = False
         self.combined_byts=b''
+        self.retries=0
         # self.uudi=self.audiosocket.uudi
         self.uuid = str(self.call.uuid)
         self.num_connected = 0
