@@ -55,8 +55,6 @@ map_mongo={
 
 
 
-
-
 map_mongo_hi = {
     "main_audios": {
         "yes_intent_1": [("self.master", {"meta": "next_level"}), ("http://172.16.1.207:8084/hi_give_phone.wav", {"meta": "next_level"})],
