@@ -96,7 +96,12 @@ class AudioStreamer():
             self.conn = pymongo.MongoClient(data)
         except Exception as e:
             self.logger.info(e)
-        self.call_flow=self.conn["test"]["flow"].find_one({})      
+        self.call_flow_hi=self.conn["test"]["flow"].find_one({"lang": "hi"})
+        self.call_flow_en=self.conn["test"]["flow"].find_one({"lang": "en"})
+        if self.channel=="hi":
+            self.call_flow=self.call_flow_hi
+        else:
+            self.call_flow=self.call_flow_en      
 
     def read_wave_file(self, filename):
         # self.logger.debug("Reading wave file")
@@ -448,12 +453,21 @@ class AudioStreamer():
 
 
                     if resp["transcribe"]!="":
+                        
                         self.combined_audio=b''
                         self.intent=resp["nlp"]["intent"]
                         if self.retries>=3:
                             self.intent="other_intent"
+                        if self.level==1 :
+                            if not self.is_english:
+                                self.channel="hi"
+                                self.call_flow=self.call_flow_hi
+                            else:
+                                self.channel="en"
+                                self.call_flow=self.call_flow_en
                             
                         self.retries=0
+                    
                         
 
                     if self.noise:
@@ -465,6 +479,9 @@ class AudioStreamer():
                     self.combined_audio=b''
                 self.long_silence=0
                 self.silent_frames_count=0
+
+                
+                    
 
 
 
