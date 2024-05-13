@@ -376,6 +376,7 @@ class AudioStreamer():
                         
                         self.logger.warning("noise detected")
                         self.noise_frames_count=0
+            
 
                     except Exception as e:  
                         self.logger.error("audio playback failed beacause of {}".format(e))
@@ -397,15 +398,26 @@ class AudioStreamer():
                 self.long_silence=0
 
                 try:
-                    response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
-                    self.logger.error(response.text)
-                    # m= self.convert_file(self.combined_audio)
-                    # self.logger.info("audio file converted {}".format(m))
-                    resp=json.loads(response.text)
+                    if not self.noise:
+                        response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_audio)
+                        self.logger.error(response.text)
+                        # m= self.convert_file(self.combined_audio)
+                        # self.logger.info("audio file converted {}".format(m))
+                        resp=json.loads(response.text)
 
-                    threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
-                    self.combined_audio=b''
-                    self.combined_noise=b''
+                        threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                        self.combined_audio=b''
+                        self.combined_noise=b''
+                    else:
+                        response=requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel),data=self.combined_noise)
+                        self.logger.error(response.text)
+                        # m= self.convert_file(self.combined_audio)
+                        # self.logger.info("audio file converted {}".format(m))
+                        resp=json.loads(response.text)
+
+                        threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
+                        self.combined_audio=b''
+                        self.combined_noise=b''
 
                     while resp["transcribe"]=="":
 
