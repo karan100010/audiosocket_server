@@ -194,6 +194,7 @@ class AudioStreamer():
 
 
             if self.audioplayback:
+                self.combined_noise += combined_byts
                 #self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
     
                 self.detect_noise(combined_byts, 1, 8000)
