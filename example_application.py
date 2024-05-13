@@ -405,6 +405,7 @@ class AudioStreamer():
 
                     threading.Thread(target=self.db_entry,args=(resp,mapping)).start()
                     self.combined_audio=b''
+                    self.combined_noise=b''
 
                     while resp["transcribe"]=="":
 
