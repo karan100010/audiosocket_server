@@ -72,7 +72,7 @@ class AudioStreamer():
             self.master =  self.respdict["data"]["master_rec"]
         except Exception as e:
 
-            self.master = "http://172.16.1.207:8084/130302750R_KOTAKV1063666LAPSE.wav"
+            self.master = "http://172.16.1.207:8084/163832901R_KOTAKV1211001LAPSE.wav"
             self.logger.error("master audio not found {}".format(e))    
         self.master_audio= requests.get(self.master).content
         self.welcome_audio = requests.get(self.welcome).content
