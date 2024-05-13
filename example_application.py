@@ -466,9 +466,11 @@ class AudioStreamer():
                                 self.channel="hi"
                                 self.call_flow=self.call_flow_hi
                                 self.intent="yes_intent"
+                                self.logger.info("changing channel to hindi")
                             else:
                                 self.channel="en"
                                 self.call_flow=self.call_flow_en
+                                self.logger.info("changing channel to english")
                             
                         self.retries=0
                     
