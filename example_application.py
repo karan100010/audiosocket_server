@@ -302,9 +302,12 @@ class AudioStreamer():
                         self.send_audio(self.welcome_audio)
                     #handeling level 1
                     elif self.level==1 and self.intent=="yes_intent" and self.flow_num==0:
-
-                        self.send_audio(self.master_audio)
-                        self.logger.info("sending master audio")
+                        if self.channel=="hi":
+                            self.send_audio(self.master_audio)
+                            self.logger.info("sending master audio")
+                        else:
+                            self.send_audio(requests.get("http://172.16.1.207:8085/main_audio_en.wav").content)
+                            self.logger.info("sending other audios")
 
                     else:
                         
