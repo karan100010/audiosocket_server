@@ -462,7 +462,7 @@ class AudioStreamer():
                         if self.retries>=3:
                             self.intent="other_intent"
                         if self.level==1 :
-                            if not self.is_english:
+                            if not self.is_english(resp["transcribe"]):
                                 self.channel="hi"
                                 self.call_flow=self.call_flow_hi
                                 self.intent="yes_intent"
