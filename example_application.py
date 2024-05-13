@@ -465,6 +465,7 @@ class AudioStreamer():
                             if not self.is_english:
                                 self.channel="hi"
                                 self.call_flow=self.call_flow_hi
+                                self.intent="yes_intent"
                             else:
                                 self.channel="en"
                                 self.call_flow=self.call_flow_en
