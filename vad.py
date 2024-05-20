@@ -40,7 +40,7 @@ def vad(audio_chunk, sample_rate):
    return val
 
 def is_speech(audio_chunk, sample_rate):
-    return vad(audio_chunk, sample_rate) > 0.90
+    return vad(audio_chunk, sample_rate) > 0.80
 
 def is_speech1(audio_chunk, sample_rate):
     return vad(audio_chunk, sample_rate) > 0.80
