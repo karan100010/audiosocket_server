@@ -461,18 +461,18 @@ class AudioStreamer():
                         self.intent=resp["nlp"]["intent"]
                         if self.retries>=3:
                             self.intent="other_intent"
-                        if self.level==1 :
-                            if not self.is_english(resp["transcribe"]):
-                                self.channel="hi"
-                                self.call_flow=self.call_flow_hi
-                                self.intent="yes_intent"
-                                self.logger.error("changing channel to hindi")
-                            else:
-                                self.channel="en"
-                                self.call_flow=self.call_flow_en
-                                self.logger.error("changing channel to english")
+                        # if self.level==1 :
+                        #     # if not self.is_english(resp["transcribe"]):
+                        #     #     self.channel="hi"
+                        #     #     self.call_flow=self.call_flow_hi
+                        #     #     self.intent="yes_intent"
+                        #     #     self.logger.error("changing channel to hindi")
+                        #     # else:
+                        #     #     self.channel="en"
+                        #     #     self.call_flow=self.call_flow_en
+                        #     #     self.logger.error("changing channel to english")
                             
-                        self.retries=0
+                        # self.retries=0
                     
                         
 
