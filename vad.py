@@ -42,4 +42,7 @@ def vad(audio_chunk, sample_rate):
 def is_speech(audio_chunk, sample_rate):
     return vad(audio_chunk, sample_rate) > 0.85
 
+def is_speech1(audio_chunk, sample_rate):
+    return vad(audio_chunk, sample_rate) > 0.85
+
 
