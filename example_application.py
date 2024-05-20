@@ -280,7 +280,7 @@ class AudioStreamer():
                 self.logger.error("welcome audio not found {}".format(e)) 
             self.audioplayback=True        
             while not self.startcall:
-            #    self.logger.info("waiting for call to start")
+                self.logger.info("waiting for call to start")
                 sleep(.1)
             self.audioplayback=False
             self.logger.info("call started")
