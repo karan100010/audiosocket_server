@@ -115,6 +115,8 @@ class AudioStreamer():
         return
 
     def detect_noise(self, indata, frames, rate):
+        if self.noise_frames_count>1:
+                self.startcall=True
 
         try:
             #samples = np.frombuffer(indata, dtype=np.int16)
@@ -125,8 +127,7 @@ class AudioStreamer():
                 self.long_noise+=1
             else:
                 self.long_noise=0
-            if self.noise_frames_count>1:
-                self.startcall=True
+        
             return
         except Exception as e:
             self.logger.info("error occered while trying to dedect silence {}".format(e))
