@@ -174,7 +174,7 @@ class AudioStreamer():
 
     def dedect_silence(self, indata, frames, rate):
        # samples = np.frombuffer(indata, dtype=np.int16)
-        is_noise = is_speech(indata, rate)
+        is_noise = is_speech1(indata, rate)
         #print(is_noise)
         if not is_noise:
            # self.logger.debug("Noise detected in frames {0}".format(self.noise_frames_count))
