@@ -270,10 +270,7 @@ class AudioStreamer():
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             self.logger.info(self.uuid)
             self.num_connected += 1
-            def x():
-                update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
-                return
-            threading.Thread(x).start()
+            update_data={"addr":"172.16.1.209"+":"+str(self.audiosocket.port),"update":{"conn":self.num_connected}}
             update_data=json.dumps(update_data)
             requests.put(self.call_api+"/update",update_data,headers=self.headers)  
             try:
