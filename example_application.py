@@ -57,7 +57,7 @@ class AudioStreamer():
         self.call_id = str(uuid.uuid4())
         self.long_silence = 0
         self.intent = "welcome"
-        self.call_api = "http://localhost:5011/api/connections"
+        self.call_api = "http://127.0.0.1:5011/api/connections"
         self.call_link="http://172.16.1.213:3022/call-records/{}".format(self.uuid)
         respdict = requests.get(self.call_link
             ).text
