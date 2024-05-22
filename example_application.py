@@ -242,6 +242,8 @@ class AudioStreamer():
             return False
 
     def db_entry(self, resp, mapping):
+        resp['nlp']["gender"]="unknown"
+
         database_entry = {"audio": self.combined_audio,
                           "text": resp['transcribe'],
                           "nlp": resp['nlp'],
