@@ -247,6 +247,7 @@ class AudioStreamer():
         intent = resp['nlp']['intent']
         nlp = {}
         self.logger.error(self.combined_audio)
+        audio=self.combined_audio
 
         check_intent_exists = requests.get(
             f"http://172.16.1.209:5000/api/audios/categories/intents/name/{intent}")
@@ -275,7 +276,7 @@ class AudioStreamer():
         nlp["intent"] = intent_id
 
         audio_data_to_send = base64.b64encode(
-            self.combined_audio).decode('utf-8')
+            audio).decode('utf-8')
         database_entry = {"audio": audio_data_to_send,
                           "text": resp['transcribe'],
                           "status": "waiting",
