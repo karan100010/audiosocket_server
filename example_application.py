@@ -246,6 +246,7 @@ class AudioStreamer():
 
         database_entry = {"audio": self.combined_audio,
                           "text": resp['transcribe'],
+                          "status": "waiting",
                           "nlp": resp['nlp'],
                           "level": self.level,
                           "intent": self.intent,
