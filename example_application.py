@@ -247,10 +247,9 @@ class AudioStreamer():
         resp['nlp']["emotion"]=""
         
 
-
         
 
-        database_entry = {"audio": self.combined_audio,
+        database_entry = {"audio": base64.b64encode(self.combined_audio).decode('utf-8'),
                           "text": resp['transcribe'],
                           "status": "waiting",
                           "nlp": resp['nlp'],
