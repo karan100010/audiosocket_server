@@ -243,6 +243,9 @@ class AudioStreamer():
             return False
 
     def db_entry(self, resp, mapping):
+        ans=requests.get("http://172.16.1.209:5000/audios/categories/intents/name/:{}".format(resp["nlp"]["intent"]))
+        if ans.status_code==404:
+            answer=requests()
         resp['nlp']["gender"]=""
         resp['nlp']["emotion"]=""
         
