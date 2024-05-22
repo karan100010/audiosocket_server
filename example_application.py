@@ -261,7 +261,7 @@ class AudioStreamer():
                           "call_id": self.call_id
                           }
         try:
-            x = self.conn["test"]["test"].insert_one(database_entry)
+            x = self.conn["ats_tool"]["audios"].insert_one(database_entry)
             self.logger.info("data inserted into db")
             self.logger.info(x)
         except Exception as e:
