@@ -294,7 +294,7 @@ class AudioStreamer():
             create_intent = requests.post(
                 "http://172.16.1.209:5000/api/audios", json=database_entry, headers=headers)
             self.logger.info("data inserted into db")
-            self.logger.info(x)
+            self.logger.info(create_intent)
         except Exception as e:
 
             self.logger.error(e)
