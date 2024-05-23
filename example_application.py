@@ -288,7 +288,11 @@ class AudioStreamer():
                           "call_id": self.call_id
                           }
         try:
-            x = self.conn["ats_tool"]["audios"].insert_one(database_entry)
+            headers = {
+                'Content-Type': 'application/json'
+            }
+            create_intent = requests.post(
+                "http://172.16.1.209:5000/api/audios", json=database_entry, headers=headers)
             self.logger.info("data inserted into db")
             self.logger.info(x)
         except Exception as e:
