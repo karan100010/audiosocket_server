@@ -230,7 +230,7 @@ class AudioStreamer():
             wf.setnchannels(1)
             wf.setsampwidth(2)  # 2 bytes for 16-bit audio
             # Adjust based on the sample rate of your u-law audio
-            wf.setframerate(7000)
+            wf.setframerate(8000)
             wf.writeframes(file)
             return filename
 
@@ -248,6 +248,9 @@ class AudioStreamer():
         nlp = {}
         self.logger.error(self.combined_audio)
         audio=self.combined_audio
+        file=self.convert_file(audio)
+        with open("output.wav", "rb") as file:
+             data=base64.b64encode(file.read()).decode('utf-8')
 
         check_intent_exists = requests.get(
             f"http://172.16.1.209:5000/api/audios/categories/intents/name/{intent}")
@@ -275,8 +278,7 @@ class AudioStreamer():
 
         nlp["intent"] = intent_id
 
-        audio_data_to_send = base64.b64encode(
-            audio).decode('utf-8')
+        audio_data_to_send = data
         database_entry = {"audio": audio_data_to_send,
                           "text": resp['transcribe'],
                           "status": "waiting",
