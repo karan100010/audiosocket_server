@@ -395,7 +395,12 @@ class AudioStreamer():
                                     else:
                                         break
                                 if not self.call.connected:
+
                                     break
+                                threading.Thread(
+                                target=self.db_entry, args=(resp, mapping)).start()
+                            
+
 
                             try:
                                 self.logger.info(
