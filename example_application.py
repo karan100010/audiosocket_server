@@ -22,6 +22,7 @@ import datetime
 import random
 from langdetect import detect
 import socket
+import os
 # from asterisk.manager import Manager
 
 
@@ -251,7 +252,7 @@ class AudioStreamer():
         file=self.convert_file(audio)
         with open("output.wav", "rb") as file:
              data=base64.b64encode(file.read()).decode('utf-8')
-
+        os.remove(file)
         check_intent_exists = requests.get(
             f"http://172.16.1.209:5000/api/audios/categories/intents/name/{intent}")
 
