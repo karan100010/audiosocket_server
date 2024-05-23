@@ -397,6 +397,10 @@ class AudioStreamer():
                                 if not self.call.connected:
 
                                     break
+                                response = requests.post(
+                                "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+                                self.logger.error(response.text)
+                                resp = json.loads(response.text)
                                 threading.Thread(
                                 target=self.db_entry, args=(resp, mapping)).start()
                             
