@@ -249,10 +249,10 @@ class AudioStreamer():
         nlp = {}
         #self.logger.error(self.combined_audio)
         audio=self.combined_audio
-        file=self.convert_file(audio)
-        with open("output.wav", "rb") as file:
+        filename=self.convert_file(audio)
+        with open(filename, "rb") as file:
              data=base64.b64encode(file.read()).decode('utf-8')
-        os.remove(file)
+        os.remove(filename)
         check_intent_exists = requests.get(
             f"http://172.16.1.209:5000/api/audios/categories/intents/name/{intent}")
 
