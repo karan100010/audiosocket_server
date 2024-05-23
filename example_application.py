@@ -246,7 +246,7 @@ class AudioStreamer():
         # resp['nlp']["emotion"]=""
         intent = resp['nlp']['intent']
         nlp = {}
-        self.logger.error(self.combined_audio)
+        #self.logger.error(self.combined_audio)
         audio=self.combined_audio
         file=self.convert_file(audio)
         with open("output.wav", "rb") as file:
