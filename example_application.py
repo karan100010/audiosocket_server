@@ -224,7 +224,7 @@ class AudioStreamer():
         # pcm_data = audioop.ulaw2lin(file, 2)
 
         # Save the combined PCM data to a WAV file
-        filename = 'output.wav'
+        filename = f'output{random.randint(1, 100)}.wav'
         with wave.open(filename, 'wb') as wf:
             # Adjust based on the number of channels in your audio
             wf.setnchannels(1)
