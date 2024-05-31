@@ -326,9 +326,12 @@ class AudioStreamer():
                 self.welcome = "http://172.16.1.207:8084/hello.wav"
                 self.logger.error("welcome audio not found {}".format(e))
             self.audioplayback = True
+            counter=0
             while not self.startcall:
                 self.logger.info("waiting for call to start")
                 sleep(.1)
+                if counter>30:
+                    break
             self.audioplayback = False
             self.logger.info("call started")
             self.noise_frames_count = 0
