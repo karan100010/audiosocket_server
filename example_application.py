@@ -330,6 +330,7 @@ class AudioStreamer():
             while not self.startcall:
                 self.logger.info("waiting for call to start")
                 sleep(.1)
+                counter+=1
                 if counter>30:
                     break
             self.audioplayback = False
