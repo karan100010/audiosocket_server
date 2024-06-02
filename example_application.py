@@ -27,17 +27,13 @@ import os
 
 
 class AudioStreamer():
-    def __init__(self, socket):
+    def __init__(self, call):
         self.logger = ColouredLogger("audio sharing")
         self.channels = 1
         self.flow_num = 0
         self.sample_rate = 8000
-        self.vad = webrtcvad.Vad()
-        self.vad.set_mode(3)
-        self.noise_frames_threshold = int(2 * self.sample_rate / 512)
         self.noise_frames_count = 0
-        self.audiosocket = socket
-        self.call = socket.listen()
+        self.call = call
         self.long_noise = 0
         self.noise = False
         self.startcall = False
@@ -55,7 +51,6 @@ class AudioStreamer():
         self.combined_audio = b''
         self.channel = "en"
         self.long_silence = 0
-        self.last_level = 0
         self.call_id = str(uuid.uuid4())
         self.long_silence = 0
         self.intent = "welcome"
@@ -80,7 +75,7 @@ class AudioStreamer():
         self.master_audio = requests.get(self.master).content
         self.welcome_audio = requests.get(self.welcome).content
         data = {"status": "active", "addr": "172.16.1.209"+":" +
-                str(self.audiosocket.port), "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+                "9000", "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         json_data = json.dumps(data)
         self.headers = {
             'Content-Type': 'application/json',
@@ -194,7 +189,7 @@ class AudioStreamer():
 
         while self.call.connected:
 
-            # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+str(self.audiosocket.port)})
+            # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+"9000"})
             # audio_data = self.call.read()
             combined_byts = self.call.read_for_vad()
             # print(len(combined_byts))
@@ -316,7 +311,7 @@ class AudioStreamer():
             self.logger.info(self.uuid)
             self.num_connected += 1
             update_data = {"addr": "172.16.1.209"+":" +
-                           str(self.audiosocket.port), "update": {"conn": self.num_connected}}
+                           "9000", "update": {"conn": self.num_connected}}
             update_data = json.dumps(update_data)
             requests.put(self.call_api+"/update",
                          update_data, headers=self.headers)
@@ -668,7 +663,7 @@ class AudioStreamer():
             # self.logger.info(response.text)
         self.num_connected -= 1
         update_data = {"addr": "172.16.1.209"+":" +
-                       str(self.audiosocket.port), "update": {"conn": self.num_connected}}
+                       "9000", "update": {"conn": self.num_connected}}
         update_data = json.dumps(update_data)
         requests.put(self.call_api+"/update",
                      update_data, headers=self.headers)
@@ -684,8 +679,8 @@ def handel_call():
 
     while True:
         # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
-        # call = audiosocket.listen()
-        stream = AudioStreamer(audiosocket)
+        call = audiosocket.listen()
+        stream = AudioStreamer(call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
         playback_stream = threading.Thread(
