@@ -672,21 +672,22 @@ class AudioStreamer():
         print('Connection with {0} over'.format(self.call.peer_addr))
 
         return
+if __name__ == '__main__':
 
-@app.task()
-def handel_call():
+    @app.task()
+    def handel_call():
 
-    audiosocket = Audiosocket(("0.0.0.0", 9000))
+        audiosocket = Audiosocket(("0.0.0.0", 9000))
 
-    while True:
-        # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
-        call = audiosocket.listen()
-        stream = AudioStreamer(call)
-        noise_stream = threading.Thread(target=stream.start_noise_detection)
-        noise_stream.start()
-        playback_stream = threading.Thread(
-            target=stream.start_audio_playback, args=(mapping,))
-        playback_stream.start()
+        while True:
+            # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
+            call = audiosocket.listen()
+            stream = AudioStreamer(call)
+            noise_stream = threading.Thread(target=stream.start_noise_detection)
+            noise_stream.start()
+            playback_stream = threading.Thread(
+                target=stream.start_audio_playback, args=(mapping,))
+            playback_stream.start()
 
 
-handel_call()
+    handel_call()
