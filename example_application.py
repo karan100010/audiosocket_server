@@ -7,7 +7,6 @@ from vad import *
 from mylogging import ColouredLogger
 import wave
 import threading
-import sys
 import requests
 from mapping import *
 import math
@@ -16,13 +15,12 @@ import json
 import base64
 import uuid
 import pymongo
-import webrtcvad
 # import telebot
 import datetime
 import random
 from langdetect import detect
-import socket
 import os
+from .celery import app
 # from asterisk.manager import Manager
 
 
@@ -672,7 +670,7 @@ class AudioStreamer():
 
         return
 
-
+@app.task()
 def handel_call():
 
     audiosocket = Audiosocket(("0.0.0.0", 9000))
