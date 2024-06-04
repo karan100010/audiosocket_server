@@ -20,8 +20,11 @@ import datetime
 import random
 from langdetect import detect
 import os
-from celery import app
+from celery import Celery
 # from asterisk.manager import Manager
+app = Celery('proj',
+            broker='redis://172.16.1.209:6379/0', backend='redis://172.16.1.209:6379/0',
+             include=['proj.tasks'])
 
 
 class AudioStreamer():
