@@ -20,7 +20,7 @@ import datetime
 import random
 from langdetect import detect
 import os
-from .celery import app
+from celery_redis import app
 # from asterisk.manager import Manager
 
 
