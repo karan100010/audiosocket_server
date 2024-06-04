@@ -1,7 +1,7 @@
 from celery import Celery
 
 app = Celery('proj',
-            broker='redis://localhost:6379/0', backend='redis://localhost:6379/0',
+            broker='redis://172.16.1.209:6379/0', backend='redis://172.16.1.209:6379/0',
              include=['proj.tasks'])
 
 # Optional configuration, see the application user guide.
