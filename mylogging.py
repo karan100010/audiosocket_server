@@ -1,6 +1,7 @@
 import logging
 import os
 from termcolor import colored
+from time import datetime
 
 class ColouredLogger(logging.Logger):
     def __init__(self, name):
@@ -11,7 +12,8 @@ class ColouredLogger(logging.Logger):
         self.ch = logging.StreamHandler()
         self.ch.setLevel(logging.DEBUG)
         self.ch.setFormatter(self.formatter)
-        self.fh = logging.FileHandler('audiosocket.log')
+        now = datetime.now().strftime("%Y%m%d%H%M%S")
+        self.fh = logging.FileHandler(f'audiosocket_{now}.log')
         self.fh.setLevel(logging.DEBUG)
         self.fh.setFormatter(self.formatter)
         self.addHandler(self.ch)
