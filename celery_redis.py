@@ -1,4 +1,4 @@
-from celery_redis import Celery
+from celery import Celery
 
 app = Celery('proj',
             broker='redis://172.16.1.209:6379/0', backend='redis://172.16.1.209:6379/0',
