@@ -405,8 +405,12 @@ class AudioStreamer():
                                 "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
                                 self.logger.error(response.text)
                                 resp = json.loads(response.text)
-                                threading.Thread(
-                                target=self.db_entry, args=(resp, mapping)).start()
+                                try:
+
+                                    threading.Thread(
+                                    target=self.db_entry, args=(resp, mapping)).start()
+                                except Exception as e:
+                                    self.logger.info("not able to insert data because {}".format(e))
                             
 
 
@@ -499,8 +503,12 @@ class AudioStreamer():
                             # self.logger.info("audio file converted {}".format(m))
                             resp = json.loads(response.text)
 
-                            threading.Thread(
+                            try:
+
+                                threading.Thread(
                                 target=self.db_entry, args=(resp, mapping)).start()
+                            except Exception as e:
+                                self.logger.info("not able to insert data because {}".format(e))
 
                         while resp["transcribe"] == "":
 
