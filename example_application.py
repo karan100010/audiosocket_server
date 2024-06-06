@@ -276,8 +276,13 @@ class AudioStreamer():
             if create_intent.status_code == 200:
                 intent_id = create_intent.json()
                 intent_id = intent_id["data"]["_id"]
+        try:        
 
-        nlp["intent"] = intent_id
+             nlp["intent"] = intent_id
+        except Exception as e:
+            self.logger.info("error orrcerd while assiging intent")
+            nlp["intent"] ="unknown"
+            
 
         audio_data_to_send = data
         database_entry = {"audio": audio_data_to_send,
