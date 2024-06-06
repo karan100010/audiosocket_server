@@ -691,32 +691,35 @@ class AudioStreamer():
         print('Connection with {0} over'.format(self.call.peer_addr))
 
         return
-if __name__ == '__main__':
-    import logging
-    logger = logging.getLogger(__name__)
-    @app.task
-    
-    def start_call_fn(audiosocket):
-            call = audiosocket.listen()
-            stream = AudioStreamer(call)
-            noise_stream = threading.Thread(target=stream.start_noise_detection)
-            noise_stream.start()
-            playback_stream = threading.Thread(
-                target=stream.start_audio_playback, args=(mapping,))
-            playback_stream.start()
-            logger.info("added to que")
+
+import logging
+logger = logging.getLogger(__name__)
+@app.task
+
+def start_call_fn(audiosocket):
+        call = audiosocket.listen()
+        stream = AudioStreamer(call)
+        noise_stream = threading.Thread(target=stream.start_noise_detection)
+        noise_stream.start()
+        playback_stream = threading.Thread(
+            target=stream.start_audio_playback, args=(mapping,))
+        playback_stream.start()
+        logger.info("added to que")
 
 
-    def handel_call():
+async def handel_call():
 
-        audiosocket = Audiosocket(("0.0.0.0", 9000))
-        call_list=[]
-        # while True:
-        #     with ThreadPoolExecutor(max_workers=5) as executor:
-        #             call_list.append(executor.submit(start_call_fn,audiosocket))
-        start_call_fn.delay(audiosocket)
+    audiosocket = Audiosocket(("0.0.0.0", 9000))
+    call_list=[]
+    loop = asyncio.get_event_loop()
+    # while True:
+    with ThreadPoolExecutor(max_workers=5) as executor:
+                call_list.append(loop.run_in_executor(executor,start_call_fn,audiosocket))
+                
+async def main():
+    await handel_call()
 
            
 
-
-    handel_call()
+if __name__ == '__main__':
+    main()
