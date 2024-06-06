@@ -241,7 +241,10 @@ class AudioStreamer():
     def db_entry(self, resp, mapping):
         # resp['nlp']["gender"]=""
         # resp['nlp']["emotion"]=""
-        intent = resp['nlp']['intent']
+        try:
+            intent = resp['nlp']['intent']
+        except:
+            intent="unknown"
         nlp = {}
         #self.logger.error(self.combined_audio)
         audio=self.combined_audio
@@ -481,9 +484,13 @@ class AudioStreamer():
                             # m= self.convert_file(self.combined_audio)
                             # self.logger.info("audio file converted {}".format(m))
                             resp = json.loads(response.text)
+                            try:
 
-                            threading.Thread(
+                                threading.Thread(
                                 target=self.db_entry, args=(resp, mapping)).start()
+                            except Exception as e:
+                                self.logger.info("not able to insert data because {}".format(e))
+
                         else:
                             response = requests.post(
                                 "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_noise)
