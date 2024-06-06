@@ -688,14 +688,7 @@ class AudioStreamer():
 
         return
 if __name__ == '__main__':
-
-    @app.task()
-    def handel_call():
-
-        audiosocket = Audiosocket(("0.0.0.0", 9000))
-
-        while True:
-            # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
+    def start_call_fn(audiosocket):
             call = audiosocket.listen()
             stream = AudioStreamer(call)
             noise_stream = threading.Thread(target=stream.start_noise_detection)
@@ -704,5 +697,15 @@ if __name__ == '__main__':
                 target=stream.start_audio_playback, args=(mapping,))
             playback_stream.start()
 
+
+    @app.task()
+    def handel_call():
+
+        audiosocket = Audiosocket(("0.0.0.0", 9000))
+
+        while True:
+            start_call_fn(audiosocket)
+            # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
+           
 
     handel_call()
