@@ -15,5 +15,7 @@ app.conf.update(
 task_send_sent_event = True  # Enable sending task-sent events
 )
 
+if __name__ == '__main__':
+    app.start()
 
 
