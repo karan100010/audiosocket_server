@@ -25,7 +25,7 @@ from celery import Celery
 from concurrent.futures import ThreadPoolExecutor, as_completed
 app = Celery('audiosocket_server',
             broker='redis://172.16.1.209:6379/0', backend='redis://172.16.1.209:6379/0',
-             include=['proj.tasks'])
+             include=['audiosocket_server.tasks'])
 
 
 class AudioStreamer():
