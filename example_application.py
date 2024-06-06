@@ -24,6 +24,7 @@ from celery_app import app
 # from asterisk.manager import Manager
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import asyncio
+import tracemalloc 
 
 
 class AudioStreamer():
@@ -722,4 +723,5 @@ async def main():
            
 
 if __name__ == '__main__':
+    tracemalloc.start()
     main()
