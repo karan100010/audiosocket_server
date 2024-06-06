@@ -691,7 +691,7 @@ class AudioStreamer():
 
         return
 if __name__ == '__main__':
-    @app.task()
+    @app.task
     def start_call_fn(audiosocket):
             call = audiosocket.listen()
             stream = AudioStreamer(call)
