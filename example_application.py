@@ -22,6 +22,7 @@ from langdetect import detect
 import os
 from celery import Celery
 # from asterisk.manager import Manager
+from concurrent.futures import ThreadPoolExecutor, as_completed
 app = Celery('proj',
             broker='redis://172.16.1.209:6379/0', backend='redis://172.16.1.209:6379/0',
              include=['proj.tasks'])
@@ -688,6 +689,7 @@ class AudioStreamer():
 
         return
 if __name__ == '__main__':
+    @app.task()
     def start_call_fn(audiosocket):
             call = audiosocket.listen()
             stream = AudioStreamer(call)
@@ -698,13 +700,13 @@ if __name__ == '__main__':
             playback_stream.start()
 
 
-    @app.task()
     def handel_call():
 
         audiosocket = Audiosocket(("0.0.0.0", 9000))
-
+        call_list=[]
         while True:
-            start_call_fn(audiosocket)
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                call_list.append(executor.submit(start_call_fn,audiosocket))
             # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
            
 
