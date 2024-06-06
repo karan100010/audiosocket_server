@@ -1,7 +1,7 @@
 import logging
 import os
 from termcolor import colored
-import datetime
+from datetime import datetime
 import time
 
 class ColouredLogger(logging.Logger):
