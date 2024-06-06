@@ -724,4 +724,4 @@ async def main():
 
 if __name__ == '__main__':
     tracemalloc.start()
-    main()
+    asyncio.run(main())
