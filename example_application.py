@@ -20,12 +20,9 @@ import datetime
 import random
 from langdetect import detect
 import os
-from celery import Celery
+from celery_app import app
 # from asterisk.manager import Manager
 from concurrent.futures import ThreadPoolExecutor, as_completed
-app = Celery('audiosocket_server',
-            broker='redis://172.16.1.209:6379/0', backend='redis://172.16.1.209:6379/0',
-             include=['audiosocket_server.tasks'])
 
 
 class AudioStreamer():

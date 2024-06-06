@@ -14,6 +14,4 @@ app.conf.update(
 )
 
 # Define a sample task
-@app.task
-def add(x, y):
-    return x + y
+
