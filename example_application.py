@@ -691,7 +691,10 @@ class AudioStreamer():
 
         return
 if __name__ == '__main__':
+    import logging
+    logger = logging.getLogger(__name__)
     @app.task
+    
     def start_call_fn(audiosocket):
             call = audiosocket.listen()
             stream = AudioStreamer(call)
@@ -700,6 +703,7 @@ if __name__ == '__main__':
             playback_stream = threading.Thread(
                 target=stream.start_audio_playback, args=(mapping,))
             playback_stream.start()
+            logger.info("added to que")
 
 
     def handel_call():
