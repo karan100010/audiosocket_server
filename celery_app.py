@@ -11,6 +11,8 @@ app.conf.update(
     result_serializer='json',
     timezone='UTC',
     enable_utc=True,
+    worker_send_task_events = True,  # Enable task events
+task_send_sent_event = True  # Enable sending task-sent events
 )
 
 
