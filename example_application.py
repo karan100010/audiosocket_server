@@ -714,8 +714,8 @@ if __name__ == '__main__':
             # with ThreadPoolExecutor(max_workers=5) as executor:
             #     call_list.append(executor.submit(start_call_fn,audiosocket))
             # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
-            x=start_call_fn.delay(audiosocket=audiosocket)
-            x.get(timeout=1)
+            x=start_call_fn.apply_async((audiosocket), queue='lopri', countdown=10)
+           
 
 
     handel_call()
