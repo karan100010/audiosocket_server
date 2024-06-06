@@ -43,4 +43,4 @@ def start_threads(num_threads):
 
 
 if __name__ == '__main__':
-    start_threads(10)
+    start_threads(100)
