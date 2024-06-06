@@ -712,7 +712,7 @@ if __name__ == '__main__':
         call_list=[]
         while True:
             with ThreadPoolExecutor(max_workers=5) as executor:
-                call_list.append(executor.submit(start_call_fn,audiosocket))
+                call_list.append(executor.submit(start_call_fn.delay,audiosocket))
             # audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
            
 
