@@ -15,7 +15,7 @@ class ColouredLogger(logging.Logger):
         self.ch.setLevel(logging.DEBUG)
         self.ch.setFormatter(self.formatter)
         ist = pytz.timezone('Asia/Kolkata')
-        now = datetime.now(ist).strftime("%Y%m-%d%H-%M%S")
+        now = datetime.now(ist).strftime("%Y-%m-%d-%H-%M-%S")
         self.fh = logging.FileHandler(f'audiosocket_{now}.log')
         self.fh.setLevel(logging.DEBUG)
         self.fh.setFormatter(self.formatter)
