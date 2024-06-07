@@ -68,7 +68,7 @@ class Audiosocket:
             ulaw2lin=ulaw2lin,
             ratecv_state=None,
         )
-    @app.task
+        
     def listen(self):
         print('Listening on', self.addr, self.port)
         conn, peer_addr = self.initial_sock.accept()
