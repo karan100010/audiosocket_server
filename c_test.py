@@ -2,7 +2,7 @@
 
 from celery_app import app
 
-@app.task
+@app.add
 def add(x, y):
     return x + y
 
