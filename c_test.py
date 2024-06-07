@@ -2,7 +2,7 @@
 
 from celery_app import app
 
-@app.add
+@app.task
 def add(x, y):
     return x + y
 
@@ -10,7 +10,7 @@ def add(x, y):
 def multiply(x, y):
     return x * y
 
-@app.task
+@app.task(name='my_task')
 def sum_list(numbers):
     return sum(numbers)
 if __name__ == '__main__':
