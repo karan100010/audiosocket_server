@@ -69,6 +69,7 @@ class Audiosocket:
             ulaw2lin=ulaw2lin,
             ratecv_state=None,
         )
+    @staticmethod
     @app.task
     def listen(self):
         print('Listening on', self.addr, self.port)
