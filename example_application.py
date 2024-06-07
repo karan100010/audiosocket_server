@@ -698,7 +698,7 @@ logger = logging.getLogger(__name__)
 @app.task
 
 def start_call_fn(audiosocket):
-        call = audiosocket.listen()
+        call = audiosocket.listen.delay()
         stream = AudioStreamer(call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
