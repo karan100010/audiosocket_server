@@ -2,9 +2,7 @@ from celery import Celery
 
 # Configure the Celery application
 app = Celery('audiosocket_server',
-             broker='redis://localhost:6379/0',
-         
-             include=['audiosocket_server.tasks'])
+             broker='redis://localhost:6379/0')
 
 
 # Optional configuration
