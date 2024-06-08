@@ -591,7 +591,7 @@ def start_call_fn(audiosocket):
                 call = audiosocket.listen()
             except Exception as e:
                 print(e)
-                return
+                
             
         stream = AudioStreamer(call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
@@ -599,6 +599,7 @@ def start_call_fn(audiosocket):
         playback_stream = threading.Thread(
             target=stream.start_audio_playback, args=(mapping,))
         playback_stream.start()
+        return
 
 
 async def handel_call():
