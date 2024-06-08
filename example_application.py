@@ -716,7 +716,7 @@ async def handel_call():
     while True:
         with ThreadPoolExecutor(max_workers=7) as executor:
              #       call_list.append(loop.run_in_executor(executor,start_call_fn,audiosocket))
-             executor.submit(start_call_fn,audiosocket)
+            await asyncio.to_thread(executor.submit, start_call_fn, audiosocket)
                     
 async def main():
     await handel_call()
