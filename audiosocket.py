@@ -79,6 +79,7 @@ class Audiosocket:
             self.asterisk_resample,
         )
         
+        
         connection_thread = Thread(target=connection._process, args=())
         connection_thread.start()
         sleep(.1)

@@ -2,7 +2,6 @@
 # Standard Python modules
 from time import sleep
 from audiosocket import *
-import numpy as np
 from vad import *
 from mylogging import ColouredLogger
 import wave
@@ -41,6 +40,7 @@ class AudioStreamer():
         self.combined_byts = b''
         self.retries = 0
         self.combined_noise = b''
+        self.lock=threading.Lock()
         # self.uudi=self.audiosocket.uudi
         self.uuid = str(self.call.uuid)
         self.num_connected = 0
@@ -83,7 +83,6 @@ class AudioStreamer():
             'Accept': 'application/json'}
         req = requests.post(self.call_api, data=json_data,
                             headers=self.headers)
-        print(req.text)
 
         self.lang_change = False
         with open("db.txt") as f:
@@ -572,116 +571,6 @@ class AudioStreamer():
                     self.long_silence = 0
                     self.silent_frames_count = 0
 
-                    # if resp["transcribe"]=="":
-                    #     self.level="cant_hear"
-            # if self.level==0 and self.intent=="welcome" and self.channel=="en":
-            #     if resp["transcribe"]:
-            #         try:
-            #             if  detect(resp["transcribe"]) != "en":
-
-            #                 self.lang_change=True
-            #         except Exception as e:
-            #             self.logger.error("error occred while trying to change language {}".format(e))
-
-            # if self.lang_change:
-            #     self.channel="hi"
-            #     self.logger.info("changing channel to hindi")
-            #     self.lang_change=False
-
-                    # if self.level==1:
-                    #   self.level=2
-
-                    # elif self.level==2:
-                    #   while self.silent_frames_count<100:
-                    #         print("waiting")
-                    #         sleep(.01)
-                    # response=requests.post("http://65.2.252.189:5000/predict",data=self.combined_audio)
-                    #   resp=json.loads(response.text)
-                    #   print(resp)
-                    #   self.level=resp["prediction"][0]
-
-                    # elif self.level=="hi" or self.level== "en":
-                    #   self.call.hangup()
-
-                    # if self.level==11:
-                    #   sleep(1)
-                    #   x=self.read_wave_file(mapping[self.channel][self.level])
-                    #   self.send_audio(x)
-                    #   self.logger.info("playing interuption message")
-
-                    # self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
-                    # if self.level==8:
-                    #   self.call.hangup()
-                    #   self.audioplayback=False
-                    #   sleep(1)
-                    # if self.level!=9:
-                    #   while self.silent_frames_count<100:
-                    #     sleep(.01)
-                    #   self.logger.info("waiting for silence")
-                    #   self.silent_frames_count=0
-                    #   self.data_array=[]
-
-                    #   try:
-                    #     response=requests.post("http://3.109.252.180:5002/convert_en",data=self.combined_audio)
-                    #     resp=json.loads(response.text)
-                    #   except Exception as e:
-                    #     self.logger.info(e)
-                    #     resp={"transcribe":"error","nlp":"error"}
-                    #   if resp['transcribe']!="error":
-                    #     print(resp)
-
-                    #     try:
-
-                    #
-                    #     except Exception as e:
-                    #       self.logger.info(e)
-
-                    #   self.combined_audio=b''
-
-                    #   if self.level!=11:
-                    #     self.last_level=self.level
-                    #     self.level=9
-                    #   else:
-                    #     self.level=self.last_level
-                    # else:
-                    #   self.level=self.last_level+1
-
-            # if self.level==11:
-            #   self.level=self.noise_level
-            #   x=self.read_wave_file(mapping[self.channel][self.level])
-            #   self.send_audio(x)
-            # else:
-            #   self.level+=1
-
-            #   while noise - self.noise_level < 10:
-            #     x=self.read_wave_file(mapping[self.channel][self.level])
-            #     self.send_audio(x)
-            #     self.logger.info("audio length is "+str(self.read_length(mapping[self.channel][self.level])) + " seconds")
-            #     self.silent_frames_count=0
-            #     self.level=10
-            #   else:
-            #     self.level=last_level
-
-                    #  if self.level==11:
-                    #   x=self.read_wave_file(mapping[self.channel][self.level])
-                    #   self.logger.info("Call inturrupted due to noise")
-                    #   self.send_audio(x)
-
-                    #   while self.silent_frames_count<75:
-                    #     sleep(.01)
-                    #   self.level=last_level
-                    #  else:
-                    #   x=self.read_wave_file(mapping[self.channel][self.level])
-                    #   self.logger.info("Call inturrupted due to noise")
-                    #   self.send_audio(x)
-
-                    #   while self.silent_frames_count<75:
-                    #     sleep(.01)
-                    #   self.level=last_level
-
-            # convert data to json
-            # response=requests.post("http://localhost:5005/convert",data=self.combined_audio)
-            # self.logger.info(response.text)
         self.num_connected -= 1
         update_data = {"addr": "172.16.1.209"+":" +
                        "9000", "update": {"conn": self.num_connected}}
@@ -693,19 +582,23 @@ class AudioStreamer():
 
         return
 
-import logging
-logger = logging.getLogger(__name__)
-@app.task
+listen_lock = threading.Lock()
 
 def start_call_fn(audiosocket):
-        call = audiosocket.listen()
+        with listen_lock:
+            try:
+            
+                call = audiosocket.listen()
+            except Exception as e:
+                print(e)
+                return
+            
         stream = AudioStreamer(call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
         playback_stream = threading.Thread(
             target=stream.start_audio_playback, args=(mapping,))
         playback_stream.start()
-        logger.info("added to que")
 
 
 async def handel_call():
