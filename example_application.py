@@ -578,7 +578,7 @@ class AudioStreamer():
         requests.put(self.call_api+"/update",
                      update_data, headers=self.headers)
 
-        print('Connection with {0} over'.format(self.call.peer_addr))
+        self.logger.info('Connection with {0} over'.format(self.call.peer_addr))
 
         return
 
