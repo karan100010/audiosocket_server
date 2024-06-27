@@ -42,6 +42,7 @@ class AudioStreamer():
         self.combined_noise = b''
         self.lock=threading.Lock()
         # self.uudi=self.audiosocket.uudi
+        self.audio_link=""
         self.uuid = str(self.call.uuid)
         self.num_connected = 0
         self.w = 0
@@ -66,6 +67,7 @@ class AudioStreamer():
         except Exception as e:
             self.welcome = "http://172.16.1.207:8084/karan.wav"
             self.logger.error("welcome audio not found {}".format(e))
+        self.audio_link=self.welcome
 
         try:
             self.master = self.respdict["data"]["master_rec"]
@@ -237,76 +239,110 @@ class AudioStreamer():
         except:
             return False
 
-    def db_entry(self, resp, mapping):
+    def db_entry(self, resp, auth,type):
         # resp['nlp']["gender"]=""
         # resp['nlp']["emotion"]=""
         try:
             intent = resp['nlp']['intent']
         except:
             intent="unknown"
-        nlp = {}
-        #self.logger.error(self.combined_audio)
-        audio=self.combined_audio
-        filename=self.convert_file(audio)
-        with open(filename, "rb") as file:
-             data=base64.b64encode(file.read()).decode('utf-8')
-        os.remove(filename)
-        check_intent_exists = requests.get(
-            f"http://172.16.1.209:5000/api/audios/categories/intents/name/{intent}")
+        if resp!={}:
+            nlp = {}
+            #self.logger.error(self.combined_audio)
+            audio=self.combined_audio
+            filename=self.convert_file(audio)
+            with open(filename, "rb") as file:
+                data=base64.b64encode(file.read()).decode('utf-8')
+            os.remove(filename)
+            check_intent_exists = requests.get(
+                f"http://172.16.1.209:5000/api/audios/categories/intents/name/{intent}")
 
-        if check_intent_exists.status_code == 200:
-            # intent exists
-            check_intent_exists = check_intent_exists.json()
-            intent_id = check_intent_exists["intent"]["_id"]
+            if check_intent_exists.status_code == 200:
+                # intent exists
+                check_intent_exists = check_intent_exists.json()
+                intent_id = check_intent_exists["intent"]["_id"]
 
+            else:
+                # create new intent
+                intent_data = {
+                    "name": intent,
+                    "value": intent
+                }
+
+                headers = {
+                    'Content-Type': 'application/json'
+                }
+                create_intent = requests.post(
+                    "http://172.16.1.209:5000/api/audios/categories/intents", json=intent_data, headers=headers)
+                if create_intent.status_code == 200:
+                    intent_id = create_intent.json()
+                    intent_id = intent_id["data"]["_id"]
+            try:        
+
+                nlp["intent"] = intent_id
+            except Exception as e:
+                self.logger.info("error orrcerd while assiging intent")
+                nlp["intent"] ="unknown"
+                
+
+            audio_data_to_send = data
+            database_entry = {"audio": audio_data_to_send,
+                            "text": resp['transcribe'],
+                            "status": "waiting",
+                            "nlp": nlp,
+                            "level": self.level,
+                            "intent": self.intent,
+                            "lang": self.channel,
+                            "interuption": self.noise,
+                            "call_id": self.call_id,
+                            "auther":auth,
+                            "type":type
+
+                            }
+            try:
+                headers = {
+                    'Content-Type': 'application/json'
+                }
+                create_intent = requests.post(
+                    "http://172.16.1.209:5000/api/audios", json=database_entry, headers=headers)
+                self.logger.info("data inserted into db")
+                self.logger.info(create_intent)
+            except Exception as e:
+
+                self.logger.error(e)
+
+            self.combined_audio = b''
+            self.combined_noise = b''
         else:
-            # create new intent
-            intent_data = {
-                "name": intent,
-                "value": intent
-            }
+            database_entry = {"audio": self.audio_link,
+                            "text": "",
+                            "status": "",
+                            "nlp": "",
+                            "level": self.level,
+                            "intent": self.intent,
+                            "lang": self.channel,
+                            "interuption": self.noise,
+                            "call_id": self.call_id,
+                            "auther":auth,
+                            "type":type
 
-            headers = {
-                'Content-Type': 'application/json'
-            }
-            create_intent = requests.post(
-                "http://172.16.1.209:5000/api/audios/categories/intents", json=intent_data, headers=headers)
-            if create_intent.status_code == 200:
-                intent_id = create_intent.json()
-                intent_id = intent_id["data"]["_id"]
-        try:        
+                            }
+            try:
+                headers = {
+                    'Content-Type': 'application/json'
+                }
+                create_intent = requests.post(
+                    "http://172.16.1.209:5000/api/audios", json=database_entry, headers=headers)
+                self.logger.info("data inserted into db")
+                self.logger.info(create_intent)
+            except Exception as e:
 
-             nlp["intent"] = intent_id
-        except Exception as e:
-            self.logger.info("error orrcerd while assiging intent")
-            nlp["intent"] ="unknown"
+                self.logger.error(e)
+
+            self.combined_audio = b''
+            self.combined_noise = b''
             
 
-        audio_data_to_send = data
-        database_entry = {"audio": audio_data_to_send,
-                          "text": resp['transcribe'],
-                          "status": "waiting",
-                          "nlp": nlp,
-                          "level": self.level,
-                          "intent": self.intent,
-                          "lang": self.channel,
-                          "interuption": self.noise,
-                          "call_id": self.call_id
-                          }
-        try:
-            headers = {
-                'Content-Type': 'application/json'
-            }
-            create_intent = requests.post(
-                "http://172.16.1.209:5000/api/audios", json=database_entry, headers=headers)
-            self.logger.info("data inserted into db")
-            self.logger.info(create_intent)
-        except Exception as e:
-
-            self.logger.error(e)
-
-        self.combined_audio = b''
-        self.combined_noise = b''
         return
 
     def start_audio_playback(self, mapping):
@@ -351,11 +387,27 @@ class AudioStreamer():
 
                         if self.level == 0:
                             self.send_audio(self.welcome_audio)
+                            try:
+
+                                    threading.Thread(
+                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                            except Exception as e:
+                                    self.logger.info("not able to insert data because {}".format(e))
+                            
+                            
                         # handeling level 1
                         elif self.level == 1 and self.intent == "yes_intent" and self.flow_num == 0:
                             if self.channel == "hi":
                                 self.send_audio(self.master_audio)
                                 self.logger.info("sending master audio")
+                                self.audio_link=self.master_audio
+                                try:
+
+                                    threading.Thread(
+                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                                except Exception as e:
+                                    self.logger.info("not able to insert data because {}".format(e))
+                            
                             else:
                                 self.send_audio(requests.get(
                                     "http://172.16.1.207:8085/main_audio_en.wav").content)
@@ -374,6 +426,15 @@ class AudioStreamer():
                                     "flow num is {}".format(self.flow_num))
 
                                 self.send_audio(audio.content)
+                                self.audio_link=self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][0]
+
+                                try:
+
+                                    threading.Thread(
+                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                                except Exception as e:
+                                    self.logger.info("not able to insert data because {}".format(e))
+                            
                                 self.logger.info("sending other audios")
                                 if self.intent == "contact_human_agent" or self.intent == "other_intent":
                                     self.logger.error(
@@ -495,7 +556,7 @@ class AudioStreamer():
                             try:
 
                                 threading.Thread(
-                                target=self.db_entry, args=(resp, mapping)).start()
+                                target=self.db_entry, args=(resp, mapping,"called party","recived")).start()
                             except Exception as e:
                                 self.logger.info("not able to insert data because {}".format(e))
 
@@ -519,6 +580,14 @@ class AudioStreamer():
                             x = self.read_wave_file(
                                 mapping["utils"][self.channel][1])
                             self.send_audio(x)
+                            self.audio_link=mapping["utils"][self.channel][1]
+                            try:
+
+                                    threading.Thread(
+                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                            except Exception as e:
+                                    self.logger.info("not able to insert data because {}".format(e))
+                            
                             self.retries += 1
                             self.long_silence = 0
                             while self.long_silence < 25:
