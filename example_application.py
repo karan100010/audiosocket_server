@@ -390,7 +390,7 @@ class AudioStreamer():
                             try:
 
                                     threading.Thread(
-                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                                    target=self.db_entry, args=({}, "bot","sent")).start()
                             except Exception as e:
                                     self.logger.info("not able to insert data because {}".format(e))
                             
@@ -404,7 +404,7 @@ class AudioStreamer():
                                 try:
 
                                     threading.Thread(
-                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                                    target=self.db_entry, args=({}, "bot","sent")).start()
                                 except Exception as e:
                                     self.logger.info("not able to insert data because {}".format(e))
                             
@@ -431,7 +431,7 @@ class AudioStreamer():
                                 try:
 
                                     threading.Thread(
-                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                                    target=self.db_entry, args=({}, "bot","sent")).start()
                                 except Exception as e:
                                     self.logger.info("not able to insert data because {}".format(e))
                             
@@ -556,7 +556,7 @@ class AudioStreamer():
                             try:
 
                                 threading.Thread(
-                                target=self.db_entry, args=(resp, mapping,"called party","recived")).start()
+                                target=self.db_entry, args=(resp, "called party","recived")).start()
                             except Exception as e:
                                 self.logger.info("not able to insert data because {}".format(e))
 
@@ -584,7 +584,7 @@ class AudioStreamer():
                             try:
 
                                     threading.Thread(
-                                    target=self.db_entry, args=({}, mapping,"bot","sent")).start()
+                                    target=self.db_entry, args=({}, "bot","sent")).start()
                             except Exception as e:
                                     self.logger.info("not able to insert data because {}".format(e))
                             
