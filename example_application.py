@@ -199,16 +199,16 @@ class AudioStreamer():
             print(len(combined_byts))
         
 
-            if self.audioplayback:
-                self.combined_noise += combined_byts
-                self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
+        #     if self.audioplayback:
+        #         self.combined_noise += combined_byts
+        #         self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
 
-                self.detect_noise(combined_byts, 1, 8000)
-            else:
-                self.combined_audio += combined_byts
+        #         self.detect_noise(combined_byts, 1, 8000)
+        #     else:
+        #         self.combined_audio += combined_byts
 
-                self.dedect_silence(combined_byts, 1, 8000)
-                self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
+        #         self.dedect_silence(combined_byts, 1, 8000)
+        #         self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
     def convert_file(self, file):
