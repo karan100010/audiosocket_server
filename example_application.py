@@ -294,7 +294,7 @@ class AudioStreamer():
             audio_data_to_send = data
             database_entry = {"audio": audio_data_to_send,
                             "text": resp['transcribe'],
-                            "status": "waiting",
+                            "status": "pending",
                             "nlp": nlp,
                             "level": self.level,
                             "intent": self.intent,
@@ -322,7 +322,7 @@ class AudioStreamer():
         else:
             database_entry = {"audio": self.audio_link,
                             "text": "",
-                            "status": "",
+                            "status": "pending",
                             "nlp": "",
                             "level": self.level,
                             "intent": self.intent,
