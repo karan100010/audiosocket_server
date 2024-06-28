@@ -29,81 +29,81 @@ import tracemalloc
 class AudioStreamer():
     def __init__(self, call):
         self.logger = ColouredLogger("audio sharing")
-        self.channels = 1
-        self.flow_num = 0
-        self.sample_rate = 8000
-        self.noise_frames_count = 0
-        self.call = call
-        self.long_noise = 0
-        self.noise = False
-        self.startcall = False
-        self.combined_byts = b''
-        self.retries = 0
-        self.combined_noise = b''
-        self.lock=threading.Lock()
-        # self.uudi=self.audiosocket.uudi
-        self.audio_link=""
-        self.uuid = str(self.call.uuid)
-        self.num_connected = 0
-        self.w = 0
-        self.v = 320
-        self.level = 0
-        self.audioplayback = False
-        self.silent_frames_count = 0
-        self.combined_audio = b''
-        self.channel = "en"
-        self.long_silence = 0
-        self.call_id = str(uuid.uuid4())
-        self.long_silence = 0
-        self.intent = "welcome"
-        self.call_api = "http://172.16.1.209:5011/api/connections"
-        self.call_link = "http://172.16.1.213:3022/call-records/{}".format(
-            self.uuid)
-        respdict = requests.get(self.call_link
-                                ).text
-        self.respdict = json.loads(respdict)
-        try:
-            self.welcome = self.respdict["data"]["intro_rec"]
-        except Exception as e:
-            self.welcome = "http://172.16.1.207:8084/karan.wav"
-            self.logger.error("welcome audio not found {}".format(e))
-        self.audio_link=self.welcome
+        # self.channels = 1
+        # self.flow_num = 0
+        # self.sample_rate = 8000
+        # self.noise_frames_count = 0
+        # self.call = call
+        # self.long_noise = 0
+        # self.noise = False
+        # self.startcall = False
+        # self.combined_byts = b''
+        # self.retries = 0
+        # self.combined_noise = b''
+        # self.lock=threading.Lock()
+        # # self.uudi=self.audiosocket.uudi
+        # self.audio_link=""
+        # self.uuid = str(self.call.uuid)
+        # self.num_connected = 0
+        # self.w = 0
+        # self.v = 320
+        # self.level = 0
+        # self.audioplayback = False
+        # self.silent_frames_count = 0
+        # self.combined_audio = b''
+        # self.channel = "en"
+        # self.long_silence = 0
+        # self.call_id = str(uuid.uuid4())
+        # self.long_silence = 0
+        # self.intent = "welcome"
+        # self.call_api = "http://172.16.1.209:5011/api/connections"
+        # self.call_link = "http://172.16.1.213:3022/call-records/{}".format(
+        #     self.uuid)
+        # respdict = requests.get(self.call_link
+        #                         ).text
+        # self.respdict = json.loads(respdict)
+        # try:
+        #     self.welcome = self.respdict["data"]["intro_rec"]
+        # except Exception as e:
+        #     self.welcome = "http://172.16.1.207:8084/karan.wav"
+        #     self.logger.error("welcome audio not found {}".format(e))
+        # self.audio_link=self.welcome
 
-        try:
-            self.master = self.respdict["data"]["master_rec"]
-        except Exception as e:
+        # try:
+        #     self.master = self.respdict["data"]["master_rec"]
+        # except Exception as e:
 
-            self.master = "http://172.16.1.207:8084/163832901R_KOTAKV1211001LAPSE.wav"
-            self.logger.error("master audio not found {}".format(e))
+        #     self.master = "http://172.16.1.207:8084/163832901R_KOTAKV1211001LAPSE.wav"
+        #     self.logger.error("master audio not found {}".format(e))
         
-        #self.master_audio = requests.get(self.master).content
-        self.welcome_audio = requests.get(self.welcome).content
-        data = {"status": "active", "addr": "172.16.1.209"+":" +
-                "9000", "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-        json_data = json.dumps(data)
-        self.headers = {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'}
-        req = requests.post(self.call_api, data=json_data,
-                            headers=self.headers)
+        # #self.master_audio = requests.get(self.master).content
+        # self.welcome_audio = requests.get(self.welcome).content
+        # data = {"status": "active", "addr": "172.16.1.209"+":" +
+        #         "9000", "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        # json_data = json.dumps(data)
+        # self.headers = {
+        #     'Content-Type': 'application/json',
+        #     'Accept': 'application/json'}
+        # req = requests.post(self.call_api, data=json_data,
+        #                     headers=self.headers)
 
-        self.lang_change = False
-        with open("db.txt") as f:
-            data = f.read()
-        print(data)
-        if data.endswith("\n"):
-            data = data.strip("\n")
+        # self.lang_change = False
+        # with open("db.txt") as f:
+        #     data = f.read()
+        # print(data)
+        # if data.endswith("\n"):
+        #     data = data.strip("\n")
 
-        try:
-            self.conn = pymongo.MongoClient(data)
-        except Exception as e:
-            self.logger.info(e)
-        self.call_flow_hi = self.conn["test"]["flow"].find_one({"lang": "hi"})
-        self.call_flow_en = self.conn["test"]["flow"].find_one({"lang": "en"})
-        if self.channel == "hi":
-            self.call_flow = self.call_flow_hi
-        else:
-            self.call_flow = self.call_flow_en
+        # try:
+        #     self.conn = pymongo.MongoClient(data)
+        # except Exception as e:
+        #     self.logger.info(e)
+        # self.call_flow_hi = self.conn["test"]["flow"].find_one({"lang": "hi"})
+        # self.call_flow_en = self.conn["test"]["flow"].find_one({"lang": "en"})
+        # if self.channel == "hi":
+        #     self.call_flow = self.call_flow_hi
+        # else:
+        #     self.call_flow = self.call_flow_en
 
     def read_wave_file(self, filename):
         # self.logger.debug("Reading wave file")
