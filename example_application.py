@@ -323,7 +323,7 @@ class AudioStreamer():
             database_entry = {"audio": self.audio_link,
                             "text": "this is a bot",
                             "status": "pending",
-                            "nlp": "",
+                           # "nlp": {},
                             "level": self.level,
                             "intent": self.intent,
                             "lang": self.channel,
