@@ -75,7 +75,8 @@ class AudioStreamer():
 
             self.master = "http://172.16.1.207:8084/163832901R_KOTAKV1211001LAPSE.wav"
             self.logger.error("master audio not found {}".format(e))
-        self.master_audio = requests.get(self.master).content
+        
+        #self.master_audio = requests.get(self.master).content
         self.welcome_audio = requests.get(self.welcome).content
         data = {"status": "active", "addr": "172.16.1.209"+":" +
                 "9000", "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
