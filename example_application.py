@@ -666,9 +666,9 @@ def start_call_fn(audiosocket):
         stream = AudioStreamer(call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
-        playback_stream = threading.Thread(
-            target=stream.start_audio_playback, args=(mapping,))
-        playback_stream.start()
+        # playback_stream = threading.Thread(
+        #     target=stream.start_audio_playback, args=(mapping,))
+        # playback_stream.start()
         return
 
 
