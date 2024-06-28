@@ -321,7 +321,7 @@ class AudioStreamer():
             self.combined_noise = b''
         else:
             database_entry = {"audio": self.audio_link,
-                            "text": "",
+                            "text": "this is a bot",
                             "status": "pending",
                             "nlp": "",
                             "level": self.level,
