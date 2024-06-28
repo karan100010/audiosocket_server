@@ -670,9 +670,9 @@ def start_call_fn(audiosocket):
         stream = AudioStreamer(call)
         noise_stream = threading.Thread(target=stream.start_noise_detection)
         noise_stream.start()
-        # playback_stream = threading.Thread(
-        #     target=stream.start_audio_playback, args=(mapping,))
-        # playback_stream.start()
+        playback_stream = threading.Thread(
+            target=stream.start_audio_playback, args=(mapping,))
+        playback_stream.start()
         return
 
 
@@ -682,7 +682,7 @@ async def handel_call():
  #   loop = asyncio.get_event_loop()
     while True:
         with ThreadPoolExecutor(max_workers=7) as executor:
-             #       call_list.append(loop.run_in_executor(executor,start_call_fn,audiosocket))
+             #call_list.append(loop.run_in_executor(executor,start_call_fn,audiosocket))
             await asyncio.to_thread(executor.submit, start_call_fn, audiosocket)
                     
 async def main():
