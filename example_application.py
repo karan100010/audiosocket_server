@@ -19,7 +19,7 @@ import datetime
 import random
 from langdetect import detect
 import os
-from celery_app import app
+
 # from asterisk.manager import Manager
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import asyncio
