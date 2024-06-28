@@ -2,7 +2,6 @@
 # Standard Python modules
 from time import sleep
 from audiosocket import *
-from vad import *
 from mylogging import ColouredLogger
 import wave
 import threading
@@ -19,7 +18,7 @@ import datetime
 import random
 from langdetect import detect
 import os
-
+import webrtcvad
 # from asterisk.manager import Manager
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import asyncio
@@ -41,6 +40,8 @@ class AudioStreamer():
         self.retries = 0
         self.combined_noise = b''
         self.lock=threading.Lock()
+        self.vad = webrtcvad.Vad()
+        self.vad.set_mode(3)
         # self.uudi=self.audiosocket.uudi
         self.audio_link=""
         self.uuid = str(self.call.uuid)
