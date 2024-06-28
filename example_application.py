@@ -195,7 +195,9 @@ class AudioStreamer():
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+"9000"})
             # audio_data = self.call.read()
             combined_byts = self.call.read_for_vad()
-            # print(len(combined_byts))
+
+            print(len(combined_byts))
+            return
 
             if self.audioplayback:
                 self.combined_noise += combined_byts
