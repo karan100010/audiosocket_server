@@ -279,6 +279,7 @@ class AudioStreamer():
                 }
                 create_intent = requests.post(
                     "http://172.16.1.209:5000/api/audios/categories/intents", json=intent_data, headers=headers)
+                self.logger.error(create_intent)
                 if create_intent.status_code == 200:
                     intent_id = create_intent.json()
                     intent_id = intent_id["data"]["_id"]
@@ -339,7 +340,7 @@ class AudioStreamer():
                 create_intent = requests.post(
                     "http://172.16.1.209:5000/api/audios", json=database_entry, headers=headers)
                 self.logger.info("data inserted into db")
-                self.logger.info(create_intent)
+                self.logger.error(create_intent)
             except Exception as e:
 
                 self.logger.error(e)
@@ -438,7 +439,7 @@ class AudioStreamer():
                                     threading.Thread(
                                     target=self.db_entry, args=({}, "bot","sent")).start()
                                 except Exception as e:
-                                    self.logger.info("not able to insert data because {}".format(e))
+                                    self.logger.error("not able to insert data because {}".format(e))
                             
                                 self.logger.info("sending other audios")
                                 if self.intent == "contact_human_agent" or self.intent == "other_intent":
