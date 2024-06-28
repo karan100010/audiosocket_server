@@ -203,14 +203,14 @@ class AudioStreamer():
 
             if self.audioplayback:
                 self.combined_noise += audio_data
-                self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
+               # self.logger.info("noise detection started the value of noise fames is {}".format(self.noise_frames_count))
 
                 self.detect_noise(audio_data, 1, 8000)
             else:
                 self.combined_audio += audio_data
 
                 self.dedect_silence(audio_data, 1, 8000)
-                self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
+                #self.logger.info("silence detection started the value of silent fames is {}".format(self.silent_frames_count))
         return
 
     def convert_file(self, file):
