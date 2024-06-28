@@ -33,7 +33,7 @@ class AudioStreamer():
         # self.flow_num = 0
         # self.sample_rate = 8000
         # self.noise_frames_count = 0
-        # self.call = call
+        self.call = call
         # self.long_noise = 0
         # self.noise = False
         # self.startcall = False
