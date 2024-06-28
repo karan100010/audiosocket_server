@@ -301,7 +301,7 @@ class AudioStreamer():
                             "lang": self.channel,
                             "interuption": self.noise,
                             "call_id": self.call_id,
-                            "auther":auth,
+                            "author":auth,
                             "type":type
 
                             }
@@ -329,7 +329,7 @@ class AudioStreamer():
                             "lang": self.channel,
                             "interuption": self.noise,
                             "call_id": self.call_id,
-                            "auther":auth,
+                            "author":auth,
                             "type":type
 
                             }
@@ -562,7 +562,7 @@ class AudioStreamer():
                             try:
 
                                 threading.Thread(
-                                target=self.db_entry, args=(resp, "called party","recived")).start()
+                                target=self.db_entry, args=(resp, "called party","recieved")).start()
                             except Exception as e:
                                 self.logger.info("not able to insert data because {}".format(e))
 
