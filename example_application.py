@@ -434,6 +434,7 @@ class AudioStreamer():
                                 self.send_audio(requests.get(
                                     "http://172.16.1.207:8085/main_audio_en.wav").content)
                                 self.logger.info("sending other audios")
+                                self.audio_link=self.master_audio
 
                         else:
 
@@ -449,6 +450,12 @@ class AudioStreamer():
 
                                 self.send_audio(audio.content)
                                 self.audio_link=self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][0]
+                                try:
+
+                                    threading.Thread(
+                                    target=self.db_entry, args=({}, "bot","sent")).start()
+                                except Exception as e:
+                                    self.logger.info("not able to insert data because {}".format(e))
 
                                 try:
 
