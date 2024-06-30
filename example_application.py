@@ -157,7 +157,7 @@ class AudioStreamer():
                 sleep(.5)
                 # sleep_seconds+=.25
             if not self.noise:
-                if self.noise_frames_count >= 25:
+                if self.noise_frames_count >= 50:
                     self.noise = True
                     self.noise_frames_count = 0
                     self.audioplayback = False
@@ -178,6 +178,7 @@ class AudioStreamer():
 
     def dedect_silence(self, indata, frames, rate):
        # samples = np.frombuffer(indata, dtype=np.int16)
+       try:
         is_noise = self.vad.is_speech(indata, rate)
         #print(is_noise)
         if not is_noise:
@@ -187,6 +188,8 @@ class AudioStreamer():
             
         else:
             self.long_silence = 0
+       except Exception as e:
+        self.logger.error("error occured while detructing scilence")
         return
 
 
@@ -477,7 +480,7 @@ class AudioStreamer():
                         elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "hangup":
                             if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["silence"]:
                                 self.long_silence = 0
-                                while self.long_silence < 75:
+                                while self.long_silence < 100:
                                     if self.call.connected:
                                         sleep(.5)
                                     else:
@@ -551,7 +554,7 @@ class AudioStreamer():
                                 "audio playback failed beacause of {}".format(e))
 
                     self.long_silence = 0
-                    while self.long_silence < 75:
+                    while self.long_silence < 100:
                         # self.logger.info("waiting for silence")
                         if self.call.connected:
                             sleep(.5)
@@ -609,7 +612,7 @@ class AudioStreamer():
                             
                             self.retries += 1
                             self.long_silence = 0
-                            while self.long_silence < 75:
+                            while self.long_silence < 100:
                                 # self.logger.info("waiting for silence")
                                 if self.call.connected:
                                     sleep(.5)
