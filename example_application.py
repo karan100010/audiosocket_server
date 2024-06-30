@@ -494,8 +494,8 @@ class AudioStreamer():
                                 resp = json.loads(response.text)
                                 try:
 
-                                    threading.Thread(
-                                    target=self.db_entry, args=(resp, mapping)).start()
+                                     threading.Thread(
+                                target=self.db_entry, args=(resp, "called party","recieved")).start()
                                 except Exception as e:
                                     self.logger.info("not able to insert data because {}".format(e))
                             
@@ -591,9 +591,10 @@ class AudioStreamer():
                             resp = json.loads(response.text)
 
                             try:
-
                                 threading.Thread(
-                                target=self.db_entry, args=(resp, mapping)).start()
+                                target=self.db_entry, args=(resp, "called party","recieved")).start()
+                              
+                                
                             except Exception as e:
                                 self.logger.info("not able to insert data because {}".format(e))
 
