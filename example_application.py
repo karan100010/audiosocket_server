@@ -199,10 +199,7 @@ class AudioStreamer():
 
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+"9000"})
             audio_data = self.call.read()
-            #combined_byts = self.call.read_for_vad()
-
-
-        
+            #combined_byts = self.call.read_for_vad()        
 
             if self.audioplayback:
                 self.combined_noise += audio_data
@@ -382,7 +379,11 @@ class AudioStreamer():
             requests.put(self.call_api+"/update",
                          update_data, headers=self.headers)
             try:
-                self.welcome = self.respdict["data"]["intro_rec"]
+                playback_lis=  ["http://172.16.1.207:8084/Intro001.wav", "http://172.16.1.207:8084/Intro002.wav", "http://172.16.1.207:8084/Intro003.wav", "http://172.16.1.207:8084/Intro004.wav", "http://172.16.1.207:8084/Intro005.wav",
+    "http://172.16.1.207:8084/Intro006.wav", "http://172.16.1.207:8084/Intro007.wav", "http://172.16.1.207:8084/Intro008.wav", "http://172.16.1.207:8084/Intro009.wav"]
+                self.welcome=requests.get(playback_lis[random.randint(0, len(playback_lis))]).content
+                
+                #self.welcome = self.respdict["data"]["intro_rec"]
             except Exception as e:
                 self.welcome = "http://172.16.1.207:8084/hello.wav"
                 self.logger.error("welcome audio not found {}".format(e))
@@ -409,261 +410,282 @@ class AudioStreamer():
 
                         if self.level == 0:
                             self.send_audio(self.welcome_audio)
-                            try:
-
-                                    threading.Thread(
-                                    target=self.db_entry, args=({}, "bot","sent")).start()
-                            except Exception as e:
-                                    self.logger.info("not able to insert data because {}".format(e))
-                            
-                            
-                        # handeling level 1
-                        elif self.level == 1 and self.intent == "yes_intent" and self.flow_num == 0:
-                            if self.channel == "hi":
-                                self.send_audio(self.master_audio)
-                                self.logger.info("sending master audio")
-                                self.audio_link=self.master_audio
-                                try:
-
-                                    threading.Thread(
-                                    target=self.db_entry, args=({}, "bot","sent")).start()
-                                except Exception as e:
-                                    self.logger.info("not able to insert data because {}".format(e))
-                            
-                            else:
-                                self.send_audio(requests.get(
-                                    "http://172.16.1.207:8085/main_audio_en.wav").content)
-                                self.logger.info("sending other audios")
-                                self.audio_link=self.master_audio
-
-                        else:
-
-                            try:
-                                audio = requests.get(
-                                    self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][0])
-                                self.logger.warning(
-                                    "level is {}".format(self.level))
-                                self.logger.warning(
-                                    "intent is {}".format(self.intent))
-                                self.logger.warning(
-                                    "flow num is {}".format(self.flow_num))
-
-                                self.send_audio(audio.content)
-                                self.audio_link=self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][0]
-                                
-
-                                try:
-
-                                    threading.Thread(
-                                    target=self.db_entry, args=({}, "bot","sent")).start()
-                                except Exception as e:
-                                    self.logger.error("not able to insert data because {}".format(e))
-                            
-                                self.logger.info("sending other audios")
-                                if self.intent == "contact_human_agent" or self.intent == "other_intent":
-                                    self.logger.error(
-                                        "contat human agent activated")
-                                    data = {"call_id": self.uuid,
-                                            "hangup": "none", "transfer": "true"}
-                                    x = self.conn["test"]["calls"].insert_one(
-                                        data)
-                                    self.call.hangup()
-
-                            except Exception as e:
-                                self.logger.error(
-                                    "audio playback failed beacause of {}".format(e))
-
-                        if self.level == 0:
-                            self.level += 1
-                        elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "next_level":
-                            self.level += 1
-                            self.logger.info(
-                                "new level is {}".format(self.level))
-                        elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "hangup":
-                            if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["silence"]:
-                                self.long_silence = 0
-                                while self.long_silence < 100:
-                                    if self.call.connected:
-                                        sleep(.5)
-                                    else:
-                                        break
-                                if not self.call.connected:
-
-                                    break
-                                response = requests.post(
-                                "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
-                                self.logger.error(response.text)
-                                resp = json.loads(response.text)
-                                try:
-
-                                     threading.Thread(
-                                target=self.db_entry, args=(resp, "called party","recieved")).start()
-                                except Exception as e:
-                                    self.logger.info("not able to insert data because {}".format(e))
-                            
-
-
-                            try:
-                                self.logger.info(
-                                    "{} found at level 3".format(self.intent))
-                                data = {"call_id": self.uuid,
-                                        "hangup": "true", "transfer": "none"}
-                                x = self.conn["test"]["calls"].insert_one(data)
-                                audio = requests.get(
-                                    self.call_flow["utils"]["bye"])
-                                self.send_audio(audio.content)
-                                self.call.hangup()
-                            except Exception as e:
-                                self.logger.error(
-                                    "audio playback failed beacause of {}".format(e))
-                        elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "transfer":
-
-                            try:
-                                self.logger.info(
-                                    "{} found at level 3".format(self.intent))
-                                data = {"call_id": self.uuid,
-                                        "hangup": "none", "transfer": "true"}
-                                x = self.conn["test"]["calls"].insert_one(data)
-                                audio = requests.get(
-                                    self.call_flow["utils"]["bye"])
-                                self.send_audio(audio.content)
-                                self.call.hangup()
-                            except KeyError as e:
-                                self.logger.error(
-                                    "audio playback failed beacause of {}".format(e))
-                            except Exception as e:
-                                self.logger.error(
-                                    "audio playback failed beacause of {}".format(e))
-                        elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "swich_flow":
-                            self.level = 1
-                            self.flow_num = 1
-                            self.logger.info("switching flow")
-                        elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "switch_flow_to_0":
-                            self.level = 0
-                            self.flow_num = 0
-                            self.logger.info("switching flow")
-
-                    if self.noise:
-                        try:
-
-                          #  self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
-
-                            self.logger.warning("noise detected")
-                            self.noise_frames_count = 0
-
-                        except Exception as e:
-                            self.logger.error(
-                                "audio playback failed beacause of {}".format(e))
-
-                    self.long_silence = 0
-                    while self.long_silence < 100:
-                        # self.logger.info("waiting for silence")
-                        if self.call.connected:
-                            sleep(.5)
-                        else:
-                            break
-                    if not self.call.connected:
-                        break
-
-                    self.logger.info("waiting for silence is over")
-
-                    self.long_silence = 0
-
-                    try:
-                        if not self.noise:
-                            response = requests.post(
-                                "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
-                            self.logger.error(response.text)
-                            # m= self.convert_file(self.combined_audio)
-                            # self.logger.info("audio file converted {}".format(m))
-                            resp = json.loads(response.text)
-                            try:
-
-                                threading.Thread(
-                                target=self.db_entry, args=(resp, "called party","recieved")).start()
-                            except Exception as e:
-                                self.logger.info("not able to insert data because {}".format(e))
-
-                        else:
-                            response = requests.post(
-                                "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_noise)
-                            self.logger.error(response.text)
-                            # m= self.convert_file(self.combined_audio)
-                            # self.logger.info("audio file converted {}".format(m))
-                            resp = json.loads(response.text)
-
-                            try:
-                                threading.Thread(
-                                target=self.db_entry, args=(resp, "called party","recieved")).start()
-                              
-                                
-                            except Exception as e:
-                                self.logger.info("not able to insert data because {}".format(e))
-
-                        while resp["transcribe"] == "":
-
-                            x = self.read_wave_file(
-                                mapping["utils"][self.channel][1])
-                            self.send_audio(x)
-                            self.audio_link=mapping["utils"][self.channel][1]
-                            try:
-
-                                    threading.Thread(
-                                    target=self.db_entry, args=({}, "bot","sent")).start()
-                            except Exception as e:
-                                    self.logger.info("not able to insert data because {}".format(e))
-                            
-                            self.retries += 1
-                            self.long_silence = 0
                             while self.long_silence < 100:
-                                # self.logger.info("waiting for silence")
                                 if self.call.connected:
                                     sleep(.5)
                                 else:
                                     break
                             if not self.call.connected:
+
                                 break
-                            self.long_silence = 0
+                            try:
+
+                                    threading.Thread(
+                                    target=self.db_entry, args=({}, "bot","sent")).start()
+                            except Exception as e:
+                                    self.logger.info("not able to insert data because {}".format(e))
                             response = requests.post(
                                 "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+                            self.logger.error(response.text)
+                            # m= self.convert_file(self.combined_audio)
+                            # self.logger.info("audio file converted {}".format(m))
                             resp = json.loads(response.text)
-                            self.logger.info(
-                                "retries are {}".format(self.retries))
-                            self.combined_audio = b''
-                            if resp["transcribe"] != "":
-                                break
-                            if self.retries >= 3:
+                            try:
 
-                                break
+                                threading.Thread(
+                                target=self.db_entry, args=(resp, "called party","recieved")).start()
+                            except Exception as e:
+                                self.logger.info("not able to insert data because {}".format(e))
 
-                        if resp["transcribe"] != "":
+                            
+                            
+                    #     # handeling level 1
+                    #     elif self.level == 1 and self.intent == "yes_intent" and self.flow_num == 0:
+                    #         if self.channel == "hi":
+                    #             self.send_audio(self.master_audio)
+                    #             self.logger.info("sending master audio")
+                    #             self.audio_link=self.master_audio
+                    #             try:
 
-                            self.combined_audio = b''
-                            self.intent = resp["nlp"]["intent"]
-                            if self.retries >= 3:
-                                self.intent = "other_intent"
-                            # if self.level==1 :
-                            #     # if not self.is_english(resp["transcribe"]):
-                            #     #     self.channel="hi"
-                            #     #     self.call_flow=self.call_flow_hi
-                            #     #     self.intent="yes_intent"
-                            #     #     self.logger.error("changing channel to hindi")
-                            #     # else:
-                            #     #     self.channel="en"
-                            #     #     self.call_flow=self.call_flow_en
-                            #     #     self.logger.error("changing channel to english")
+                    #                 threading.Thread(
+                    #                 target=self.db_entry, args=({}, "bot","sent")).start()
+                    #             except Exception as e:
+                    #                 self.logger.info("not able to insert data because {}".format(e))
+                            
+                    #         else:
+                    #             self.send_audio(requests.get(
+                    #                 "http://172.16.1.207:8085/main_audio_en.wav").content)
+                    #             self.logger.info("sending other audios")
+                    #             self.audio_link=self.master_audio
 
-                            # self.retries=0
+                    #     else:
 
-                        if self.noise:
-                            self.noise = False
-                            self.noise_frames_count = 0
+                    #         try:
+                    #             audio = requests.get(
+                    #                 self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][0])
+                    #             self.logger.warning(
+                    #                 "level is {}".format(self.level))
+                    #             self.logger.warning(
+                    #                 "intent is {}".format(self.intent))
+                    #             self.logger.warning(
+                    #                 "flow num is {}".format(self.flow_num))
 
-                    except Exception as e:
-                        self.logger.error(e)
-                        self.combined_audio = b''
-                    self.long_silence = 0
-                    self.silent_frames_count = 0
+                    #             self.send_audio(audio.content)
+                    #             self.audio_link=self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][0]
+                                
+
+                    #             try:
+
+                    #                 threading.Thread(
+                    #                 target=self.db_entry, args=({}, "bot","sent")).start()
+                    #             except Exception as e:
+                    #                 self.logger.error("not able to insert data because {}".format(e))
+                            
+                    #             self.logger.info("sending other audios")
+                    #             if self.intent == "contact_human_agent" or self.intent == "other_intent":
+                    #                 self.logger.error(
+                    #                     "contat human agent activated")
+                    #                 data = {"call_id": self.uuid,
+                    #                         "hangup": "none", "transfer": "true"}
+                    #                 x = self.conn["test"]["calls"].insert_one(
+                    #                     data)
+                    #                 self.call.hangup()
+
+                    #         except Exception as e:
+                    #             self.logger.error(
+                    #                 "audio playback failed beacause of {}".format(e))
+
+                    #     if self.level == 0:
+                    #         self.level += 1
+                    #     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "next_level":
+                    #         self.level += 1
+                    #         self.logger.info(
+                    #             "new level is {}".format(self.level))
+                    #     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "hangup":
+                    #         if self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["silence"]:
+                    #             self.long_silence = 0
+                    #             while self.long_silence < 100:
+                    #                 if self.call.connected:
+                    #                     sleep(.5)
+                    #                 else:
+                    #                     break
+                    #             if not self.call.connected:
+
+                    #                 break
+                    #             response = requests.post(
+                    #             "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+                    #             self.logger.error(response.text)
+                    #             resp = json.loads(response.text)
+                    #             try:
+
+                    #                  threading.Thread(
+                    #             target=self.db_entry, args=(resp, "called party","recieved")).start()
+                    #             except Exception as e:
+                    #                 self.logger.info("not able to insert data because {}".format(e))
+                            
+
+
+                    #         try:
+                    #             self.logger.info(
+                    #                 "{} found at level 3".format(self.intent))
+                    #             data = {"call_id": self.uuid,
+                    #                     "hangup": "true", "transfer": "none"}
+                    #             x = self.conn["test"]["calls"].insert_one(data)
+                    #             audio = requests.get(
+                    #                 self.call_flow["utils"]["bye"])
+                    #             self.send_audio(audio.content)
+                    #             self.call.hangup()
+                    #         except Exception as e:
+                    #             self.logger.error(
+                    #                 "audio playback failed beacause of {}".format(e))
+                    #     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "transfer":
+
+                    #         try:
+                    #             self.logger.info(
+                    #                 "{} found at level 3".format(self.intent))
+                    #             data = {"call_id": self.uuid,
+                    #                     "hangup": "none", "transfer": "true"}
+                    #             x = self.conn["test"]["calls"].insert_one(data)
+                    #             audio = requests.get(
+                    #                 self.call_flow["utils"]["bye"])
+                    #             self.send_audio(audio.content)
+                    #             self.call.hangup()
+                    #         except KeyError as e:
+                    #             self.logger.error(
+                    #                 "audio playback failed beacause of {}".format(e))
+                    #         except Exception as e:
+                    #             self.logger.error(
+                    #                 "audio playback failed beacause of {}".format(e))
+                    #     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "swich_flow":
+                    #         self.level = 1
+                    #         self.flow_num = 1
+                    #         self.logger.info("switching flow")
+                    #     elif self.call_flow["main_audios"][self.intent+"_"+str(self.level)][self.flow_num][1]["meta"] == "switch_flow_to_0":
+                    #         self.level = 0
+                    #         self.flow_num = 0
+                    #         self.logger.info("switching flow")
+
+                    # if self.noise:
+                    #     try:
+
+                    #       #  self.send_audio(requests.get(self.call_flow["utils"]["inttrupt"]).content)
+
+                    #         self.logger.warning("noise detected")
+                    #         self.noise_frames_count = 0
+
+                    #     except Exception as e:
+                    #         self.logger.error(
+                    #             "audio playback failed beacause of {}".format(e))
+
+                    # self.long_silence = 0
+                    # while self.long_silence < 100:
+                    #     # self.logger.info("waiting for silence")
+                    #     if self.call.connected:
+                    #         sleep(.5)
+                    #     else:
+                    #         break
+                    # if not self.call.connected:
+                    #     break
+
+                    # self.logger.info("waiting for silence is over")
+
+                    # self.long_silence = 0
+
+                    # try:
+                    #     if not self.noise:
+                    #         response = requests.post(
+                    #             "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+                    #         self.logger.error(response.text)
+                    #         # m= self.convert_file(self.combined_audio)
+                    #         # self.logger.info("audio file converted {}".format(m))
+                    #         resp = json.loads(response.text)
+                    #         try:
+
+                    #             threading.Thread(
+                    #             target=self.db_entry, args=(resp, "called party","recieved")).start()
+                    #         except Exception as e:
+                    #             self.logger.info("not able to insert data because {}".format(e))
+
+                    #     else:
+                    #         response = requests.post(
+                    #             "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_noise)
+                    #         self.logger.error(response.text)
+                    #         # m= self.convert_file(self.combined_audio)
+                    #         # self.logger.info("audio file converted {}".format(m))
+                    #         resp = json.loads(response.text)
+
+                    #         try:
+                    #             threading.Thread(
+                    #             target=self.db_entry, args=(resp, "called party","recieved")).start()
+                              
+                                
+                    #         except Exception as e:
+                    #             self.logger.info("not able to insert data because {}".format(e))
+
+                    #     while resp["transcribe"] == "":
+
+                    #         x = self.read_wave_file(
+                    #             mapping["utils"][self.channel][1])
+                    #         self.send_audio(x)
+                    #         self.audio_link=mapping["utils"][self.channel][1]
+                    #         try:
+
+                    #                 threading.Thread(
+                    #                 target=self.db_entry, args=({}, "bot","sent")).start()
+                    #         except Exception as e:
+                    #                 self.logger.info("not able to insert data because {}".format(e))
+                            
+                    #         self.retries += 1
+                    #         self.long_silence = 0
+                    #         while self.long_silence < 100:
+                    #             # self.logger.info("waiting for silence")
+                    #             if self.call.connected:
+                    #                 sleep(.5)
+                    #             else:
+                    #                 break
+                    #         if not self.call.connected:
+                    #             break
+                    #         self.long_silence = 0
+                    #         response = requests.post(
+                    #             "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+                    #         resp = json.loads(response.text)
+                    #         self.logger.info(
+                    #             "retries are {}".format(self.retries))
+                    #         self.combined_audio = b''
+                    #         if resp["transcribe"] != "":
+                    #             break
+                    #         if self.retries >= 3:
+
+                    #             break
+
+                    #     if resp["transcribe"] != "":
+
+                    #         self.combined_audio = b''
+                    #         self.intent = resp["nlp"]["intent"]
+                    #         if self.retries >= 3:
+                    #             self.intent = "other_intent"
+                    #         # if self.level==1 :
+                    #         #     # if not self.is_english(resp["transcribe"]):
+                    #         #     #     self.channel="hi"
+                    #         #     #     self.call_flow=self.call_flow_hi
+                    #         #     #     self.intent="yes_intent"
+                    #         #     #     self.logger.error("changing channel to hindi")
+                    #         #     # else:
+                    #         #     #     self.channel="en"
+                    #         #     #     self.call_flow=self.call_flow_en
+                    #         #     #     self.logger.error("changing channel to english")
+
+                    #         # self.retries=0
+
+                    #     if self.noise:
+                    #         self.noise = False
+                    #         self.noise_frames_count = 0
+
+                    # except Exception as e:
+                    #     self.logger.error(e)
+                    #     self.combined_audio = b''
+                    # self.long_silence = 0
+                    # self.silent_frames_count = 0
 
         self.num_connected -= 1
         update_data = {"addr": "172.16.1.209"+":" +
