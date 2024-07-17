@@ -63,33 +63,33 @@ class AudioStreamer():
         # respdict = requests.get(self.call_link
         #                         ).text
         # self.respdict = json.loads(respdict)
-        try:
-            self.welcome = self.respdict["data"]["intro_rec"]
-        except Exception as e:
-            self.welcome = "http://172.16.1.207:8084/karan.wav"
-            self.logger.error("welcome audio not found {}".format(e))
-        self.audio_link=self.welcome
+        # try:
+        #     self.welcome = self.respdict["data"]["intro_rec"]
+        # except Exception as e:
+        #     self.welcome = "http://172.16.1.207:8084/karan.wav"
+        #     self.logger.error("welcome audio not found {}".format(e))
+        # self.audio_link=self.welcome
 
-        try:
-            self.master = self.respdict["data"]["master_rec"]
-        except Exception as e:
+        # try:
+        #     self.master = self.respdict["data"]["master_rec"]
+        # except Exception as e:
 
-            self.master = "http://172.16.1.207:8084/163832901R_KOTAKV1211001LAPSE.wav"
-            self.logger.error("master audio not found {}".format(e))
+        #     self.master = "http://172.16.1.207:8084/163832901R_KOTAKV1211001LAPSE.wav"
+        #     self.logger.error("master audio not found {}".format(e))
         
-        self.master_audio = requests.get(self.master).content
-        self.welcome_audio = requests.get(self.welcome).content
-        data = {"status": "active", "addr": "172.16.1.209"+":" +
-                "9000", "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-        json_data = json.dumps(data)
-        self.headers = {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'}
-        req = requests.post(self.call_api, data=json_data,
-                            headers=self.headers)
-        self.logger.info(req.status_code)
+        # self.master_audio = requests.get(self.master).content
+        # self.welcome_audio = requests.get(self.welcome).content
+        # data = {"status": "active", "addr": "172.16.1.209"+":" +
+        #         "9000", "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        # json_data = json.dumps(data)
+        # self.headers = {
+        #     'Content-Type': 'application/json',
+        #     'Accept': 'application/json'}
+        # req = requests.post(self.call_api, data=json_data,
+        #                     headers=self.headers)
+        # self.logger.info(req.status_code)
 
-        self.lang_change = False
+        # self.lang_change = False
         with open("db.txt") as f:
             data = f.read()
         print(data)
