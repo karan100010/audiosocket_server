@@ -62,7 +62,7 @@ class AudioStreamer():
         #     self.uuid)
         # respdict = requests.get(self.call_link
         #                         ).text
-        self.respdict = json.loads(respdict)
+        # self.respdict = json.loads(respdict)
         try:
             self.welcome = self.respdict["data"]["intro_rec"]
         except Exception as e:
