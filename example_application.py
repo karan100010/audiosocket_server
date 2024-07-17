@@ -699,41 +699,22 @@ class AudioStreamer():
 
         return
 
-listen_lock = threading.Lock()
-
-def start_call_fn(audiosocket):
-        with listen_lock:
-            try:
-            
-                call = audiosocket.listen()
-            except Exception as e:
-                print(e)
-                
-            
-        stream = AudioStreamer(call)
-        noise_stream = threading.Thread(target=stream.start_noise_detection)
-        noise_stream.start()
-        playback_stream = threading.Thread(
-            target=stream.start_audio_playback, args=(mapping,))
-        playback_stream.start()
-        return
-
-
-async def handel_call():
+# 
+def handel_call():
 
     audiosocket = Audiosocket(("0.0.0.0", 9000))
- #   loop = asyncio.get_event_loop()
+   
     while True:
-        with ThreadPoolExecutor(max_workers=7) as executor:
-             #call_list.append(loop.run_in_executor(executor,start_call_fn,audiosocket))
-            print("we are here")
-            await asyncio.to_thread(executor.submit, start_call_fn, audiosocket)
-                    
-async def main():
-    await handel_call()
+        #audiosocket.prepare_output(outrate=8000, channels=2, ulaw2lin=True)
+        #call = audiosocket.listen()
+        stream = AudioStreamer(audiosocket)
+        noise_stream = threading.Thread(target=stream.start_noise_detection)
+        noise_stream.start()
+        playback_stream = threading.Thread(target=stream.start_audio_playback, args=(mapping,))
+        playback_stream.start()
+
 
            
 
 if __name__ == '__main__':
-    tracemalloc.start()
-    asyncio.run(main())
+    handel_call()
