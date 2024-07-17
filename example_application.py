@@ -196,6 +196,7 @@ class AudioStreamer():
     def start_noise_detection(self):
 
         while self.call.connected:
+            print("this is running")
 
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+"9000"})
             audio_data = self.call.read()
