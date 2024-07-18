@@ -437,7 +437,7 @@ class AudioStreamer():
                                 target=self.db_entry, args=(resp, "called party","recieved")).start()
                             except Exception as e:
                                 self.logger.info("not able to insert data because {}".format(e))
-                            x=requests.get("http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav")
+                            x=requests.get("http://172.16.1.207:5005/voice/2022122215292066Q8QZ_EH-M2.wav").content
                             self.send_audio(x)
                             
                             self.call.hangup()
