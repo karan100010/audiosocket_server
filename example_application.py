@@ -52,6 +52,7 @@ class AudioStreamer():
         self.audioplayback = False
         self.silent_frames_count = 0
         self.combined_audio = b''
+        self.combined_audio_copy = b''
         self.channel = "en"
         self.long_silence = 0
         self.call_id = str(uuid.uuid4())
@@ -255,7 +256,7 @@ class AudioStreamer():
         if resp!={}:
             nlp = {}
             #self.logger.error(self.combined_audio)
-            audio=self.combined_audio
+            audio=self.combined_audio_copy
             filename=self.convert_file(audio)
             with open(filename, "rb") as file:
                 data=base64.b64encode(file.read()).decode('utf-8')
@@ -428,6 +429,7 @@ class AudioStreamer():
                                     target=self.db_entry, args=({}, "bot","sent")).start()
                             except Exception as e:
                                     self.logger.info("not able to insert data because {}".format(e))
+                            self.combined_audio_copy=self.combined_audio
                             response = requests.post(
                                 "http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
                             self.logger.error(response.text)
