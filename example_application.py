@@ -82,9 +82,9 @@ class AudioStreamer():
         # data = {"status": "active", "addr": "172.16.1.209"+":" +
         #         "9000", "conn": 0, "time_updates": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         # json_data = json.dumps(data)
-        # self.headers = {
-        #     'Content-Type': 'application/json',
-        #     'Accept': 'application/json'}
+        self.headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'}
         # req = requests.post(self.call_api, data=json_data,
         #                     headers=self.headers)
         # self.logger.info(req.status_code)
