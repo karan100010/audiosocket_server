@@ -410,7 +410,7 @@ class AudioStreamer():
                     if not self.noise:
 
                         if self.level == 0:
-                            self.send_audio(self.welcome_audio)
+                            self.send_audio(self.welcome)
                             while self.long_silence < 100:
                                 if self.call.connected:
                                     sleep(.5)
