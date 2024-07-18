@@ -382,7 +382,7 @@ class AudioStreamer():
             try:
                 playback_lis=  ["http://172.16.1.207:8084/Intro001.wav", "http://172.16.1.207:8084/Intro002.wav", "http://172.16.1.207:8084/Intro003.wav", "http://172.16.1.207:8084/Intro004.wav", "http://172.16.1.207:8084/Intro005.wav",
     "http://172.16.1.207:8084/Intro006.wav", "http://172.16.1.207:8084/Intro007.wav", "http://172.16.1.207:8084/Intro008.wav", "http://172.16.1.207:8084/Intro009.wav"]
-                self.welcome=requests.get(playback_lis[random.randint(0, len(playback_lis))]).content
+                self.welcome=requests.get(self.audio_link).content
                 
                 #self.welcome = self.respdict["data"]["intro_rec"]
             except Exception as e:
