@@ -390,6 +390,11 @@ class AudioStreamer():
                     self.logger.info("audio playback started")
                     self.logger.info("we are in level {}".format(self.level))
                     self.send_audio(self.welcome)
+                    while self.long_silence < 100:
+                                if self.call.connected:
+                                    sleep(.5)
+                                else:
+                                    break
 
 
         self.logger.info('Connection with {0} over'.format(self.call.peer_addr))
