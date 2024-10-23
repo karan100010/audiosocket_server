@@ -12,7 +12,7 @@ from req import Requsts
 import json
 import base64
 import uuid
-import pymongo
+#import pymongo
 # import telebot
 import datetime
 import random
@@ -97,16 +97,16 @@ class AudioStreamer():
         if data.endswith("\n"):
             data = data.strip("\n")
 
-        try:
-            self.conn = pymongo.MongoClient(data)
-        except Exception as e:
-            self.logger.info(e)
-        self.call_flow_hi = self.conn["test"]["flow"].find_one({"lang": "hi"})
-        self.call_flow_en = self.conn["test"]["flow"].find_one({"lang": "en"})
-        if self.channel == "hi":
-            self.call_flow = self.call_flow_hi
-        else:
-            self.call_flow = self.call_flow_en
+        # try:
+        # #    self.conn = pymongo.MongoClient(data)
+        # except Exception as e:
+        #     self.logger.info(e)
+        # self.call_flow_hi = self.conn["test"]["flow"].find_one({"lang": "hi"})
+        # self.call_flow_en = self.conn["test"]["flow"].find_one({"lang": "en"})
+        # if self.channel == "hi":
+        #     self.call_flow = self.call_flow_hi
+        # else:
+        #     self.call_flow = self.call_flow_en
 
     def read_wave_file(self, filename):
         # self.logger.debug("Reading wave file")
@@ -399,7 +399,7 @@ class AudioStreamer():
                     self.logger.error(response.text)
                     resp = json.loads(response.text)
                     self.logger.info(f"the resp recived is {resp}")
-                    
+
 
         self.logger.info('Connection with {0} over'.format(self.call.peer_addr))
 
