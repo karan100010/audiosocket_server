@@ -395,7 +395,11 @@ class AudioStreamer():
                                     sleep(.5)
                                 else:
                                     break
-
+                    response = requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+                    self.logger.error(response.text)
+                    resp = json.loads(response.text)
+                    self.logger.info(f"the resp recived is {resp}")
+                    
 
         self.logger.info('Connection with {0} over'.format(self.call.peer_addr))
 
