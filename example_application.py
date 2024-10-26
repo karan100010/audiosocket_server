@@ -390,7 +390,7 @@ class AudioStreamer():
                     
                         self.logger.info("audio playback started")
                         self.logger.info("we are in level {}".format(self.level))
-                        if self.level==1:
+                        if self.level==0:
 
                             self.send_audio(self.welcome)
                             self.level+=1
