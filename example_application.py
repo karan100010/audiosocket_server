@@ -407,7 +407,7 @@ class AudioStreamer():
 
                         }
                                 ) 
-                            self.send_audio(b)
+                            self.send_audio(b.content)
                              
                         while self.long_silence < 100:
                                     if self.call.connected:
