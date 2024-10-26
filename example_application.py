@@ -393,6 +393,7 @@ class AudioStreamer():
                         if self.level==1:
 
                             self.send_audio(self.welcome)
+                            level+=1
                         else:
                             b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
                                     json={
