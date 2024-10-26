@@ -387,18 +387,37 @@ class AudioStreamer():
             while self.call.connected:
 
                 if not self.audioplayback:
-                    self.logger.info("audio playback started")
-                    self.logger.info("we are in level {}".format(self.level))
-                    self.send_audio(self.welcome)
-                    while self.long_silence < 100:
-                                if self.call.connected:
-                                    sleep(.5)
-                                else:
-                                    break
-                    response = requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
-                    self.logger.error(response.text)
-                    resp = json.loads(response.text)
-                    self.logger.info(f"the resp recived is {resp}")
+                    
+                        self.logger.info("audio playback started")
+                        self.logger.info("we are in level {}".format(self.level))
+                        if self.level==1:
+
+                            self.send_audio(self.welcome)
+                        else:
+                            b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
+                                    json={
+
+                            "text" : resp["response"],
+                            "voiceCode":"EH-M2",
+
+                            "msisdn" : "new_audio",
+
+                            "send_file" :"True"
+
+                        }
+                                ) 
+                            self.send_audio(b)
+                             
+                        while self.long_silence < 100:
+                                    if self.call.connected:
+                                        sleep(.5)
+                                    else:
+                                        break
+                        response = requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+                        self.logger.error(response.text)
+                        resp = json.loads(response.text)
+                        self.logger.info(f"the resp recived is {resp}")
+                
 
 
         self.logger.info('Connection with {0} over'.format(self.call.peer_addr))
