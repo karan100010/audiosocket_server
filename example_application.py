@@ -289,7 +289,7 @@ class AudioStreamer():
 
                 nlp["intent"] = intent_id
             except Exception as e:
-                self.logger.info("error orrcerd while assiging intent")
+                self.logger.info("error occerd while assiging intent")
                 nlp["intent"] ="unknown"
                 
 
