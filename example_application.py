@@ -395,19 +395,20 @@ class AudioStreamer():
                             self.send_audio(self.welcome)
                             self.level+=1
                         else:
-                            b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
-                                    json={
+                            for i in sentences:
+                                b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
+                                        json={
 
-                            "text" : resp["response"],
-                            "voiceCode":"EH-M2",
+                                "text" : i,
+                                "voiceCode":"EH-M2",
 
-                            "msisdn" : "new_audio",
+                                "msisdn" : "new_audio",
 
-                            "send_file" :"True"
+                                "send_file" :"True"
 
-                        }
-                                ) 
-                            self.send_audio(b.content)
+                            }
+                                    ) 
+                                self.send_audio(b.content)
                              
                         while self.long_silence < 100:
                                     if self.call.connected:
@@ -417,7 +418,9 @@ class AudioStreamer():
                         response = requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
                         self.logger.error(response.text)
                         resp = json.loads(response.text)
-                        self.logger.info(f"the resp recived is {resp}")
+                        sentences=resp["sentences"]
+                        for i in sentences:
+                            self.logger.info(f"the resp recived is {i}")
                 
 
 
