@@ -422,7 +422,7 @@ class AudioStreamer():
                         print(resp)
                         sentences=resp["sentences"]
                         for i in sentences:
-                            self.logger.info(f"the resp reacived is {i}")
+                            self.logger.info(f"the resp reacived is {i}"
 
 
 
