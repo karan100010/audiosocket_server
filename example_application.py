@@ -411,13 +411,20 @@ class AudioStreamer():
                                 }
                                         ) 
                                     self.send_audio(b.content)
-                                    self.call.hangup()
+                                    
 
-                        while self.long_silence < 100:
-                                    if self.call.connected:
-                                        sleep(.5)
-                                    else:
-                                        break
+                                    while self.long_silence < 100:
+                                        if self.call.connected:
+                                            sleep(.5)
+                                        else:
+                                            break
+                                self.call.hangup()
+
+                            while self.long_silence < 100:
+                                        if self.call.connected:
+                                            sleep(.5)
+                                        else:
+                                            break
                         response = requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
                         self.logger.error(response.text)
                         resp = json.loads(response.text)
