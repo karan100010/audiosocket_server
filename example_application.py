@@ -395,20 +395,21 @@ class AudioStreamer():
                             self.send_audio(self.welcome)
                             self.level+=1
                         else:
-                            for i in sentences:
-                                b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
-                                        json={
+                            if sentences:
+                                for i in sentences:
+                                    b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
+                                            json={
 
-                                "text" : i,
-                                "voiceCode":"EH-M2",
+                                    "text" : i,
+                                    "voiceCode":"EH-M2",
 
-                                "msisdn" : "new_audio",
+                                    "msisdn" : "new_audio",
 
-                                "send_file" :"True"
+                                    "send_file" :"True"
 
-                            }
-                                    ) 
-                                self.send_audio(b.content)
+                                }
+                                        ) 
+                                    self.send_audio(b.content)
                              
                         while self.long_silence < 100:
                                     if self.call.connected:
