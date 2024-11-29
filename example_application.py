@@ -395,6 +395,7 @@ class AudioStreamer():
                             self.send_audio(self.welcome)
                             self.level+=1
                         else:
+
                             if sentences:
                                 for i in sentences:
                                     b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
@@ -422,6 +423,7 @@ class AudioStreamer():
                         resp = json.loads(response.text)
                         print(resp)
                         sentences=resp["sentences"]
+                        title=resp["title"]
                         for i in sentences:
                             self.logger.info(f"the resp reacived is {i}")
 
