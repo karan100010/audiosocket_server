@@ -423,7 +423,7 @@ class AudioStreamer():
                         resp = json.loads(response.text)
                         print(resp)
                         sentences=resp["sentences"]
-                        title=resp["title"]
+                       # title=resp["title"]
                         for i in sentences:
                             self.logger.info(f"the resp reacived is {i}")
 
