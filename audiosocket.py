@@ -69,22 +69,39 @@ class Audiosocket:
             ratecv_state=None,
         )
 
+from threading import Thread
+from time import sleep
+
+class Listener:
+    def __init__(self, addr, port, initial_sock, user_resample, asterisk_resample):
+        self.addr = addr
+        self.port = port
+        self.initial_sock = initial_sock
+        self.user_resample = user_resample
+        self.asterisk_resample = asterisk_resample
+        self.running = True  # Control flag for stopping the loop
+
     def listen(self):
         print('Listening on', self.addr, self.port)
-        conn, peer_addr = self.initial_sock.accept()
-        connection = Connection(
-            conn,
-            peer_addr,
-            self.user_resample,
-            self.asterisk_resample,
-        )
-        
-        
-        connection_thread = Thread(target=connection._process, args=())
-        connection_thread.start()
-        sleep(.1)
+        while self.running:
+            try:
+                conn, peer_addr = self.initial_sock.accept()
+                print(f'Accepted connection from {peer_addr}')
 
-        return connection
+                connection = Connection(
+                    conn,
+                    peer_addr,
+                    self.user_resample,
+                    self.asterisk_resample,
+                )
+
+                connection_thread = Thread(target=connection._process, args=())
+                connection_thread.daemon = True  # Ensures threads close when the main program exits
+                connection_thread.start()
+                sleep(0.1)  # Short delay to avoid high CPU usage
+
+            except Exception as e:
+                print(f'Error accepting connection: {e}')
 
         # *** If we want this single object to serve multiple simultaneous connections, accept() will have to be put in a while loop
         # If this does become the case, what is the best way to deliver the queue objects to the caller, keep them wrapped in read/write methods?
