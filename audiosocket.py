@@ -73,7 +73,7 @@ class Audiosocket:
 
     def listen(self):
         print('Listening on', self.addr, self.port)
-        while self.running:
+        while True:
             try:
                 conn, peer_addr = self.initial_sock.accept()
                 print(f'Accepted connection from {peer_addr}')
