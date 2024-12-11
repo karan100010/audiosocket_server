@@ -78,6 +78,18 @@ class Audiosocket:
             self.user_resample,
             self.asterisk_resample,
         )
+        while True:
+            try:
+                conn, peer_addr = self.initial_sock.accept()
+                print(f"Accepted connection from {peer_addr}")
+                connection_thread = Thread(target=handle_connection, args=(conn, peer_addr))
+                connection_thread.start()
+                sleep(0.1)
+            except socket.timeout:
+                continue
+            except Exception as e:
+                print(f"Error accepting connection: {e}")
+
         
         
         connection_thread = Thread(target=connection._process, args=())
