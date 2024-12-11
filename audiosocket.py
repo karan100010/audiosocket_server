@@ -69,17 +69,7 @@ class Audiosocket:
             ratecv_state=None,
         )
 
-from threading import Thread
-from time import sleep
 
-class Listener:
-    def __init__(self, addr, port, initial_sock, user_resample, asterisk_resample):
-        self.addr = addr
-        self.port = port
-        self.initial_sock = initial_sock
-        self.user_resample = user_resample
-        self.asterisk_resample = asterisk_resample
-        self.running = True  # Control flag for stopping the loop
 
     def listen(self):
         print('Listening on', self.addr, self.port)
