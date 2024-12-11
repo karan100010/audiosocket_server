@@ -1,3 +1,25 @@
+# Standard Python modules
+import socket
+from threading import Thread
+from dataclasses import dataclass
+from time import sleep
+
+from connection import *
+
+
+@dataclass
+class audioop_struct:
+    ratecv_state: None
+    rate: int
+    channels: int
+    ulaw2lin: bool
+
+
+# ********************************************************************************************
+# *** Make a single, global object instance, then loop with listen() method alone where needed
+
+
+# Creates a new audiosocket object
 import socket
 from threading import Thread
 from time import sleep
@@ -74,6 +96,3 @@ class Audiosocket:
                 continue
             except Exception as e:
                 print(f"Error accepting connection: {e}")
-
-        # *** If we want this single object to serve multiple simultaneous connections, accept() will have to be put in a while loop
-        # If this does become the case, what is the best way to deliver the queue objects to the caller, keep them wrapped in read/write methods?
