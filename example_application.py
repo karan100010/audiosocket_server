@@ -371,7 +371,7 @@ class AudioStreamer():
                 vosk_ws_url="ws://localhost:2700"
                 ws.connect(vosk_ws_url)
                 while True:
-                    print(self.call.read())
+                    ws.send_binary(self.call.read())
                 # for audio_chunk in self.call.read():
                 #     try:
                 #         ws.send_binary(audio_chunk)
