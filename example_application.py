@@ -23,6 +23,7 @@ import webrtcvad
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import asyncio
 import tracemalloc 
+import websocket
 
 
 class AudioStreamer():
@@ -201,6 +202,7 @@ class AudioStreamer():
 
             # requests.post(self.call_api,data={"call_id":self.call_id,"status":"active","addr":self.audiosocket.addr+":"+"9000"})
             audio_data = self.call.read()
+
             #combined_byts = self.call.read_for_vad()        
 
             if self.audioplayback:
@@ -360,81 +362,98 @@ class AudioStreamer():
         if self.call.connected:
 
 
+
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             self.logger.info(self.uuid)
-
+            self.logger.info("connecting to websocket server")
             try:
-                playback_lis=  ["http://172.16.1.207:8084/Intro001.wav", "http://172.16.1.207:8084/Intro002.wav", "http://172.16.1.207:8084/Intro003.wav", "http://172.16.1.207:8084/Intro004.wav", "http://172.16.1.207:8084/Intro005.wav",
-    "http://172.16.1.207:8084/Intro006.wav", "http://172.16.1.207:8084/Intro007.wav", "http://172.16.1.207:8084/Intro008.wav", "http://172.16.1.207:8084/Intro009.wav"]
-                self.audio_link=playback_lis[random.randint(0, len(playback_lis))]
-                self.welcome=requests.get(self.audio_link).content
+                ws = websocket.WebSocket()
+                vosk_ws_url="ws://localhost:2700"
+                ws.connect(vosk_ws_url)
+                for audio_chunk in self.call.read():
+                    ws.send_binary(audio_chunk)
+                    # Print the response received from the WebSocket
+                    response = ws.recv()
+                    print("Vosk Response:", response)
+            except websocket.WebSocketException as e:
+                self.logger.error("Failed to connect to Vosk WebSocket: %s", e)        
 
-            except Exception as e:
-                self.welcome = "http://172.16.1.207:8084/hello.wav"
-                self.logger.error("welcome audio not found {}".format(e))
-            self.audioplayback = True
-            counter=0
-            while not self.startcall:
-                self.logger.info("waiting for call to start")
-                sleep(.1)
-                counter+=1
-                if counter>30:
-                    break
-            self.audioplayback = False
-            self.logger.info("call started")
-            self.noise_frames_count = 0
-            self.noise_frames_count = 0
-            while self.call.connected:
+    
+            
 
-                if not self.audioplayback:
+
+    #         try:
+    #             playback_lis=  ["http://172.16.1.207:8084/Intro001.wav", "http://172.16.1.207:8084/Intro002.wav", "http://172.16.1.207:8084/Intro003.wav", "http://172.16.1.207:8084/Intro004.wav", "http://172.16.1.207:8084/Intro005.wav",
+    # "http://172.16.1.207:8084/Intro006.wav", "http://172.16.1.207:8084/Intro007.wav", "http://172.16.1.207:8084/Intro008.wav", "http://172.16.1.207:8084/Intro009.wav"]
+    #             self.audio_link=playback_lis[random.randint(0, len(playback_lis))]
+    #             self.welcome=requests.get(self.audio_link).content
+
+    #         except Exception as e:
+    #             self.welcome = "http://172.16.1.207:8084/hello.wav"
+    #             self.logger.error("welcome audio not found {}".format(e))
+    #         self.audioplayback = True
+    #         counter=0
+    #         while not self.startcall:
+    #             self.logger.info("waiting for call to start")
+    #             sleep(.1)
+    #             counter+=1
+    #             if counter>30:
+    #                 break
+    #         self.audioplayback = False
+    #         self.logger.info("call started")
+    #         self.noise_frames_count = 0
+    #         self.noise_frames_count = 0
+    #         while self.call.connected:
+
+    #             if not self.audioplayback:
                     
-                        self.logger.info("audio playback started")
-                        self.logger.info("we are in level {}".format(self.level))
-                        if self.level==0:
+    #                     self.logger.info("audio playback started")
+    #                     self.logger.info("we are in level {}".format(self.level))
+    #                     if self.level==0:
 
-                            self.send_audio(self.welcome)
-                            self.level+=1
-                            while self.long_silence < 100:
-                                    if self.call.connected:
-                                        sleep(.5)
-                                    else:
-                                        break
-                        else:
+    #                         self.send_audio(self.welcome)
+    #                         self.level+=1
+    #                         while self.long_silence < 100:
+    #                                 if self.call.connected:
+    #                                     sleep(.5)
+    #                                 else:
+    #                                     break
+    #                     else:
 
-                            if sentences:
-                                for i in sentences:
-                                    b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
-                                            json={
+    #                         if sentences:
+    #                             for i in sentences:
+    #                                 b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
+    #                                         json={
 
-                                    "text" : i,
-                                    "voiceCode":"EH-M2",
+    #                                 "text" : i,
+    #                                 "voiceCode":"EH-M2",
 
-                                    "msisdn" : "new_audio",
+    #                                 "msisdn" : "new_audio",
 
-                                    "send_file" :"True"
+    #                                 "send_file" :"True"
 
-                                }
-                                        ) 
-                                    self.send_audio(b.content)
-                                sleep(2)
-                                self.call.hangup()
+    #                             }
+    #                                     ) 
+    #                                 self.send_audio(b.content)
+    #                             sleep(2)
+    #                             self.call.hangup()
 
-                            while self.long_silence < 100:
-                                        if self.call.connected:
-                                            sleep(.5)
-                                        else:
-                                            break
-                        response = requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
-                        self.logger.error(response.text)
-                        resp = json.loads(response.text)
-                        print(resp)
-                        sentences=resp["sentences"]
-                        for i in sentences:
-                            self.logger.info(f"the resp reacived is {i}")
+    #                         while self.long_silence < 100:
+    #                                     if self.call.connected:
+    #                                         sleep(.5)
+    #                                     else:
+    #                                         break
+    #                     response = requests.post("http://172.16.1.209:5002/convert_{}".format(self.channel), data=self.combined_audio)
+    #                     self.logger.error(response.text)
+    #                     resp = json.loads(response.text)
+    #                     print(resp)
+    #                     sentences=resp["sentences"]
+    #                     for i in sentences:
+    #                         self.logger.info(f"the resp reacived is {i}")
 
 
 
-        self.logger.info('Connection with {0} over'.format(self.call.peer_addr))
+    #     self.logger.info('Connection with {0} over'.format(self.call.peer_addr))
 
         return
 
