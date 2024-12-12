@@ -371,7 +371,12 @@ class AudioStreamer():
                 vosk_ws_url="ws://localhost:2700"
                 ws.connect(vosk_ws_url)
                 for audio_chunk in self.call.read():
-                    ws.send_binary(audio_chunk)
+                    try:
+                        ws.send_binary(audio_chunk)
+                    except websocket.WebSocketException as e:
+                        self.logger.error("Failed to connect to Vosk WebSocket: %s", e)
+                        
+                    
                     # Print the response received from the WebSocket
                     response = ws.recv()
                     print("Vosk Response:", response)
