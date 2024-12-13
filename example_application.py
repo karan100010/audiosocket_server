@@ -387,6 +387,9 @@ class AudioStreamer():
                         print("Vosk Response:", json.loads(response))
                         if "text" in json.loads(response):
                             self.call.hangup()
+                            x=requests.post("http://172.16.1.209:5014/extract",json=json.loads(response))
+
+                            print(x)
                             break
                 except websocket.WebSocketException as e:
                     self.logger.error("Failed to connect to Vosk WebSocket: %s", e)        
