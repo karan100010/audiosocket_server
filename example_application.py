@@ -367,34 +367,34 @@ class AudioStreamer():
             self.logger.info(self.uuid)
             self.logger.info("connecting to websocket server")
             #starting transcipt listner 
-            if not self.audioplayback:
-                try:
-                    ws = websocket.WebSocket()
-                    vosk_ws_url="ws://localhost:2702"
-                    ws.connect(vosk_ws_url)
-                    while True:
-                        ws.send_binary(self.call.read())
+      #      if not self.audioplayback:
+            try:
+                ws = websocket.WebSocket()
+                vosk_ws_url="ws://localhost:2702"
+                ws.connect(vosk_ws_url)
+                while True:
+                    ws.send_binary(self.call.read())
 
-                    # for audio_chunk in self.call.read():
-                    #     try:
-                    #         ws.send_binary(audio_chunk)
-                    #     except websocket.WebSocketException as e:
-                    #         self.logger.error("Failed to connect to Vosk WebSocket: %s", e)
-                            
+                # for audio_chunk in self.call.read():
+                #     try:
+                #         ws.send_binary(audio_chunk)
+                #     except websocket.WebSocketException as e:
+                #         self.logger.error("Failed to connect to Vosk WebSocket: %s", e)
                         
-                    #     # Print the response received from the WebSocket
-                        response = ws.recv()
-                        print("Vosk Response:", json.loads(response))
-                        if "text" in json.loads(response):
-                            self.call.hangup()
-                            x=requests.post("http://172.16.1.209:5014/extract",json=json.loads(response))
+                    
+                #     # Print the response received from the WebSocket
+                    response = ws.recv()
+                    print("Vosk Response:", json.loads(response))
+                    if "text" in json.loads(response):
+                        self.call.hangup()
+                        # x=requests.post("http://172.16.1.209:5014/extract",json=json.loads(response))
 
-                            print(x)
-                            break
-                except websocket.WebSocketException as e:
-                    self.logger.error("Failed to connect to Vosk WebSocket: %s", e)        
+                        # print(x)
+                        break
+            except websocket.WebSocketException as e:
+                self.logger.error("Failed to connect to Vosk WebSocket: %s", e)        
 
-        
+    
             
 
 
