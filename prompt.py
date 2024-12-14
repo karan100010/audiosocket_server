@@ -65,4 +65,4 @@ messages = [
     }
 ]
 
-lm(messages)
+print(lm(messages))
