@@ -1,3 +1,7 @@
+import dspy
+lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
+dspy.configure(lm=lm)
+
 messages = [
     {
         "role": "system",
@@ -60,3 +64,5 @@ messages = [
         )
     }
 ]
+
+lm(messages)
