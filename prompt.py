@@ -68,7 +68,7 @@ messages = [
     },
      {
         "role": "user",
-        "content": "what is the capital of india?"
+        "content": "what is the last day that I can make the payment?"
     }
 ]
 
