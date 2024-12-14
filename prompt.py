@@ -66,7 +66,7 @@ messages = [
     },
      {
         "role": "user",
-        "content": "My bank account is empty what should I do?'"
+        "content": "what is the sum of 30 and 5'"
     }
 ]
 
