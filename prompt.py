@@ -68,7 +68,7 @@ messages = [
     },
      {
         "role": "user",
-        "content": "what is the last day to pay premium?"
+        "content": "what is the last day to pay back my loan?"
     }
 ]
 
