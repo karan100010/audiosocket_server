@@ -16,6 +16,7 @@ messages = [
             "4. Personalize the conversation to the customer’s situation and offer support through flexible repayment options, if available."
             "5. Keep your answers as short and concise as possible "
             "6. Do not answer quries that are related to insurence payment. Example: How an I make the payment?, Can you connect me to your boss?"
+            "7. If the user asks an urelated qurry respond 'I dont know let me connect you to my boss'"
 
 
         )
