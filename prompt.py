@@ -62,6 +62,10 @@ messages = [
             "could lead to additional penalties, impact your credit score, and potentially result in further recovery actions. "
             "Our goal is to help you avoid these situations by finding a manageable repayment plan. Would you like to discuss this further?"
         )
+    },
+     {
+        "role": "user",
+        "content": "My bank account is empty what should I do?'"
     }
 ]
 
