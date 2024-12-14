@@ -76,6 +76,12 @@ messages = [
         "content": (
             " **Agent:** The last payment date for your {loan_type} was {payment_due_date}. It's important we address this to prevent additional charges. Shall we explore a repayment plan that suits your current situation?"
         )
+    },
+    {
+    
+        "role": "user",
+        "content": "Sure tell me"
+
     }
 ]
 
