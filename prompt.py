@@ -68,7 +68,7 @@ messages = [
     },
      {
         "role": "user",
-        "content": "what is the sum of 30 and 5'"
+        "content": "what is the capital of india?"
     }
 ]
 
