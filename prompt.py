@@ -70,6 +70,13 @@ messages = [
         "role": "user",
         "content": "what is the last day to pay back my loan?"
     }
+    ,
+    {
+        "role": "assistant",
+        "content": (
+            " **Agent:** The last payment date for your {loan_type} was {payment_due_date}. It's important we address this to prevent additional charges. Shall we explore a repayment plan that suits your current situation?"
+        )
+    }
 ]
 
 print(lm(messages))
