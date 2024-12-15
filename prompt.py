@@ -90,6 +90,7 @@ def simulate_conversation():
 
         # Append assistant response to the conversation
         messages.append({"role": "assistant", "content": assistant_response})
+        print(messages)
 
 
 
