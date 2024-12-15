@@ -31,57 +31,13 @@ messages = [
             "- Overdue Duration: {overdue_duration}\n"
             "- Payment Due Date: {payment_due_date}\n"
             "- Contact History: {contact_history}\n\n"
-            "The customer answers the call and asks, 'Why are you calling me?'"
+            "The customer answers the call and asks, 'Why are you calling me? '"
+            "1. Confirm customers idntity"
+            "2. Tell customer about the overdue amount and duration"
+            "3. Ask the customer if they will be able to make the payment now."
+            "4. If the customer confirms then send them the payment link and hangup"
+            "5. If you are not able to understand customers input ask again."
         )
-    },
-    {
-        "role": "assistant",
-        "content": (
-            "**Agent:** Good morning, Mr./Ms. {customer_name}. This is [Your Name] calling from HDFC Insurance. "
-            "I wanted to discuss the pending payment for your {loan_type}. The overdue amount of ₹{overdue_amount} "
-            "has been due since {overdue_duration}. Could I assist you in settling this today?"
-        )
-    },
-    {
-        "role": "user",
-        "content": "The customer responds, 'I can't pay right now due to financial issues.'"
-    },
-    {
-        "role": "assistant",
-        "content": (
-            "**Agent:** I completely understand, Mr./Ms. {customer_name}. Financial challenges can be tough. To help, "
-            "we offer options like EMI extensions, partial payments, or even grace periods in certain cases. "
-            "Would you like me to go over these options to find something that works for you?"
-        )
-    },
-    {
-        "role": "user",
-        "content": "The customer asks, 'What happens if I don't pay?'"
-    },
-    {
-        "role": "assistant",
-        "content": (
-            "**Agent:** While I hope we can work out a solution, Mr./Ms. {customer_name}, I must inform you that non-payment "
-            "could lead to additional penalties, impact your credit score, and potentially result in further recovery actions. "
-            "Our goal is to help you avoid these situations by finding a manageable repayment plan. Would you like to discuss this further?"
-        )
-    },
-     {
-        "role": "user",
-        "content": "what is the last day to pay back my loan?"
-    }
-    ,
-    {
-        "role": "assistant",
-        "content": (
-            " **Agent:** The last payment date for your {loan_type} was {payment_due_date}. It's important we address this to prevent additional charges. Shall we explore a repayment plan that suits your current situation?"
-        )
-    },
-    {
-    
-        "role": "user",
-        "content": "Sure tell me"
-
     }
 ]
 
