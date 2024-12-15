@@ -30,6 +30,7 @@ messages = [
     {
         "role": "user",
         "content": (
+            "You make the phone call the the customer"
             "Simulate a telephonic conversation with the following customer details:\n"
             "- Customer Name: {customer_name}\n"
             "- Loan Type: {loan_type}\n"
