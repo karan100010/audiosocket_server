@@ -51,7 +51,7 @@ messages=[{
     #         "Only ask 'Is {customer_name} speaking?' first. Continue the conversation on the basis of the customer response."
     #     )
     # }
-]
+
 
 def simulate_conversation():
     while True:
