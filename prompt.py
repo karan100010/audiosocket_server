@@ -4,7 +4,7 @@ import dspy
 lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
 dspy.configure(lm=lm)
 system_prompt = """  
-You are a paying role of a Assistent who is in a phone conversation to recover loan
+You are a paying role of a Assistent who is in a phone conversation to recover loan wait for the user after you have said your part. Do not genrate User response
 Follow the given steps. Stoping text genration after each step for the customer to respond:
 
 1. **Confirm Identity**:  
