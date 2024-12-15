@@ -19,7 +19,7 @@ messages = [
             "7. If the user asks an urelated qurry respond 'I dont know let me connect you to my boss'"
             "8. If you are not able to understand customers input ask again."
 
-            "Follw the follwing steps one by one"
+            "Follow the follwing steps one by one"
             "1. Confirm customers idntity"
             "2. Tell customer about the overdue amount and duration"
             "3. Ask the customer if they will be able to make the payment now."
