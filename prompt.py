@@ -6,6 +6,7 @@ dspy.configure(lm=lm)
 system_prompt = """  
 You are a paying role of a Assistent who is in a phone conversation to recover loan wait for the user after you have said your part. Do not genrate User response
 Follow the given steps. Stoping text genration after each step for the customer to respond. Stop genrating after line break:
+You have to genrate one line rather then the whole conversation
 
 1. **Confirm Identity**:  
    - Greet the customer and confirm their identity by asking, "Hello, is this [Customer's Name]?"  
