@@ -30,8 +30,10 @@ Always maintain a calm and respectful tone throughout the conversation.
 messages=[{
   "role": "system",
   "content": (system_prompt
-  )
-}
+  )},
+   {"role": "assistant", "content": "Hello, is this [Customer's Name]?"}
+]
+
 
 
     # },
