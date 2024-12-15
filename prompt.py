@@ -20,7 +20,7 @@ messages = [
             "8. If you are not able to understand customers input ask again."
 
             "Follow the follwing steps one by one"
-            "1. Confirm customers idntity"
+            "1. Confirm customer's idntity"
             "2. Tell customer about the overdue amount and duration"
             "3. Ask the customer if they will be able to make the payment now."
             "4. If the customer confirms then send them the payment link and hangup"
@@ -38,7 +38,7 @@ messages = [
             "- Overdue Duration: {overdue_duration}\n"
             "- Payment Due Date: {payment_due_date}\n"
             "- Contact History: {contact_history}\n\n"
-            "The customer answers the call and asks, 'Why are you calling me? '"
+            " Starting form the first step ask customer about there identity"
             
         )
     }
