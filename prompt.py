@@ -25,22 +25,22 @@ messages = [
             "2. Tell the customer about the overdue amount and duration. "
             "3. Ask the customer if they will be able to make the payment now. "
             "4. If the customer confirms, then send them the payment link and hang up."
-        )
-    },
-    {
-        "role": "user",
-        "content": (
-            "You make the phone call the the customer"
-            "Simulate a telephonic conversation with the following customer details:\n"
-            "- Customer Name: {customer_name}\n"
-            "- Loan Type: {loan_type}\n"
-            "- Overdue Amount: ₹{overdue_amount}\n"
-            "- Overdue Duration: {overdue_duration}\n"
-            "- Payment Due Date: {payment_due_date}\n"
-            "- Contact History: {contact_history}\n\n"
-            "Only ask 'Is {customer_name} speaking?' first. Continue the conversation on the basis of the customer response."
-        )
-    }
+        )}
+    # },
+    # {
+    #     "role": "user",
+    #     "content": (
+    #         "You make the phone call the the customer"
+    #         "Simulate a telephonic conversation with the following customer details:\n"
+    #         "- Customer Name: {customer_name}\n"
+    #         "- Loan Type: {loan_type}\n"
+    #         "- Overdue Amount: ₹{overdue_amount}\n"
+    #         "- Overdue Duration: {overdue_duration}\n"
+    #         "- Payment Due Date: {payment_due_date}\n"
+    #         "- Contact History: {contact_history}\n\n"
+    #         "Only ask 'Is {customer_name} speaking?' first. Continue the conversation on the basis of the customer response."
+    #     )
+    # }
 ]
 
 def simulate_conversation():
