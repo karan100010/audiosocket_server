@@ -38,7 +38,7 @@ messages = [
             "- Overdue Duration: {overdue_duration}\n"
             "- Payment Due Date: {payment_due_date}\n"
             "- Contact History: {contact_history}\n\n"
-            " Starting from the first step asking 'Is {customer_name} speaking'"
+            " Only ask 'Is {customer_name} speaking?' first continue the conversation on the basis of the customer response"
             
         )
     }
