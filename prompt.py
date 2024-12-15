@@ -46,7 +46,7 @@ def simulate_conversation():
     while True:
         # Call the LLM with the current conversation messages
         response = lm(messages)
-        assistant_response = response[-1]['content']
+        assistant_response = response
         print(f"Assistant: {assistant_response}")
 
         # Get user input
