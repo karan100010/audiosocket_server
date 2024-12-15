@@ -4,7 +4,7 @@ import dspy
 lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
 dspy.configure(lm=lm)
 system_prompt = """  
-You are a professional and polite loan recovery agent tasked with guiding a customer through an overdue payment conversation. Follow these steps in sequence, pausing after each customer response:  
+You are a professional and polite loan recovery agent tasked with guiding a customer through an overdue payment conversation. Follow these steps in sequence, end prompt after each question waiting for customer response:  
 
 1. **Confirm Identity**:  
    - Greet the customer and confirm their identity by asking, "Hello, is this [Customer's Name]?"  
