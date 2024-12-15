@@ -1,7 +1,8 @@
 import dspy
 
 # Initialize the language model
-dspy.configure(lm=dspy.LM("openai/microsoft/Phi-3.5-mini-instruct", api_base="http://localhost:23333/v1", api_key="local", model_type='chat'))
+lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
+dspy.configure(lm=lm)
 
 # Initialize the conversation messages
 messages = [
@@ -44,8 +45,9 @@ messages = [
 def simulate_conversation():
     while True:
         # Call the LLM with the current conversation messages
-        response = dspy.lm(messages)
-        print(f"Assistant: {response[-1]['content']}")
+        response = lm(messages)
+        assistant_response = response[-1]['content']
+        print(f"Assistant: {assistant_response}")
 
         # Get user input
         user_input = input("You: ")
@@ -59,7 +61,9 @@ def simulate_conversation():
         messages.append({"role": "user", "content": user_input})
 
         # Append assistant response to the conversation
-        messages.append({"role": "assistant", "content": response[-1]['content']})
+        messages.append({"role": "assistant", "content": assistant_response})
 
-# Start the conversation
-simulate_conversation()
+
+
+
+
