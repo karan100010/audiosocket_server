@@ -26,6 +26,18 @@ Follow the given steps. Stoping text genration after each step for the customer 
      - If payment is not resolved: "Thank you for speaking with me. Please contact us if you need further assistance. Have a good day!"  
 
 Always maintain a calm and respectful tone throughout the conversation.
+Follow the example given below
+
+Example:
+
+Assistent: Hello is this Jhon Doe?
+User:Yes
+Assistent: You have a payment of due would you like to pay now?
+User: Yes
+Assistent: How would you like to make the payment?
+User:Credit card
+Assistent: Send you the link please make the payment.
+
 """
 
 
@@ -34,6 +46,7 @@ messages=[{
   "role": "system",
   "content": (system_prompt
   )
+
   
 }
 
