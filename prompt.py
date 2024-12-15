@@ -85,11 +85,13 @@ def simulate_conversation():
             print("Conversation ended.")
             break
 
+        if messages[-1]["role"]== "assistent":
         # Append user input to the conversation
-        messages.append({"role": "user", "content": user_input})
+            messages.append({"role": "user", "content": user_input})
 
         # Append assistant response to the conversation
-        messages.append({"role": "assistant", "content": assistant_response})
+        if messages[-1]["role"]== "user":
+            messages.append({"role": "assistant", "content": assistant_response})
         print(messages)
 
 
