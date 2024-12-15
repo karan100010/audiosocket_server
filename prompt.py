@@ -30,10 +30,9 @@ Always maintain a calm and respectful tone throughout the conversation.
 messages=[{
   "role": "system",
   "content": (system_prompt
-  )},
-   {"role": "assistant", "content": "Hello, is this [Customer's Name]?"}
-]
-
+  )
+  
+}
 
 
     # },
@@ -51,7 +50,7 @@ messages=[{
     #         "Only ask 'Is {customer_name} speaking?' first. Continue the conversation on the basis of the customer response."
     #     )
     # }
-
+]
 
 def simulate_conversation():
     while True:
