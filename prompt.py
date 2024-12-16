@@ -38,7 +38,7 @@ Assistent: You have a payment of due would you like to pay now?
 User: Yes
 Assistent: How would you like to make the payment?
 User:Credit card
-Assistent: Send you the link please make the payment.
+Assistent: Send you the link please make the payment.<end>
 
 Example 2:
 
