@@ -1,7 +1,4 @@
 import dspy
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
 
 # Initialize the language model
 lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
@@ -121,34 +118,6 @@ messages=[{
 ]
 
 
-
-# Simulating a language model function
-# Replace this with the actual call to your LLM
-
-def lm(messages):
-    return "This is a simulated response based on the conversation so far."
-
-@app.route('/simulate_conversation', methods=['POST'])
-def simulate_conversation():
-    # Get the incoming JSON request data
-    data = request.get_json()
-
-    if not data or 'messages' not in data:
-        return jsonify({"error": "Missing 'messages' in request body."}), 400
-
-    messages = data['messages']
-
-    # Simulate the language model response
-    assistant_response = lm(messages)
-
-    # Append the assistant response to the conversation
-    messages.append({"role": "assistant", "content": assistant_response})
-
-    # Return the assistant response
-    return jsonify({"assistant_response": assistant_response, "messages": messages})
-
-if __name__ == '__main__':
-    app.run("0.0.0.0",port=5035,debug=True)
 
 
 # def simulate_conversation():
