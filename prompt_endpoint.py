@@ -9,12 +9,8 @@ dspy.configure(lm=lm)
 
 
 # Initialize the conversation messages
-try:
-    with open("hist.json", "r") as file:
-        messages = json.load(file)
-except FileNotFoundError:
 
-    messages=[{
+messages=[{
   "role": "system",
   "content": (""" 
 You are a paying role of a Assistent strictly who is in a phone conversation to recover loan wait for the user after you have said your part. Do not genrate User response
@@ -135,7 +131,7 @@ Assistent: Sorry, will not call you again. And we are going to block this number
 @app.route('/simulate_conversation', methods=['POST'])
 def simulate_conversation():
     # Get the incoming JSON request data
-    messages=json.load("hist.json")  # Use the global `messages` variable
+    global messages  # Use the global `messages` variable
     #print(messages[0]["content"])
     data = request.get_json()
 
