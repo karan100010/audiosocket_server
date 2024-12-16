@@ -386,8 +386,27 @@ class AudioStreamer():
                     response = ws.recv()
                     print("Vosk Response:", json.loads(response))
                     if "text" in json.loads(response):
-                        self.call.hangup()
-                        # x=requests.post("http://172.16.1.209:5014/extract",json=json.loads(response))
+
+                        x=requests.post("http://172.16.1.209:5035//simulate_conversation",json={"user_input":json.loads(response)["text"]})
+                        
+                        
+
+
+                        b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
+                                            json={
+
+                                    "text" : json.loads(x.content)["assistant_response"],
+                                    "voiceCode":"EH-M2",
+
+                                    "msisdn" : "new_audio",
+
+                                    "send_file" :"True"
+
+                                }
+                                            ) 
+                        self.send_audio(b.content)
+                        if json.loads(x.content)["assistant_response"].endswith("<end>"):
+                            self.call.hangup()
 
                         # print(x)
                         break
