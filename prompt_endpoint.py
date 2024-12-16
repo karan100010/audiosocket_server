@@ -153,6 +153,8 @@ def simulate_conversation():
 
     # Return the assistant response
     print(assistant_response)
+    with open("hist.json", "w") as file:
+        json.dump(messages, file, indent=4)
     return jsonify({"assistant_response": assistant_response, "messages": messages})
 
 if __name__ == '__main__':
