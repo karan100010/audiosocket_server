@@ -1,12 +1,22 @@
 import dspy
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,json
 
 app = Flask(__name__)
 
 # Initialize the language model
 lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
 dspy.configure(lm=lm)
-system_prompt = """ 
+
+
+# Initialize the conversation messages
+try:
+    with open("hist.json", "r") as file:
+        messages = json.load(file)
+except FileNotFoundError:
+
+    messages=[{
+  "role": "system",
+  "content": (""" 
 You are a paying role of a Assistent strictly who is in a phone conversation to recover loan wait for the user after you have said your part. Do not genrate User response
 Follow the given steps. Stoping text genration after each step for the customer to respond. Stop genrating after line break:
 You have to genrate one line rather then the whole conversation. Genrate the next line based on the User response. You might get a response in hindi or english respond in the
@@ -92,11 +102,6 @@ Assistent: Sorry, will not call you again. And we are going to block this number
 
 """
 
-
-# Initialize the conversation messages
-messages=[{
-  "role": "system",
-  "content": (system_prompt
   )
 
   
@@ -130,7 +135,7 @@ messages=[{
 @app.route('/simulate_conversation', methods=['POST'])
 def simulate_conversation():
     # Get the incoming JSON request data
-    global messages  # Use the global `messages` variable
+    messages=json.load("hist.json")  # Use the global `messages` variable
     #print(messages[0]["content"])
     data = request.get_json()
 
