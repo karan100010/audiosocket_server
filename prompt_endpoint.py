@@ -131,7 +131,7 @@ messages=[{
 def simulate_conversation():
     # Get the incoming JSON request data
     global messages  # Use the global `messages` variable
-    print(messages["content"])
+    print(messages[0]["content"])
     data = request.get_json()
 
     if not data or 'user_input' not in data:
