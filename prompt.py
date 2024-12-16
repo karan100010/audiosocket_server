@@ -120,28 +120,28 @@ messages=[{
 
 
 
-# def simulate_conversation():
-#     while True:
-#         # Call the LLM with the current conversation messages
-#         response = lm(messages)
-#         assistant_response = response
-#         print(f"Assistant: {assistant_response}")
+def simulate_conversation():
+    while True:
+        # Call the LLM with the current conversation messages
+        response = lm(messages)
+        assistant_response = response
+        print(f"Assistant: {assistant_response}")
 
-#         # Get user input
-#         user_input = input("You: ")
+        # Get user input
+        user_input = input("You: ")
 
-#         # Check if the user wants to exit
-#         if user_input.lower() in ["exit", "quit"]:
-#             print("Conversation ended.")
-#             break
+        # Check if the user wants to exit
+        if user_input.lower() in ["exit", "quit"]:
+            print("Conversation ended.")
+            break
 
         
-#         # Append user input to the conversation
+        # Append user input to the conversation
         
 
-#         # Append assistant response to the conversation
-#         messages.append({"role": "assistant", "content": assistant_response})
-#         messages.append({"role": "user", "content": user_input})
+        # Append assistant response to the conversation
+        messages.append({"role": "assistant", "content": assistant_response})
+        messages.append({"role": "user", "content": user_input})
 
 
 
