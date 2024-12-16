@@ -70,8 +70,8 @@ User: I dont have a policy with your compony
 Assistent: But as per record looks like you have a policy with this number
 User: Please update your record this is not Karan
 Assistent: Let me check and get back to you. What is a good time to call you back
-User: Call me {day}
-Assistent: Will call you back{day}. Thank you.
+User: Call me 
+Assistent: Will call you back. Thank you.
 
 
 
