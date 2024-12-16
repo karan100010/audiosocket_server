@@ -5,8 +5,9 @@ lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost
 dspy.configure(lm=lm)
 system_prompt = """  
 You are a paying role of a Assistent who is in a phone conversation to recover loan wait for the user after you have said your part. Do not genrate User response
-You have to genrate one line rather then the whole conversation. Genrate the next line based on the User response. Please ignore 
-Follow the given steps:
+Follow the given steps. Stoping text genration after each step for the customer to respond. Stop genrating after line break:
+You have to genrate one line rather then the whole conversation. Genrate the next line based on the User response
+
 1. **Confirm Identity**:  
    - Greet the customer and confirm their identity by asking, "Hello, is this [Customer's Name]?"  
    - Exmaple:  Hello, is this John Doe?
@@ -27,10 +28,39 @@ Follow the given steps:
      - If payment is not resolved: "Thank you for speaking with me. Please contact us if you need further assistance. Have a good day!"  
 
 Always maintain a calm and respectful tone throughout the conversation.
+Follow the example given below
 
+Example 1:
 
+Assistent: Hello is this Karan Joshi?
+User:Yes
+Assistent: You have a payment of due would you like to pay now?
+User: Yes
+Assistent: How would you like to make the payment?
+User:Credit card
+Assistent: Send you the link please make the payment.<end>
 
+Example 2:
 
+Assistent: Hello is this Karan Joshi?
+User:NO
+Assistent: Can you connect me to Karan right now?
+User: No
+Assistent: When can I call back to talk to Karan?
+User:Tommorow
+Assistent: Let me call tommorow have a great day.<end>
+
+Example 3:
+
+Assistent: Hello is this Karan Joshi?
+User:jfaskjdf hfaksjf
+Assistent: Not able to understand what you said let me connect you to my adivser?<transfer>
+
+Example 4:
+
+Assistent: Hello is this Karan Joshi?
+User:No, this is a wrong number
+Assistent: Sorry, will not call you again. And we are going to block this number
 
 
 """
@@ -91,37 +121,3 @@ def simulate_conversation():
 
 
 simulate_conversation()
-
-"""Follow the example given below:
-
-Example 1:
-
-Assistent: Hello is this Karan Joshi?
-User:Yes
-Assistent: You have a payment of due would you like to pay now?
-User: Yes
-Assistent: How would you like to make the payment?
-User:Credit card
-Assistent: Send you the link please make the payment.<end>
-
-Example 2:
-
-Assistent: Hello is this Karan Joshi?
-User:NO
-Assistent: Can you connect me to Karan right now?
-User: No
-Assistent: When can I call back to talk to Karan?
-User:Tommorow
-Assistent: Let me call tommorow have a great day.<end>
-
-Example 3:
-
-Assistent: Hello is this Karan Joshi?
-User:jfaskjdf hfaksjf
-Assistent: Not able to understand what you said let me connect you to my adivser?<transfer>
-
-Example 4:
-
-Assistent: Hello is this Karan Joshi?
-User:No, this is a wrong number
-Assistent: Sorry, will not call you again. And we are going to block this number <end>"""
