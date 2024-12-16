@@ -32,7 +32,7 @@ Follow the example given below
 
 Example:
 
-Assistent: Hello is this Jhon Doe?
+Assistent: Hello is this {customer}?
 User:Yes
 Assistent: You have a payment of due would you like to pay now?
 User: Yes
