@@ -131,7 +131,7 @@ messages=[{
 def simulate_conversation():
     # Get the incoming JSON request data
     global messages  # Use the global `messages` variable
-    print(messages[0]["content"])
+    #print(messages[0]["content"])
     data = request.get_json()
 
     if not data or 'user_input' not in data:
@@ -147,6 +147,7 @@ def simulate_conversation():
     messages.append({"role": "assistant", "content": assistant_response})
 
     # Return the assistant response
+    print(assistant_response)
     return jsonify({"assistant_response": assistant_response, "messages": messages})
 
 if __name__ == '__main__':
