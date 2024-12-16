@@ -387,11 +387,8 @@ class AudioStreamer():
                     print("Vosk Response:", json.loads(response))
                     if "text" in json.loads(response):
                         ws.close()
-                        x=requests.post("http://172.16.1.209:5035//simulate_conversation",json={"user_input":json.loads(response)["text"]})
+                        x=requests.post("http://172.16.1.209:5035/simulate_conversation",json={"user_input":json.loads(response)["text"]})
                         
-                        
-
-
                         b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
                                             json={
 
