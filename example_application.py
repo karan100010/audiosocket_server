@@ -405,7 +405,7 @@ class AudioStreamer():
                                 }
                                             ) 
                         self.send_audio(b.content)
-                        if json.loads(x.content)["assistant_response"]["content"].endswith("<end>"):
+                        if json.loads(x.content)["assistant_response"]["content"][0].endswith("<end>"):
                             self.call.hangup()
 
                         # print(x)
