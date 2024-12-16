@@ -395,7 +395,7 @@ class AudioStreamer():
                         b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
                                             json={
 
-                                    "text" : json.loads(x.content)["assistant_response"],
+                                    "text" : json.loads(x.content)["assistant_response"][0],
                                     "voiceCode":"EH-M2",
 
                                     "msisdn" : "new_audio",
@@ -405,8 +405,8 @@ class AudioStreamer():
                                 }
                                             ) 
                         self.send_audio(b.content)
-                        print(x.content)
-                        print(json.loads(x.content)["assistant_response"])
+                       # print(x.content)
+                        print(json.loads(x.content)["assistant_response"][0])
                         # if json.loads(x.content)["assistant_response"]["content"][0].endswith("<end>"):
                         #     self.call.hangup()
 
