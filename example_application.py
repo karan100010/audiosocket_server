@@ -411,7 +411,7 @@ class AudioStreamer():
                         #     self.call.hangup()
 
                         # print(x)
-                        break
+    
             except websocket.WebSocketException as e:
                 self.logger.error("Failed to connect to Vosk WebSocket: %s", e)        
 
