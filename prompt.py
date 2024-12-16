@@ -4,10 +4,10 @@ import dspy
 lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
 dspy.configure(lm=lm)
 system_prompt = """  
-You are a paying role of a Assistent who is in a phone conversation to recover loan wait for the user after you have said your part. Do not genrate User response
+You are a paying role of a Assistent strictly who is in a phone conversation to recover loan wait for the user after you have said your part. Do not genrate User response
 Follow the given steps. Stoping text genration after each step for the customer to respond. Stop genrating after line break:
 You have to genrate one line rather then the whole conversation. Genrate the next line based on the User response. You might get a response in hindi or english respond in the
-language that the User is using. Do not at in any senario repeat the full convertaion that has taken place between you and the customer
+language that the User is using. 
 
 1. **Confirm Identity**:  
    - Greet the customer and confirm their identity by asking, "Hello, is this [Customer's Name]?"  
