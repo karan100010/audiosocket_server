@@ -139,7 +139,8 @@ def simulate_conversation():
     global messages  # Use the global `messages` variable
     #print(messages[0]["content"])
     data = request.get_json()
-
+    #add a call to the database to store the history
+    
     if not data or 'user_input' not in data:
         return jsonify({"error": "Missing 'messages' in request body."}), 400
     user_body={"role":"User",
