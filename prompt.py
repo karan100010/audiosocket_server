@@ -61,17 +61,7 @@ Assistent: Hello is this Karan Joshi?
 User:No, this is a wrong number
 Assistent: Sorry, will not call you again. And we are going to block this number <end>
 
-Example 5:
 
-Assistent: Hello is this Karan Joshi?
-User:Yes
-Assistent: You have a payment of due would you like to pay now?
-User: I dont have a policy with your compony
-Assistent: But as per record looks like you have a policy with this number
-User: Please update your record this is not Karan
-Assistent: Let me check and get back to you. What is a good time to call you back
-User: Call me 
-Assistent: Will call you back. Thank you.
 
 
 
