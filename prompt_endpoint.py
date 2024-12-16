@@ -130,6 +130,7 @@ messages=[{
 @app.route('/simulate_conversation', methods=['POST'])
 def simulate_conversation():
     # Get the incoming JSON request data
+    global messages  # Use the global `messages` variable
     data = request.get_json()
 
     if not data or 'user_input' not in data:
