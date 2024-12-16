@@ -133,10 +133,12 @@ def simulate_conversation():
     # Get the incoming JSON request data
     data = request.get_json()
 
-    if not data or 'messages' not in data:
+    if not data or 'user_input' not in data:
         return jsonify({"error": "Missing 'messages' in request body."}), 400
+    user_body={"role":"User",
+               "content": data["user_input"]}
 
-    messages = data['messages']
+    messages = messages.append(user_body)
 
     # Simulate the language model response
     assistant_response = lm(messages)
