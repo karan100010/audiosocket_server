@@ -139,8 +139,7 @@ def simulate_conversation():
     user_body={"role":"User",
                "content": {data["user_input"]}}
 
-    messages = messages.append(user_body)
-
+    messages.append(user_body)
     # Simulate the language model response
     assistant_response = lm(messages)
 
