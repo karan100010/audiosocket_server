@@ -397,42 +397,43 @@ class AudioStreamer():
                 ws.connect(vosk_ws_url)
                 
                 while True:
-                    ws.send_binary(self.call.read())
-                    response_ws = ws.recv()
+                    if self.start_audio_playback==False:
+                        ws.send_binary(self.call.read())
+                        response_ws = ws.recv()
 
-                    
-                                # try:
-                    # ws = websocket.WebSocket()
-                    # vosk_ws_url="ws://localhost:2600"
-                    # ws.connect(vosk_ws_url)
+                        
+                                    # try:
+                        # ws = websocket.WebSocket()
+                        # vosk_ws_url="ws://localhost:2600"
+                        # ws.connect(vosk_ws_url)
 
-                    print("Vosk Response:", json.loads(response_ws))
-                    # ignore_flag=False
-                    if "text" in json.loads(response_ws) :
-                         ignore_flag=True
-                         user_body={"role":"user","content":json.loads(response_ws)["text"]}
-                         messages.append(user_body)
-                         lm_resp=lm(messages)
-                         print(lm_resp[0])
-                         gen_audio=requests.post("http://172.16.1.209:7000/synthesize",json={
+                        print("Vosk Response:", json.loads(response_ws))
+                        # ignore_flag=False
+                        if "text" in json.loads(response_ws) :
+                            ignore_flag=True
+                            user_body={"role":"user","content":json.loads(response_ws)["text"]}
+                            messages.append(user_body)
+                            lm_resp=lm(messages)
+                            print(lm_resp[0])
+                            gen_audio=requests.post("http://172.16.1.209:7000/synthesize",json={
 
-    "text": lm_resp[0],
+        "text": lm_resp[0],
 
-    "speech_rate": 0.91,
+        "speech_rate": 0.91,
 
-    "use_stress": "False",
+        "use_stress": "False",
 
-    "quality": 20,
+        "quality": 20,
 
-    "msisdn": "main",
+        "msisdn": "main",
 
-    "voiceCode": "hi_f1"
+        "voiceCode": "hi_f1"
 
-})
-                         print(gen_audio.status_code)
-                         if gen_audio.status_code==200:
-                            audio=requests.get("http://172.16.1.209:8000/main.wav").content
-                            self.send_audio(audio)
+    })
+                            print(gen_audio.status_code)
+                            if gen_audio.status_code==200:
+                                audio=requests.get("http://172.16.1.209:8000/main.wav").content
+                                self.send_audio(audio)
 
               
         # else:
