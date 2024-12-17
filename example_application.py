@@ -414,6 +414,7 @@ class AudioStreamer():
                          user_body={"role":"user","content":json.loads(response_ws)["text"]}
                          messages.append(user_body)
                          lm_resp=lm(messages)
+                         print(lm_resp[0])
                          gen_audio=requests.post("http://172.16.1.209:7000/synthesize",json={
 
     "text": lm_resp[0],
