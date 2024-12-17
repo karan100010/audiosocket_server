@@ -12,6 +12,7 @@ from req import Requsts
 import json
 import base64
 import uuid
+import dspy
 #import pymongo
 # import telebot
 import datetime
@@ -366,51 +367,55 @@ class AudioStreamer():
             self.logger.info("the uuid for this call is {}".format(self.uuid))
             self.logger.info(self.uuid)
             self.logger.info("connecting to websocket server")
+            lm = dspy.LM("openai/microsoft/Phi-3.5-mini-instruct",api_base="http://localhost:23333/v1",api_key="local", model_type='chat')
+            dspy.configure(lm=lm)
+            response = lm(messages)
+            print(response)
             #starting transcipt listner 
       #      if not self.audioplayback:
-            try:
-                ws = websocket.WebSocket()
-                vosk_ws_url="ws://localhost:2700"
-                ws.connect(vosk_ws_url)
-                while True:
-                    ws.send_binary(self.call.read())
+            # try:
+            #     ws = websocket.WebSocket()
+            #     vosk_ws_url="ws://localhost:2700"
+            #     ws.connect(vosk_ws_url)
+            #     while True:
+            #         ws.send_binary(self.call.read())
 
-                # for audio_chunk in self.call.read():
-                #     try:
-                #         ws.send_binary(audio_chunk)
-                #     except websocket.WebSocketException as e:
-                #         self.logger.error("Failed to connect to Vosk WebSocket: %s", e)
+            #     # for audio_chunk in self.call.read():
+            #     #     try:
+            #     #         ws.send_binary(audio_chunk)
+            #     #     except websocket.WebSocketException as e:
+            #     #         self.logger.error("Failed to connect to Vosk WebSocket: %s", e)
                         
                     
-                #     # Print the response received from the WebSocket
-                    response = ws.recv()
-                    print("Vosk Response:", json.loads(response))
-                    if "text" in json.loads(response):
-                        ws.close()
-                        x=requests.post("http://172.16.1.209:5035/simulate_conversation",json={"user_input":json.loads(response)["text"]})
+            #     #     # Print the response received from the WebSocket
+            #         response = ws.recv()
+            #         print("Vosk Response:", json.loads(response))
+            #         if "text" in json.loads(response):
+            #             ws.close()
+            #             x=requests.post("http://172.16.1.209:5035/simulate_conversation",json={"user_input":json.loads(response)["text"]})
                         
-                        b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
-                                            json={
+            #             b=requests.post("http://172.16.1.207:5006/voice/sentences/merge2",
+            #                                 json={
 
-                                    "text" : json.loads(x.content)["assistant_response"][0],
-                                    "voiceCode":"EH-M2",
+            #                         "text" : json.loads(x.content)["assistant_response"][0],
+            #                         "voiceCode":"EH-M2",
 
-                                    "msisdn" : "new_audio",
+            #                         "msisdn" : "new_audio",
 
-                                    "send_file" :"True"
+            #                         "send_file" :"True"
 
-                                }
-                                            ) 
-                        self.send_audio(b.content)
-                       # print(x.content)
-                        print(json.loads(x.content)["assistant_response"][0])
-                        # if json.loads(x.content)["assistant_response"]["content"][0].endswith("<end>"):
-                        #     self.call.hangup()
+            #                     }
+            #                                 ) 
+            #             self.send_audio(b.content)
+            #            # print(x.content)
+            #             print(json.loads(x.content)["assistant_response"][0])
+            #             # if json.loads(x.content)["assistant_response"]["content"][0].endswith("<end>"):
+            #             #     self.call.hangup()
 
-                        # print(x)
+            #             # print(x)
     
-            except websocket.WebSocketException as e:
-                self.logger.error("Failed to connect to Vosk WebSocket: %s", e)        
+            # except websocket.WebSocketException as e:
+            #     self.logger.error("Failed to connect to Vosk WebSocket: %s", e)        
 
     
             
@@ -504,7 +509,7 @@ def handel_call():
         # noise_stream.start()
         # playback_stream = threading.Thread(target=stream.start_audio_playback, args=(mapping,))
         # playback_stream.start()
-        stream.start_audio_playback(mapping)
+        stream.start_audio_playback(messages)
         
 
 
