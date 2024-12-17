@@ -406,7 +406,7 @@ class AudioStreamer():
 
 
                     response_ws = ws.recv()
-                    if "text" in json.loads(response):
+                    if "text" in json.loads(response_ws):
                          ws.close()
                          user_body={"role":"user","content":json.loads(response_ws)["text"]}
                          messages.append(user_body)
