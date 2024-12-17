@@ -406,7 +406,7 @@ class AudioStreamer():
                     # vosk_ws_url="ws://localhost:2600"
                     # ws.connect(vosk_ws_url)
 
-                    #print("Vosk Response:", json.loads(response_ws))
+                    print("Vosk Response:", json.loads(response_ws))
                     ignore_flag=False
                     if "text" in json.loads(response_ws) and ignore_flag==False:
                          ignore_flag=True
