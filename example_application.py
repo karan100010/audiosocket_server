@@ -395,9 +395,10 @@ class AudioStreamer():
                 ws = websocket.WebSocket()
                 vosk_ws_url="ws://localhost:2700"
                 ws.connect(vosk_ws_url)
-                ws.send_binary(self.call.read())
-                response_ws = ws.recv()
+                
                 while True:
+                    ws.send_binary(self.call.read())
+                    response_ws = ws.recv()
 
                     
                                 # try:
