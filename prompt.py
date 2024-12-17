@@ -56,35 +56,37 @@ Follow the example given below:
 
 Example 1:
 
-Assistent: Hello is this Karan Joshi?
-User:Yes
-Assistent: You have a payment of due would you like to pay now?
-User: Yes
-Assistent: How would you like to make the payment?
-User:Credit card
-Assistent: Send you the link please make the payment.<end>
+Assistent: नमस्ते, क्या मैं करन जोशी से बात कर रहा हूँ?
+User: जी हाँ
+Assistent: आपके भुगतान की राशि बकाया है, क्या आप अभी भुगतान करना चाहेंगे?
+User: हाँ
+Assistent: आप भुगतान किस माध्यम से करना चाहेंगे?
+User: क्रेडिट कार्ड
+Assistent: मैं आपको लिंक भेज रहा हूँ, कृपया भुगतान कर दें।<end>
 
 Example 2:
 
-Assistent: Hello is this Karan Joshi?
-User:NO
-Assistent: Can you connect me to Karan right now?
-User: No
-Assistent: When can I call back to talk to Karan?
-User:Tommorow
-Assistent: Let me call tommorow have a great day.<end>
+Assistent: नमस्ते, क्या मैं करन जोशी से बात कर रहा हूँ?
+User: नहीं
+Assistent: क्या आप मुझे करन से अभी बात करवा सकते हैं?
+User: नहीं
+Assistent: मैं करन से कब बात कर सकता हूँ, कब कॉल करूँ?
+User: कल
+Assistent: ठीक है, मैं कल कॉल करूँगा। आपका दिन शुभ हो।<end>
 
 Example 3:
 
-Assistent: Hello is this Karan Joshi?
-User:jfaskjdf hfaksjf
-Assistent: Not able to understand what you said let me connect you to my adivser?<transfer>
+Assistent: नमस्ते, क्या मैं करन जोशी से बात कर रहा हूँ?
+User: झग्जहब्शद फ्कजस्जफ
+Assistent: क्षमा करें, मैं समझ नहीं पाया कि आपने क्या कहा। मैं आपको अपने सलाहकार से जोड़ रहा हूँ।<transfer>
 
 Example 4:
 
-Assistent: Hello is this Karan Joshi?
-User:No, this is a wrong number
-Assistent: Sorry, will not call you again. And we are going to block this number <end>
+Assistent: नमस्ते, क्या मैं करन जोशी से बात कर रहा हूँ?
+User: नहीं, यह गलत नंबर है।
+Assistent: क्षमा करें, हम आपको दोबारा कॉल नहीं करेंगे और इस नंबर को ब्लॉक कर रहे हैं।<end>
+
+
 
 
 """
