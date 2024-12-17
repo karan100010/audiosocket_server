@@ -96,10 +96,13 @@ Assistent: क्षमा करें, हम आपको दोबारा 
 messages=[{
   "role": "system",
   "content": (system_prompt
-  )
+  )}
+,{"role": "assistent",
+  "content":"नमस्ते, क्या मैं करन जोशी से बात कर रहा हूँ?"
 
-  
 }
+  
+
 
 
     # },
