@@ -399,7 +399,6 @@ class AudioStreamer():
                 while True:
                     if self.audioplayback==False:
                         ws.send_binary(self.call.read())
-                        sleep(.2)
                         response_ws = ws.recv()
 
                         
