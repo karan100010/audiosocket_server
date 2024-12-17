@@ -393,7 +393,7 @@ class AudioStreamer():
       #      if not self.audioplayback:
 
                 ws = websocket.WebSocket()
-                vosk_ws_url="ws://172.16.1.207:2600"
+                vosk_ws_url="ws://172.16.1.207:2700"
                 ws.connect(vosk_ws_url)
                 
                 while True:
