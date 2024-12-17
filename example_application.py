@@ -395,6 +395,8 @@ class AudioStreamer():
                 ws = websocket.WebSocket()
                 vosk_ws_url="ws://localhost:2700"
                 ws.connect(vosk_ws_url)
+                ws.send_binary(self.call.read())
+                response_ws = ws.recv()
                 while True:
 
                     
@@ -402,8 +404,7 @@ class AudioStreamer():
                     # ws = websocket.WebSocket()
                     # vosk_ws_url="ws://localhost:2600"
                     # ws.connect(vosk_ws_url)
-                    ws.send_binary(self.call.read())
-                    response_ws = ws.recv()
+
                     print("Vosk Response:", json.loads(response_ws))
                     ignore_flag=False
                     if "text" in json.loads(response_ws) and ignore_flag==False:
