@@ -402,11 +402,11 @@ class AudioStreamer():
                     # ws = websocket.WebSocket()
                     # vosk_ws_url="ws://localhost:2600"
                     # ws.connect(vosk_ws_url)
-                    ws.send_binary(self.call.read())
+                    
                     response_ws = ws.recv()
                     print("Vosk Response:", json.loads(response_ws))
                     if "text" in json.loads(response_ws):
-                         ws.close()
+
                          user_body={"role":"user","content":json.loads(response_ws)["text"]}
                          messages.append(user_body)
                          lm_resp=lm(messages)
@@ -428,6 +428,8 @@ class AudioStreamer():
             if gen_audio.status_code==200:
                 audio=requests.get("http://172.16.1.209:8000/main.wav").content
                 self.send_audio(audio)
+        else:
+            ws.send_binary(self.call.read())
 
                          
                     
