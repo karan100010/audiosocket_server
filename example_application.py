@@ -409,7 +409,6 @@ class AudioStreamer():
                     print("Vosk Response:", json.loads(response_ws))
                     ignore_flag=False
                     if "text" in json.loads(response_ws) and ignore_flag==False:
-                         ws.close()
                          ignore_flag=True
                          user_body={"role":"user","content":json.loads(response_ws)["text"]}
                          messages.append(user_body)
