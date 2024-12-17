@@ -391,17 +391,17 @@ class AudioStreamer():
                 self.send_audio(audio)
             #starting transcipt listner 
       #      if not self.audioplayback:
-            # try:
-            #     ws = websocket.WebSocket()
-            #     vosk_ws_url="ws://localhost:2700"
-            #     ws.connect(vosk_ws_url)
+
+                ws = websocket.WebSocket()
+                vosk_ws_url="ws://localhost:2700"
+                ws.connect(vosk_ws_url)
                 while True:
 
                     
                                 # try:
-                    ws = websocket.WebSocket()
-                    vosk_ws_url="ws://localhost:2600"
-                    ws.connect(vosk_ws_url)
+                    # ws = websocket.WebSocket()
+                    # vosk_ws_url="ws://localhost:2600"
+                    # ws.connect(vosk_ws_url)
                     ws.send_binary(self.call.read())
                     response_ws = ws.recv()
                     print("Vosk Response:", json.loads(response_ws))
