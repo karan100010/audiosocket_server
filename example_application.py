@@ -397,7 +397,7 @@ class AudioStreamer():
                 ws.connect(vosk_ws_url)
                 
                 while True:
-                    if self.audio_playback==False:
+                    if self.audioplayback==False:
                         ws.send_binary(self.call.read())
                         response_ws = ws.recv()
 
