@@ -403,9 +403,8 @@ class AudioStreamer():
                     vosk_ws_url="ws://localhost:2600"
                     ws.connect(vosk_ws_url)
                     ws.send_binary(self.call.read())
-
-
                     response_ws = ws.recv()
+                    print("Vosk Response:", json.loads(response_ws))
                     if "text" in json.loads(response_ws):
                          ws.close()
                          user_body={"role":"user","content":json.loads(response_ws)["text"]}
@@ -434,7 +433,7 @@ class AudioStreamer():
                     
             #     #     # Print the response received from the WebSocket
             #         response = ws.recv()
-            #         print("Vosk Response:", json.loads(response))
+            #         
             #         if "text" in json.loads(response):
             #             ws.close()
             #             x=requests.post("http://172.16.1.209:5035/simulate_conversation",json={"user_input":json.loads(response)["text"]})
