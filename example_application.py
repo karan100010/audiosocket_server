@@ -399,13 +399,16 @@ class AudioStreamer():
                 while True:
                     if self.audioplayback==False:
                         data=b""
-                        for i in range(5):
-                            data+=self.call.read()
-                            sleep(.2)
-                        ws.send_binary(data)
-                        response_ws = ws.recv()
 
-                        
+
+                        while self.long_silence < 100:
+                            if self.call.connected:
+                                data+=self.call.read()
+                                sleep(.5)
+                            else:
+                                break
+                        ws.send_binary(data)
+                        response_ws=ws.recv()
                                     # try:
                         # ws = websocket.WebSocket()
                         # vosk_ws_url="ws://localhost:2600"
