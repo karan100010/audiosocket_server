@@ -1,0 +1,32 @@
+{
+  "start_node": "welcome",
+  "nodes": {
+    "welcome": {
+      "prompt_wav": "demo_audios/en/rec1_eng.wav",
+      "transitions": [
+        {"intent": "positive", "next": "positive_1"},
+        {"intent": "negative", "next": "negative_1"}
+      ],
+      "fallback_node": "fallback",
+      "action": "continue"
+    },
+    "positive_1": {
+      "prompt_wav": "demo_audios/en/main_flow/positive/rec5_eng.wav",
+      "transitions": [],
+      "fallback_node": "",
+      "action": "hangup"
+    },
+    "negative_1": {
+      "prompt_wav": "demo_audios/en/main_flow/negative/rec9_eng.wav",
+      "transitions": [],
+      "fallback_node": "",
+      "action": "hangup"
+    },
+    "fallback": {
+      "prompt_wav": "demo_audios/rec10_eng.wav",
+      "transitions": [],
+      "fallback_node": "",
+      "action": "hangup"
+    }
+  }
+}
