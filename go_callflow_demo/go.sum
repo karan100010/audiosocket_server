@@ -1,0 +1,4 @@
+github.com/CyCoreSystems/audiosocket v0.3.0 h1:Uu2QcXa2VxO4SavSzEanIjsIHvFfGYCs0q48bz6tu08=
+github.com/CyCoreSystems/audiosocket v0.3.0/go.mod h1:SQ0fEFxff9mLkLacI7GGVL/8y88bz0OmPcmTVol547A=
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
